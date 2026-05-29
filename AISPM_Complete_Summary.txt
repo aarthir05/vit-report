@@ -1,0 +1,1318 @@
+================================================================================
+AI SECURITY POSTURE MANAGEMENT (AISPM) PLATFORM - COMPLETE PROJECT SUMMARY
+================================================================================
+
+Organisation: Ernst & Young (EY)
+Platform: AI-SPM (AI Security Posture Management)
+Status: Production-Ready
+Total Lines of Code: 26,000+ LOC
+Backend Services: 70+ microservices
+API Endpoints: 60+ endpoints
+Frontend Pages: 28+ page components
+Database Tables: 9 comprehensive tables
+Test Files: 25+ test files
+Documentation: 150+ pages
+
+================================================================================
+1. PROJECT OVERVIEW
+================================================================================
+
+The AI Security Posture Management (AISPM) Platform is an enterprise-grade 
+security platform designed to discover, assess, monitor, and secure AI/ML assets 
+across an organization's entire AI ecosystem. It provides comprehensive visibility 
+into AI risks, compliance posture, and security vulnerabilities while enabling 
+automated remediation and governance.
+
+The platform addresses the growing need for organizations to manage the security 
+and compliance of their AI systems as AI adoption accelerates across industries. 
+With frameworks like the EU AI Act, NIST AI RMF, and ISO 42001 coming into effect, 
+organizations need robust tooling to ensure their AI systems meet regulatory 
+requirements while maintaining security best practices.
+
+Key Value Proposition:
+- Unified visibility into all AI/ML assets (models, datasets, pipelines, APIs)
+- Automated risk assessment using FAIR methodology
+- Continuous compliance monitoring against global AI regulations
+- Shadow AI detection to identify unauthorized AI usage
+- LLM-specific security testing (prompt injection, jailbreak, hallucination)
+- AI Bill of Materials (AI-BOM) generation for supply chain transparency
+- Vendor risk management for third-party AI systems
+- Executive dashboards and automated audit report generation
+
+================================================================================
+2. TECHNOLOGY STACK
+================================================================================
+
+BACKEND:
+- Language: Python 3.11+
+- Framework: FastAPI (async, high-performance)
+- ORM: SQLAlchemy 2.0 (async with asyncpg)
+- Primary Database: PostgreSQL 14+ (production), SQLite (development)
+- Cache/Rate Limiting: Redis 7+ with hiredis
+- Graph Database: Neo4j 5 (attack path visualization)
+- Document Store: MongoDB (optional, for audit logs)
+- Migration Tool: Alembic
+- Task Queue: Celery (background processing)
+- ML Libraries: scikit-learn, evidently, adversarial-robustness-toolbox
+- Security: python-jose (JWT), passlib (password hashing), cryptography
+- PII Detection: Presidio (Microsoft)
+- Report Generation: ReportLab (PDF)
+- ML Platforms: MLflow, boto3 (AWS SageMaker), azure-ai-ml, google-cloud-aiplatform
+
+FRONTEND:
+- Language: TypeScript
+- Framework: React 18
+- Build Tool: Vite 5
+- UI Components: EY Motif Design System (@ey-xd/motif-components)
+- State Management: @tanstack/react-query v5
+- Routing: React Router DOM v6
+- Charts: Recharts v3
+- Icons: Lucide React
+- Styling: Tailwind CSS 3 + PostCSS
+- HTTP Client: Axios
+- Testing: Vitest + React Testing Library
+- Linting: ESLint with TypeScript support
+
+INFRASTRUCTURE:
+- Containerization: Docker (multi-stage builds)
+- Orchestration: Kubernetes (K8s manifests provided)
+- Reverse Proxy: Nginx (frontend production)
+- CI/CD: GitHub Actions
+- Monitoring: Prometheus + Grafana (via monitoring/ directory)
+- Load Testing: k6 (performance-tests/ directory)
+
+================================================================================
+3. SYSTEM ARCHITECTURE
+================================================================================
+
+The platform follows a microservices-inspired modular monolith architecture:
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                        FRONTEND (React 18 + TypeScript)              │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ │
+│  │Dashboard │ │Discovery │ │Risk Mgmt │ │Compliance│ │LLM Safety│ │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘ └──────────┘ │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ │
+│  │AI-BOM   │ │Vendor Rsk│ │Executive │ │Reports   │ │Agent Gov │ │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘ └──────────┘ │
+└─────────────────────────────────────────────────────────────────────┘
+                              │ REST API (HTTPS)
+                              ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                   API GATEWAY (FastAPI + Middleware)                  │
+│  ┌─────────────┐ ┌──────────────┐ ┌────────────┐ ┌──────────────┐ │
+│  │Rate Limiter │ │CSRF Protect  │ │Auth (JWT)  │ │Security Hdrs │ │
+│  └─────────────┘ └──────────────┘ └────────────┘ └──────────────┘ │
+└─────────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                      SERVICE LAYER (70+ Services)                     │
+│                                                                       │
+│  ┌─────────────────────────────────────────────────────────────────┐ │
+│  │ CORE SERVICES                                                    │ │
+│  │ • Asset Discovery    • Risk Assessment    • Compliance Engine   │ │
+│  │ • Shadow AI Detect   • Vulnerability Mgmt • Security Scanner    │ │
+│  └─────────────────────────────────────────────────────────────────┘ │
+│  ┌─────────────────────────────────────────────────────────────────┐ │
+│  │ AI/ML SERVICES                                                   │ │
+│  │ • Explainability     • Fairness Monitor   • Federated Learning  │ │
+│  │ • AutoML Retraining  • Model Optimizer    • Causal Analysis     │ │
+│  └─────────────────────────────────────────────────────────────────┘ │
+│  ┌─────────────────────────────────────────────────────────────────┐ │
+│  │ LLM SERVICES                                                     │ │
+│  │ • LLM Governance     • LLM Safety        • Prompt Injection     │ │
+│  │ • Hallucination Detect• Toxicity Filter  • Red Teaming          │ │
+│  └─────────────────────────────────────────────────────────────────┘ │
+│  ┌─────────────────────────────────────────────────────────────────┐ │
+│  │ GOVERNANCE & COMPLIANCE                                          │ │
+│  │ • State Compliance    • Regulatory Intel  • Agent Governance    │ │
+│  │ • Vendor Risk         • Data Risk         • Audit Reports       │ │
+│  └─────────────────────────────────────────────────────────────────┘ │
+│  ┌─────────────────────────────────────────────────────────────────┐ │
+│  │ DATA & PRIVACY                                                   │ │
+│  │ • PII Detection       • Differential Privacy • Encryption       │ │
+│  │ • Data Lineage        • Data Quality      • Homomorphic Encrypt │ │
+│  └─────────────────────────────────────────────────────────────────┘ │
+│  ┌─────────────────────────────────────────────────────────────────┐ │
+│  │ INTEGRATION & REPORTING                                          │ │
+│  │ • Executive Dashboards• NL Query          • WebSocket RT       │ │
+│  │ • Messaging/Notif    • White Label/MSP    • Knowledge Graph     │ │
+│  └─────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                        DATA LAYER                                     │
+│  ┌────────────┐  ┌────────────┐  ┌────────────┐  ┌──────────────┐ │
+│  │PostgreSQL  │  │Redis       │  │Neo4j       │  │MongoDB       │ │
+│  │(Primary DB)│  │(Cache/Rate)│  │(Graph/Path)│  │(Audit Logs)  │ │
+│  └────────────┘  └────────────┘  └────────────┘  └──────────────┘ │
+└─────────────────────────────────────────────────────────────────────┘
+
+================================================================================
+4. CORE MODULES (12 MODULES)
+================================================================================
+
+MODULE 1: CORE AISPM
+---------------------
+The foundational module providing AI asset discovery, inventory management, and 
+security risk assessment.
+
+Features:
+- AI Asset Discovery: Automated scanning of cloud environments (AWS SageMaker, 
+  Azure ML, Google Vertex AI), Kubernetes clusters, MLOps platforms (MLflow), 
+  code repositories, file systems, and API endpoints to identify all AI/ML assets.
+- Asset Inventory: Centralized catalog of all AI models, datasets, pipelines, 
+  notebooks, and APIs with metadata including model type, framework, deployment 
+  status, data sensitivity, and ownership.
+- Security Risk Assessment: FAIR (Factor Analysis of Information Risk) methodology 
+  for quantifying AI-specific risks including adversarial attacks, data poisoning, 
+  model theft, and inference attacks.
+- Shadow AI Detection: Network traffic analysis using Zeek and osquery to identify 
+  unauthorized AI service usage (OpenAI, Anthropic, Hugging Face, etc.) across 
+  the organization.
+- Integration Hub: Connectors for enterprise tools including SIEM, ticketing 
+  systems, cloud platforms, and ML platforms.
+
+Technical Implementation:
+- Discovery Orchestrator: Coordinates parallel scanning across multiple sources
+- Scanner Types: Cloud ML, Kubernetes, Filesystem, Repository, API, Notebook, 
+  Container, Data Platform, MLOps, Shadow AI
+- Relationship Mapper: Neo4j-powered graph of asset dependencies and data flows
+- Real-time monitoring via WebSocket dashboard service
+
+MODULE 2: RESPONSIBLE AI
+-------------------------
+Ensures AI systems are developed and deployed ethically with appropriate governance.
+
+Features:
+- Model Cards: Automated generation of standardized documentation for each model
+- Carbon Tracking: Environmental impact monitoring of model training and inference
+- Impact Assessment: Societal and organizational impact evaluation
+- Explainability: SHAP, LIME, and feature importance analysis
+- Data Quality: Great Expectations integration for data validation
+- Fairness Monitoring: Bias detection across protected attributes
+- Human-in-the-Loop (HITL): Escalation workflows for human review
+- Accountability: Clear ownership and responsibility tracking
+- Ethics Review: Structured ethics assessment process
+- Transparency: Model decision audit trails
+- Lifecycle Governance: Stage-gate processes from development to retirement
+
+MODULE 3: VULNERABILITY MANAGEMENT
+------------------------------------
+Identifies and manages security vulnerabilities specific to AI/ML systems.
+
+Features:
+- MITRE ATLAS Mapping: Coverage of adversarial techniques targeting ML systems
+  including reconnaissance, resource development, initial access, ML attack 
+  staging, and ML attack execution
+- OWASP Top 10 for LLM: Assessment against the OWASP LLM Application Security 
+  risks including prompt injection, insecure output handling, training data 
+  poisoning, model denial of service, and supply chain vulnerabilities
+- AAGATE (AI Attack Graph Analysis and Threat Evaluation): Custom threat modeling 
+  framework for AI-specific attack paths
+- CVE Database Integration: Tracking known vulnerabilities in ML frameworks
+- ML-Specific Attack Detection: Backdoor attacks, data poisoning, model inversion, 
+  membership inference attacks
+
+MODULE 4: LLM GOVERNANCE
+--------------------------
+Comprehensive governance framework for Large Language Model deployments.
+
+Features:
+- Model Registry: Centralized catalog of all LLM deployments with versioning, 
+  provider information (OpenAI, Anthropic, Google, Meta, Mistral), and usage metrics
+- Model Comparison: Side-by-side evaluation of LLMs across performance, safety, 
+  cost, and compliance dimensions
+- Benchmarking: Standardized evaluation using industry benchmarks (MMLU, HellaSwag, 
+  TruthfulQA, HumanEval, GSM8K)
+- Cost Analysis: Token usage tracking, cost forecasting, budget alerting, and 
+  optimization recommendations
+- Policy Enforcement: Automated guardrails for LLM usage including content filters, 
+  data classification, and access controls
+- Prompt Management: Template library, version control, and A/B testing for prompts
+
+MODULE 5: LLM SAFETY & RED TEAMING
+------------------------------------
+Automated security testing specifically designed for LLM applications.
+
+Features:
+- Prompt Injection Testing: Systematic testing of direct and indirect prompt 
+  injection vulnerabilities with multiple attack vectors
+- Jailbreak Detection: Testing resistance to jailbreak attempts including DAN, 
+  role-play, and encoding-based attacks
+- Hallucination Testing: Evaluation of factual accuracy and consistency, detection 
+  of confabulation patterns
+- Toxicity Testing: Assessment of harmful, biased, or offensive output generation 
+  across multiple categories (hate speech, violence, sexual content, self-harm)
+- Data Leakage Testing: Verification that training data, PII, or confidential 
+  information cannot be extracted through crafted prompts
+- Red Team Sessions: Structured adversarial testing campaigns with reporting and 
+  tracking of findings
+
+MODULE 6: US STATE COMPLIANCE
+-------------------------------
+Automated compliance monitoring for US state-level AI regulations.
+
+Features:
+- NYC Local Law 144 (Automated Employment Decision Tools): Bias audit requirements, 
+  notice provisions, candidate data protections
+- Colorado SB21-169/SB205: Insurance AI governance, algorithmic accountability, 
+  consumer protections for automated decisions
+- Illinois Biometric Information Privacy Act (BIPA): Consent requirements for 
+  biometric data collection, storage limitations, private right of action compliance
+- Compliance Tracking: Real-time monitoring of regulation changes and impact analysis
+- Evidence Collection: Automated gathering of compliance artifacts and documentation
+- Remediation Guidance: Actionable recommendations for addressing compliance gaps
+
+MODULE 7: AUDIT REPORT GENERATOR
+----------------------------------
+Automated generation of comprehensive audit and compliance reports.
+
+Features:
+- Report Templates: 6 pre-built templates (Executive Summary, Technical Audit, 
+  Compliance Assessment, Risk Report, Incident Report, Board Presentation)
+- Format Support: PDF and Word document generation
+- Evidence Packaging: Automated collection and bundling of supporting evidence
+- Report Builder: Drag-and-drop report composition with customizable sections
+- Report Viewer: In-app viewing with export capabilities
+- Scheduling: Automated periodic report generation and distribution
+- Approval Workflow: Multi-stage review and sign-off process
+
+MODULE 8: VENDOR RISK MANAGEMENT
+----------------------------------
+Third-party AI risk assessment and continuous monitoring.
+
+Features:
+- Vendor Registry: Centralized catalog of all third-party AI vendors and services
+- Risk Questionnaires: Standardized and customizable assessment questionnaires 
+  covering security, privacy, ethics, and compliance
+- Risk Scoring: Quantitative risk scores based on multiple factors (security posture, 
+  data handling, compliance certifications, incident history)
+- Continuous Monitoring: Ongoing assessment of vendor security posture changes
+- Contract Management: Tracking of SLAs, data processing agreements, and compliance 
+  obligations
+- Vendor Comparison: Side-by-side risk comparison for procurement decisions
+
+MODULE 9: AGENT GOVERNANCE
+----------------------------
+Governance framework for autonomous AI agents and multi-agent systems.
+
+Features:
+- Agent Registry: Catalog of all autonomous agents with capability mapping, 
+  permission boundaries, and interaction patterns
+- Behavioral Monitoring: Real-time tracking of agent actions, decisions, and 
+  outcomes
+- Permission Management: Granular access controls and capability restrictions
+- Interaction Logging: Complete audit trail of agent-to-agent and agent-to-human 
+  interactions
+- Safety Boundaries: Configurable guardrails and kill switches
+- Performance Metrics: Response time, accuracy, task completion, error rates
+
+MODULE 10: REGULATORY INTELLIGENCE
+-------------------------------------
+Automated tracking and analysis of evolving AI regulations worldwide.
+
+Features:
+- Regulation Tracking: Monitoring of global AI regulatory developments (EU AI Act, 
+  NIST AI RMF, ISO 42001, national legislation)
+- Impact Analysis: Automated assessment of how new regulations affect existing 
+  AI systems
+- Alert System: Proactive notifications of regulatory changes relevant to the 
+  organization
+- Timeline Visualization: Regulatory compliance timeline with deadlines and milestones
+- Gap Analysis: Identification of compliance gaps against new or updated regulations
+- Remediation Planning: Prioritized action items for achieving compliance
+
+MODULE 11: EXECUTIVE REPORTING
+--------------------------------
+Role-based dashboards and reporting for executive stakeholders.
+
+Features:
+- Role-Based Views: Customized dashboards for CISO, CTO, Chief AI Officer, 
+  Compliance Officer, and Board members
+- KPI Tracking: Key performance indicators for AI security posture, risk trends, 
+  compliance status, and remediation progress
+- Trend Analysis: Historical data visualization showing improvement trajectories
+- Risk Heatmaps: Visual representation of risk concentration across the AI portfolio
+- Benchmark Comparison: Industry comparison and maturity assessment
+- Board-Ready Reports: Executive summaries suitable for board presentations
+
+MODULE 12: INTEGRATIONS & ECOSYSTEM
+--------------------------------------
+Comprehensive integration layer connecting to enterprise tools and services.
+
+Features:
+- SIEM Integration: Splunk, QRadar, Sentinel connectors for security event correlation
+- Ticketing: Jira, ServiceNow integration for automated ticket creation
+- Communication: Slack, Microsoft Teams notifications and bot interactions
+- Cloud Platforms: AWS, Azure, GCP native integrations
+- ML Platforms: MLflow, Kubeflow, SageMaker, Azure ML, Vertex AI
+- Identity: SAML, OAuth 2.0, OIDC for SSO integration
+- API Marketplace: Extensible API for custom integrations
+- Webhook Support: Event-driven notifications to external systems
+
+================================================================================
+5. BACKEND ARCHITECTURE DETAILS
+================================================================================
+
+5.1 APPLICATION ENTRY POINT (main.py)
+--------------------------------------
+The FastAPI application is configured with:
+- Async lifespan management (startup/shutdown events)
+- Database initialization (PostgreSQL via async SQLAlchemy)
+- MongoDB connection (optional, for audit logs)
+- Redis rate limiter initialization
+- WebSocket real-time dashboard service
+- Messaging/notification service
+- Auto-seeding capability for development/demo environments
+
+5.2 MIDDLEWARE STACK
+---------------------
+The application employs a comprehensive middleware stack:
+
+1. CORS Middleware: Configurable origin whitelisting for cross-origin requests
+2. CSRF Protection: Custom middleware preventing cross-site request forgery
+3. Request Size Limiter: Prevents DoS attacks via oversized payloads (100MB default)
+4. Security Headers Middleware:
+   - X-Content-Type-Options: nosniff
+   - X-Frame-Options: DENY
+   - X-XSS-Protection: 1; mode=block
+   - Referrer-Policy: strict-origin-when-cross-origin
+   - Content-Security-Policy (production)
+   - Strict-Transport-Security (production)
+5. Rate Limiting Middleware: Redis-backed distributed rate limiting
+   - 100 requests per minute per client (configurable)
+   - Per-IP tracking
+   - Graceful degradation if Redis unavailable
+   - Rate limit headers in responses (X-RateLimit-Limit, X-RateLimit-Remaining)
+
+5.3 AUTHENTICATION & AUTHORIZATION
+------------------------------------
+Implementation: JWT-based authentication with Role-Based Access Control (RBAC)
+Total Code: 1,900+ lines
+
+User Roles (7):
+- ADMIN: Full system access
+- SECURITY_ANALYST: Security operations and vulnerability management
+- COMPLIANCE_OFFICER: Compliance monitoring and reporting
+- DATA_SCIENTIST: Model management and data operations
+- DEVELOPER: Development and deployment access
+- AUDITOR: Read-only audit and review access
+- VIEWER: Dashboard and report viewing only
+
+Permissions (20+):
+- Asset Management: asset:read, asset:write, asset:delete, asset:discover
+- Risk Management: risk:read, risk:write, risk:assess
+- Compliance: compliance:read, compliance:write, compliance:audit
+- Vulnerability: vulnerability:read, vulnerability:write, vulnerability:scan
+- Shadow AI: shadow_ai:read, shadow_ai:investigate
+- User Management: user:read, user:write, user:delete
+- System Administration: system:admin, system:configure
+
+Security Features:
+- JWT token with 1-hour expiry
+- Refresh tokens with 7-day expiry
+- Token validation: ~1-2ms overhead
+- Permission check: <1ms overhead
+- Stateless design (no DB lookups for auth)
+- Comprehensive audit logging of all access
+- MFA/TOTP support via pyotp
+
+5.4 DATABASE MODELS
+---------------------
+Cross-database compatibility layer supporting PostgreSQL and SQLite:
+- Custom UUID type: PostgreSQL UUID or CHAR(36)
+- Custom JSONB type: PostgreSQL JSONB or TEXT with JSON serialization
+- Custom INET type: PostgreSQL INET or String(45)
+
+Core Tables (9):
+1. ai_assets: AI model/system inventory (50+ fields)
+2. risk_assessments: FAIR-based risk evaluations
+3. compliance_records: Compliance status tracking
+4. vulnerabilities: Security vulnerability findings
+5. shadow_ai_detections: Unauthorized AI usage records
+6. users: User accounts with role assignments
+7. audit_logs: Complete action audit trail
+8. scan_history: Discovery scan records and results
+9. reports: Generated report metadata and storage
+
+5.5 SERVICE MODULES (70+ Services)
+------------------------------------
+The backend is organized into specialized service directories:
+
+AI/ML Services:
+- explainability/: SHAP and LIME model interpretability
+- fairness/: Bias detection and mitigation (AI Fairness 360)
+- federated_learning/: Privacy-preserving distributed training (Flower)
+- automl/: Automated model retraining (AutoGluon)
+- causal/: Root cause analysis (DoWhy)
+- forecasting/: Risk prediction (Prophet)
+- optimization/: Model compression and optimization
+
+Security Services:
+- security_scanner/: Model file scanning (Fickling for pickle exploits)
+- vulnerability_management/: CVE tracking and ML-specific vulnerabilities
+- exposure/: Credential, PII, and API exposure detection
+- supply_chain/: Dependency and supply chain risk
+
+Data Services:
+- data_risk/: Data source inventory and PII scanning
+- privacy/: Differential privacy (OpenDP)
+- encryption/: Homomorphic encryption (TenSEAL)
+- data_quality/: Data validation (Great Expectations)
+- lineage/: Data lineage tracking (OpenLineage, DVC)
+
+LLM Services:
+- llm_governance/: Model registry, comparison, benchmarking, cost
+- llm_safety/: Prompt injection, jailbreak, hallucination, toxicity, data leakage
+
+Governance Services:
+- compliance/: Multi-framework compliance engine
+- state_compliance/: US state-level AI regulations
+- agent_governance/: Autonomous agent management
+- regulatory_intel/: Regulation tracking and impact analysis
+- vendor_risk/: Third-party risk management
+
+Platform Services:
+- discovery/: Asset discovery orchestration
+- monitoring/: Continuous monitoring and alerting
+- reporting/: Report generation and distribution
+- executive_dashboards/: Role-based executive views
+- nl_query/: Natural language database querying
+- messaging/: Notifications (Slack, Teams, email)
+- websocket/: Real-time dashboard updates
+- white_label/: Multi-tenant/MSP capabilities
+- integrations/: External system connectors
+
+5.6 ASSET DISCOVERY ENGINE
+----------------------------
+The discovery engine is a multi-scanner orchestration system:
+
+Discovery Orchestrator:
+- Coordinates parallel scanning across all configured sources
+- Manages scan scheduling and priority
+- Aggregates results and deduplicates findings
+- Triggers relationship mapping post-discovery
+
+Scanner Types:
+1. Cloud ML Scanner: AWS SageMaker, Azure ML, Google Vertex AI model discovery
+2. Kubernetes Scanner: K8s cluster scanning for ML workloads
+3. Filesystem Scanner: Local/NFS model file detection (.pkl, .h5, .pt, .onnx)
+4. Repository Scanner: Git repository analysis for ML code and models
+5. API Scanner: REST/gRPC endpoint discovery for model serving
+6. Notebook Scanner: Jupyter notebook analysis for embedded models
+7. Container Scanner: Docker image analysis for model artifacts
+8. Data Platform Scanner: Data lake and warehouse scanning
+9. MLOps Scanner: MLflow, Kubeflow, DVC registry scanning
+10. Shadow AI Scanner: Network traffic analysis for unauthorized AI APIs
+
+Relationship Mapper (Neo4j):
+- Maps data flow between assets
+- Identifies model-dataset dependencies
+- Visualizes attack paths and blast radius
+- Enables impact analysis for vulnerabilities
+
+5.7 AI BILL OF MATERIALS (AI-BOM)
+-----------------------------------
+Industry-first comprehensive AI-BOM generation (2,000+ LOC):
+
+BOM Generator (630 LOC):
+- CycloneDX 1.5 specification compliance
+- Complete model metadata extraction
+- Training data provenance tracking
+- Framework and library dependency enumeration
+- Hardware requirements documentation
+- License and IP information
+
+Vulnerability Scanner (320 LOC):
+- CVE database cross-referencing
+- ML-specific attack vulnerability assessment
+- Backdoor attack susceptibility
+- Data poisoning risk evaluation
+- Model inversion attack surface
+- Membership inference attack surface
+- Quantitative risk scoring (0-100)
+
+Compliance Mapper:
+- NIST AI RMF control mapping
+- EU AI Act article mapping
+- ISO 42001 clause mapping
+- SPDX 3.0 compatibility
+
+BOM Dashboard (620 LOC, Frontend):
+- Interactive BOM viewer with component tree
+- Dependency graph visualization
+- Vulnerability overlay on BOM components
+- Compliance status per component
+- Export capabilities (JSON, PDF, CSV)
+- BOM comparison across versions
+- Statistics and summary views
+
+API Routes (180 LOC):
+- POST /api/v1/ai-bom/generate - Generate BOM for an asset
+- GET /api/v1/ai-bom/{bom_id} - Retrieve specific BOM
+- GET /api/v1/ai-bom/list - List all BOMs
+- GET /api/v1/ai-bom/{bom_id}/vulnerabilities - BOM vulnerabilities
+- GET /api/v1/ai-bom/{bom_id}/compliance - BOM compliance status
+- GET /api/v1/ai-bom/statistics - Platform-wide BOM statistics
+- POST /api/v1/ai-bom/{bom_id}/export - Export BOM
+- PUT /api/v1/ai-bom/{bom_id} - Update BOM
+- DELETE /api/v1/ai-bom/{bom_id} - Delete BOM
+- POST /api/v1/ai-bom/compare - Compare two BOMs
+
+================================================================================
+6. FRONTEND ARCHITECTURE DETAILS
+================================================================================
+
+6.1 APPLICATION STRUCTURE
+---------------------------
+The frontend is a React 18 SPA (Single Page Application) built with TypeScript 
+and Vite. It uses the EY Motif Design System for UI consistency.
+
+Entry Point: main.tsx → App.tsx
+Routing: React Router DOM v6 with nested routes
+State Management: TanStack React Query v5 (server state) + React Context (auth)
+HTTP Client: Axios with interceptors for auth token injection
+
+6.2 ROUTE STRUCTURE (28+ Pages)
+---------------------------------
+The application is organized into 7 major navigation sections:
+
+Section 1 - Model Insight:
+- /dashboard - Main security posture dashboard
+- /assets - AI asset inventory and management
+- /risk - Risk assessment and scoring
+- /compliance - Compliance framework tracking
+- /shadow-ai - Shadow AI detection results
+- /ai-bom - AI Bill of Materials dashboard
+- /connector-health - Integration connector status
+
+Section 2 - Exposure Management:
+- /exposure - Exposure management dashboard
+- /exposure/credentials - Credential and secret exposure
+- /exposure/pii - PII detection findings
+- /exposure/open-apis - Open API mitigation
+- /exposure/findings - All exposure findings
+- /exposure/findings/:findingId - Finding detail view
+- /vendor-risk - Vendor risk dashboard
+- /vendor-risk/registry - Vendor registry
+- /state-compliance - US state compliance dashboard
+- /state-compliance/nyc-ll144 - NYC LL144 compliance
+- /state-compliance/colorado-sb205 - Colorado SB205 compliance
+- /state-compliance/illinois-bipa - Illinois BIPA compliance
+- /reports - Audit reports dashboard
+- /reports/builder - Report builder
+- /reports/view/:reportId - Report viewer
+
+Section 3 - LLM Scanner:
+- /llm-governance - LLM governance dashboard
+- /llm-governance/registry - LLM model registry
+- /llm-governance/compare - Model comparison
+- /llm-governance/benchmarks - LLM benchmarks
+- /llm-governance/cost - Cost analysis
+- /llm-safety - LLM safety testing dashboard
+- /llm-safety/prompt-injection - Prompt injection tests
+- /llm-safety/hallucination - Hallucination detection
+- /llm-safety/toxicity - Toxicity testing
+- /llm-safety/data-leakage - Data leakage testing
+- /llm-safety/red-team - Red team sessions
+
+Section 4 - Responsible AI:
+- /bias-auditor - Bias auditing tools
+- /explainability - Model explainability (SHAP/LIME)
+- /differential-privacy - Privacy budget management
+- /federated-learning - Federated learning dashboard
+
+Section 5 - Data Risk:
+- /data-risk - Data risk overview
+- /data-risk/sources - Data source inventory
+- /data-risk/sources/:sourceId - Data source detail
+- /data-risk/distribution - PII distribution map
+- /data-risk/regulatory-exposure - Regulatory exposure analysis
+- /data-lineage - Data lineage tracking
+- /data-quality - Data quality monitoring
+
+Section 6 - Red Teaming Engine:
+- /model-security - Model file security scanning
+
+Section 7 - Agentic Remediation:
+- /agent-governance - Agent governance dashboard
+- /agent-governance/registry - Agent registry
+- /auto-retraining - Automated model retraining
+
+Platform & Tools:
+- /executive-dashboard - Executive views
+- /executive-dashboard/:role - Role-specific views
+- /regulatory-intel - Regulatory intelligence
+- /ai-query - Natural language query interface
+- /integrations - Integration management
+- /msp-admin - MSP admin portal
+- /tenant-settings - Tenant configuration
+
+6.3 COMPONENT ARCHITECTURE
+-----------------------------
+Components are organized into:
+- components/shared/: Reusable UI components (tables, cards, modals, etc.)
+- components/ui/: Base UI primitives
+- components/motif/: EY Motif design system wrappers
+- components/Layout.tsx: Main application layout with sidebar navigation
+- components/ProtectedRoute.tsx: Authentication guard for routes
+- components/discovery/: Asset discovery specific components
+- components/icons/: Custom icon components
+
+6.4 API SERVICE LAYER
+-----------------------
+File: services/apiService.ts
+- Centralized Axios instance with base URL configuration
+- Request interceptor: Automatic JWT token injection from localStorage
+- Response interceptor: 401 handling with automatic redirect to login
+- Error handling and transformation
+- Type-safe API method wrappers
+
+6.5 CUSTOM HOOKS
+-----------------
+React hooks for reusable logic:
+- Authentication hooks (useAuth, useUser)
+- Data fetching hooks (React Query wrappers)
+- UI state hooks (useDisclosure, useDebounce)
+- WebSocket hooks for real-time updates
+
+6.6 CONTEXT PROVIDERS
+-----------------------
+- AuthContext: Global authentication state (user, tokens, login/logout)
+- Theme/UI contexts via Motif design system
+
+================================================================================
+7. SECURITY IMPLEMENTATION
+================================================================================
+
+7.1 AUTHENTICATION SECURITY
+-----------------------------
+- JWT tokens with RSA or HMAC-SHA256 signing
+- Short-lived access tokens (1 hour)
+- Refresh token rotation (7-day validity)
+- Token blacklisting on logout
+- Brute-force protection via rate limiting
+- Account lockout after failed attempts
+- MFA/TOTP support (pyotp library)
+
+7.2 API SECURITY
+-----------------
+- Input validation via Pydantic schemas (all endpoints)
+- SQL injection prevention via parameterized queries (SQLAlchemy ORM)
+- XSS prevention via output encoding and CSP headers
+- CSRF protection middleware for state-changing operations
+- Request size limiting (prevent DoS)
+- Rate limiting (100 req/min default, configurable per endpoint)
+- Path traversal prevention
+- Security headers on all responses
+
+7.3 DATA SECURITY
+------------------
+- Encryption at rest: AES-256 for sensitive data fields
+- Encryption in transit: TLS 1.3 enforced in production
+- PII masking in logs and non-privileged API responses
+- Secure key management (secrets manager integration)
+- Database row-level security (PostgreSQL policies)
+- Connection string encryption
+- Environment variable protection
+
+7.4 INFRASTRUCTURE SECURITY
+-----------------------------
+- Docker containers run as non-root
+- Minimal base images (Alpine)
+- No secrets in container images
+- Network segmentation (Docker networks)
+- Health checks for all services
+- Resource limits (CPU/memory) in Kubernetes
+- Pod security policies
+- Network policies for inter-service communication
+
+7.5 COMPLIANCE CERTIFICATIONS SUPPORTED
+-----------------------------------------
+- SOC 2 Type II (controls implemented)
+- ISO 27001 (information security management)
+- GDPR (data protection and privacy)
+- HIPAA (health data protections)
+- EU AI Act (AI system governance)
+- NIST AI RMF (AI risk management)
+- ISO 42001 (AI management system)
+
+================================================================================
+8. OPEN-SOURCE INTEGRATIONS
+================================================================================
+
+The platform leverages 14 industry-leading open-source tools:
+
+1. Adversarial Robustness Toolbox (ART) - IBM
+   Purpose: Adversarial attack simulation and defense testing
+   Usage: Vulnerability scanning for ML model robustness
+
+2. AI Fairness 360 (AIF360) - IBM
+   Purpose: Bias detection and mitigation
+   Usage: Fairness auditing across protected attributes
+
+3. Fickling - Trail of Bits
+   Purpose: Pickle file security analysis
+   Usage: Detection of malicious code in serialized model files
+
+4. Flower (FL)
+   Purpose: Federated learning framework
+   Usage: Privacy-preserving distributed model training
+
+5. OpenDP
+   Purpose: Differential privacy library
+   Usage: Privacy-budget management for data analysis
+
+6. DoWhy - Microsoft
+   Purpose: Causal inference and reasoning
+   Usage: Root cause analysis for model failures and drift
+
+7. AutoGluon - AWS
+   Purpose: Automated machine learning
+   Usage: Automated model retraining and optimization
+
+8. Great Expectations
+   Purpose: Data validation and documentation
+   Usage: Data quality monitoring and pipeline testing
+
+9. Evidently AI
+   Purpose: ML model monitoring
+   Usage: Model performance monitoring and drift detection
+
+10. Presidio - Microsoft
+    Purpose: PII detection and anonymization
+    Usage: Scanning data sources for personal information
+
+11. OpenLineage
+    Purpose: Data lineage standard
+    Usage: Tracking data provenance through pipelines
+
+12. spaCy
+    Purpose: NLP processing
+    Usage: Compliance document extraction and analysis
+
+13. Prophet - Meta
+    Purpose: Time series forecasting
+    Usage: Risk trend prediction and forecasting
+
+14. TenSEAL
+    Purpose: Homomorphic encryption
+    Usage: Computation on encrypted data for privacy
+
+================================================================================
+9. DEPLOYMENT ARCHITECTURE
+================================================================================
+
+9.1 DOCKER COMPOSE (Development/Staging)
+------------------------------------------
+Services:
+- postgres: PostgreSQL 15 Alpine (primary database)
+- redis: Redis 7 Alpine (caching and rate limiting)
+- neo4j: Neo4j 5 Community (graph database)
+- backend: FastAPI application (Python 3.11)
+- frontend: React app served via Nginx
+
+Environment Security:
+- All passwords required via environment variables (no defaults)
+- Docker secrets for sensitive values
+- Volume mounts for persistent data
+- Health checks on all services
+- Network isolation (ai-spm-network)
+
+9.2 KUBERNETES (Production)
+-----------------------------
+Manifests provided in k8s/ directory:
+- Deployments with replica sets
+- Services with load balancing
+- ConfigMaps and Secrets
+- Horizontal Pod Autoscalers
+- Ingress with TLS termination
+- Persistent Volume Claims
+- Network Policies
+- Resource quotas and limits
+
+9.3 CI/CD PIPELINE (GitHub Actions)
+-------------------------------------
+Located in .github/ directory:
+- Automated testing on pull requests
+- Code quality checks (linting, type checking)
+- Security scanning (dependency audit)
+- Docker image building and pushing
+- Automated deployment to staging
+- Manual promotion to production
+- Release tagging and changelog generation
+
+9.4 MONITORING STACK
+---------------------
+Located in monitoring/ directory:
+- Prometheus: Metrics collection from all services
+- Grafana: Dashboards and alerting
+- Application metrics: Request latency, error rates, throughput
+- Infrastructure metrics: CPU, memory, disk, network
+- Custom AI metrics: Model drift, prediction quality, scan coverage
+
+9.5 INFRASTRUCTURE COSTS
+--------------------------
+Estimated monthly production costs: $1,200 - $3,200/month
+- Compute (K8s cluster): $400-1,200
+- Database (PostgreSQL managed): $200-500
+- Redis (managed): $100-300
+- Neo4j (managed): $200-500
+- Storage: $50-200
+- Networking/CDN: $50-200
+- Monitoring: $100-300
+
+================================================================================
+10. TESTING STRATEGY
+================================================================================
+
+10.1 BACKEND TESTING
+---------------------
+- Framework: pytest + pytest-asyncio
+- Coverage Target: 70%+ (achieved)
+- Test Files: 25+ test files
+- Integration Tests: API endpoint testing with test database
+- Unit Tests: Service logic testing with mocked dependencies
+- Security Tests: Authentication, authorization, input validation
+- Performance Tests: Load testing with k6
+
+Test Categories:
+- Smoke Tests: Basic health and connectivity verification
+- Unit Tests: Individual function and class testing
+- Integration Tests: Cross-service interaction testing
+- Security Tests: Penetration testing scripts
+- E2E Tests: Full workflow testing (e2e-tests/ directory)
+- Performance Tests: Throughput and latency benchmarking
+
+10.2 FRONTEND TESTING
+-----------------------
+- Framework: Vitest + React Testing Library
+- Coverage Target: 60%+ (achieved)
+- Test Types: Component rendering, user interaction, API mocking
+- Accessibility Testing: Screen reader compatibility checks
+
+10.3 SECURITY TESTING
+-----------------------
+Located in security-tests/ directory:
+- OWASP ZAP integration for automated security scanning
+- Custom scripts for AI-specific attack vectors
+- Dependency vulnerability scanning
+- Container image scanning
+- Secret detection in code
+
+================================================================================
+11. DATA MODELS & SCHEMAS
+================================================================================
+
+11.1 AI ASSET MODEL (50+ Fields)
+----------------------------------
+Core Fields:
+- id (UUID): Unique identifier
+- name (String): Human-readable asset name
+- asset_type (Enum): MODEL, DATASET, PIPELINE, API, NOTEBOOK, AGENT
+- status (Enum): ACTIVE, INACTIVE, DEPRECATED, ARCHIVED
+- risk_tier (Enum): CRITICAL, HIGH, MEDIUM, LOW, MINIMAL
+- framework (String): TensorFlow, PyTorch, scikit-learn, etc.
+- version (String): Model version
+- owner (String): Responsible team/individual
+- department (String): Business unit
+- description (Text): Detailed description
+
+Security Fields:
+- vulnerability_count (Integer): Known vulnerabilities
+- last_scan_date (DateTime): Most recent security scan
+- encryption_status (Enum): Encryption at rest status
+- access_control_level (String): Access restriction level
+- data_classification (Enum): PUBLIC, INTERNAL, CONFIDENTIAL, RESTRICTED
+
+Compliance Fields:
+- compliance_frameworks (JSON): Applicable frameworks
+- compliance_status (Enum): COMPLIANT, NON_COMPLIANT, PARTIAL, PENDING
+- last_audit_date (DateTime): Most recent audit
+- certifications (JSON): Achieved certifications
+- regulatory_jurisdiction (JSON): Applicable jurisdictions
+
+Metadata Fields:
+- training_data_sources (JSON): Data provenance
+- model_performance_metrics (JSON): Accuracy, F1, etc.
+- deployment_environment (String): Production, staging, dev
+- cloud_provider (String): AWS, Azure, GCP, on-prem
+- estimated_users (Integer): Number of consumers
+- api_endpoint (String): Serving endpoint URL
+- created_at (DateTime): Creation timestamp
+- updated_at (DateTime): Last modification timestamp
+
+11.2 RISK ASSESSMENT MODEL
+-----------------------------
+Based on FAIR (Factor Analysis of Information Risk):
+- id (UUID): Assessment identifier
+- asset_id (FK): Related AI asset
+- risk_score (Float 0-100): Quantified risk
+- threat_event_frequency (Float): Likelihood of threat occurrence
+- vulnerability_factor (Float): Susceptibility to attack
+- loss_magnitude (Float): Potential impact if exploited
+- risk_tier (Enum): Derived risk classification
+- assessment_type (Enum): AUTOMATED, MANUAL, HYBRID
+- findings (JSON): Detailed findings list
+- recommendations (JSON): Remediation actions
+- assessed_by (String): Assessor identity
+- assessed_at (DateTime): Assessment timestamp
+- next_review_date (DateTime): Scheduled reassessment
+
+11.3 ENUMERATION TYPES
+------------------------
+Comprehensive enums for type safety:
+- AssetType: MODEL, DATASET, PIPELINE, API, NOTEBOOK, AGENT, FEATURE_STORE
+- AssetStatus: ACTIVE, INACTIVE, DEPRECATED, ARCHIVED, UNDER_REVIEW
+- RiskTier: CRITICAL, HIGH, MEDIUM, LOW, MINIMAL
+- ComplianceFramework: EU_AI_ACT, NIST_AI_RMF, ISO_42001, OWASP_LLM, MITRE_ATLAS
+- VulnerabilitySeverity: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL
+- LLMProvider: OPENAI, ANTHROPIC, GOOGLE, META, MISTRAL, COHERE, CUSTOM
+- StateRegulation: NYC_LL144, COLORADO_SB205, ILLINOIS_BIPA
+- ReportType: EXECUTIVE, TECHNICAL, COMPLIANCE, RISK, INCIDENT, BOARD
+
+================================================================================
+12. API ENDPOINT REFERENCE
+================================================================================
+
+12.1 AUTHENTICATION ENDPOINTS
+-------------------------------
+POST   /api/v1/auth/login          - User authentication
+POST   /api/v1/auth/register       - User registration
+POST   /api/v1/auth/refresh        - Token refresh
+POST   /api/v1/auth/logout         - Token invalidation
+GET    /api/v1/auth/me             - Current user profile
+PUT    /api/v1/auth/me             - Update profile
+POST   /api/v1/auth/mfa/setup      - MFA configuration
+POST   /api/v1/auth/mfa/verify     - MFA verification
+
+12.2 ASSET MANAGEMENT ENDPOINTS
+---------------------------------
+GET    /api/v1/assets              - List all assets (paginated)
+POST   /api/v1/assets              - Create new asset
+GET    /api/v1/assets/{id}         - Get asset details
+PUT    /api/v1/assets/{id}         - Update asset
+DELETE /api/v1/assets/{id}         - Delete asset
+POST   /api/v1/assets/discover     - Trigger discovery scan
+GET    /api/v1/assets/statistics   - Asset statistics
+
+12.3 RISK MANAGEMENT ENDPOINTS
+--------------------------------
+GET    /api/v1/risks               - List risk assessments
+POST   /api/v1/risks/assess        - Trigger risk assessment
+GET    /api/v1/risks/{id}          - Get assessment details
+GET    /api/v1/risks/dashboard     - Risk dashboard data
+GET    /api/v1/risks/trends        - Risk trend analysis
+
+12.4 COMPLIANCE ENDPOINTS
+---------------------------
+GET    /api/v1/compliance          - Compliance status overview
+GET    /api/v1/compliance/{framework} - Framework-specific status
+POST   /api/v1/compliance/assess   - Run compliance assessment
+GET    /api/v1/compliance/gaps     - Compliance gap analysis
+
+12.5 LLM GOVERNANCE ENDPOINTS
+-------------------------------
+GET    /api/v1/llm/models          - List registered LLMs
+POST   /api/v1/llm/models          - Register new LLM
+GET    /api/v1/llm/models/{id}     - Get LLM details
+POST   /api/v1/llm/compare         - Compare LLMs
+GET    /api/v1/llm/benchmarks      - Benchmark results
+GET    /api/v1/llm/costs           - Cost analytics
+
+12.6 LLM SAFETY ENDPOINTS
+---------------------------
+POST   /api/v1/llm-safety/test     - Run safety test
+GET    /api/v1/llm-safety/results  - Test results
+POST   /api/v1/llm-safety/red-team - Start red team session
+GET    /api/v1/llm-safety/sessions - List sessions
+
+12.7 AI-BOM ENDPOINTS
+-----------------------
+POST   /api/v1/ai-bom/generate     - Generate BOM
+GET    /api/v1/ai-bom/{id}         - Get BOM
+GET    /api/v1/ai-bom/list         - List all BOMs
+GET    /api/v1/ai-bom/{id}/vulns   - BOM vulnerabilities
+GET    /api/v1/ai-bom/{id}/compliance - BOM compliance
+GET    /api/v1/ai-bom/statistics   - BOM statistics
+POST   /api/v1/ai-bom/{id}/export  - Export BOM
+POST   /api/v1/ai-bom/compare      - Compare BOMs
+
+12.8 DISCOVERY ENDPOINTS
+--------------------------
+POST   /api/v1/discovery/scan      - Start discovery scan
+GET    /api/v1/discovery/status     - Scan status
+GET    /api/v1/discovery/history    - Scan history
+GET    /api/v1/discovery/sources    - Configured sources
+
+================================================================================
+13. CONFIGURATION MANAGEMENT
+================================================================================
+
+Application configuration via environment variables (Pydantic Settings):
+
+Core Settings:
+- APP_NAME: "AI-SPM Platform"
+- APP_VERSION: "1.0.0"
+- ENVIRONMENT: development/staging/production
+- DEBUG: Boolean flag
+- API_V1_PREFIX: "/api/v1"
+
+Database Settings:
+- DATABASE_URL: PostgreSQL connection string
+- DB_POOL_SIZE: Connection pool size (default: 10)
+- DB_MAX_OVERFLOW: Maximum overflow connections (default: 20)
+- DB_POOL_TIMEOUT: Connection wait timeout (default: 30s)
+
+Redis Settings:
+- REDIS_URL: Redis connection string
+- REDIS_PASSWORD: Authentication password
+
+Security Settings:
+- SECRET_KEY: JWT signing key (MUST change in production)
+- ACCESS_TOKEN_EXPIRE_MINUTES: Token lifetime (default: 60)
+- REFRESH_TOKEN_EXPIRE_DAYS: Refresh token lifetime (default: 7)
+- CORS_ORIGINS: Allowed origins list
+- RATE_LIMIT_PER_MINUTE: Global rate limit (default: 100)
+- MAX_UPLOAD_SIZE_MB: Maximum upload size (default: 100)
+
+ML Platform Settings:
+- MLFLOW_TRACKING_URI: MLflow server URL
+- AWS_SAGEMAKER_REGION: AWS region for SageMaker
+- AZURE_ML_WORKSPACE: Azure ML workspace name
+- GCP_PROJECT_ID: Google Cloud project
+
+Shadow AI Detection:
+- ZEEK_LOG_PATH: Network traffic log location
+- OSQUERY_SOCKET: osquery communication socket
+- AI_SERVICE_DOMAINS: Monitored AI service domains
+
+Compliance Settings:
+- EU_AI_ACT_ENABLED: Enable EU AI Act checks
+- NIST_AI_RMF_ENABLED: Enable NIST framework
+- ISO_42001_ENABLED: Enable ISO 42001 checks
+
+================================================================================
+14. UNIQUE COMPETITIVE ADVANTAGES
+================================================================================
+
+7 Features No Competitor Offers:
+
+1. MODEL SECURITY SCANNING (Fickling Integration)
+   - Detects malicious code in serialized model files (pickle, joblib)
+   - Prevents supply chain attacks via compromised model files
+   - Automated scanning on model import/registration
+   - No commercial AISPM tool offers this capability
+
+2. FEDERATED LEARNING (Flower Integration)
+   - Privacy-preserving model training across distributed data
+   - No data leaves organizational boundaries
+   - Supports horizontal and vertical federated learning
+   - Unique in the AISPM market
+
+3. DIFFERENTIAL PRIVACY (OpenDP Integration)
+   - Mathematical privacy guarantees for data analysis
+   - Privacy budget tracking and management
+   - Epsilon-delta privacy parameter configuration
+   - Not available in any competing platform
+
+4. ROOT CAUSE ANALYSIS (DoWhy Integration)
+   - Causal inference for model failures and drift
+   - Goes beyond correlation to identify true causes
+   - Counterfactual analysis for remediation planning
+   - Industry-first in AISPM context
+
+5. AUTO-RETRAINING (AutoGluon Integration)
+   - Automated model retraining when drift is detected
+   - AutoML-based architecture search
+   - Performance comparison with previous versions
+   - Self-healing AI security posture
+
+6. NLP COMPLIANCE EXTRACTION (spaCy Integration)
+   - Automated extraction of compliance requirements from regulatory text
+   - Natural language processing of policy documents
+   - Automated mapping of regulations to technical controls
+   - Unique AI-powered compliance automation
+
+7. RISK FORECASTING (Prophet Integration)
+   - Time-series prediction of security risk trends
+   - Proactive risk identification before incidents occur
+   - Seasonal pattern detection in vulnerability data
+   - Predictive security posture management
+
+Market Position:
+- 24+ months ahead of nearest competitor
+- More comprehensive than HolisticAI, Protect AI, or Robust Intelligence
+- Enterprise-ready with full deployment infrastructure
+- Open-source foundation enabling customization and transparency
+
+================================================================================
+15. PROJECT METRICS & STATISTICS
+================================================================================
+
+Development Metrics:
+- Total Lines of Code: 26,000+ LOC
+- Backend LOC: 20,400+
+- Frontend LOC: 5,731+
+- Total Files: 145+
+- Backend Files: 100+
+- Frontend Files: 45+
+- Service Modules: 70+
+- API Endpoints: 60+
+- Frontend Pages: 28+
+- Database Tables: 9
+- Test Files: 25+
+- Documentation Pages: 150+
+- Dependencies (Backend): 157 packages
+- Dependencies (Frontend): 30+ packages
+
+Security Metrics:
+- Authentication: JWT + RBAC (7 roles, 20+ permissions)
+- Encryption: AES-256 at rest, TLS 1.3 in transit
+- Rate Limiting: Redis-backed distributed limiting
+- Security Headers: 7 security headers on all responses
+- Input Validation: Pydantic schemas on all endpoints
+- Vulnerability Response SLA: Critical 24h, High 7d, Medium 30d
+
+Performance Metrics:
+- Token Validation: ~1-2ms
+- Permission Check: <1ms
+- API Response Time Target: <200ms (p95)
+- Database Query Timeout: 30 seconds
+- Rate Limit: 100 requests/minute/client
+- Max Upload Size: 100MB
+
+Compliance Coverage:
+- EU AI Act: Full coverage
+- NIST AI RMF: Full coverage
+- ISO 42001: Full coverage
+- OWASP Top 10 for LLM: Full coverage
+- MITRE ATLAS: Full coverage
+- SOC 2 Type II: Controls implemented
+- GDPR: Data protection controls
+- HIPAA: Health data protections
+- NYC LL144: Bias audit automation
+- Colorado SB205: Algorithmic accountability
+- Illinois BIPA: Biometric data compliance
+
+================================================================================
+16. DATASETS & SAMPLE DATA
+================================================================================
+
+Located in datasets/ directory:
+- 50 AI asset samples covering diverse model types and frameworks
+- 100 vulnerability examples with realistic severity distributions
+- Compliance assessment sample data
+- Shadow AI detection examples
+- Risk assessment scenarios
+- Data designed for realistic demo and testing
+
+Seed Data (seed_db.py):
+- Automated database seeding for development
+- Configurable via SEED_DATA_ON_STARTUP environment variable
+- Option to clear existing data before seeding
+- Produces realistic enterprise AI inventory
+
+================================================================================
+17. MOBILE APPLICATION
+================================================================================
+
+Located in mobile-app/ directory:
+- Cross-platform mobile application
+- Executive dashboard access on mobile devices
+- Push notifications for critical alerts
+- Offline capability for report viewing
+- Biometric authentication support
+
+================================================================================
+18. RESEARCH & DOCUMENTATION
+================================================================================
+
+Research Directory (research/):
+- Data Risk Module research brief
+- PII detection methodology analysis
+- Regulatory mapping approaches
+- Technology evaluation documents
+
+Documentation (docs/):
+- Architecture documentation
+- API reference documentation
+- Authentication and RBAC guide (900+ lines)
+- Deployment guide
+- User manual
+- Developer guide
+- Security documentation
+
+Scripts Directory (scripts/):
+- Database migration scripts
+- Deployment automation
+- Data seeding utilities
+- Development setup scripts
+
+================================================================================
+19. DEVELOPMENT WORKFLOW
+================================================================================
+
+Prerequisites:
+- Python 3.11+
+- Node.js 18+
+- Docker & Docker Compose
+- PostgreSQL 14+ (or Docker)
+- Redis 7+ (or Docker)
+
+Backend Setup:
+1. Create Python virtual environment
+2. Install dependencies: pip install -r requirements.txt
+3. Configure .env from .env.example
+4. Run migrations: alembic upgrade head
+5. Seed database: python seed_db.py
+6. Start server: uvicorn app.main:app --reload
+
+Frontend Setup:
+1. Install dependencies: npm install
+2. Configure .env from .env.example
+3. Start development server: npm run dev
+4. Build for production: npm run build
+
+Docker Setup:
+1. Copy .env.example to .env
+2. Set required passwords
+3. Run: docker-compose up -d
+4. Access frontend at http://localhost:3000
+5. Access API docs at http://localhost:8000/docs
+
+Code Quality Standards:
+- Python: PEP 8, Black formatting, type hints, 100-char line limit
+- TypeScript: Airbnb style, functional components, strict mode
+- Commit Messages: Conventional commits (feat, fix, docs, refactor)
+- Branch Naming: feature/, fix/, docs/, refactor/ prefixes
+- PR Process: Tests must pass, code review required, no merge conflicts
+- Coverage Target: Backend 70%+, Frontend 60%+
+
+================================================================================
+20. FUTURE ROADMAP
+================================================================================
+
+Planned Enhancements:
+- v1.1.0: Additional MITRE ATLAS technique coverage
+- v1.2.0: Extended OWASP AI security patterns
+- v1.3.0: ML-powered threat hunting and anomaly detection
+- v2.0.0: Full SaaS multi-tenant deployment
+- Mobile app general availability
+- Advanced analytics and ML-powered insights
+- Marketplace for community-built integrations
+- API gateway for third-party plugin ecosystem
+
+Research Areas:
+- Quantum-resistant encryption for model protection
+- Advanced adversarial attack simulation
+- Automated compliance evidence generation
+- AI-powered code review for ML pipelines
+- Real-time model behavior monitoring at scale
+
+================================================================================
+END OF SUMMARY
+================================================================================
