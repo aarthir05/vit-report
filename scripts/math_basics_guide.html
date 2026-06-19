@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Mathematics Fundamentals – School to Pre-College</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)'],['$','$']], displayMath: [['\\[','\\]'],['$$','$$']] },
+  options: { skipHtmlTags: ['script','noscript','style','textarea'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+:root{
+  --navy:#0d2b55;
+  --gold:#c9a84c;
+  --gold-light:#f5e9c8;
+  --green:#1a7a4a;
+  --green-light:#e8f5ee;
+  --red:#c0392b;
+  --red-light:#fdecea;
+  --blue-light:#eaf1fb;
+  --text:#1a1a2e;
+  --muted:#5a6272;
+  --border:#d0d7e6;
+  --white:#ffffff;
+  --bg:#f7f8fc;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.7;}
+
+/* ── COVER ── */
+.cover{
+  background:linear-gradient(135deg,var(--navy) 0%,#1a3f7a 60%,#0d2b55 100%);
+  color:#fff;min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:60px 40px;
+  page-break-after:always;
+}
+.cover .badge{background:var(--gold);color:var(--navy);font-size:12px;font-weight:700;
+  letter-spacing:2px;padding:6px 20px;border-radius:30px;margin-bottom:28px;text-transform:uppercase;}
+.cover h1{font-family:'Merriweather',serif;font-size:52px;font-weight:900;line-height:1.15;margin-bottom:18px;}
+.cover h1 span{color:var(--gold);}
+.cover .sub{font-size:20px;opacity:.85;max-width:620px;margin:0 auto 36px;}
+.cover .modules{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:40px;}
+.cover .modules span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+  border-radius:8px;padding:7px 16px;font-size:13px;}
+.cover .price-tag{background:var(--gold);color:var(--navy);padding:12px 40px;
+  border-radius:40px;font-size:22px;font-weight:700;margin-top:10px;}
+.cover .watermark{position:absolute;bottom:24px;right:32px;opacity:.4;font-size:12px;}
+
+/* ── TOC ── */
+.toc-page{padding:60px 80px;page-break-after:always;background:#fff;}
+.toc-page h2{font-family:'Merriweather',serif;font-size:32px;color:var(--navy);
+  border-bottom:3px solid var(--gold);padding-bottom:12px;margin-bottom:36px;}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.toc-module{padding:14px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:14px;}
+.toc-num{background:var(--navy);color:#fff;width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.toc-info strong{font-size:14px;color:var(--navy);}
+.toc-info span{font-size:12px;color:var(--muted);display:block;}
+
+/* ── LAYOUT ── */
+.module{padding:60px 80px;page-break-before:always;background:#fff;}
+.module:nth-child(even){background:var(--bg);}
+.module-header{display:flex;align-items:center;gap:16px;margin-bottom:40px;}
+.module-badge{background:var(--navy);color:#fff;padding:6px 16px;border-radius:6px;
+  font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.module h2{font-family:'Merriweather',serif;font-size:30px;color:var(--navy);}
+.module-intro{background:var(--blue-light);border-left:4px solid var(--navy);
+  padding:16px 20px;border-radius:0 8px 8px 0;margin-bottom:36px;font-size:14.5px;color:var(--muted);}
+
+/* ── CONCEPT SECTIONS ── */
+.concept{margin-bottom:48px;}
+.concept h3{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px;
+  display:flex;align-items:center;gap:10px;}
+.concept h3::before{content:'';display:inline-block;width:4px;height:22px;
+  background:var(--gold);border-radius:3px;}
+.concept p{color:var(--muted);margin-bottom:14px;font-size:14.5px;}
+
+/* ── VIDEO LINK ── */
+.video-link{display:inline-flex;align-items:center;gap:8px;background:#fff3cd;
+  border:1.5px solid var(--gold);color:var(--navy);text-decoration:none;
+  padding:7px 16px;border-radius:8px;font-size:13px;font-weight:600;margin-bottom:18px;transition:all .2s;}
+.video-link:hover{background:var(--gold);color:#fff;}
+.video-link svg{width:16px;height:16px;fill:currentColor;}
+
+/* ── FORMULA BOX ── */
+.formula-box{background:linear-gradient(135deg,#e8edf8,#dde3f0);
+  border:2px solid var(--navy);border-radius:12px;padding:20px 24px;margin:18px 0;
+  position:relative;}
+.formula-box .label{position:absolute;top:-12px;left:16px;background:var(--navy);
+  color:#fff;padding:2px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;}
+.formula-box .formula-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:8px;}
+.formula-item{background:#fff;border-radius:8px;padding:10px 14px;
+  border-left:3px solid var(--gold);}
+.formula-item .fname{font-size:11px;color:var(--muted);font-weight:600;margin-bottom:4px;}
+.formula-item .fval{font-size:15px;}
+
+/* ── PROBLEMS ── */
+.problems{margin-top:24px;}
+.problem{background:#fff;border:1px solid var(--border);border-radius:12px;
+  margin-bottom:18px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.problem-header{background:var(--navy);color:#fff;padding:10px 18px;
+  display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;}
+.p-num{background:var(--gold);color:var(--navy);width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;}
+.problem-body{padding:18px 20px;}
+.problem-q{font-weight:600;color:var(--text);margin-bottom:14px;font-size:14.5px;}
+.solution{background:var(--green-light);border:1px solid #b2d8c4;border-radius:8px;padding:14px 18px;}
+.solution .sol-label{color:var(--green);font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:8px;}
+.sol-step{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;font-size:14px;}
+.sol-step .step-n{background:var(--green);color:#fff;min-width:22px;height:22px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-top:2px;}
+.answer{background:var(--navy);color:var(--gold);padding:8px 16px;border-radius:6px;
+  display:inline-block;font-size:14px;font-weight:700;margin-top:8px;}
+
+/* ── MODULE FORMULA SUMMARY ── */
+.mod-summary{background:linear-gradient(135deg,var(--navy),#1a3f7a);color:#fff;
+  border-radius:14px;padding:28px;margin-top:40px;}
+.mod-summary h4{font-family:'Merriweather',serif;font-size:18px;color:var(--gold);margin-bottom:18px;}
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+.sum-item{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  border-radius:8px;padding:12px 16px;}
+.sum-item .sname{font-size:11px;color:var(--gold);font-weight:700;margin-bottom:6px;}
+.sum-item .sval{font-size:13px;}
+
+/* ── MASTER FORMULA SHEET ── */
+.master-sheet{padding:60px 80px;page-break-before:always;}
+.master-sheet h2{font-family:'Merriweather',serif;font-size:28px;color:var(--navy);
+  border-bottom:3px solid var(--gold);padding-bottom:12px;margin-bottom:36px;}
+.mfs-section{margin-bottom:36px;}
+.mfs-section h3{font-size:16px;font-weight:700;color:var(--navy);background:var(--gold-light);
+  padding:8px 16px;border-radius:6px;margin-bottom:14px;}
+.mfs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;}
+.mfs-card{background:#fff;border:1px solid var(--border);border-radius:8px;
+  padding:12px 16px;border-left:3px solid var(--navy);}
+.mfs-card .mfc-name{font-size:11px;color:var(--muted);font-weight:600;margin-bottom:5px;}
+
+/* ── PRINT ── */
+@media print{
+  body{background:#fff;}
+  .module{background:#fff!important;}
+  @page{margin:15mm 20mm;size:A4;}
+  .cover,.toc-page,.module,.master-sheet{page-break-after:auto;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ COVER ═══ -->
+<div class="cover">
+  <div class="badge">Complete Study Guide · Vol. 1</div>
+  <h1>Mathematics<br/><span>Fundamentals</span></h1>
+  <p class="sub">From School Basics to Pre-College Mastery · 10 Modules · 80+ Solved Problems · Formula Sheets</p>
+  <div class="modules">
+    <span>Number Systems</span><span>Fractions &amp; Decimals</span><span>Algebra</span>
+    <span>Exponents &amp; Radicals</span><span>Factoring</span><span>Quadratics</span>
+    <span>Geometry</span><span>Trigonometry Intro</span><span>Statistics</span><span>Probability</span>
+  </div>
+  <div class="price-tag">Video Links Included · Learn by Doing</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ TOC ════ -->
+<div class="toc-page">
+  <h2>Table of Contents</h2>
+  <div class="toc-grid">
+    <div class="toc-module"><div class="toc-num">1</div><div class="toc-info"><strong>Number Systems &amp; BODMAS</strong><span>Integers, Rationals, Order of Operations</span></div></div>
+    <div class="toc-module"><div class="toc-num">2</div><div class="toc-info"><strong>Fractions, Decimals &amp; Percentages</strong><span>Operations, Conversions, Percentage Change</span></div></div>
+    <div class="toc-module"><div class="toc-num">3</div><div class="toc-info"><strong>Ratios &amp; Proportions</strong><span>Direct, Inverse, Word Problems</span></div></div>
+    <div class="toc-module"><div class="toc-num">4</div><div class="toc-info"><strong>Linear Algebra Basics</strong><span>Equations, Inequalities, Word Problems</span></div></div>
+    <div class="toc-module"><div class="toc-num">5</div><div class="toc-info"><strong>Simultaneous Equations</strong><span>Substitution, Elimination, Applications</span></div></div>
+    <div class="toc-module"><div class="toc-num">6</div><div class="toc-info"><strong>Exponents &amp; Radicals</strong><span>Laws of Indices, Surds, Simplification</span></div></div>
+    <div class="toc-module"><div class="toc-num">7</div><div class="toc-info"><strong>Polynomials &amp; Factoring</strong><span>Operations, GCF, Trinomials, Identities</span></div></div>
+    <div class="toc-module"><div class="toc-num">8</div><div class="toc-info"><strong>Quadratic Equations</strong><span>Factoring, Formula, Discriminant, Graphs</span></div></div>
+    <div class="toc-module"><div class="toc-num">9</div><div class="toc-info"><strong>Geometry &amp; Mensuration</strong><span>Triangles, Circles, 3D Shapes, Pythagoras</span></div></div>
+    <div class="toc-module"><div class="toc-num">10</div><div class="toc-info"><strong>Statistics &amp; Probability</strong><span>Mean, Median, Variance, Basic Probability</span></div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 1 ════ -->
+<div class="module">
+  <div class="module-header">
+    <div class="module-badge">Module 1</div>
+    <h2>Number Systems &amp; Order of Operations</h2>
+  </div>
+  <div class="module-intro">Before tackling algebra or calculus, you must master how numbers are classified and how to evaluate expressions correctly. These are the absolute foundations every other concept builds upon.</div>
+
+  <!-- CONCEPT 1.1 -->
+  <div class="concept">
+    <h3>Types of Numbers</h3>
+    <p>Numbers are organised in sets, each a superset of the one before it: Natural ⊂ Whole ⊂ Integer ⊂ Rational ⊂ Real. Understanding which set a number belongs to tells you what operations are valid.</p>
+    <a class="video-link" href="https://www.video-tutor.net/algebra.html" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Algebra Introduction – Video-Tutor.net
+    </a>
+    <div class="formula-box">
+      <span class="label">NUMBER SETS</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Natural (ℕ)</div><div class="fval">\(1, 2, 3, 4, \ldots\)</div></div>
+        <div class="formula-item"><div class="fname">Whole (W)</div><div class="fval">\(0, 1, 2, 3, \ldots\)</div></div>
+        <div class="formula-item"><div class="fname">Integers (ℤ)</div><div class="fval">\(\ldots, -2, -1, 0, 1, 2, \ldots\)</div></div>
+        <div class="formula-item"><div class="fname">Rational (ℚ)</div><div class="fval">\(\frac{p}{q},\; q \neq 0,\; p,q \in \mathbb{Z}\)</div></div>
+        <div class="formula-item"><div class="fname">Irrational</div><div class="fval">\(\sqrt{2}, \pi, e\) (non-terminating, non-repeating)</div></div>
+        <div class="formula-item"><div class="fname">Real (ℝ)</div><div class="fval">Rational ∪ Irrational</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Classify each number into ALL applicable sets</div>
+        <div class="problem-body">
+          <div class="problem-q">Classify: \(-7,\quad \dfrac{3}{4},\quad \sqrt{5},\quad 0,\quad \sqrt{9}\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>\(-7\): Negative whole number → Integer, Rational, Real (not Natural, not Whole)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(\frac{3}{4}\): Fraction of two integers, \(q \neq 0\) → Rational, Real only</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>\(\sqrt{5} \approx 2.236...\): Non-terminating, non-repeating → Irrational, Real only</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>\(0\): Zero → Whole, Integer, Rational (\(0=\frac{0}{1}\)), Real</div></div>
+            <div class="sol-step"><div class="step-n">5</div><div>\(\sqrt{9} = 3\): Perfect square, equals 3 → Natural, Whole, Integer, Rational, Real</div></div>
+            <div class="answer">Answer: √9 belongs to ALL five sets; √5 belongs to Irrational & Real only</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>True or False reasoning</div>
+        <div class="problem-body">
+          <div class="problem-q">State True or False and justify: (a) Every integer is rational. (b) Every rational is an integer. (c) \(\pi\) is real but not rational.</div>
+          <div class="solution">
+            <div class="sol-label">SOLUTION</div>
+            <div class="sol-step"><div class="step-n">a</div><div><strong>True.</strong> Any integer \(n\) can be written as \(\frac{n}{1}\), which is rational.</div></div>
+            <div class="sol-step"><div class="step-n">b</div><div><strong>False.</strong> \(\frac{1}{2}\) is rational but not an integer (no whole-number form).</div></div>
+            <div class="sol-step"><div class="step-n">c</div><div><strong>True.</strong> \(\pi \approx 3.14159...\) never repeats or terminates → Irrational ⊂ Real.</div></div>
+            <div class="answer">Answer: True, False, True</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCEPT 1.2 -->
+  <div class="concept">
+    <h3>Order of Operations (BODMAS / PEMDAS)</h3>
+    <p>When an expression has multiple operations, you must follow a strict priority order to get the correct answer every time.</p>
+    <div class="formula-box">
+      <span class="label">BODMAS RULE</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">B – Brackets</div><div class="fval">Innermost first: \((\;)\) then \([\;]\) then \(\{\;\}\)</div></div>
+        <div class="formula-item"><div class="fname">O – Orders</div><div class="fval">Powers and roots: \(x^n,\; \sqrt{x}\)</div></div>
+        <div class="formula-item"><div class="fname">D/M – ÷ ×</div><div class="fval">Left to right: Division and Multiplication</div></div>
+        <div class="formula-item"><div class="fname">A/S – + −</div><div class="fval">Left to right: Addition and Subtraction</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Evaluate using BODMAS</div>
+        <div class="problem-body">
+          <div class="problem-q">Calculate: \(\;3 + 6 \times (5 + 4) \div 3 - 7\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Bracket first: \(5+4=9\) → expression becomes \(3 + 6 \times 9 \div 3 - 7\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Multiply: \(6 \times 9 = 54\) → \(3 + 54 \div 3 - 7\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Divide: \(54 \div 3 = 18\) → \(3 + 18 - 7\)</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>Add/Subtract left to right: \(3+18=21\), then \(21-7=14\)</div></div>
+            <div class="answer">Answer: 14</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Nested brackets &amp; exponents</div>
+        <div class="problem-body">
+          <div class="problem-q">Evaluate: \(\;2^3 + \left[18 - (6 \times 2)\right] \div 2\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Innermost bracket: \(6 \times 2 = 12\) → \(2^3 + [18-12] \div 2\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Square bracket: \(18-12=6\) → \(2^3 + 6 \div 2\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Order (exponent): \(2^3=8\) → \(8 + 6 \div 2\)</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>Divide: \(6 \div 2 = 3\) → \(8+3\)</div></div>
+            <div class="sol-step"><div class="step-n">5</div><div>Add: \(8+3=11\)</div></div>
+            <div class="answer">Answer: 11</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 1 — Formula &amp; Rule Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">Number Hierarchy</div><div class="sval">ℕ ⊂ W ⊂ ℤ ⊂ ℚ ⊂ ℝ</div></div>
+      <div class="sum-item"><div class="sname">Rational Form</div><div class="sval">\(\frac{p}{q},\; q \neq 0\)</div></div>
+      <div class="sum-item"><div class="sname">BODMAS Order</div><div class="sval">Brackets → Orders → ÷× → +−</div></div>
+      <div class="sum-item"><div class="sname">Irrational Test</div><div class="sval">Non-terminating, non-repeating decimal</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 2 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 2</div><h2>Fractions, Decimals &amp; Percentages</h2></div>
+  <div class="module-intro">Fractions, decimals and percentages are three representations of the same value. Fluency in converting between them and operating on them is essential for every branch of mathematics.</div>
+
+  <div class="concept">
+    <h3>Fraction Operations</h3>
+    <p>Adding and subtracting fractions requires a common denominator. Multiplying is straightforward; dividing requires flipping the second fraction (using the reciprocal).</p>
+    <a class="video-link" href="https://www.video-tutor.net/algebra.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Algebra – Fractions Review</a>
+    <div class="formula-box">
+      <span class="label">FRACTION RULES</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Add / Subtract</div><div class="fval">\(\dfrac{a}{b} \pm \dfrac{c}{d} = \dfrac{ad \pm bc}{bd}\)</div></div>
+        <div class="formula-item"><div class="fname">Multiply</div><div class="fval">\(\dfrac{a}{b} \times \dfrac{c}{d} = \dfrac{ac}{bd}\)</div></div>
+        <div class="formula-item"><div class="fname">Divide</div><div class="fval">\(\dfrac{a}{b} \div \dfrac{c}{d} = \dfrac{a}{b} \times \dfrac{d}{c} = \dfrac{ad}{bc}\)</div></div>
+        <div class="formula-item"><div class="fname">Simplify</div><div class="fval">Divide numerator &amp; denominator by HCF</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Mixed fraction operations</div>
+        <div class="problem-body">
+          <div class="problem-q">Calculate: \(\;\dfrac{3}{4} + \dfrac{5}{6} - \dfrac{1}{3}\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>LCM of 4, 6, 3 = 12. Convert: \(\frac{3}{4}=\frac{9}{12},\quad\frac{5}{6}=\frac{10}{12},\quad\frac{1}{3}=\frac{4}{12}\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(\frac{9+10-4}{12} = \frac{15}{12}\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Simplify: HCF(15,12)=3 → \(\frac{15}{12}=\frac{5}{4} = 1\frac{1}{4}\)</div></div>
+            <div class="answer">Answer: \(\dfrac{5}{4} = 1\dfrac{1}{4}\)</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Division of fractions (real-world)</div>
+        <div class="problem-body">
+          <div class="problem-q">A ribbon of length \(\frac{7}{2}\) m is cut into pieces each \(\frac{7}{8}\) m long. How many pieces are obtained?</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Number of pieces = Total length ÷ Piece length = \(\dfrac{7}{2} \div \dfrac{7}{8}\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Flip and multiply: \(\dfrac{7}{2} \times \dfrac{8}{7} = \dfrac{56}{14} = 4\)</div></div>
+            <div class="answer">Answer: 4 pieces</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <h3>Percentages &amp; Percentage Change</h3>
+    <p>Percentages express fractions out of 100. Percentage change is used everywhere — discounts, interest rates, growth rates, and statistics.</p>
+    <div class="formula-box">
+      <span class="label">PERCENTAGE FORMULAS</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Percentage of a Value</div><div class="fval">\(P\% \text{ of } X = \dfrac{P}{100} \times X\)</div></div>
+        <div class="formula-item"><div class="fname">% Change</div><div class="fval">\(\dfrac{\text{New} - \text{Old}}{\text{Old}} \times 100\)</div></div>
+        <div class="formula-item"><div class="fname">Fraction → %</div><div class="fval">\(\dfrac{a}{b} \times 100\)</div></div>
+        <div class="formula-item"><div class="fname">% → Decimal</div><div class="fval">Divide by 100: \(35\% = 0.35\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Discount problem</div>
+        <div class="problem-body">
+          <div class="problem-q">A laptop costs ₹60,000. It is on sale at 15% off. What is the sale price?</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Discount = \(15\% \times 60000 = \frac{15}{100} \times 60000 = 9000\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Sale Price = \(60000 - 9000 = 51000\)</div></div>
+            <div class="answer">Answer: ₹51,000</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Percentage increase</div>
+        <div class="problem-body">
+          <div class="problem-q">A student scored 68 in a test last month and 85 this month. What is the percentage improvement?</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>% Change = \(\dfrac{85-68}{68} \times 100 = \dfrac{17}{68} \times 100 = 25\%\)</div></div>
+            <div class="answer">Answer: 25% improvement</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">3</div>Reverse percentage</div>
+        <div class="problem-body">
+          <div class="problem-q">After a 20% increase, the price of a book is ₹360. What was the original price?</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Let original price = \(P\). After 20% increase: \(P \times 1.20 = 360\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(P = \dfrac{360}{1.20} = 300\)</div></div>
+            <div class="answer">Answer: ₹300</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 2 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">Add Fractions</div><div class="sval">\(\frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd}\)</div></div>
+      <div class="sum-item"><div class="sname">Multiply Fractions</div><div class="sval">\(\frac{a}{b}\times\frac{c}{d}=\frac{ac}{bd}\)</div></div>
+      <div class="sum-item"><div class="sname">Divide Fractions</div><div class="sval">\(\frac{a}{b}\div\frac{c}{d}=\frac{ad}{bc}\)</div></div>
+      <div class="sum-item"><div class="sname">% Change</div><div class="sval">\(\frac{\text{New}-\text{Old}}{\text{Old}}\times100\)</div></div>
+      <div class="sum-item"><div class="sname">P% of X</div><div class="sval">\(\frac{P}{100}\times X\)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 3 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 3</div><h2>Ratios &amp; Proportions</h2></div>
+  <div class="module-intro">Ratios compare quantities; proportions state that two ratios are equal. These concepts underpin everything from recipe scaling to financial analysis to physics.</div>
+
+  <div class="concept">
+    <h3>Ratios &amp; Equivalent Ratios</h3>
+    <a class="video-link" href="https://www.video-tutor.net/algebra.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Algebra – Ratio &amp; Proportion</a>
+    <div class="formula-box">
+      <span class="label">RATIO RULES</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Ratio</div><div class="fval">\(a : b = \dfrac{a}{b}\)</div></div>
+        <div class="formula-item"><div class="fname">Equivalent Ratio</div><div class="fval">\(a:b = ka:kb\) for any \(k \neq 0\)</div></div>
+        <div class="formula-item"><div class="fname">Divide in Ratio</div><div class="fval">Total \(\times \dfrac{\text{part}}{\text{sum of parts}}\)</div></div>
+        <div class="formula-item"><div class="fname">Cross Multiplication</div><div class="fval">\(\dfrac{a}{b}=\dfrac{c}{d} \Rightarrow ad=bc\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Sharing in a given ratio</div>
+        <div class="problem-body">
+          <div class="problem-q">Divide ₹2400 among A, B, and C in the ratio 3 : 4 : 5. Find each person's share.</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Sum of ratio parts = \(3+4+5=12\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>A's share = \(\frac{3}{12}\times2400 = ₹600\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>B's share = \(\frac{4}{12}\times2400 = ₹800\)</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>C's share = \(\frac{5}{12}\times2400 = ₹1000\)</div></div>
+            <div class="answer">Answer: A = ₹600, B = ₹800, C = ₹1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Direct &amp; Inverse Proportion</div>
+        <div class="problem-body">
+          <div class="problem-q">(a) If 8 workers complete a job in 15 days, how many days will 12 workers take? (b) If a car travels 240 km in 4 hours, how far in 7 hours?</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">a</div><div>More workers → fewer days (Inverse): \(8\times15 = 12\times d \Rightarrow d = \frac{120}{12} = 10\) days</div></div>
+            <div class="sol-step"><div class="step-n">b</div><div>More time → more distance (Direct): \(\frac{240}{4} = 60\) km/hr → \(7\times60 = 420\) km</div></div>
+            <div class="answer">Answer: (a) 10 days; (b) 420 km</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 3 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">Cross Multiply</div><div class="sval">\(\frac{a}{b}=\frac{c}{d}\Rightarrow ad=bc\)</div></div>
+      <div class="sum-item"><div class="sname">Direct Proportion</div><div class="sval">\(y = kx\)</div></div>
+      <div class="sum-item"><div class="sname">Inverse Proportion</div><div class="sval">\(xy = k\) (constant)</div></div>
+      <div class="sum-item"><div class="sname">Share formula</div><div class="sval">Total × (part ÷ sum of parts)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 4 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 4</div><h2>Linear Equations &amp; Inequalities</h2></div>
+  <div class="module-intro">Linear equations form the backbone of algebra. Mastering one-variable and two-variable linear equations gives you the toolkit to model almost any real-world situation mathematically.</div>
+
+  <div class="concept">
+    <h3>Solving Linear Equations (One Variable)</h3>
+    <a class="video-link" href="https://www.video-tutor.net/linear-equations.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Linear Equations – Video-Tutor.net</a>
+    <div class="formula-box">
+      <span class="label">KEY RULES</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Standard Form</div><div class="fval">\(ax + b = c\)</div></div>
+        <div class="formula-item"><div class="fname">Solution</div><div class="fval">\(x = \dfrac{c-b}{a}\)</div></div>
+        <div class="formula-item"><div class="fname">Golden Rule</div><div class="fval">Whatever you do to one side, do to the other</div></div>
+        <div class="formula-item"><div class="fname">Verification</div><div class="fval">Substitute answer back into original equation</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Multi-step linear equation</div>
+        <div class="problem-body">
+          <div class="problem-q">Solve for \(x\): \(\;\dfrac{2x+5}{3} - \dfrac{x-1}{2} = 4\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Multiply entire equation by LCM(3,2)=6: \(2(2x+5) - 3(x-1) = 24\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Expand: \(4x+10 - 3x+3 = 24\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Simplify: \(x + 13 = 24\)</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>\(x = 11\). Check: \(\frac{27}{3}-\frac{10}{2}=9-5=4\;\checkmark\)</div></div>
+            <div class="answer">Answer: x = 11</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Word problem → linear equation</div>
+        <div class="problem-body">
+          <div class="problem-q">Ravi is 3 times as old as his son. In 10 years, Ravi will be twice as old as his son. Find their current ages.</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Let son's age = \(x\). Then Ravi's age = \(3x\).</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>In 10 years: \(3x+10 = 2(x+10)\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Expand: \(3x+10 = 2x+20\) → \(x = 10\)</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>Son = 10, Ravi = 30. Check: In 10 years → 20 and 40 → 40=2×20 ✓</div></div>
+            <div class="answer">Answer: Son = 10 years, Ravi = 30 years</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <h3>Linear Inequalities</h3>
+    <a class="video-link" href="https://www.video-tutor.net/inequalities.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Inequalities – Video-Tutor.net</a>
+    <div class="formula-box">
+      <span class="label">INEQUALITY RULES</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Addition/Subtraction</div><div class="fval">Direction unchanged: \(a<b \Rightarrow a+c<b+c\)</div></div>
+        <div class="formula-item"><div class="fname">Multiply/Divide Positive</div><div class="fval">Direction unchanged: \(a<b,\;c>0 \Rightarrow ac<bc\)</div></div>
+        <div class="formula-item"><div class="fname">⚠ Multiply/Divide Negative</div><div class="fval">Direction FLIPS: \(a<b,\;c<0 \Rightarrow ac>bc\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Solve and graph inequality</div>
+        <div class="problem-body">
+          <div class="problem-q">Solve: \(-3x + 7 > 1\) and represent the solution on a number line.</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Subtract 7: \(-3x > 1-7 = -6\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Divide by −3 (FLIP the sign!): \(x < 2\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Number line: open circle at 2, shaded to the left (←)</div></div>
+            <div class="answer">Answer: x &lt; 2 i.e. \((-\infty, 2)\)</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Compound inequality</div>
+        <div class="problem-body">
+          <div class="problem-q">Solve: \(-1 \leq 2x - 3 \leq 5\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Add 3 throughout: \(-1+3 \leq 2x \leq 5+3\) → \(2 \leq 2x \leq 8\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Divide by 2: \(1 \leq x \leq 4\)</div></div>
+            <div class="answer">Answer: \(x \in [1,\;4]\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 4 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">Linear Equation</div><div class="sval">\(ax+b=c \Rightarrow x=\frac{c-b}{a}\)</div></div>
+      <div class="sum-item"><div class="sname">Inequality: ÷ by negative</div><div class="sval">Flip the inequality sign</div></div>
+      <div class="sum-item"><div class="sname">Solution notation</div><div class="sval">Closed bracket [ ] = included, Open ( ) = excluded</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 5 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 5</div><h2>Simultaneous Equations</h2></div>
+  <div class="module-intro">When two unknowns must be found simultaneously, we use systems of equations. These appear in circuit analysis, economics, geometry, and virtually every applied science.</div>
+
+  <div class="concept">
+    <h3>Substitution Method</h3>
+    <a class="video-link" href="https://www.video-tutor.net/systems-of-equations.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Systems of Equations – Video-Tutor.net</a>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Substitution method</div>
+        <div class="problem-body">
+          <div class="problem-q">Solve: \(y = 2x - 1\) and \(3x + y = 14\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Substitute \(y=2x-1\) into equation 2: \(3x+(2x-1)=14\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(5x-1=14 \Rightarrow 5x=15 \Rightarrow x=3\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Back-substitute: \(y=2(3)-1=5\)</div></div>
+            <div class="answer">Answer: x = 3, y = 5</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Elimination method &amp; word problem</div>
+        <div class="problem-body">
+          <div class="problem-q">A shop sells pens at ₹5 each and notebooks at ₹15 each. A customer buys 8 items totalling ₹80. How many of each did they buy?</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Let pens = \(p\), notebooks = \(n\). \(p+n=8\) … (i), \(5p+15n=80\) … (ii)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Multiply (i) by 5: \(5p+5n=40\). Subtract from (ii): \(10n=40 \Rightarrow n=4\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Substitute: \(p+4=8 \Rightarrow p=4\)</div></div>
+            <div class="answer">Answer: 4 pens and 4 notebooks</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 5 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">General System</div><div class="sval">\(a_1x+b_1y=c_1\) and \(a_2x+b_2y=c_2\)</div></div>
+      <div class="sum-item"><div class="sname">Cramer's Rule (x)</div><div class="sval">\(x=\frac{c_1b_2-c_2b_1}{a_1b_2-a_2b_1}\)</div></div>
+      <div class="sum-item"><div class="sname">Cramer's Rule (y)</div><div class="sval">\(y=\frac{a_1c_2-a_2c_1}{a_1b_2-a_2b_1}\)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 6 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 6</div><h2>Exponents &amp; Radicals (Surds)</h2></div>
+  <div class="module-intro">Exponent laws are used in every advanced topic — exponential growth, scientific notation, logarithms, calculus power rule. Radicals (surds) are the inverse of exponents.</div>
+
+  <div class="concept">
+    <h3>Laws of Exponents</h3>
+    <a class="video-link" href="https://www.video-tutor.net/exponents.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Exponents – Video-Tutor.net</a>
+    <div class="formula-box">
+      <span class="label">EXPONENT LAWS (a ≠ 0)</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Product</div><div class="fval">\(a^m \cdot a^n = a^{m+n}\)</div></div>
+        <div class="formula-item"><div class="fname">Quotient</div><div class="fval">\(\dfrac{a^m}{a^n} = a^{m-n}\)</div></div>
+        <div class="formula-item"><div class="fname">Power of Power</div><div class="fval">\((a^m)^n = a^{mn}\)</div></div>
+        <div class="formula-item"><div class="fname">Zero Exponent</div><div class="fval">\(a^0 = 1\)</div></div>
+        <div class="formula-item"><div class="fname">Negative Exponent</div><div class="fval">\(a^{-n} = \dfrac{1}{a^n}\)</div></div>
+        <div class="formula-item"><div class="fname">Fractional Exponent</div><div class="fval">\(a^{m/n} = \sqrt[n]{a^m}\)</div></div>
+        <div class="formula-item"><div class="fname">Power of Product</div><div class="fval">\((ab)^n = a^n b^n\)</div></div>
+        <div class="formula-item"><div class="fname">Power of Quotient</div><div class="fval">\(\left(\dfrac{a}{b}\right)^n = \dfrac{a^n}{b^n}\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Simplify using exponent laws</div>
+        <div class="problem-body">
+          <div class="problem-q">Simplify: \(\;\dfrac{(x^3)^2 \cdot x^{-4}}{x^5}\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Power of power: \((x^3)^2 = x^6\) → numerator: \(x^6 \cdot x^{-4} = x^{6+(-4)} = x^2\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Quotient: \(\dfrac{x^2}{x^5} = x^{2-5} = x^{-3}\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Rewrite: \(x^{-3} = \dfrac{1}{x^3}\)</div></div>
+            <div class="answer">Answer: \(\dfrac{1}{x^3}\)</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Simplifying radicals</div>
+        <div class="problem-body">
+          <div class="problem-q">Simplify: \(\sqrt{72} + 2\sqrt{8} - \sqrt{18}\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>\(\sqrt{72}=\sqrt{36\times2}=6\sqrt{2}\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(2\sqrt{8}=2\sqrt{4\times2}=2\times2\sqrt{2}=4\sqrt{2}\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>\(\sqrt{18}=\sqrt{9\times2}=3\sqrt{2}\)</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>Combine like terms: \(6\sqrt{2}+4\sqrt{2}-3\sqrt{2}=7\sqrt{2}\)</div></div>
+            <div class="answer">Answer: \(7\sqrt{2}\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 6 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">Product Rule</div><div class="sval">\(a^m\cdot a^n=a^{m+n}\)</div></div>
+      <div class="sum-item"><div class="sname">Quotient Rule</div><div class="sval">\(a^m/a^n=a^{m-n}\)</div></div>
+      <div class="sum-item"><div class="sname">Power Rule</div><div class="sval">\((a^m)^n=a^{mn}\)</div></div>
+      <div class="sum-item"><div class="sname">Negative Exp</div><div class="sval">\(a^{-n}=1/a^n\)</div></div>
+      <div class="sum-item"><div class="sname">Fractional Exp</div><div class="sval">\(a^{1/n}=\sqrt[n]{a}\)</div></div>
+      <div class="sum-item"><div class="sname">Surd Product</div><div class="sval">\(\sqrt{a}\cdot\sqrt{b}=\sqrt{ab}\)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 7 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 7</div><h2>Polynomials &amp; Factoring</h2></div>
+  <div class="module-intro">Polynomials are the building blocks of algebra. Factoring them is the key skill that unlocks solving higher-degree equations and simplifying rational expressions.</div>
+
+  <div class="concept">
+    <h3>Polynomial Operations &amp; Identities</h3>
+    <a class="video-link" href="https://www.video-tutor.net/polynomials.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Polynomials – Video-Tutor.net</a>
+    <a class="video-link" href="https://www.video-tutor.net/factoring.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Factoring – Video-Tutor.net</a>
+    <div class="formula-box">
+      <span class="label">ALGEBRAIC IDENTITIES</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">(a+b)²</div><div class="fval">\(a^2+2ab+b^2\)</div></div>
+        <div class="formula-item"><div class="fname">(a−b)²</div><div class="fval">\(a^2-2ab+b^2\)</div></div>
+        <div class="formula-item"><div class="fname">a²−b²</div><div class="fval">\((a+b)(a-b)\)</div></div>
+        <div class="formula-item"><div class="fname">a³+b³</div><div class="fval">\((a+b)(a^2-ab+b^2)\)</div></div>
+        <div class="formula-item"><div class="fname">a³−b³</div><div class="fval">\((a-b)(a^2+ab+b^2)\)</div></div>
+        <div class="formula-item"><div class="fname">(a+b)³</div><div class="fval">\(a^3+3a^2b+3ab^2+b^3\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Factor a trinomial</div>
+        <div class="problem-body">
+          <div class="problem-q">Factor completely: \(6x^2 + 11x - 10\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>AC method: \(a=6, c=-10\), so \(ac=-60\). Find two numbers that multiply to −60 and add to 11: +15 and −4.</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Rewrite middle term: \(6x^2 + 15x - 4x - 10\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Group: \(3x(2x+5) - 2(2x+5) = (3x-2)(2x+5)\)</div></div>
+            <div class="answer">Answer: \((3x-2)(2x+5)\)</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Difference of cubes</div>
+        <div class="problem-body">
+          <div class="problem-q">Factor: \(8x^3 - 27\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Identify: \(8x^3=(2x)^3\) and \(27=3^3\). This is \(a^3-b^3\) with \(a=2x, b=3\).</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Apply identity: \((a-b)(a^2+ab+b^2)\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>\(= (2x-3)((2x)^2+(2x)(3)+3^2) = (2x-3)(4x^2+6x+9)\)</div></div>
+            <div class="answer">Answer: \((2x-3)(4x^2+6x+9)\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 7 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">(a+b)²</div><div class="sval">\(a^2+2ab+b^2\)</div></div>
+      <div class="sum-item"><div class="sname">(a−b)²</div><div class="sval">\(a^2-2ab+b^2\)</div></div>
+      <div class="sum-item"><div class="sname">Diff. of Squares</div><div class="sval">\(a^2-b^2=(a+b)(a-b)\)</div></div>
+      <div class="sum-item"><div class="sname">Sum of Cubes</div><div class="sval">\(a^3+b^3=(a+b)(a^2-ab+b^2)\)</div></div>
+      <div class="sum-item"><div class="sname">Diff. of Cubes</div><div class="sval">\(a^3-b^3=(a-b)(a^2+ab+b^2)\)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 8 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 8</div><h2>Quadratic Equations</h2></div>
+  <div class="module-intro">Quadratics are degree-2 polynomials. Their solutions (roots) can be found by factoring, completing the square, or using the quadratic formula. The discriminant tells you the nature of roots without solving.</div>
+
+  <div class="concept">
+    <h3>Quadratic Formula &amp; Discriminant</h3>
+    <a class="video-link" href="https://www.video-tutor.net/quadratic-equations.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Quadratic Equations – Video-Tutor.net</a>
+    <div class="formula-box">
+      <span class="label">QUADRATIC FORMULAS</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Standard Form</div><div class="fval">\(ax^2+bx+c=0\)</div></div>
+        <div class="formula-item"><div class="fname">Quadratic Formula</div><div class="fval">\(x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}\)</div></div>
+        <div class="formula-item"><div class="fname">Discriminant Δ</div><div class="fval">\(\Delta = b^2 - 4ac\)</div></div>
+        <div class="formula-item"><div class="fname">Δ &gt; 0</div><div class="fval">Two distinct real roots</div></div>
+        <div class="formula-item"><div class="fname">Δ = 0</div><div class="fval">One repeated real root</div></div>
+        <div class="formula-item"><div class="fname">Δ &lt; 0</div><div class="fval">Two complex (imaginary) roots</div></div>
+        <div class="formula-item"><div class="fname">Sum of roots</div><div class="fval">\(\alpha+\beta = -\dfrac{b}{a}\)</div></div>
+        <div class="formula-item"><div class="fname">Product of roots</div><div class="fval">\(\alpha\beta = \dfrac{c}{a}\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Solve using quadratic formula</div>
+        <div class="problem-body">
+          <div class="problem-q">Solve: \(2x^2 - 5x - 3 = 0\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>\(a=2, b=-5, c=-3\). \(\Delta = (-5)^2 - 4(2)(-3) = 25+24=49\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(x = \dfrac{5 \pm \sqrt{49}}{4} = \dfrac{5 \pm 7}{4}\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>\(x_1 = \dfrac{12}{4}=3\), \(x_2 = \dfrac{-2}{4}=-\dfrac{1}{2}\)</div></div>
+            <div class="answer">Answer: x = 3 or x = −1/2</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Nature of roots &amp; word problem</div>
+        <div class="problem-body">
+          <div class="problem-q">The length of a rectangle exceeds its width by 5 cm, and its area is 84 cm². Find the dimensions.</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Let width = \(x\). Length = \(x+5\). Area: \(x(x+5)=84\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(x^2+5x-84=0\). \(\Delta=25+336=361=19^2\) → Two real roots</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>\(x=\frac{-5\pm19}{2}\): \(x=7\) or \(x=-12\) (reject negative)</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>Width=7 cm, Length=12 cm. Check: \(7\times12=84\;\checkmark\)</div></div>
+            <div class="answer">Answer: Width = 7 cm, Length = 12 cm</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 8 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">Quadratic Formula</div><div class="sval">\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\)</div></div>
+      <div class="sum-item"><div class="sname">Discriminant</div><div class="sval">\(\Delta=b^2-4ac\)</div></div>
+      <div class="sum-item"><div class="sname">Sum of roots</div><div class="sval">\(\alpha+\beta=-b/a\)</div></div>
+      <div class="sum-item"><div class="sname">Product of roots</div><div class="sval">\(\alpha\beta=c/a\)</div></div>
+      <div class="sum-item"><div class="sname">Δ&gt;0 → 2 real roots</div><div class="sval">Δ=0 → 1 real root; Δ&lt;0 → complex</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 9 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 9</div><h2>Geometry &amp; Mensuration</h2></div>
+  <div class="module-intro">Geometry gives you the tools to calculate areas, perimeters, volumes, and angles. Mensuration (measurement) is widely tested and used in engineering and architecture.</div>
+
+  <div class="concept">
+    <h3>Triangles &amp; Pythagorean Theorem</h3>
+    <div class="formula-box">
+      <span class="label">TRIANGLE FORMULAS</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Area</div><div class="fval">\(\dfrac{1}{2} \times \text{base} \times \text{height}\)</div></div>
+        <div class="formula-item"><div class="fname">Heron's Formula</div><div class="fval">\(A=\sqrt{s(s-a)(s-b)(s-c)},\; s=\frac{a+b+c}{2}\)</div></div>
+        <div class="formula-item"><div class="fname">Pythagoras</div><div class="fval">\(c^2=a^2+b^2\) (right triangle)</div></div>
+        <div class="formula-item"><div class="fname">Angle Sum</div><div class="fval">All angles in a triangle sum to 180°</div></div>
+        <div class="formula-item"><div class="fname">Circle Area</div><div class="fval">\(\pi r^2\)</div></div>
+        <div class="formula-item"><div class="fname">Circumference</div><div class="fval">\(2\pi r\)</div></div>
+        <div class="formula-item"><div class="fname">Cylinder Volume</div><div class="fval">\(\pi r^2 h\)</div></div>
+        <div class="formula-item"><div class="fname">Sphere Volume</div><div class="fval">\(\dfrac{4}{3}\pi r^3\)</div></div>
+        <div class="formula-item"><div class="fname">Cone Volume</div><div class="fval">\(\dfrac{1}{3}\pi r^2 h\)</div></div>
+        <div class="formula-item"><div class="fname">Cube Surface Area</div><div class="fval">\(6a^2\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Pythagorean theorem</div>
+        <div class="problem-body">
+          <div class="problem-q">A ladder 13 m long leans against a wall. Its foot is 5 m from the wall. How high does the ladder reach on the wall?</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Hypotenuse = 13, base = 5. \(h^2 + 5^2 = 13^2\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(h^2 = 169 - 25 = 144 \Rightarrow h = 12\) m</div></div>
+            <div class="answer">Answer: 12 m</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Heron's formula</div>
+        <div class="problem-body">
+          <div class="problem-q">Find the area of a triangle with sides 7 cm, 8 cm, 9 cm.</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>\(s = \frac{7+8+9}{2}=12\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(A=\sqrt{12(12-7)(12-8)(12-9)}=\sqrt{12\times5\times4\times3}=\sqrt{720}=12\sqrt{5}\approx 26.83\) cm²</div></div>
+            <div class="answer">Answer: \(12\sqrt{5} \approx 26.83\) cm²</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">3</div>Volume of a cone</div>
+        <div class="problem-body">
+          <div class="problem-q">A cone has radius 7 cm and height 12 cm. Find its volume. (\(\pi \approx 22/7\))</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>\(V=\frac{1}{3}\pi r^2 h = \frac{1}{3}\times\frac{22}{7}\times49\times12\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(=\frac{1}{3}\times22\times7\times12 = \frac{1848}{3}=616\) cm³</div></div>
+            <div class="answer">Answer: 616 cm³</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 9 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">Pythagoras</div><div class="sval">\(c^2=a^2+b^2\)</div></div>
+      <div class="sum-item"><div class="sname">Triangle Area</div><div class="sval">\(\frac{1}{2}bh\) or Heron's</div></div>
+      <div class="sum-item"><div class="sname">Circle Area</div><div class="sval">\(\pi r^2\)</div></div>
+      <div class="sum-item"><div class="sname">Circle Perimeter</div><div class="sval">\(2\pi r\)</div></div>
+      <div class="sum-item"><div class="sname">Cylinder Vol</div><div class="sval">\(\pi r^2 h\)</div></div>
+      <div class="sum-item"><div class="sname">Sphere Vol</div><div class="sval">\(\frac{4}{3}\pi r^3\)</div></div>
+      <div class="sum-item"><div class="sname">Cone Vol</div><div class="sval">\(\frac{1}{3}\pi r^2 h\)</div></div>
+      <div class="sum-item"><div class="sname">Cube SA</div><div class="sval">\(6a^2\)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ MODULE 10 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 10</div><h2>Statistics &amp; Probability</h2></div>
+  <div class="module-intro">Statistics helps you interpret and summarise data. Probability quantifies uncertainty. Together they form the language of data science, research, and decision-making.</div>
+
+  <div class="concept">
+    <h3>Measures of Central Tendency &amp; Dispersion</h3>
+    <a class="video-link" href="https://www.video-tutor.net/central-tendency-and-variation.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Central Tendency – Video-Tutor.net</a>
+    <a class="video-link" href="https://www.video-tutor.net/introduction-to-statistics.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Intro to Statistics – Video-Tutor.net</a>
+    <div class="formula-box">
+      <span class="label">STATISTICS FORMULAS</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Mean</div><div class="fval">\(\bar{x} = \dfrac{\sum x_i}{n}\)</div></div>
+        <div class="formula-item"><div class="fname">Median</div><div class="fval">Middle value when data is sorted (avg of two middles if n is even)</div></div>
+        <div class="formula-item"><div class="fname">Mode</div><div class="fval">Most frequently occurring value</div></div>
+        <div class="formula-item"><div class="fname">Range</div><div class="fval">Max − Min</div></div>
+        <div class="formula-item"><div class="fname">Variance</div><div class="fval">\(\sigma^2=\dfrac{\sum(x_i-\bar{x})^2}{n}\)</div></div>
+        <div class="formula-item"><div class="fname">Std Deviation</div><div class="fval">\(\sigma=\sqrt{\sigma^2}\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Full statistical summary</div>
+        <div class="problem-body">
+          <div class="problem-q">For the data set: 4, 7, 13, 2, 7, 9, 4, 7 — find mean, median, mode, range, and standard deviation.</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Sorted: 2, 4, 4, 7, 7, 7, 9, 13. \(n=8\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Mean: \(\bar{x}=\frac{2+4+4+7+7+7+9+13}{8}=\frac{53}{8}=6.625\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Median: Average of 4th &amp; 5th values = \(\frac{7+7}{2}=7\)</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>Mode: 7 (appears 3 times)</div></div>
+            <div class="sol-step"><div class="step-n">5</div><div>Range: \(13-2=11\)</div></div>
+            <div class="sol-step"><div class="step-n">6</div><div>Variance: \(\sigma^2 = \frac{(2-6.625)^2+\ldots+(13-6.625)^2}{8} \approx 10.23\)</div></div>
+            <div class="sol-step"><div class="step-n">7</div><div>SD: \(\sigma \approx \sqrt{10.23} \approx 3.20\)</div></div>
+            <div class="answer">Mean=6.625, Median=7, Mode=7, Range=11, SD≈3.20</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <h3>Basic Probability</h3>
+    <a class="video-link" href="https://www.video-tutor.net/introduction-to-probability.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Introduction to Probability – Video-Tutor.net</a>
+    <div class="formula-box">
+      <span class="label">PROBABILITY FORMULAS</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Basic Probability</div><div class="fval">\(P(A)=\dfrac{\text{Favourable outcomes}}{\text{Total outcomes}}\)</div></div>
+        <div class="formula-item"><div class="fname">Complement</div><div class="fval">\(P(A')=1-P(A)\)</div></div>
+        <div class="formula-item"><div class="fname">Addition Rule</div><div class="fval">\(P(A\cup B)=P(A)+P(B)-P(A\cap B)\)</div></div>
+        <div class="formula-item"><div class="fname">Independent Events</div><div class="fval">\(P(A\cap B)=P(A)\cdot P(B)\)</div></div>
+        <div class="formula-item"><div class="fname">Range of P</div><div class="fval">\(0 \leq P(A) \leq 1\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Deck of cards probability</div>
+        <div class="problem-body">
+          <div class="problem-q">A card is drawn from a standard 52-card deck. Find: (a) P(Ace), (b) P(Red Card), (c) P(Ace OR Red Card).</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">a</div><div>\(P(\text{Ace})=\dfrac{4}{52}=\dfrac{1}{13}\)</div></div>
+            <div class="sol-step"><div class="step-n">b</div><div>\(P(\text{Red})=\dfrac{26}{52}=\dfrac{1}{2}\)</div></div>
+            <div class="sol-step"><div class="step-n">c</div><div>Aces that are Red = 2. \(P(A\cup R)=\frac{4}{52}+\frac{26}{52}-\frac{2}{52}=\frac{28}{52}=\frac{7}{13}\)</div></div>
+            <div class="answer">P(Ace)=1/13, P(Red)=1/2, P(Ace or Red)=7/13</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Independent events</div>
+        <div class="problem-body">
+          <div class="problem-q">A fair die is rolled and a fair coin is tossed. What is the probability of getting a 5 on the die AND a Head on the coin?</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Events are independent. \(P(5)=\frac{1}{6}\), \(P(H)=\frac{1}{2}\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(P(5 \text{ AND } H) = \frac{1}{6}\times\frac{1}{2}=\frac{1}{12}\)</div></div>
+            <div class="answer">Answer: 1/12</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 10 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">Mean</div><div class="sval">\(\bar{x}=\frac{\sum x_i}{n}\)</div></div>
+      <div class="sum-item"><div class="sname">Variance</div><div class="sval">\(\sigma^2=\frac{\sum(x_i-\bar{x})^2}{n}\)</div></div>
+      <div class="sum-item"><div class="sname">Std Dev</div><div class="sval">\(\sigma=\sqrt{\sigma^2}\)</div></div>
+      <div class="sum-item"><div class="sname">Probability</div><div class="sval">\(P=\frac{\text{favourable}}{\text{total}}\)</div></div>
+      <div class="sum-item"><div class="sname">Addition Rule</div><div class="sval">\(P(A\cup B)=P(A)+P(B)-P(A\cap B)\)</div></div>
+      <div class="sum-item"><div class="sname">Complement</div><div class="sval">\(P(A')=1-P(A)\)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ MASTER FORMULA SHEET ════ -->
+<div class="master-sheet">
+  <h2>Master Formula Sheet — School Mathematics</h2>
+
+  <div class="mfs-section">
+    <h3>Number &amp; Arithmetic</h3>
+    <div class="mfs-grid">
+      <div class="mfs-card"><div class="mfc-name">BODMAS</div>Brackets → Orders → ÷× → +−</div>
+      <div class="mfs-card"><div class="mfc-name">Rational</div>\(\frac{p}{q},\;q\neq0\)</div>
+      <div class="mfs-card"><div class="mfc-name">% Change</div>\(\frac{New-Old}{Old}\times100\)</div>
+      <div class="mfs-card"><div class="mfc-name">Cross Multiply</div>\(\frac{a}{b}=\frac{c}{d}\Rightarrow ad=bc\)</div>
+    </div>
+  </div>
+
+  <div class="mfs-section">
+    <h3>Algebra</h3>
+    <div class="mfs-grid">
+      <div class="mfs-card"><div class="mfc-name">Linear Solution</div>\(ax+b=c\Rightarrow x=\frac{c-b}{a}\)</div>
+      <div class="mfs-card"><div class="mfc-name">Quadratic Formula</div>\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\)</div>
+      <div class="mfs-card"><div class="mfc-name">Sum of Roots</div>\(\alpha+\beta=-b/a\)</div>
+      <div class="mfs-card"><div class="mfc-name">Product of Roots</div>\(\alpha\beta=c/a\)</div>
+      <div class="mfs-card"><div class="mfc-name">(a+b)²</div>\(a^2+2ab+b^2\)</div>
+      <div class="mfs-card"><div class="mfc-name">(a−b)²</div>\(a^2-2ab+b^2\)</div>
+      <div class="mfs-card"><div class="mfc-name">a²−b²</div>\((a+b)(a-b)\)</div>
+      <div class="mfs-card"><div class="mfc-name">a³+b³</div>\((a+b)(a^2-ab+b^2)\)</div>
+    </div>
+  </div>
+
+  <div class="mfs-section">
+    <h3>Geometry &amp; Mensuration</h3>
+    <div class="mfs-grid">
+      <div class="mfs-card"><div class="mfc-name">Pythagoras</div>\(c^2=a^2+b^2\)</div>
+      <div class="mfs-card"><div class="mfc-name">Triangle Area</div>\(\frac{1}{2}bh\)</div>
+      <div class="mfs-card"><div class="mfc-name">Heron's</div>\(\sqrt{s(s-a)(s-b)(s-c)}\)</div>
+      <div class="mfs-card"><div class="mfc-name">Circle Area</div>\(\pi r^2\)</div>
+      <div class="mfs-card"><div class="mfc-name">Circumference</div>\(2\pi r\)</div>
+      <div class="mfs-card"><div class="mfc-name">Cylinder Vol</div>\(\pi r^2 h\)</div>
+      <div class="mfs-card"><div class="mfc-name">Sphere Vol</div>\(\frac{4}{3}\pi r^3\)</div>
+      <div class="mfs-card"><div class="mfc-name">Cone Vol</div>\(\frac{1}{3}\pi r^2 h\)</div>
+    </div>
+  </div>
+
+  <div class="mfs-section">
+    <h3>Exponents &amp; Radicals</h3>
+    <div class="mfs-grid">
+      <div class="mfs-card"><div class="mfc-name">Product</div>\(a^m\cdot a^n=a^{m+n}\)</div>
+      <div class="mfs-card"><div class="mfc-name">Quotient</div>\(a^m/a^n=a^{m-n}\)</div>
+      <div class="mfs-card"><div class="mfc-name">Power</div>\((a^m)^n=a^{mn}\)</div>
+      <div class="mfs-card"><div class="mfc-name">Negative</div>\(a^{-n}=1/a^n\)</div>
+      <div class="mfs-card"><div class="mfc-name">Fractional</div>\(a^{m/n}=\sqrt[n]{a^m}\)</div>
+    </div>
+  </div>
+
+  <div class="mfs-section">
+    <h3>Statistics &amp; Probability</h3>
+    <div class="mfs-grid">
+      <div class="mfs-card"><div class="mfc-name">Mean</div>\(\bar{x}=\frac{\sum x_i}{n}\)</div>
+      <div class="mfs-card"><div class="mfc-name">Variance</div>\(\sigma^2=\frac{\sum(x_i-\bar{x})^2}{n}\)</div>
+      <div class="mfs-card"><div class="mfc-name">SD</div>\(\sigma=\sqrt{\sigma^2}\)</div>
+      <div class="mfs-card"><div class="mfc-name">Probability</div>\(P=\frac{\text{favourable}}{\text{total}}\)</div>
+      <div class="mfs-card"><div class="mfc-name">Complement</div>\(P(A')=1-P(A)\)</div>
+      <div class="mfs-card"><div class="mfc-name">Independent</div>\(P(A\cap B)=P(A)\cdot P(B)\)</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:60px;padding:30px;background:linear-gradient(135deg,var(--navy),#1a3f7a);color:#fff;border-radius:16px;">
+    <div style="font-family:'Merriweather',serif;font-size:22px;color:var(--gold);margin-bottom:8px;">Keep Learning — Watch Free Videos</div>
+    <div style="font-size:14px;opacity:.85;">Explore all topics at <strong>video-tutor.net</strong> — Algebra, Trigonometry, Calculus, Statistics &amp; more</div>
+    <div style="margin-top:16px;font-size:13px;opacity:.7;">For college-level mathematics, see Vol. 2: Intermediate College Mathematics</div>
+  </div>
+</div>
+
+</body>
+</html>

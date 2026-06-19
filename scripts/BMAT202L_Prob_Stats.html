@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>BMAT202L – Probability and Statistics | VIT Chennai</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet"/>
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},
+chtml:{scale:0.88,matchFontHeight:false},options:{skipHtmlTags:['script','noscript','style','textarea']}};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+:root{--dk:#7f1d1d;--ac:#dc2626;--al:#fff1f2;--gl:#dcfce7;--green:#14532d;--muted:#4b5563;--border:#e2e8f0;--bg:#f8fafc;}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:#1e293b;font-size:15px;line-height:1.75;}
+a{color:inherit;}
+.cover{background:linear-gradient(135deg,#7f1d1d 0%,#991b1b 55%,#5f0f0f 100%);color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 40px;page-break-after:always;}
+.chip{background:#dc2626;color:#fff;font-size:11px;font-weight:800;letter-spacing:2px;padding:5px 18px;border-radius:30px;margin-bottom:20px;text-transform:uppercase;display:inline-block;}
+.cover h1{font-family:'Merriweather',serif;font-size:42px;font-weight:900;line-height:1.2;margin-bottom:12px;}
+.cover h1 span{color:#fca5a5;}
+.cover .sub-code{font-size:15px;opacity:.75;margin-bottom:28px;}
+.mod-pills{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:36px;max-width:760px;}
+.mod-pills span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:6px 14px;font-size:12.5px;}
+.toc{padding:56px 72px;page-break-after:always;background:#fff;}
+.toc h2{font-family:'Merriweather',serif;font-size:26px;color:var(--dk);border-bottom:3px solid var(--ac);padding-bottom:10px;margin-bottom:28px;}
+.toc-item{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.toc-num{background:var(--dk);color:#fff;min-width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.toc-info strong{font-size:14px;color:var(--dk);display:block;}
+.toc-info span{font-size:12px;color:var(--muted);}
+.mod{padding:52px 72px;page-break-before:always;background:#fff;}
+.mod:nth-child(even){background:var(--bg);}
+.mod-hdr{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.mod-badge{background:var(--dk);color:#fff;padding:4px 13px;border-radius:5px;font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.mod h2{font-family:'Merriweather',serif;font-size:24px;color:var(--dk);}
+.mod-intro{background:#fff1f2;border-left:4px solid var(--dk);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0 32px;font-size:13.5px;color:var(--muted);}
+.sub{margin-bottom:44px;}
+.sub h3{font-size:17px;font-weight:700;color:var(--dk);margin-bottom:9px;padding-left:11px;border-left:4px solid var(--ac);}
+.sub>p{color:var(--muted);font-size:13.5px;margin-bottom:10px;}
+.thm{background:linear-gradient(135deg,#fff1f2,#fecdd3);border:2px solid var(--ac);border-radius:10px;padding:15px 18px;margin:12px 0;position:relative;}
+.thm-title{position:absolute;top:-10px;left:13px;background:var(--ac);color:#fff;padding:2px 11px;border-radius:20px;font-size:10.5px;font-weight:800;letter-spacing:.8px;}
+.fbox{background:linear-gradient(135deg,#fecdd3,#fda4af);border:2px solid var(--dk);border-radius:10px;padding:16px 18px;margin:12px 0;position:relative;overflow-x:auto;}
+.flabel{position:absolute;top:-10px;left:13px;background:var(--dk);color:#fff;padding:2px 11px;border-radius:20px;font-size:10.5px;font-weight:800;letter-spacing:.8px;}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;align-items:start;}
+.fgrid.two{grid-template-columns:repeat(2,1fr);}
+.fcell{background:#fff;border-radius:7px;padding:10px 13px;border-left:3px solid var(--ac);overflow:hidden;word-break:break-word;}
+.fcell .fn{font-size:9.5px;color:var(--muted);font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px;}
+.fcell .fv{font-size:13.5px;}
+.prob{background:#fff;border:1px solid var(--border);border-radius:11px;margin-bottom:14px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.05);}
+.prob-hdr{background:var(--dk);color:#fff;padding:8px 15px;display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;}
+.pn{background:#fca5a5;color:var(--dk);min-width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:800;flex-shrink:0;}
+.prob-body{padding:14px 16px;}
+.pq{font-weight:600;font-size:13.5px;margin-bottom:11px;}
+.sol{background:var(--gl);border:1px solid #bbf7d0;border-radius:7px;padding:12px 15px;}
+.sl{color:var(--green);font-size:9.5px;font-weight:800;letter-spacing:1px;margin-bottom:7px;}
+.step{display:flex;gap:8px;margin-bottom:6px;align-items:flex-start;font-size:13px;}
+.sn{background:var(--green);color:#fff;min-width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.ans{background:var(--dk);color:#fca5a5;padding:6px 13px;border-radius:5px;display:inline-block;font-size:13px;font-weight:700;margin-top:7px;}
+.msum{background:linear-gradient(135deg,var(--dk),#991b1b);color:#fff;border-radius:11px;padding:22px;margin-top:36px;}
+.msum h4{font-family:'Merriweather',serif;font-size:15px;color:#fca5a5;margin-bottom:14px;}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
+.scell{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:7px;padding:10px 13px;}
+.sn2{font-size:9.5px;color:#fca5a5;font-weight:700;margin-bottom:4px;}
+.sv{font-size:12.5px;}
+.ms{padding:52px 72px;page-break-before:always;}
+.ms h2{font-family:'Merriweather',serif;font-size:24px;color:var(--dk);border-bottom:3px solid var(--ac);padding-bottom:9px;margin-bottom:28px;}
+.ms-sec{margin-bottom:26px;}
+.ms-sec h3{font-size:13px;font-weight:700;color:var(--dk);background:var(--al);padding:6px 13px;border-radius:5px;margin-bottom:10px;}
+.ms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.ms-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:10px 13px;border-left:3px solid var(--dk);overflow:hidden;word-break:break-word;}
+.mc{font-size:9.5px;color:var(--muted);font-weight:700;margin-bottom:3px;text-transform:uppercase;}
+@media print{.mod,.toc,.ms{background:#fff!important;}.mod,.toc,.ms,.cover{box-shadow:none;}@page{margin:10mm 14mm;size:A4 landscape;}}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="chip">VIT Chennai · BMAT202L</div>
+  <h1>Probability<br/><span>&amp; Statistics</span></h1>
+  <div class="sub-code">Complete Study Guide · 7 Modules · Formula Sheets · Solved Problems</div>
+  <div class="mod-pills">
+    <span>Module 1: Descriptive Statistics &amp; Correlation</span><span>Module 2: Probability &amp; Random Variables</span>
+    <span>Module 3: Probability Distributions</span><span>Module 4: Sampling Theory &amp; Confidence Intervals</span>
+    <span>Module 5: Hypothesis Testing</span><span>Module 6: ANOVA &amp; Reliability</span>
+    <span>Module 7: Multiple Regression &amp; Non-parametric Tests</span>
+  </div>
+</div>
+
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <div class="toc-item"><div class="toc-num">1</div><div class="toc-info"><strong>Descriptive Statistics &amp; Correlation</strong><span>Mean, median, mode, variance, SD · Pearson's r · Regression lines · Spearman's rank</span></div></div>
+  <div class="toc-item"><div class="toc-num">2</div><div class="toc-info"><strong>Probability &amp; Random Variables</strong><span>Axioms · Bayes' theorem · PDF/CDF · E(X) · Var(X) · Linear transformation rules</span></div></div>
+  <div class="toc-item"><div class="toc-num">3</div><div class="toc-info"><strong>Probability Distributions</strong><span>Binomial · Poisson · Normal · Exponential · Gamma · Weibull</span></div></div>
+  <div class="toc-item"><div class="toc-num">4</div><div class="toc-info"><strong>Sampling Theory &amp; Confidence Intervals</strong><span>Central Limit Theorem · Standard error · CI for μ with z and t · Sample size</span></div></div>
+  <div class="toc-item"><div class="toc-num">5</div><div class="toc-info"><strong>Hypothesis Testing</strong><span>Z-test · t-test · χ² test · F-test · Type I/II errors · p-value · Critical region</span></div></div>
+  <div class="toc-item"><div class="toc-num">6</div><div class="toc-info"><strong>ANOVA &amp; Reliability Theory</strong><span>One-way CRD · Two-way RBD · Reliability function · Hazard rate · MTTF · Weibull model</span></div></div>
+  <div class="toc-item"><div class="toc-num">7</div><div class="toc-info"><strong>Multiple Regression &amp; Non-parametric Tests</strong><span>Multiple regression equation · R² · Mann-Whitney U · Kruskal-Wallis · Sign test</span></div></div>
+</div>
+
+<!-- ═══ MODULE 1 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 1</div><h2>Descriptive Statistics &amp; Correlation</h2></div>
+  <div class="mod-intro">Descriptive statistics summarise data with measures of central tendency (mean, median, mode) and dispersion (range, variance, SD). Correlation and regression measure the strength and direction of linear relationships between two variables.</div>
+
+  <div class="sub">
+    <h3>1.1 Measures of Central Tendency &amp; Dispersion</h3>
+    <div class="fbox"><span class="flabel">DESCRIPTIVE STATISTICS FORMULAS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Arithmetic Mean</div><div class="fv">\(\bar{x}=\dfrac{\sum x_i}{n}=\dfrac{\sum f_ix_i}{\sum f_i}\)</div></div>
+      <div class="fcell"><div class="fn">Variance (population)</div><div class="fv">\(\sigma^2=\dfrac{\sum(x_i-\bar{x})^2}{n}=\dfrac{\sum x_i^2}{n}-\bar{x}^2\)</div></div>
+      <div class="fcell"><div class="fn">Variance (sample)</div><div class="fv">\(s^2=\dfrac{\sum(x_i-\bar{x})^2}{n-1}\)</div></div>
+      <div class="fcell"><div class="fn">Coefficient of Variation</div><div class="fv">\(\text{CV}=\dfrac{\sigma}{\bar{x}}\times100\%\)</div></div>
+      <div class="fcell"><div class="fn">Skewness (Karl Pearson)</div><div class="fv">\(S_k=\dfrac{\bar{x}-\text{Mode}}{\sigma}\)</div></div>
+      <div class="fcell"><div class="fn">Median (grouped)</div><div class="fv">\(M=L+\dfrac{N/2-F}{f}\times h\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Variance and SD</div>
+    <div class="prob-body"><div class="pq">Find mean, variance, and SD of: 2, 4, 4, 6, 8, 8, 8, 10.</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(\bar{x}=\frac{2+4+4+6+8+8+8+10}{8}=\frac{50}{8}=6.25\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(\sum x_i^2=4+16+16+36+64+64+64+100=364\)</div></div>
+    <div class="step"><div class="sn">3</div><div>\(\sigma^2=364/8-6.25^2=45.5-39.0625=6.4375\). \(\sigma\approx2.54\)</div></div>
+    <div class="ans">Mean = 6.25, Variance ≈ 6.44, SD ≈ 2.54</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>1.2 Correlation &amp; Regression</h3>
+    <div class="fbox"><span class="flabel">CORRELATION & REGRESSION FORMULAS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Pearson's r</div><div class="fv">\(r=\dfrac{\sum(x_i-\bar{x})(y_i-\bar{y})}{n\sigma_x\sigma_y}=\dfrac{n\sum xy-\sum x\sum y}{\sqrt{[n\sum x^2-(\sum x)^2][n\sum y^2-(\sum y)^2]}}\)</div></div>
+      <div class="fcell"><div class="fn">Regression y on x</div><div class="fv">\(y-\bar{y}=b_{yx}(x-\bar{x})\) where \(b_{yx}=r\dfrac{\sigma_y}{\sigma_x}\)</div></div>
+      <div class="fcell"><div class="fn">Regression x on y</div><div class="fv">\(x-\bar{x}=b_{xy}(y-\bar{y})\) where \(b_{xy}=r\dfrac{\sigma_x}{\sigma_y}\)</div></div>
+      <div class="fcell"><div class="fn">r from regression coeff.</div><div class="fv">\(r^2=b_{yx}\cdot b_{xy}\) (both same sign as r)</div></div>
+      <div class="fcell"><div class="fn">Spearman's rank corr.</div><div class="fv">\(r_s=1-\dfrac{6\sum d_i^2}{n(n^2-1)}\)</div></div>
+      <div class="fcell"><div class="fn">|r| interpretation</div><div class="fv">0: no corr; 0.5–0.7: moderate; 0.7–0.9: strong; &gt;0.9: very strong</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Pearson's correlation coefficient</div>
+    <div class="prob-body"><div class="pq">For n=5, Σx=15, Σy=25, Σx²=55, Σy²=135, Σxy=83. Find r.</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Numerator: \(n\Sigma xy-\Sigma x\Sigma y=5(83)-15(25)=415-375=40\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(D_x=n\Sigma x^2-(\Sigma x)^2=5(55)-225=275-225=50\)</div></div>
+    <div class="step"><div class="sn">3</div><div>\(D_y=n\Sigma y^2-(\Sigma y)^2=5(135)-625=675-625=50\)</div></div>
+    <div class="step"><div class="sn">4</div><div>\(r=40/\sqrt{50\times50}=40/50=0.8\)</div></div>
+    <div class="ans">r = 0.8 (strong positive correlation)</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>Spearman's rank correlation</div>
+    <div class="prob-body"><div class="pq">Ranks: d values = 1, −2, 0, 1, 2 for n=5. Find rₛ.</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(\sum d_i^2=1+4+0+1+4=10\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(r_s=1-\frac{6(10)}{5(24)}=1-\frac{60}{120}=0.5\)</div></div>
+    <div class="ans">rₛ = 0.5 (moderate positive correlation)</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 1 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Variance</div><div class="sv">\(\sigma^2=\Sigma x_i^2/n-\bar{x}^2\)</div></div>
+    <div class="scell"><div class="sn2">Pearson r</div><div class="sv">\(b_{yx}=r\sigma_y/\sigma_x\)</div></div>
+    <div class="scell"><div class="sn2">Spearman rₛ</div><div class="sv">\(1-6\Sigma d^2/[n(n^2-1)]\)</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 2 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 2</div><h2>Probability &amp; Random Variables</h2></div>
+  <div class="mod-intro">Probability theory provides the mathematical language for uncertainty. Random variables formalise outcomes numerically; expectation and variance capture the average behaviour and spread, forming the backbone of statistical inference.</div>
+
+  <div class="sub">
+    <h3>2.1 Probability Axioms &amp; Bayes' Theorem</h3>
+    <div class="fbox"><span class="flabel">PROBABILITY LAWS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Bayes' Theorem</div><div class="fv">\(P(A|B)=\dfrac{P(B|A)P(A)}{P(B)}\)</div></div>
+      <div class="fcell"><div class="fn">Total Probability</div><div class="fv">\(P(B)=\displaystyle\sum_i P(B|A_i)P(A_i)\)</div></div>
+      <div class="fcell"><div class="fn">Independence</div><div class="fv">\(P(A\cap B)=P(A)\cdot P(B)\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Bayes' Theorem</div>
+    <div class="prob-body"><div class="pq">A test is 95% accurate for disease (D). Disease prevalence = 1%. P(D|positive)?</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>P(D)=0.01, P(+|D)=0.95, P(+|D̄)=0.05 (false positive)</div></div>
+    <div class="step"><div class="sn">2</div><div>P(+)=0.95(0.01)+0.05(0.99)=0.0095+0.0495=0.059</div></div>
+    <div class="step"><div class="sn">3</div><div>P(D|+)=0.0095/0.059≈0.161</div></div>
+    <div class="ans">P(D|+) ≈ 16.1% (surprisingly low due to low prevalence)</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>2.2 Random Variables, PDF, CDF, E(X), Var(X)</h3>
+    <div class="fbox"><span class="flabel">RANDOM VARIABLE FORMULAS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">CDF (continuous)</div><div class="fv">\(F(x)=P(X\le x)=\int_{-\infty}^x f(t)\,dt\)</div></div>
+      <div class="fcell"><div class="fn">Expectation E(X)</div><div class="fv">\(E(X)=\int_{-\infty}^\infty xf(x)\,dx\) (continuous)</div></div>
+      <div class="fcell"><div class="fn">Variance Var(X)</div><div class="fv">\(\text{Var}(X)=E(X^2)-[E(X)]^2\)</div></div>
+      <div class="fcell"><div class="fn">E(aX+b)</div><div class="fv">\(aE(X)+b\)</div></div>
+      <div class="fcell"><div class="fn">Var(aX+b)</div><div class="fv">\(a^2\text{Var}(X)\)</div></div>
+      <div class="fcell"><div class="fn">Moment Generating Function</div><div class="fv">\(M_X(t)=E(e^{tX})\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Find E(X) and Var(X)</div>
+    <div class="prob-body"><div class="pq">Let \(f(x)=2x\) for \(0\le x\le1\). Find E(X) and Var(X).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(E(X)=\int_0^1 x\cdot2x\,dx=2\int_0^1 x^2\,dx=2/3\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(E(X^2)=\int_0^1 x^2\cdot2x\,dx=2\int_0^1 x^3\,dx=1/2\)</div></div>
+    <div class="step"><div class="sn">3</div><div>\(\text{Var}(X)=1/2-(2/3)^2=1/2-4/9=1/18\)</div></div>
+    <div class="ans">E(X) = 2/3 ≈ 0.667;  Var(X) = 1/18 ≈ 0.056</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 2 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Bayes'</div><div class="sv">\(P(A|B)=P(B|A)P(A)/P(B)\)</div></div>
+    <div class="scell"><div class="sn2">E(X)</div><div class="sv">\(\int xf(x)dx\)</div></div>
+    <div class="scell"><div class="sn2">Var(X)</div><div class="sv">\(E(X^2)-[E(X)]^2\)</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 3 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 3</div><h2>Probability Distributions</h2></div>
+  <div class="mod-intro">Standard probability distributions model real-world phenomena: Binomial for coin flips and defects, Poisson for rare events and arrival rates, Normal for measurement errors and heights, Exponential for lifetimes and waiting times.</div>
+
+  <div class="sub">
+    <h3>3.1 Discrete Distributions</h3>
+    <div class="fbox"><span class="flabel">DISCRETE DISTRIBUTIONS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Binomial B(n,p)</div><div class="fv">\(P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}\)<br/>E(X)=np; Var=npq</div></div>
+      <div class="fcell"><div class="fn">Poisson P(λ)</div><div class="fv">\(P(X=k)=\dfrac{e^{-\lambda}\lambda^k}{k!}\)<br/>E(X)=λ; Var(X)=λ</div></div>
+      <div class="fcell"><div class="fn">Binomial→Poisson</div><div class="fv">When n large, p small, np=λ constant</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Binomial Distribution</div>
+    <div class="prob-body"><div class="pq">If a die is thrown 5 times, find P(exactly 2 sixes).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>n=5, k=2, p=1/6, q=5/6</div></div>
+    <div class="step"><div class="sn">2</div><div>\(P(X=2)=\binom{5}{2}(1/6)^2(5/6)^3=10\cdot\frac{1}{36}\cdot\frac{125}{216}=\frac{1250}{7776}\approx0.1608\)</div></div>
+    <div class="ans">P(X=2) ≈ 0.1608 ≈ 16.08%</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>Poisson Distribution</div>
+    <div class="prob-body"><div class="pq">Calls arrive at 3 per minute. Find P(exactly 5 calls in 1 minute).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>λ=3. \(P(X=5)=\frac{e^{-3}\cdot3^5}{5!}=\frac{0.0498\cdot243}{120}=\frac{12.1}{120}\approx0.1008\)</div></div>
+    <div class="ans">P(X=5) ≈ 0.1008 ≈ 10.08%</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>3.2 Continuous Distributions</h3>
+    <div class="fbox"><span class="flabel">CONTINUOUS DISTRIBUTIONS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Normal N(μ,σ²)</div><div class="fv">\(f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\); Standard: \(Z=\frac{X-\mu}{\sigma}\)</div></div>
+      <div class="fcell"><div class="fn">Exponential (λ)</div><div class="fv">\(f(x)=\lambda e^{-\lambda x},\;x\ge0\); E(X)=1/λ; Var=1/λ²</div></div>
+      <div class="fcell"><div class="fn">Gamma Γ(α,β)</div><div class="fv">\(f(x)=\frac{x^{\alpha-1}e^{-x/\beta}}{\beta^\alpha\Gamma(\alpha)}\); E(X)=αβ; Var=αβ²</div></div>
+      <div class="fcell"><div class="fn">Weibull W(α,β)</div><div class="fv">\(f(x)=\frac{\alpha}{\beta^\alpha}x^{\alpha-1}e^{-(x/\beta)^\alpha}\)</div></div>
+      <div class="fcell"><div class="fn">Normal: 68-95-99.7 rule</div><div class="fv">μ±σ: 68%; μ±2σ: 95%; μ±3σ: 99.7%</div></div>
+      <div class="fcell"><div class="fn">Memoryless property</div><div class="fv">Exponential: P(X>s+t|X>s)=P(X>t)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Normal distribution</div>
+    <div class="prob-body"><div class="pq">X~N(50, 25). Find P(45 &lt; X &lt; 60).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(\sigma=5\). \(Z_1=(45-50)/5=-1\); \(Z_2=(60-50)/5=2\)</div></div>
+    <div class="step"><div class="sn">2</div><div>P(−1&lt;Z&lt;2)=Φ(2)−Φ(−1)=0.9772−0.1587=0.8185</div></div>
+    <div class="ans">P(45 &lt; X &lt; 60) ≈ 0.8185 ≈ 81.85%</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 3 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Binomial</div><div class="sv">E=np; Var=npq</div></div>
+    <div class="scell"><div class="sn2">Poisson</div><div class="sv">E=Var=λ</div></div>
+    <div class="scell"><div class="sn2">Normal Z-score</div><div class="sv">\(Z=(X-\mu)/\sigma\)</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 4 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 4</div><h2>Sampling Theory &amp; Confidence Intervals</h2></div>
+  <div class="mod-intro">The Central Limit Theorem is the cornerstone of inferential statistics: sample means are approximately normally distributed regardless of the population distribution, enabling us to construct confidence intervals and conduct hypothesis tests with known error rates.</div>
+
+  <div class="sub">
+    <h3>4.1 Central Limit Theorem &amp; Standard Error</h3>
+    <div class="thm"><span class="thm-title">CENTRAL LIMIT THEOREM (CLT)</span>
+    <p style="margin-top:8px">For a random sample of size n from any population with mean μ and variance σ²:
+    \[\bar{X}\sim N\!\left(\mu,\,\frac{\sigma^2}{n}\right)\text{ approximately (for large n)}\]
+    Standard error of the mean: \(\text{SE}=\dfrac{\sigma}{\sqrt{n}}\)</p></div>
+    <div class="fbox"><span class="flabel">SAMPLING DISTRIBUTIONS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Z-statistic (σ known)</div><div class="fv">\(Z=\dfrac{\bar{X}-\mu}{\sigma/\sqrt{n}}\)</div></div>
+      <div class="fcell"><div class="fn">t-statistic (σ unknown)</div><div class="fv">\(t=\dfrac{\bar{X}-\mu}{s/\sqrt{n}},\;df=n-1\)</div></div>
+      <div class="fcell"><div class="fn">Sample proportion SE</div><div class="fv">\(\text{SE}(\hat{p})=\sqrt{p(1-p)/n}\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>CLT problem</div>
+    <div class="prob-body"><div class="pq">Population: μ=100, σ=20. Sample n=64. Find P(X̄ > 105).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>SE = σ/√n = 20/8 = 2.5. Z=(105−100)/2.5=2</div></div>
+    <div class="step"><div class="sn">2</div><div>P(X̄>105)=P(Z>2)=1−Φ(2)=1−0.9772=0.0228</div></div>
+    <div class="ans">P(X̄ > 105) ≈ 0.0228 ≈ 2.28%</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>4.2 Confidence Intervals</h3>
+    <div class="fbox"><span class="flabel">CONFIDENCE INTERVAL FORMULAS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">CI for μ (σ known, 95%)</div><div class="fv">\(\bar{x}\pm1.96\dfrac{\sigma}{\sqrt{n}}\)</div></div>
+      <div class="fcell"><div class="fn">CI for μ (σ unknown)</div><div class="fv">\(\bar{x}\pm t_{\alpha/2,n-1}\dfrac{s}{\sqrt{n}}\)</div></div>
+      <div class="fcell"><div class="fn">CI for proportion p</div><div class="fv">\(\hat{p}\pm z_{\alpha/2}\sqrt{\hat{p}(1-\hat{p})/n}\)</div></div>
+      <div class="fcell"><div class="fn">Common z values</div><div class="fv">90%: z=1.645; 95%: z=1.96; 99%: z=2.576</div></div>
+      <div class="fcell"><div class="fn">Width of CI</div><div class="fv">Width = 2 × margin of error; wider = less precise</div></div>
+      <div class="fcell"><div class="fn">Sample size for margin E</div><div class="fv">\(n=\left(\dfrac{z_{\alpha/2}\sigma}{E}\right)^2\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Confidence interval for μ</div>
+    <div class="prob-body"><div class="pq">Sample: n=36, x̄=45, s=6. Construct 95% CI for μ.</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Since n=36 (large), use z=1.96. SE=s/√n=6/6=1</div></div>
+    <div class="step"><div class="sn">2</div><div>CI: \(45\pm1.96\times1=45\pm1.96=(43.04,\;46.96)\)</div></div>
+    <div class="ans">95% CI: (43.04, 46.96)</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>t-interval (small sample)</div>
+    <div class="prob-body"><div class="pq">n=10, x̄=72, s=8. Find 95% CI (t₀.₀₂₅,₉ = 2.262).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>SE=8/√10=2.53. Margin=2.262×2.53=5.72</div></div>
+    <div class="step"><div class="sn">2</div><div>CI: (72−5.72, 72+5.72)=(66.28, 77.72)</div></div>
+    <div class="ans">95% CI: (66.28, 77.72)</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 4 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">CLT</div><div class="sv">\(\bar{X}\sim N(\mu,\sigma^2/n)\)</div></div>
+    <div class="scell"><div class="sn2">SE</div><div class="sv">\(\sigma/\sqrt{n}\)</div></div>
+    <div class="scell"><div class="sn2">95% CI (σ known)</div><div class="sv">\(\bar{x}\pm1.96\cdot\text{SE}\)</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 5 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 5</div><h2>Hypothesis Testing</h2></div>
+  <div class="mod-intro">Hypothesis testing provides a formal procedure for deciding whether evidence from a sample contradicts a null hypothesis. The Z-test, t-test, χ² test, and F-test each suit different scenarios based on sample size, known parameters, and data type.</div>
+
+  <div class="sub">
+    <h3>5.1 Framework &amp; Z/t Tests</h3>
+    <div class="fbox"><span class="flabel">HYPOTHESIS TESTING FRAMEWORK</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">H₀ and H₁</div><div class="fv">H₀: null hypothesis (status quo); H₁: alternative (claim to test)</div></div>
+      <div class="fcell"><div class="fn">Type I Error (α)</div><div class="fv">Reject H₀ when true (significance level)</div></div>
+      <div class="fcell"><div class="fn">Type II Error (β)</div><div class="fv">Fail to reject H₀ when false</div></div>
+      <div class="fcell"><div class="fn">Z-test (σ known / large n)</div><div class="fv">\(Z=\dfrac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}\)</div></div>
+      <div class="fcell"><div class="fn">t-test (σ unknown, small n)</div><div class="fv">\(t=\dfrac{\bar{x}-\mu_0}{s/\sqrt{n}},\;df=n-1\)</div></div>
+      <div class="fcell"><div class="fn">Two-sample t-test</div><div class="fv">\(t=\dfrac{\bar{x}_1-\bar{x}_2}{s_p\sqrt{1/n_1+1/n_2}}\), \(df=n_1+n_2-2\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>One-sample Z-test</div>
+    <div class="prob-body"><div class="pq">Claim: μ=50. Sample: n=100, x̄=52, σ=10. Test at α=0.05 (two-tailed).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>H₀: μ=50; H₁: μ≠50. Z=(52−50)/(10/√100)=2/1=2</div></div>
+    <div class="step"><div class="sn">2</div><div>Critical value for two-tailed α=0.05: z_crit=1.96. |Z|=2>1.96</div></div>
+    <div class="step"><div class="sn">3</div><div>Reject H₀. Evidence that μ≠50.</div></div>
+    <div class="ans">Reject H₀ (Z=2 > 1.96 at α=0.05)</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>5.2 Chi-square Test &amp; F-test</h3>
+    <div class="fbox"><span class="flabel">χ² AND F-TEST</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">χ² Goodness-of-fit</div><div class="fv">\(\chi^2=\displaystyle\sum\dfrac{(O_i-E_i)^2}{E_i},\;df=k-1\)</div></div>
+      <div class="fcell"><div class="fn">χ² Test of Independence</div><div class="fv">df=(r−1)(c−1); \(E_{ij}=\frac{\text{Row}_i\times\text{Col}_j}{N}\)</div></div>
+      <div class="fcell"><div class="fn">F-test (variance ratio)</div><div class="fv">\(F=s_1^2/s_2^2\) where \(s_1^2>s_2^2\); df₁=n₁−1, df₂=n₂−1</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Chi-square goodness-of-fit</div>
+    <div class="prob-body"><div class="pq">Observed: O=[20,30,25,25]; Expected: E=[25,25,25,25] (uniform). Test at α=0.05.</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(\chi^2=\frac{(20-25)^2}{25}+\frac{(30-25)^2}{25}+\frac{(25-25)^2}{25}+\frac{(25-25)^2}{25}=\frac{25+25}{25}=2\)</div></div>
+    <div class="step"><div class="sn">2</div><div>df=k−1=3. χ²_crit(0.05, 3)=7.815. χ²=2 &lt; 7.815</div></div>
+    <div class="step"><div class="sn">3</div><div>Fail to reject H₀. Data fits uniform distribution.</div></div>
+    <div class="ans">Fail to reject H₀ (χ²=2 < 7.815). Data is uniformly distributed.</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 5 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Z-test</div><div class="sv">\(Z=(\bar{x}-\mu_0)/(\sigma/\sqrt{n})\)</div></div>
+    <div class="scell"><div class="sn2">χ² test</div><div class="sv">\(\sum(O-E)^2/E\)</div></div>
+    <div class="scell"><div class="sn2">Type I Error α</div><div class="sv">Reject true H₀</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 6 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 6</div><h2>ANOVA &amp; Reliability Theory</h2></div>
+  <div class="mod-intro">Analysis of Variance (ANOVA) tests equality of means across multiple groups simultaneously, avoiding inflation of Type I error from multiple t-tests. Reliability theory quantifies the probability that a system functions over time, essential in engineering and quality management.</div>
+
+  <div class="sub">
+    <h3>6.1 One-way ANOVA (CRD)</h3>
+    <div class="fbox"><span class="flabel">ONE-WAY ANOVA TABLE</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">SS Between (SSA)</div><div class="fv">\(\text{SSA}=\sum_i n_i(\bar{x}_i-\bar{x})^2\)</div></div>
+      <div class="fcell"><div class="fn">SS Within (SSE)</div><div class="fv">\(\text{SSE}=\sum_{i,j}(x_{ij}-\bar{x}_i)^2\)</div></div>
+      <div class="fcell"><div class="fn">F-ratio</div><div class="fv">\(F=\dfrac{\text{MSA}}{\text{MSE}}=\dfrac{\text{SSA}/(k-1)}{\text{SSE}/(N-k)}\)</div></div>
+      <div class="fcell"><div class="fn">Degrees of freedom</div><div class="fv">Between: k−1; Within: N−k; Total: N−1</div></div>
+      <div class="fcell"><div class="fn">Decision rule</div><div class="fv">Reject H₀ (μ₁=μ₂=…=μₖ) if F > F_crit</div></div>
+      <div class="fcell"><div class="fn">Two-way ANOVA (RBD)</div><div class="fv">Add SS for blocks; df=(r−1)(c−1) for error</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>One-way ANOVA</div>
+    <div class="prob-body"><div class="pq">Three groups (k=3, N=12): SSA=60, SSE=90. Test at α=0.05 (F_crit=4.26).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>df₁=k−1=2; df₂=N−k=9. MSA=60/2=30; MSE=90/9=10</div></div>
+    <div class="step"><div class="sn">2</div><div>F=MSA/MSE=30/10=3</div></div>
+    <div class="step"><div class="sn">3</div><div>F=3 &lt; F_crit=4.26 → Fail to reject H₀. No significant difference in means.</div></div>
+    <div class="ans">F=3 < 4.26. Fail to reject H₀. Means are not significantly different.</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>6.2 Reliability Theory</h3>
+    <div class="fbox"><span class="flabel">RELIABILITY FORMULAS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Reliability function</div><div class="fv">\(R(t)=P(T>t)=1-F(t)\)</div></div>
+      <div class="fcell"><div class="fn">Hazard rate (failure rate)</div><div class="fv">\(h(t)=\dfrac{f(t)}{R(t)}\)</div></div>
+      <div class="fcell"><div class="fn">Exponential model</div><div class="fv">\(R(t)=e^{-\lambda t};\;h(t)=\lambda\) (constant)</div></div>
+      <div class="fcell"><div class="fn">MTTF (exp. model)</div><div class="fv">\(\text{MTTF}=\int_0^\infty R(t)\,dt=\frac{1}{\lambda}\)</div></div>
+      <div class="fcell"><div class="fn">Weibull model</div><div class="fv">\(R(t)=e^{-(t/\beta)^\alpha}\); MTTF=\(\beta\Gamma(1+1/\alpha)\)</div></div>
+      <div class="fcell"><div class="fn">Series system</div><div class="fv">\(R_s=\prod_i R_i(t)\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Exponential reliability</div>
+    <div class="prob-body"><div class="pq">A component has failure rate λ=0.01/hour. Find R(100h), MTTF, and h(t).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(R(100)=e^{-0.01\times100}=e^{-1}\approx0.3679\approx36.8\%\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(\text{MTTF}=1/\lambda=1/0.01=100\) hours</div></div>
+    <div class="step"><div class="sn">3</div><div>Hazard rate h(t)=λ=0.01/hour (constant — exponential distribution)</div></div>
+    <div class="ans">R(100)≈36.8%; MTTF=100h; h(t)=0.01/h (constant)</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 6 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">ANOVA F-ratio</div><div class="sv">MSA/MSE</div></div>
+    <div class="scell"><div class="sn2">Reliability R(t)</div><div class="sv">\(e^{-\lambda t}\) (exponential)</div></div>
+    <div class="scell"><div class="sn2">MTTF</div><div class="sv">\(1/\lambda\) (exponential)</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 7 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 7</div><h2>Multiple Regression &amp; Non-parametric Tests</h2></div>
+  <div class="mod-intro">Multiple regression extends simple regression to multiple predictors, essential for real-world data analysis. Non-parametric tests make no assumption about the population distribution and are used when data is ordinal, skewed, or sample sizes are small.</div>
+
+  <div class="sub">
+    <h3>7.1 Multiple Linear Regression</h3>
+    <div class="fbox"><span class="flabel">MULTIPLE REGRESSION</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Model equation</div><div class="fv">\(\hat{y}=b_0+b_1x_1+b_2x_2+\cdots+b_kx_k\)</div></div>
+      <div class="fcell"><div class="fn">Matrix form</div><div class="fv">\(\hat{\mathbf{y}}=X\boldsymbol{\beta}\); \(\hat{\boldsymbol{\beta}}=(X^TX)^{-1}X^T\mathbf{y}\)</div></div>
+      <div class="fcell"><div class="fn">R² (explained var.)</div><div class="fv">\(R^2=1-\dfrac{\text{SSE}}{\text{SST}}\in[0,1]\)</div></div>
+      <div class="fcell"><div class="fn">Adjusted R²</div><div class="fv">\(R^2_{adj}=1-\dfrac{\text{SSE}/(n-k-1)}{\text{SST}/(n-1)}\)</div></div>
+      <div class="fcell"><div class="fn">Overall F-test</div><div class="fv">H₀: all βᵢ=0. \(F=\frac{SSR/k}{SSE/(n-k-1)}\)</div></div>
+      <div class="fcell"><div class="fn">Individual t-test</div><div class="fv">\(t=\hat{b}_j/\text{SE}(\hat{b}_j),\;df=n-k-1\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Interpret multiple regression output</div>
+    <div class="prob-body"><div class="pq">Fitted model: ŷ = 5 + 3x₁ + 2x₂, R²=0.85. Interpret β₁.</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>β₁=3: holding x₂ constant, a unit increase in x₁ increases ŷ by 3 units</div></div>
+    <div class="step"><div class="sn">2</div><div>R²=0.85: 85% of variance in y is explained by x₁ and x₂ — a strong model</div></div>
+    <div class="ans">β₁=3 (partial effect); R²=85% variance explained</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>7.2 Non-parametric Tests</h3>
+    <div class="fbox"><span class="flabel">NON-PARAMETRIC TEST SUMMARY</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Mann-Whitney U test</div><div class="fv">Two independent samples; ranks combined; H₀: equal distributions. \(U=n_1n_2+\frac{n_1(n_1+1)}{2}-R_1\)</div></div>
+      <div class="fcell"><div class="fn">Wilcoxon Signed-Rank</div><div class="fv">Paired samples; rank absolute differences; H₀: symmetric about 0</div></div>
+      <div class="fcell"><div class="fn">Kruskal-Wallis</div><div class="fv">Non-parametric one-way ANOVA. Rank all data; \(H=\frac{12}{N(N+1)}\sum\frac{R_i^2}{n_i}-3(N+1)\sim\chi^2_{k-1}\)</div></div>
+      <div class="fcell"><div class="fn">Sign Test</div><div class="fv">Count + and − signs; binomial distribution with p=0.5</div></div>
+      <div class="fcell"><div class="fn">When to use non-parametric</div><div class="fv">Small samples; non-normal data; ordinal data; outliers present</div></div>
+      <div class="fcell"><div class="fn">Advantage</div><div class="fv">Distribution-free; robust to outliers; works with ranks/ordinal data</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Mann-Whitney U test</div>
+    <div class="prob-body"><div class="pq">Group A: 3,5,7,9 (n₁=4). Group B: 2,4,6,8 (n₂=4). Ranks combined (ascending): 2(B),3(A),4(B),5(A),6(B),7(A),8(B),9(A). R₁ = sum of ranks for A.</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Ranks of Group A: 3→rank2, 5→rank4, 7→rank6, 9→rank8. R₁=2+4+6+8=20</div></div>
+    <div class="step"><div class="sn">2</div><div>\(U=n_1n_2+\frac{n_1(n_1+1)}{2}-R_1=16+10-20=6\)</div></div>
+    <div class="step"><div class="sn">3</div><div>Critical value for n₁=n₂=4, α=0.05: U_crit=1. U=6 > 1 → Fail to reject H₀</div></div>
+    <div class="ans">U = 6; Fail to reject H₀ (no significant difference between groups)</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>Kruskal-Wallis test</div>
+    <div class="prob-body"><div class="pq">3 groups, N=12. Sum of ranks: R₁=22, R₂=30, R₃=26 (each n=4). Compute H.</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(H=\frac{12}{12(13)}\left[\frac{22^2}{4}+\frac{30^2}{4}+\frac{26^2}{4}\right]-3(13)\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(=\frac{1}{13}\left[\frac{484+900+676}{4}\right]-39=\frac{1}{13}\cdot\frac{2060}{4}-39=\frac{515}{13}-39=39.62-39=0.62\)</div></div>
+    <div class="step"><div class="sn">3</div><div>df=k−1=2. χ²_crit(0.05,2)=5.991. H=0.62 &lt; 5.991 → Fail to reject H₀</div></div>
+    <div class="ans">H=0.62 < 5.991. No significant difference among groups.</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 7 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Regression R²</div><div class="sv">\(1-\text{SSE}/\text{SST}\)</div></div>
+    <div class="scell"><div class="sn2">Mann-Whitney U</div><div class="sv">\(n_1n_2+n_1(n_1+1)/2-R_1\)</div></div>
+    <div class="scell"><div class="sn2">Kruskal-Wallis H</div><div class="sv">\(\frac{12}{N(N+1)}\sum R_i^2/n_i-3(N+1)\)</div></div>
+  </div></div>
+</div>
+
+<!-- MASTER FORMULA SHEET -->
+<div class="ms">
+  <h2>BMAT202L — Master Formula Sheet</h2>
+  <div class="ms-sec"><h3>Modules 1–3: Descriptive Stats, Probability &amp; Distributions</h3>
+  <div class="ms-grid">
+    <div class="ms-card"><div class="mc">Variance</div>\(\sigma^2=\Sigma x^2/n-\bar{x}^2\)</div>
+    <div class="ms-card"><div class="mc">Pearson r</div>\(n\Sigma xy-\Sigma x\Sigma y\) over \(\sqrt{D_xD_y}\)</div>
+    <div class="ms-card"><div class="mc">Bayes'</div>\(P(A|B)=P(B|A)P(A)/P(B)\)</div>
+    <div class="ms-card"><div class="mc">Binomial</div>E=np; Var=npq</div>
+    <div class="ms-card"><div class="mc">Poisson</div>E=Var=λ; \(P=e^{-\lambda}\lambda^k/k!\)</div>
+    <div class="ms-card"><div class="mc">Normal Z-score</div>\(Z=(X-\mu)/\sigma\)</div>
+  </div></div>
+  <div class="ms-sec"><h3>Modules 4–5: Inference &amp; Testing</h3>
+  <div class="ms-grid">
+    <div class="ms-card"><div class="mc">CLT</div>\(\bar{X}\sim N(\mu,\sigma^2/n)\)</div>
+    <div class="ms-card"><div class="mc">95% CI</div>\(\bar{x}\pm1.96\sigma/\sqrt{n}\)</div>
+    <div class="ms-card"><div class="mc">Z-test</div>\(Z=(\bar{x}-\mu_0)/(\sigma/\sqrt{n})\)</div>
+    <div class="ms-card"><div class="mc">t-test</div>\(t=(\bar{x}-\mu_0)/(s/\sqrt{n})\)</div>
+    <div class="ms-card"><div class="mc">χ² test</div>\(\Sigma(O-E)^2/E\)</div>
+    <div class="ms-card"><div class="mc">F-test</div>\(s_1^2/s_2^2\)</div>
+  </div></div>
+  <div class="ms-sec"><h3>Modules 6–7: ANOVA, Reliability &amp; Non-parametric</h3>
+  <div class="ms-grid">
+    <div class="ms-card"><div class="mc">ANOVA F</div>MSA/MSE</div>
+    <div class="ms-card"><div class="mc">R(t) exponential</div>\(e^{-\lambda t}\)</div>
+    <div class="ms-card"><div class="mc">MTTF</div>\(1/\lambda\)</div>
+    <div class="ms-card"><div class="mc">Regression R²</div>\(1-\text{SSE}/\text{SST}\)</div>
+    <div class="ms-card"><div class="mc">Mann-Whitney U</div>\(n_1n_2+n_1(n_1+1)/2-R_1\)</div>
+    <div class="ms-card"><div class="mc">Kruskal-Wallis H</div>\(\chi^2_{k-1}\) approx</div>
+  </div></div>
+  <div style="text-align:center;margin-top:44px;padding:24px;background:linear-gradient(135deg,var(--dk),#991b1b);color:#fff;border-radius:12px;">
+    <div style="font-family:'Merriweather',serif;font-size:18px;color:#fca5a5;margin-bottom:6px;">BMAT202L — Complete</div>
+    <div style="font-size:12.5px;opacity:.8;">Probability &amp; Statistics · VIT Chennai</div>
+  </div>
+</div>
+</body></html>

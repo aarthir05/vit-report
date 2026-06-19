@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>BMAT101L – Calculus and its Applications | VIT Chennai</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet"/>
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},
+chtml:{scale:0.88,matchFontHeight:false},options:{skipHtmlTags:['script','noscript','style','textarea']}};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+:root{--dk:#0d2b55;--ac:#c9a84c;--al:#fffbeb;--gl:#dcfce7;--green:#14532d;--muted:#4b5563;--border:#e2e8f0;--bg:#f8fafc;}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:#1e293b;font-size:15px;line-height:1.75;}
+a{color:inherit;}
+
+/* COVER */
+.cover{background:linear-gradient(135deg,#0d2b55 0%,#1a4a7a 55%,#07183a 100%);color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 40px;page-break-after:always;}
+.chip{background:var(--ac);color:var(--dk);font-size:11px;font-weight:800;letter-spacing:2px;padding:5px 18px;border-radius:30px;margin-bottom:20px;text-transform:uppercase;display:inline-block;}
+.cover h1{font-family:'Merriweather',serif;font-size:42px;font-weight:900;line-height:1.2;margin-bottom:12px;}
+.cover h1 span{color:var(--ac);}
+.cover .sub-code{font-size:15px;opacity:.75;margin-bottom:28px;}
+.mod-pills{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:36px;max-width:760px;}
+.mod-pills span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:6px 14px;font-size:12.5px;}
+
+/* TOC */
+.toc{padding:56px 72px;page-break-after:always;background:#fff;}
+.toc h2{font-family:'Merriweather',serif;font-size:26px;color:var(--dk);border-bottom:3px solid var(--ac);padding-bottom:10px;margin-bottom:28px;}
+.toc-item{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.toc-num{background:var(--dk);color:#fff;min-width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.toc-info strong{font-size:14px;color:var(--dk);display:block;}
+.toc-info span{font-size:12px;color:var(--muted);}
+
+/* MODULE */
+.mod{padding:52px 72px;page-break-before:always;background:#fff;}
+.mod:nth-child(even){background:var(--bg);}
+.mod-hdr{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.mod-badge{background:var(--dk);color:#fff;padding:4px 13px;border-radius:5px;font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.mod h2{font-family:'Merriweather',serif;font-size:24px;color:var(--dk);}
+.mod-intro{background:#eff6ff;border-left:4px solid var(--dk);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0 32px;font-size:13.5px;color:var(--muted);}
+
+/* SUBMODULE */
+.sub{margin-bottom:44px;}
+.sub h3{font-size:17px;font-weight:700;color:var(--dk);margin-bottom:9px;padding-left:11px;border-left:4px solid var(--ac);}
+.sub>p{color:var(--muted);font-size:13.5px;margin-bottom:10px;}
+
+/* THEOREM BOX */
+.thm{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:2px solid var(--ac);border-radius:10px;padding:15px 18px;margin:12px 0;position:relative;}
+.thm-title{position:absolute;top:-10px;left:13px;background:var(--ac);color:var(--dk);padding:2px 11px;border-radius:20px;font-size:10.5px;font-weight:800;letter-spacing:.8px;}
+
+/* FORMULA BOX — 3-col grid, align-items:start fixes overlap */
+.fbox{background:linear-gradient(135deg,#dbeafe,#bfdbfe);border:2px solid var(--dk);border-radius:10px;padding:16px 18px;margin:12px 0;position:relative;overflow-x:auto;}
+.flabel{position:absolute;top:-10px;left:13px;background:var(--dk);color:#fff;padding:2px 11px;border-radius:20px;font-size:10.5px;font-weight:800;letter-spacing:.8px;}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;align-items:start;}
+.fgrid.two{grid-template-columns:repeat(2,1fr);}
+.fcell{background:#fff;border-radius:7px;padding:10px 13px;border-left:3px solid var(--ac);overflow:hidden;word-break:break-word;}
+.fcell .fn{font-size:9.5px;color:var(--muted);font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px;}
+.fcell .fv{font-size:13.5px;}
+
+/* PROBLEMS */
+.prob{background:#fff;border:1px solid var(--border);border-radius:11px;margin-bottom:14px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.05);}
+.prob-hdr{background:var(--dk);color:#fff;padding:8px 15px;display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;}
+.pn{background:var(--ac);color:var(--dk);min-width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:800;flex-shrink:0;}
+.prob-body{padding:14px 16px;}
+.pq{font-weight:600;font-size:13.5px;margin-bottom:11px;}
+.sol{background:var(--gl);border:1px solid #bbf7d0;border-radius:7px;padding:12px 15px;}
+.sl{color:var(--green);font-size:9.5px;font-weight:800;letter-spacing:1px;margin-bottom:7px;}
+.step{display:flex;gap:8px;margin-bottom:6px;align-items:flex-start;font-size:13px;}
+.sn{background:var(--green);color:#fff;min-width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.ans{background:var(--dk);color:var(--ac);padding:6px 13px;border-radius:5px;display:inline-block;font-size:13px;font-weight:700;margin-top:7px;}
+
+/* MODULE SUMMARY */
+.msum{background:linear-gradient(135deg,var(--dk),#1a4a7a);color:#fff;border-radius:11px;padding:22px;margin-top:36px;}
+.msum h4{font-family:'Merriweather',serif;font-size:15px;color:var(--ac);margin-bottom:14px;}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
+.scell{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:7px;padding:10px 13px;}
+.sn2{font-size:9.5px;color:var(--ac);font-weight:700;margin-bottom:4px;}
+.sv{font-size:12.5px;}
+
+/* MASTER SHEET */
+.ms{padding:52px 72px;page-break-before:always;}
+.ms h2{font-family:'Merriweather',serif;font-size:24px;color:var(--dk);border-bottom:3px solid var(--ac);padding-bottom:9px;margin-bottom:28px;}
+.ms-sec{margin-bottom:26px;}
+.ms-sec h3{font-size:13px;font-weight:700;color:var(--dk);background:var(--al);padding:6px 13px;border-radius:5px;margin-bottom:10px;}
+.ms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.ms-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:10px 13px;border-left:3px solid var(--dk);overflow:hidden;word-break:break-word;}
+.mc{font-size:9.5px;color:var(--muted);font-weight:700;margin-bottom:3px;text-transform:uppercase;}
+
+/* VIDEO LINK */
+.vlink{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--ac);color:var(--dk);padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;text-decoration:none;margin:6px 0;}
+
+@media print{
+  .mod,.toc,.ms{background:#fff!important;}
+  .mod,.toc,.ms,.cover{box-shadow:none;}
+  @page{margin:10mm 14mm;size:A4 landscape;}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="chip">VIT Chennai · BMAT101L</div>
+  <h1>Calculus and<br/><span>Its Applications</span></h1>
+  <div class="sub-code">Complete Study Guide · 7 Modules · Formula Sheets · Solved Problems</div>
+  <div class="mod-pills">
+    <span>Module 1: Mean Value Theorems</span><span>Module 2: Multivariable Calculus</span>
+    <span>Module 3: Multiple Integrals</span><span>Module 4: Beta &amp; Gamma</span>
+    <span>Module 5: Vector Calculus</span><span>Module 6: Sequences &amp; Series</span>
+    <span>Module 7: Numerical Methods</span>
+  </div>
+  <a class="vlink" href="https://www.video-tutor.net/calculus.html" target="_blank">▶ Watch Calculus Videos</a>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <div class="toc-item"><div class="toc-num">1</div><div class="toc-info"><strong>Mean Value Theorems &amp; Taylor Series</strong><span>Rolle's · LMVT · CMVT · Taylor &amp; Maclaurin expansions</span></div></div>
+  <div class="toc-item"><div class="toc-num">2</div><div class="toc-info"><strong>Multivariable Differential Calculus</strong><span>Partial derivatives · Euler's theorem · Jacobians · Maxima/Minima · Lagrange Multipliers</span></div></div>
+  <div class="toc-item"><div class="toc-num">3</div><div class="toc-info"><strong>Multiple Integrals</strong><span>Double integrals (Cartesian &amp; Polar) · Change of order · Triple integrals · Applications</span></div></div>
+  <div class="toc-item"><div class="toc-num">4</div><div class="toc-info"><strong>Beta &amp; Gamma Functions</strong><span>Gamma function · Beta function · Duplication formula · Applications</span></div></div>
+  <div class="toc-item"><div class="toc-num">5</div><div class="toc-info"><strong>Vector Calculus</strong><span>Gradient · Divergence · Curl · Line integrals · Green's · Stokes' · Gauss theorems</span></div></div>
+  <div class="toc-item"><div class="toc-num">6</div><div class="toc-info"><strong>Sequences &amp; Series</strong><span>Convergence tests · Comparison · Ratio · Root · Alternating · Power series</span></div></div>
+  <div class="toc-item"><div class="toc-num">7</div><div class="toc-info"><strong>Numerical Methods</strong><span>Bisection · Newton-Raphson · Trapezoidal · Simpson's 1/3 rule · Finite differences</span></div></div>
+</div>
+
+<!-- ═══ MODULE 1 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 1</div><h2>Mean Value Theorems &amp; Taylor Series</h2></div>
+  <div class="mod-intro">The Mean Value Theorems connect the derivative of a function to its average rate of change. Taylor and Maclaurin series allow any smooth function to be represented as an infinite polynomial — fundamental for approximations and error analysis.</div>
+
+  <div class="sub">
+    <h3>1.1 Rolle's Theorem &amp; Lagrange's MVT</h3>
+    <div class="thm"><span class="thm-title">ROLLE'S THEOREM</span>
+    <p style="margin-top:8px">If \(f\) is continuous on \([a,b]\), differentiable on \((a,b)\), and \(f(a)=f(b)\), then \(\exists\,c\in(a,b)\) such that \(f'(c)=0\).</p></div>
+    <div class="thm"><span class="thm-title">LAGRANGE'S MVT (LMVT)</span>
+    <p style="margin-top:8px">If \(f\) is continuous on \([a,b]\) and differentiable on \((a,b)\), then \(\exists\,c\in(a,b)\) such that:
+    \[f'(c)=\frac{f(b)-f(a)}{b-a}\]</p></div>
+    <div class="thm"><span class="thm-title">CAUCHY'S MVT (CMVT)</span>
+    <p style="margin-top:8px">If \(f,g\) continuous on \([a,b]\), differentiable on \((a,b)\), \(g'(x)\neq0\), then \(\exists\,c\in(a,b)\) such that:
+    \[\frac{f'(c)}{g'(c)}=\frac{f(b)-f(a)}{g(b)-g(a)}\]</p></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Verify Rolle's Theorem</div>
+    <div class="prob-body"><div class="pq">Verify Rolle's theorem for \(f(x)=x^2-5x+6\) on \([2,3]\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>f is polynomial → continuous and differentiable everywhere ✓</div></div>
+    <div class="step"><div class="sn">2</div><div>\(f(2)=4-10+6=0\) and \(f(3)=9-15+6=0\). So \(f(2)=f(3)\) ✓</div></div>
+    <div class="step"><div class="sn">3</div><div>\(f'(x)=2x-5=0\Rightarrow x=2.5\). Since \(2.5\in(2,3)\), Rolle's theorem is verified ✓</div></div>
+    <div class="ans">c = 2.5 ∈ (2, 3)</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>Apply LMVT</div>
+    <div class="prob-body"><div class="pq">Find c for \(f(x)=x^3-x^2-x+1\) on \([0,2]\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(f(0)=1,\;f(2)=8-4-2+1=3\). Slope \(=\frac{3-1}{2-0}=1\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(f'(x)=3x^2-2x-1=1\Rightarrow3x^2-2x-2=0\Rightarrow x=\frac{2\pm\sqrt{4+24}}{6}=\frac{2\pm\sqrt{28}}{6}\approx\frac{2\pm5.29}{6}\)</div></div>
+    <div class="step"><div class="sn">3</div><div>\(x\approx1.215\) (taking +) or \(x\approx-0.548\) (rejected — not in (0,2)). So c ≈ 1.215 ✓</div></div>
+    <div class="ans">c ≈ 1.215</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>1.2 Taylor's &amp; Maclaurin's Series</h3>
+    <div class="fbox"><span class="flabel">TAYLOR / MACLAURIN FORMULAS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Taylor's Series about x=a</div><div class="fv">\(f(x)=\sum_{n=0}^\infty\frac{f^{(n)}(a)}{n!}(x-a)^n\)</div></div>
+      <div class="fcell"><div class="fn">Maclaurin Series (a = 0)</div><div class="fv">\(f(x)=f(0)+xf'(0)+\frac{x^2}{2!}f''(0)+\cdots\)</div></div>
+      <div class="fcell"><div class="fn">eˣ</div><div class="fv">\(1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\)</div></div>
+      <div class="fcell"><div class="fn">sin x</div><div class="fv">\(x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots\)</div></div>
+      <div class="fcell"><div class="fn">cos x</div><div class="fv">\(1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots\)</div></div>
+      <div class="fcell"><div class="fn">ln(1+x)</div><div class="fv">\(x-\frac{x^2}{2}+\frac{x^3}{3}-\cdots,\;|x|\leq1\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Maclaurin expansion</div>
+    <div class="prob-body"><div class="pq">Expand \(f(x)=e^x\sin x\) up to \(x^4\) using Maclaurin series.</div>
+    <div class="sol"><div class="sl">STEP-BY-STEP SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(e^x=1+x+\frac{x^2}{2}+\frac{x^3}{6}+\frac{x^4}{24}+\cdots\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(\sin x=x-\frac{x^3}{6}+\frac{x^5}{120}-\cdots\)</div></div>
+    <div class="step"><div class="sn">3</div><div>Multiply term by term up to \(x^4\): \(\left(1+x+\frac{x^2}{2}+\frac{x^3}{6}+\frac{x^4}{24}\right)\!\left(x-\frac{x^3}{6}\right)\)</div></div>
+    <div class="step"><div class="sn">4</div><div>Collect: \(x+x^2+\frac{x^3}{2}+\frac{x^4}{6}-\frac{x^3}{6}-\frac{x^4}{6}\cdots=x+x^2+\frac{x^3}{3}-\frac{x^4}{30}+\cdots\)</div></div>
+    <div class="ans">e^x sin x = x + x² + x³/3 − x⁴/30 + ···</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>Approximate using Taylor</div>
+    <div class="prob-body"><div class="pq">Approximate \(\cos(0.2)\) using first three non-zero terms of Maclaurin series.</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(\cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(\cos(0.2)\approx1-\frac{(0.2)^2}{2}+\frac{(0.2)^4}{24}=1-\frac{0.04}{2}+\frac{0.0016}{24}=1-0.02+0.0000667\)</div></div>
+    <div class="ans">cos(0.2) ≈ 0.9800667</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 1 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">LMVT</div><div class="sv">\(f'(c)=\frac{f(b)-f(a)}{b-a}\)</div></div>
+    <div class="scell"><div class="sn2">Taylor about a</div><div class="sv">\(\sum\frac{f^{(n)}(a)}{n!}(x-a)^n\)</div></div>
+    <div class="scell"><div class="sn2">eˣ Maclaurin</div><div class="sv">\(1+x+x^2/2!+x^3/3!+\cdots\)</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 2 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 2</div><h2>Multivariable Differential Calculus</h2></div>
+  <div class="mod-intro">Functions of several variables require partial differentiation. Euler's theorem, Jacobians, and Lagrange multipliers extend single-variable techniques to handle physical problems involving multiple interacting quantities.</div>
+
+  <div class="sub">
+    <h3>2.1 Partial Derivatives</h3>
+    <div class="fbox"><span class="flabel">PARTIAL DERIVATIVE RULES</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Definition</div><div class="fv">\(\frac{\partial f}{\partial x}=\lim_{h\to0}\frac{f(x+h,y)-f(x,y)}{h}\)</div></div>
+      <div class="fcell"><div class="fn">Clairaut's Theorem</div><div class="fv">\(f_{xy}=f_{yx}\) (if continuous)</div></div>
+      <div class="fcell"><div class="fn">Total Differential</div><div class="fv">\(dz=\frac{\partial z}{\partial x}dx+\frac{\partial z}{\partial y}dy\)</div></div>
+      <div class="fcell"><div class="fn">Chain Rule (composite)</div><div class="fv">\(\frac{dz}{dt}=\frac{\partial z}{\partial x}\frac{dx}{dt}+\frac{\partial z}{\partial y}\frac{dy}{dt}\)</div></div>
+      <div class="fcell"><div class="fn">Implicit (F(x,y,z)=0)</div><div class="fv">\(\frac{\partial z}{\partial x}=-\frac{F_x}{F_z},\;\frac{\partial z}{\partial y}=-\frac{F_y}{F_z}\)</div></div>
+      <div class="fcell"><div class="fn">Notation</div><div class="fv">\(f_{xx}=\partial^2f/\partial x^2,\;f_{xy}=\partial^2f/\partial x\partial y\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Second-order partial derivatives</div>
+    <div class="prob-body"><div class="pq">If \(u=x^3y^2+3xy^3\), find \(u_{xx},u_{yy},u_{xy}\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(u_x=3x^2y^2+3y^3\Rightarrow u_{xx}=6xy^2\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(u_y=2x^3y+9xy^2\Rightarrow u_{yy}=2x^3+18xy\)</div></div>
+    <div class="step"><div class="sn">3</div><div>\(u_{xy}=\frac{\partial}{\partial y}(3x^2y^2+3y^3)=6x^2y+9y^2\)</div></div>
+    <div class="ans">u_xx=6xy², u_yy=2x³+18xy, u_xy=6x²y+9y²</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>2.2 Euler's Theorem for Homogeneous Functions</h3>
+    <div class="thm"><span class="thm-title">EULER'S THEOREM</span>
+    <p style="margin-top:8px">If \(f(x,y)\) is homogeneous of degree \(n\), then:
+    \[x\frac{\partial f}{\partial x}+y\frac{\partial f}{\partial y}=nf\]
+    Corollary: \(x^2f_{xx}+2xyf_{xy}+y^2f_{yy}=n(n-1)f\)</p></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Apply Euler's Theorem</div>
+    <div class="prob-body"><div class="pq">If \(u=\sin^{-1}\!\left(\frac{x+y}{\sqrt{x}+\sqrt{y}}\right)\), show that \(xu_x+yu_y=\tfrac{1}{2}\tan u\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Let \(f=\sin u=\frac{x+y}{\sqrt{x}+\sqrt{y}}\). Check degree: f(tx,ty)=\frac{t(x+y)}{t^{1/2}(\sqrt{x}+\sqrt{y})}=t^{1/2}f\). So f is homogeneous of degree n=1/2.</div></div>
+    <div class="step"><div class="sn">2</div><div>By Euler's: \(x\frac{\partial(\sin u)}{\partial x}+y\frac{\partial(\sin u)}{\partial y}=\tfrac{1}{2}\sin u\)</div></div>
+    <div class="step"><div class="sn">3</div><div>\(\cos u\!\left(xu_x+yu_y\right)=\tfrac{1}{2}\sin u\Rightarrow xu_x+yu_y=\tfrac{1}{2}\tan u\) ✓</div></div>
+    <div class="ans">xu_x + yu_y = ½ tan u  (proved)</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>2.3 Jacobians</h3>
+    <div class="fbox"><span class="flabel">JACOBIAN DETERMINANT</span>
+    <div class="fgrid two">
+      <div class="fcell"><div class="fn">Jacobian J = ∂(u,v)/∂(x,y)</div><div class="fv">\(J=\begin{vmatrix}\frac{\partial u}{\partial x}&\frac{\partial u}{\partial y}\\\frac{\partial v}{\partial x}&\frac{\partial v}{\partial y}\end{vmatrix}\)</div></div>
+      <div class="fcell"><div class="fn">Inverse Rule</div><div class="fv">\(J\cdot J'=1\) where \(J'=\partial(x,y)/\partial(u,v)\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Jacobian of polar coordinates</div>
+    <div class="prob-body"><div class="pq">Find \(\partial(x,y)/\partial(r,\theta)\) where \(x=r\cos\theta,\;y=r\sin\theta\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(J=\begin{vmatrix}x_r&x_\theta\\y_r&y_\theta\end{vmatrix}=\begin{vmatrix}\cos\theta&-r\sin\theta\\\sin\theta&r\cos\theta\end{vmatrix}\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(=r\cos^2\theta+r\sin^2\theta=r\)</div></div>
+    <div class="ans">J = r  (hence dA = r dr dθ in polar)</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>2.4 Maxima, Minima &amp; Saddle Points</h3>
+    <div class="fbox"><span class="flabel">SECOND DERIVATIVE TEST</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Critical Points</div><div class="fv">Solve \(f_x=0\) and \(f_y=0\) simultaneously</div></div>
+      <div class="fcell"><div class="fn">Discriminant D</div><div class="fv">\(D=f_{xx}f_{yy}-(f_{xy})^2\)</div></div>
+      <div class="fcell"><div class="fn">Classification</div><div class="fv">D>0,f_xx>0 → Min; D>0,f_xx&lt;0 → Max; D&lt;0 → Saddle; D=0 → test fails</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Find extrema</div>
+    <div class="prob-body"><div class="pq">Find extrema of \(f(x,y)=x^3+3xy^2-15x-12y\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(f_x=3x^2+3y^2-15=0\Rightarrow x^2+y^2=5\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(f_y=6xy-12=0\Rightarrow xy=2\Rightarrow y=2/x\)</div></div>
+    <div class="step"><div class="sn">3</div><div>Substitute: \(x^2+4/x^2=5\Rightarrow x^4-5x^2+4=0\Rightarrow(x^2-1)(x^2-4)=0\). So \(x=\pm1,\pm2\).</div></div>
+    <div class="step"><div class="sn">4</div><div>Points: (1,2),(−1,−2),(2,1),(−2,−1). Compute D at each: \(f_{xx}=6x,\;f_{yy}=6x,\;f_{xy}=6y\). D=(6x)(6x)-(6y)²=36(x²-y²).</div></div>
+    <div class="step"><div class="sn">5</div><div>At (2,1): D=36(4-1)>0,f_xx=12>0 → <strong>local min</strong>. At (−2,−1): D>0,f_xx<0 → <strong>local max</strong>.</div></div>
+    <div class="ans">Local min at (2,1); Local max at (−2,−1)</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>2.5 Lagrange Multipliers</h3>
+    <div class="thm"><span class="thm-title">LAGRANGE'S METHOD</span>
+    <p style="margin-top:8px">To extremise \(f(x,y,z)\) subject to \(g(x,y,z)=0\): solve \(\nabla f=\lambda\nabla g\) simultaneously with the constraint.</p></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Lagrange multipliers</div>
+    <div class="prob-body"><div class="pq">Find the maximum of \(f=xyz\) subject to \(x+y+z=a\) (\(x,y,z>0\)).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(\nabla f=\lambda\nabla g\Rightarrow yz=\lambda,\;xz=\lambda,\;xy=\lambda\)</div></div>
+    <div class="step"><div class="sn">2</div><div>From equations: \(yz=xz\Rightarrow x=y\) and \(xz=xy\Rightarrow y=z\). So \(x=y=z\).</div></div>
+    <div class="step"><div class="sn">3</div><div>Constraint: \(3x=a\Rightarrow x=y=z=a/3\). Max value: \(f=(a/3)^3=a^3/27\)</div></div>
+    <div class="ans">Maximum of xyz = a³/27 at x=y=z=a/3</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 2 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Euler's Theorem</div><div class="sv">\(xf_x+yf_y=nf\)</div></div>
+    <div class="scell"><div class="sn2">Discriminant D</div><div class="sv">\(f_{xx}f_{yy}-(f_{xy})^2\)</div></div>
+    <div class="scell"><div class="sn2">Polar Jacobian</div><div class="sv">\(\partial(x,y)/\partial(r,\theta)=r\)</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 3 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 3</div><h2>Multiple Integrals</h2></div>
+  <div class="mod-intro">Double and triple integrals extend single integration to higher dimensions, computing areas, volumes, masses, and moments of inertia. Changing variables (especially to polar/cylindrical/spherical coordinates) simplifies many integrals.</div>
+
+  <div class="sub">
+    <h3>3.1 Double Integrals — Cartesian</h3>
+    <div class="fbox"><span class="flabel">DOUBLE INTEGRAL RULES</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Iterated integral</div><div class="fv">\(\iint_R f\,dA=\int_a^b\!\int_{g_1(x)}^{g_2(x)}\!f(x,y)\,dy\,dx\)</div></div>
+      <div class="fcell"><div class="fn">Change of Order</div><div class="fv">Draw the region, re-express limits with y as outer variable</div></div>
+      <div class="fcell"><div class="fn">Area</div><div class="fv">\(A=\iint_R dA\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Evaluate a double integral</div>
+    <div class="prob-body"><div class="pq">Evaluate \(\displaystyle\int_0^1\int_0^x(x^2+y^2)\,dy\,dx\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Inner integral: \(\int_0^x(x^2+y^2)\,dy=\left[x^2y+\frac{y^3}{3}\right]_0^x=x^3+\frac{x^3}{3}=\frac{4x^3}{3}\)</div></div>
+    <div class="step"><div class="sn">2</div><div>Outer: \(\int_0^1\frac{4x^3}{3}\,dx=\frac{4}{3}\cdot\frac{x^4}{4}\Big|_0^1=\frac{1}{3}\)</div></div>
+    <div class="ans">1/3</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>Change of order of integration</div>
+    <div class="prob-body"><div class="pq">Change the order and evaluate \(\displaystyle\int_0^1\int_x^1 e^{y^2}\,dy\,dx\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Region: \(0\leq x\leq1,\;x\leq y\leq1\). In reversed order: \(0\leq y\leq1,\;0\leq x\leq y\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(\int_0^1\int_0^y e^{y^2}\,dx\,dy=\int_0^1 e^{y^2}\cdot y\,dy=\frac{1}{2}\left[e^{y^2}\right]_0^1=\frac{e-1}{2}\)</div></div>
+    <div class="ans">(e−1)/2</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>3.2 Double Integrals in Polar Coordinates</h3>
+    <div class="fbox"><span class="flabel">POLAR COORDINATE INTEGRAL</span>
+    <div class="fgrid two">
+      <div class="fcell"><div class="fn">Substitution</div><div class="fv">\(x=r\cos\theta,\;y=r\sin\theta,\;dA=r\,dr\,d\theta\)</div></div>
+      <div class="fcell"><div class="fn">Circle x²+y²=a²</div><div class="fv">\(r\) ranges 0 to a; \(\theta\) ranges 0 to 2π</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Polar integral for area</div>
+    <div class="prob-body"><div class="pq">Find the area enclosed by \(r=a(1+\cos\theta)\) (cardioid).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(A=\frac{1}{2}\int_0^{2\pi}r^2\,d\theta=\frac{1}{2}\int_0^{2\pi}a^2(1+\cos\theta)^2\,d\theta\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(=\frac{a^2}{2}\int_0^{2\pi}(1+2\cos\theta+\cos^2\theta)\,d\theta=\frac{a^2}{2}\left[2\pi+0+\pi\right]=\frac{3\pi a^2}{2}\)</div></div>
+    <div class="ans">A = 3πa²/2</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>3.3 Triple Integrals &amp; Applications</h3>
+    <div class="fbox"><span class="flabel">TRIPLE INTEGRAL APPLICATIONS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Volume</div><div class="fv">\(V=\iiint_E dV\)</div></div>
+      <div class="fcell"><div class="fn">Cylindrical coordinates</div><div class="fv">\(dV=r\,dr\,d\theta\,dz\)</div></div>
+      <div class="fcell"><div class="fn">Spherical coordinates</div><div class="fv">\(dV=\rho^2\sin\phi\,d\rho\,d\phi\,d\theta\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Volume by triple integral</div>
+    <div class="prob-body"><div class="pq">Find the volume bounded by \(z=x^2+y^2\) and \(z=4\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Intersection: \(x^2+y^2=4\), i.e., r=2 in polar. Switch to cylindrical: \(V=\int_0^{2\pi}\int_0^2\int_{r^2}^4 r\,dz\,dr\,d\theta\)</div></div>
+    <div class="step"><div class="sn">2</div><div>Inner z-integral: \(r(4-r^2)\). Radial: \(\int_0^2 r(4-r^2)dr=[2r^2-r^4/4]_0^2=8-4=4\)</div></div>
+    <div class="step"><div class="sn">3</div><div>\(V=\int_0^{2\pi}4\,d\theta=8\pi\)</div></div>
+    <div class="ans">V = 8π</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 3 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Polar Area element</div><div class="sv">\(dA=r\,dr\,d\theta\)</div></div>
+    <div class="scell"><div class="sn2">Cylindrical dV</div><div class="sv">\(r\,dr\,d\theta\,dz\)</div></div>
+    <div class="scell"><div class="sn2">Change order tip</div><div class="sv">Sketch region, swap dy dx</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 4 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 4</div><h2>Beta &amp; Gamma Functions</h2></div>
+  <div class="mod-intro">Beta and Gamma functions evaluate integrals involving exponentials and powers that arise throughout physics and engineering. Gamma generalises the factorial; Beta links to probability distributions and appears in evaluating definite integrals.</div>
+
+  <div class="sub">
+    <h3>4.1 Gamma Function</h3>
+    <div class="fbox"><span class="flabel">GAMMA FUNCTION</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Definition</div><div class="fv">\(\Gamma(n)=\int_0^\infty x^{n-1}e^{-x}\,dx,\;n>0\)</div></div>
+      <div class="fcell"><div class="fn">Recurrence</div><div class="fv">\(\Gamma(n+1)=n\Gamma(n);\;\Gamma(n+1)=n!\) for integer n</div></div>
+      <div class="fcell"><div class="fn">Special values</div><div class="fv">\(\Gamma(1)=1;\;\Gamma(1/2)=\sqrt{\pi};\;\Gamma(3/2)=\sqrt{\pi}/2\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Evaluate using Gamma</div>
+    <div class="prob-body"><div class="pq">Evaluate \(\displaystyle\int_0^\infty x^4e^{-3x}\,dx\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Let \(t=3x\Rightarrow x=t/3,\;dx=dt/3\). Integral becomes: \(\int_0^\infty(t/3)^4e^{-t}\frac{dt}{3}=\frac{1}{3^5}\int_0^\infty t^4e^{-t}dt\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(=\frac{\Gamma(5)}{3^5}=\frac{4!}{243}=\frac{24}{243}=\frac{8}{81}\)</div></div>
+    <div class="ans">8/81</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>Compute Γ(7/2)</div>
+    <div class="prob-body"><div class="pq">Find \(\Gamma(7/2)\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(\Gamma(7/2)=\frac{5}{2}\Gamma(5/2)=\frac{5}{2}\cdot\frac{3}{2}\Gamma(3/2)=\frac{5}{2}\cdot\frac{3}{2}\cdot\frac{1}{2}\Gamma(1/2)=\frac{15}{8}\sqrt{\pi}\)</div></div>
+    <div class="ans">Γ(7/2) = 15√π/8</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>4.2 Beta Function</h3>
+    <div class="fbox"><span class="flabel">BETA FUNCTION</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Definition</div><div class="fv">\(B(m,n)=\int_0^1 x^{m-1}(1-x)^{n-1}\,dx\)</div></div>
+      <div class="fcell"><div class="fn">Relation to Gamma</div><div class="fv">\(B(m,n)=\dfrac{\Gamma(m)\Gamma(n)}{\Gamma(m+n)}\)</div></div>
+      <div class="fcell"><div class="fn">Trig form</div><div class="fv">\(B(m,n)=2\int_0^{\pi/2}\sin^{2m-1}\!\theta\cos^{2n-1}\!\theta\,d\theta\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Evaluate with Beta function</div>
+    <div class="prob-body"><div class="pq">Evaluate \(\displaystyle\int_0^{\pi/2}\sin^5\theta\cos^3\theta\,d\theta\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Use trig form: \(=\frac{1}{2}B(3,2)=\frac{1}{2}\cdot\frac{\Gamma(3)\Gamma(2)}{\Gamma(5)}=\frac{1}{2}\cdot\frac{2!\cdot1!}{4!}=\frac{1}{2}\cdot\frac{2}{24}=\frac{1}{24}\)</div></div>
+    <div class="ans">1/24</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 4 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Γ(n+1)</div><div class="sv">\(n\Gamma(n)\)</div></div>
+    <div class="scell"><div class="sn2">B(m,n)</div><div class="sv">\(\Gamma(m)\Gamma(n)/\Gamma(m+n)\)</div></div>
+    <div class="scell"><div class="sn2">Γ(1/2)</div><div class="sv">\(\sqrt{\pi}\)</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 5 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 5</div><h2>Vector Calculus</h2></div>
+  <div class="mod-intro">Vector calculus unifies differentiation and integration in three dimensions. The gradient points in the direction of steepest ascent; divergence and curl characterise flux and rotation; the integral theorems of Green, Stokes, and Gauss link these operations beautifully.</div>
+
+  <div class="sub">
+    <h3>5.1 Gradient, Divergence &amp; Curl</h3>
+    <div class="fbox"><span class="flabel">DIFFERENTIAL OPERATORS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Del operator ∇</div><div class="fv">\(\nabla=\mathbf{i}\frac{\partial}{\partial x}+\mathbf{j}\frac{\partial}{\partial y}+\mathbf{k}\frac{\partial}{\partial z}\)</div></div>
+      <div class="fcell"><div class="fn">Gradient (scalar → vector)</div><div class="fv">\(\text{grad}\,f=\nabla f=f_x\mathbf{i}+f_y\mathbf{j}+f_z\mathbf{k}\)</div></div>
+      <div class="fcell"><div class="fn">Divergence (vector → scalar)</div><div class="fv">\(\text{div}\,\mathbf{F}=\nabla\cdot\mathbf{F}=\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z}\)</div></div>
+      <div class="fcell"><div class="fn">Curl (vector → vector)</div><div class="fv">\(\text{curl}\,\mathbf{F}=\nabla\times\mathbf{F}=\begin{vmatrix}\mathbf{i}&\mathbf{j}&\mathbf{k}\\P_x&P_y&P_z\\Q_x&Q_y&Q_z\end{vmatrix}\)</div></div>
+      <div class="fcell"><div class="fn">Solenoidal field</div><div class="fv">\(\nabla\cdot\mathbf{F}=0\)</div></div>
+      <div class="fcell"><div class="fn">Irrotational field</div><div class="fv">\(\nabla\times\mathbf{F}=\mathbf{0}\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Directional derivative</div>
+    <div class="prob-body"><div class="pq">Find the directional derivative of \(\phi=xy^2+yz^3\) at \((1,-1,1)\) in direction of \(\mathbf{i}+2\mathbf{j}+2\mathbf{k}\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(\nabla\phi=(y^2)\mathbf{i}+(2xy+z^3)\mathbf{j}+(3yz^2)\mathbf{k}\). At (1,−1,1): \(\nabla\phi=\mathbf{i}+(-2+1)\mathbf{j}+(-3)\mathbf{k}=\mathbf{i}-\mathbf{j}-3\mathbf{k}\)</div></div>
+    <div class="step"><div class="sn">2</div><div>Unit vector: \(\hat{n}=\frac{\mathbf{i}+2\mathbf{j}+2\mathbf{k}}{3}\)</div></div>
+    <div class="step"><div class="sn">3</div><div>\(D_{\hat{n}}\phi=\nabla\phi\cdot\hat{n}=\frac{1-2-6}{3}=\frac{-7}{3}\)</div></div>
+    <div class="ans">Directional derivative = −7/3</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>5.2 Green's, Stokes' &amp; Gauss Theorems</h3>
+    <div class="fbox"><span class="flabel">INTEGRAL THEOREMS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Green's Theorem (2D)</div><div class="fv">\(\oint_C(P\,dx+Q\,dy)=\iint_R\!\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)\!dA\)</div></div>
+      <div class="fcell"><div class="fn">Stokes' Theorem (3D)</div><div class="fv">\(\oint_C\mathbf{F}\cdot d\mathbf{r}=\iint_S(\nabla\times\mathbf{F})\cdot d\mathbf{S}\)</div></div>
+      <div class="fcell"><div class="fn">Gauss Divergence Theorem</div><div class="fv">\(\oiint_S\mathbf{F}\cdot d\mathbf{S}=\iiint_V(\nabla\cdot\mathbf{F})\,dV\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Apply Green's Theorem</div>
+    <div class="prob-body"><div class="pq">Evaluate \(\oint_C(y\,dx-x\,dy)\) where C is the circle \(x^2+y^2=4\) (counterclockwise).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(P=y,\;Q=-x\). \(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}=-1-1=-2\)</div></div>
+    <div class="step"><div class="sn">2</div><div>By Green's: \(\iint_R(-2)dA=-2\cdot\pi(2)^2=-8\pi\)</div></div>
+    <div class="ans">−8π</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>Apply Gauss Divergence Theorem</div>
+    <div class="prob-body"><div class="pq">Evaluate \(\oiint_S\mathbf{F}\cdot d\mathbf{S}\) where \(\mathbf{F}=x\mathbf{i}+y\mathbf{j}+z\mathbf{k}\) over the sphere \(x^2+y^2+z^2=a^2\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(\nabla\cdot\mathbf{F}=1+1+1=3\)</div></div>
+    <div class="step"><div class="sn">2</div><div>By Gauss: \(\iiint_V 3\,dV=3\cdot\frac{4}{3}\pi a^3=4\pi a^3\)</div></div>
+    <div class="ans">4πa³</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 5 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Gradient</div><div class="sv">\(\nabla f=f_x\mathbf{i}+f_y\mathbf{j}+f_z\mathbf{k}\)</div></div>
+    <div class="scell"><div class="sn2">Green's Theorem</div><div class="sv">\(\oint Pdx+Qdy=\iint(Q_x-P_y)dA\)</div></div>
+    <div class="scell"><div class="sn2">Gauss Theorem</div><div class="sv">\(\oiint\mathbf{F}\cdot d\mathbf{S}=\iiint\nabla\cdot\mathbf{F}\,dV\)</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 6 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 6</div><h2>Sequences &amp; Series</h2></div>
+  <div class="mod-intro">Sequences are ordered lists of numbers converging to a limit. Series are sums of sequences. Convergence tests determine whether infinite sums converge to finite values — critical for validating Taylor series, Fourier series, and numerical approximations.</div>
+
+  <div class="sub">
+    <h3>6.1 Sequences — Convergence</h3>
+    <div class="fbox"><span class="flabel">SEQUENCE TESTS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Convergence</div><div class="fv">\(\lim_{n\to\infty}a_n=L\) (finite) → converges to L</div></div>
+      <div class="fcell"><div class="fn">Monotone Convergence Thm</div><div class="fv">Monotone + bounded → converges</div></div>
+      <div class="fcell"><div class="fn">Sandwich Theorem</div><div class="fv">If \(b_n\leq a_n\leq c_n\) and \(b_n,c_n\to L\), then \(a_n\to L\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Convergence of a sequence</div>
+    <div class="prob-body"><div class="pq">Show that \(a_n=\dfrac{3n^2+5}{2n^2-1}\) converges and find its limit.</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Divide numerator and denominator by \(n^2\): \(a_n=\dfrac{3+5/n^2}{2-1/n^2}\)</div></div>
+    <div class="step"><div class="sn">2</div><div>As \(n\to\infty\): numerator \(\to3\), denominator \(\to2\). So \(a_n\to3/2\)</div></div>
+    <div class="ans">Sequence converges to 3/2</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>6.2 Tests for Series Convergence</h3>
+    <div class="fbox"><span class="flabel">CONVERGENCE TESTS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Comparison Test</div><div class="fv">If \(0\leq a_n\leq b_n\): \(\sum b_n\) converges \(\Rightarrow\sum a_n\) converges</div></div>
+      <div class="fcell"><div class="fn">Ratio Test (D'Alembert)</div><div class="fv">\(L=\lim|\frac{a_{n+1}}{a_n}|\): \(L<1\) conv; \(L>1\) div; \(L=1\) inconclusive</div></div>
+      <div class="fcell"><div class="fn">Root Test (Cauchy)</div><div class="fv">\(L=\lim|a_n|^{1/n}\): \(L<1\) conv; \(L>1\) div</div></div>
+      <div class="fcell"><div class="fn">Integral Test</div><div class="fv">\(\sum f(n)\) and \(\int_1^\infty f(x)dx\) both converge or both diverge</div></div>
+      <div class="fcell"><div class="fn">Alternating Series Test</div><div class="fv">\(\sum(-1)^n a_n\) converges if \(a_n\) decreasing and \(a_n\to0\)</div></div>
+      <div class="fcell"><div class="fn">p-series</div><div class="fv">\(\sum 1/n^p\) converges iff \(p>1\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Ratio test</div>
+    <div class="prob-body"><div class="pq">Test convergence of \(\displaystyle\sum_{n=1}^\infty\frac{n!}{2^n}\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(\frac{a_{n+1}}{a_n}=\frac{(n+1)!/2^{n+1}}{n!/2^n}=\frac{n+1}{2}\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(L=\lim_{n\to\infty}\frac{n+1}{2}=\infty>1\Rightarrow\) Series <strong>diverges</strong></div></div>
+    <div class="ans">Diverges (ratio → ∞)</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>Root test</div>
+    <div class="prob-body"><div class="pq">Test \(\displaystyle\sum_{n=1}^\infty\left(\frac{n}{n+1}\right)^{n^2}\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(L=\lim_{n\to\infty}\left(\frac{n}{n+1}\right)^n=\lim\left(1-\frac{1}{n+1}\right)^n=e^{-1}=\frac{1}{e}<1\)</div></div>
+    <div class="step"><div class="sn">2</div><div>Since \(L=1/e<1\), series <strong>converges</strong></div></div>
+    <div class="ans">Converges (L = 1/e < 1)</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>6.3 Power Series &amp; Radius of Convergence</h3>
+    <div class="fbox"><span class="flabel">POWER SERIES</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Power series form</div><div class="fv">\(\sum_{n=0}^\infty c_n(x-a)^n\) converges in \(|x-a|<R\)</div></div>
+      <div class="fcell"><div class="fn">Radius of Convergence</div><div class="fv">\(R=\lim\left|\frac{c_n}{c_{n+1}}\right|\) or \(R=1/\limsup|c_n|^{1/n}\)</div></div>
+      <div class="fcell"><div class="fn">Interval of Convergence</div><div class="fv">Check endpoints separately for absolute convergence</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Find radius of convergence</div>
+    <div class="prob-body"><div class="pq">Find the radius of convergence of \(\displaystyle\sum_{n=1}^\infty\frac{x^n}{n\cdot3^n}\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Apply ratio test: \(\left|\frac{a_{n+1}}{a_n}\right|=\left|\frac{x^{n+1}}{(n+1)3^{n+1}}\cdot\frac{n\cdot3^n}{x^n}\right|=\frac{n}{n+1}\cdot\frac{|x|}{3}\to\frac{|x|}{3}\)</div></div>
+    <div class="step"><div class="sn">2</div><div>Converges when \(|x|/3<1\Rightarrow|x|<3\). So \(R=3\)</div></div>
+    <div class="ans">R = 3</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 6 — Key Tests</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Ratio Test L</div><div class="sv">\(\lim|a_{n+1}/a_n|\): <1 conv, >1 div</div></div>
+    <div class="scell"><div class="sn2">Root Test L</div><div class="sv">\(\lim|a_n|^{1/n}\): <1 conv, >1 div</div></div>
+    <div class="scell"><div class="sn2">p-series</div><div class="sv">\(\sum 1/n^p\) conv iff p>1</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 7 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 7</div><h2>Numerical Methods</h2></div>
+  <div class="mod-intro">When exact solutions are impossible, numerical methods give highly accurate approximations. Root-finding locates zeros of functions; numerical integration computes definite integrals with controllable error; finite differences interpolate and differentiate tabulated data.</div>
+
+  <div class="sub">
+    <h3>7.1 Root Finding Methods</h3>
+    <div class="fbox"><span class="flabel">ROOT FINDING</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Bisection Method</div><div class="fv">If f(a)f(b)<0, root in [a,b]. New midpoint c=(a+b)/2; repeat on half containing sign change</div></div>
+      <div class="fcell"><div class="fn">Newton-Raphson</div><div class="fv">\(x_{n+1}=x_n-\dfrac{f(x_n)}{f'(x_n)}\)</div></div>
+      <div class="fcell"><div class="fn">Convergence</div><div class="fv">Bisection: linear; Newton-Raphson: quadratic (very fast near root)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Newton-Raphson method</div>
+    <div class="prob-body"><div class="pq">Find a root of \(f(x)=x^3-x-1=0\) starting from \(x_0=1.5\) (2 iterations).</div>
+    <div class="sol"><div class="sl">STEP-BY-STEP SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(f'(x)=3x^2-1\)</div></div>
+    <div class="step"><div class="sn">2</div><div>Iter 1: \(f(1.5)=3.375-1.5-1=0.875;\;f'(1.5)=5.75\). \(x_1=1.5-\frac{0.875}{5.75}=1.5-0.1522=1.3478\)</div></div>
+    <div class="step"><div class="sn">3</div><div>Iter 2: \(f(1.3478)=2.4448-1.3478-1=0.0970;\;f'(1.3478)=4.4463\). \(x_2=1.3478-\frac{0.0970}{4.4463}=1.3260\)</div></div>
+    <div class="ans">Root ≈ 1.3260 (true root ≈ 1.3247)</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>7.2 Numerical Integration</h3>
+    <div class="fbox"><span class="flabel">NUMERICAL INTEGRATION FORMULAS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Trapezoidal Rule</div><div class="fv">\(\int_a^b f\,dx\approx\frac{h}{2}\left[y_0+2(y_1+\cdots+y_{n-1})+y_n\right],\;h=\frac{b-a}{n}\)</div></div>
+      <div class="fcell"><div class="fn">Simpson's 1/3 Rule (n even)</div><div class="fv">\(\approx\frac{h}{3}\left[y_0+4y_1+2y_2+4y_3+\cdots+4y_{n-1}+y_n\right]\)</div></div>
+      <div class="fcell"><div class="fn">Error — Trapezoidal</div><div class="fv">\(E\approx-\frac{(b-a)h^2}{12}f''(\xi)\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Simpson's 1/3 rule</div>
+    <div class="prob-body"><div class="pq">Evaluate \(\displaystyle\int_0^1\frac{1}{1+x}\,dx\) using Simpson's rule with n=4.</div>
+    <div class="sol"><div class="sl">STEP-BY-STEP SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>h=0.25. Values: \(y_0=f(0)=1,\;y_1=f(0.25)=0.8,\;y_2=f(0.5)=0.667,\;y_3=f(0.75)=0.571,\;y_4=f(1)=0.5\)</div></div>
+    <div class="step"><div class="sn">2</div><div>Simpson's: \(\frac{0.25}{3}[1+4(0.8)+2(0.667)+4(0.571)+0.5]=\frac{0.25}{3}[1+3.2+1.333+2.286+0.5]\)</div></div>
+    <div class="step"><div class="sn">3</div><div>\(=\frac{0.25}{3}[8.319]=\frac{2.0798}{3}=0.6933\)</div></div>
+    <div class="step"><div class="sn">4</div><div>Exact: \(\ln 2=0.6931\). Error = 0.0002 (excellent!)</div></div>
+    <div class="ans">≈ 0.6933 (exact: ln2 = 0.6931)</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>7.3 Finite Differences &amp; Interpolation</h3>
+    <div class="fbox"><span class="flabel">FINITE DIFFERENCE OPERATORS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Forward difference Δ</div><div class="fv">\(\Delta y_n=y_{n+1}-y_n;\;\Delta^2y_n=\Delta y_{n+1}-\Delta y_n\)</div></div>
+      <div class="fcell"><div class="fn">Backward difference ∇</div><div class="fv">\(\nabla y_n=y_n-y_{n-1}\)</div></div>
+      <div class="fcell"><div class="fn">Newton's Forward Interpolation</div><div class="fv">\(y=y_0+s\Delta y_0+\frac{s(s-1)}{2!}\Delta^2y_0+\cdots\) where \(s=\frac{x-x_0}{h}\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Forward difference table</div>
+    <div class="prob-body"><div class="pq">Construct the forward difference table for f: x=0→1, f=1; x=1→2, f=8; x=2→3, f=27; x=3→4, f=64.</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Δy: 8−1=7, 27−8=19, 64−27=37</div></div>
+    <div class="step"><div class="sn">2</div><div>Δ²y: 19−7=12, 37−19=18</div></div>
+    <div class="step"><div class="sn">3</div><div>Δ³y: 18−12=6. Δ⁴y=0. (Note: for f(x)=x³, Δ³f=3!=6 ✓)</div></div>
+    <div class="ans">Δ³y = 6 (constant for cubic polynomial)</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 7 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Newton-Raphson</div><div class="sv">\(x_{n+1}=x_n-f(x_n)/f'(x_n)\)</div></div>
+    <div class="scell"><div class="sn2">Trapezoidal</div><div class="sv">\(\frac{h}{2}[y_0+2\sum y_i+y_n]\)</div></div>
+    <div class="scell"><div class="sn2">Simpson's 1/3</div><div class="sv">\(\frac{h}{3}[y_0+4y_1+2y_2+\cdots+y_n]\)</div></div>
+  </div></div>
+</div>
+
+<!-- MASTER FORMULA SHEET -->
+<div class="ms">
+  <h2>BMAT101L — Master Formula Sheet</h2>
+  <div class="ms-sec"><h3>Modules 1–2: Calculus &amp; Multivariable</h3>
+  <div class="ms-grid">
+    <div class="ms-card"><div class="mc">LMVT</div>\(f'(c)=(f(b)-f(a))/(b-a)\)</div>
+    <div class="ms-card"><div class="mc">Taylor</div>\(\sum f^{(n)}(a)(x-a)^n/n!\)</div>
+    <div class="ms-card"><div class="mc">Euler Theorem</div>\(xf_x+yf_y=nf\)</div>
+    <div class="ms-card"><div class="mc">Discriminant D</div>\(f_{xx}f_{yy}-(f_{xy})^2\)</div>
+    <div class="ms-card"><div class="mc">Jacobian (polar)</div>\(r\)</div>
+    <div class="ms-card"><div class="mc">Lagrange ∇f = λ∇g</div>solve with constraint</div>
+  </div></div>
+  <div class="ms-sec"><h3>Modules 3–4: Integrals &amp; Special Functions</h3>
+  <div class="ms-grid">
+    <div class="ms-card"><div class="mc">Polar dA</div>\(r\,dr\,d\theta\)</div>
+    <div class="ms-card"><div class="mc">Γ(n+1)</div>\(n\Gamma(n)=n!\)</div>
+    <div class="ms-card"><div class="mc">B(m,n)</div>\(\Gamma(m)\Gamma(n)/\Gamma(m+n)\)</div>
+    <div class="ms-card"><div class="mc">Γ(1/2)</div>\(\sqrt\pi\)</div>
+    <div class="ms-card"><div class="mc">Cardioid area</div>\(3\pi a^2/2\)</div>
+    <div class="ms-card"><div class="mc">Cylindrical dV</div>\(r\,dr\,d\theta\,dz\)</div>
+  </div></div>
+  <div class="ms-sec"><h3>Modules 5–7: Vector Calc, Series &amp; Numerics</h3>
+  <div class="ms-grid">
+    <div class="ms-card"><div class="mc">Green's Theorem</div>\(\oint Pdx+Qdy=\iint(Q_x-P_y)dA\)</div>
+    <div class="ms-card"><div class="mc">Gauss Theorem</div>\(\oiint\mathbf{F}\cdot dS=\iiint\nabla\cdot\mathbf{F}\,dV\)</div>
+    <div class="ms-card"><div class="mc">Ratio Test</div>L<1 conv; L>1 div</div>
+    <div class="ms-card"><div class="mc">Newton-Raphson</div>\(x_{n+1}=x_n-f/f'\)</div>
+    <div class="ms-card"><div class="mc">Simpson's 1/3</div>\(h/3[y_0+4y_1+2y_2+\cdots]\)</div>
+    <div class="ms-card"><div class="mc">Forward Diff Δ</div>\(\Delta y_n=y_{n+1}-y_n\)</div>
+  </div></div>
+  <div style="text-align:center;margin-top:44px;padding:24px;background:linear-gradient(135deg,var(--dk),#1a4a7a);color:#fff;border-radius:12px;">
+    <div style="font-family:'Merriweather',serif;font-size:18px;color:var(--ac);margin-bottom:6px;">BMAT101L — Complete</div>
+    <div style="font-size:12.5px;opacity:.8;">Calculus &amp; Its Applications · VIT Chennai</div>
+    <a href="https://www.video-tutor.net/calculus.html" target="_blank" style="display:inline-block;margin-top:12px;background:var(--ac);color:var(--dk);padding:7px 22px;border-radius:18px;text-decoration:none;font-size:12px;font-weight:700;">▶ Watch Calculus Videos</a>
+  </div>
+</div>
+</body></html>

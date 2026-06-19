@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Intermediate College Mathematics – Complete Study Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)'],['$','$']], displayMath: [['\\[','\\]'],['$$','$$']] },
+  options: { skipHtmlTags: ['script','noscript','style','textarea'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+:root{
+  --purple:#2d0b6e;
+  --teal:#0e9488;
+  --teal-light:#e6f7f5;
+  --gold:#f5c842;
+  --gold-light:#fef9e7;
+  --green:#1a7a4a;
+  --green-light:#e8f5ee;
+  --red:#c0392b;
+  --border:#d0d7e6;
+  --text:#1a1a2e;
+  --muted:#5a6272;
+  --white:#ffffff;
+  --bg:#f6f7fb;
+  --blue-light:#eef2fb;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.7;}
+
+/* ── COVER ── */
+.cover{
+  background:linear-gradient(135deg,var(--purple) 0%,#1a0a40 50%,#0e3030 100%);
+  color:#fff;min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:60px 40px;
+  page-break-after:always;
+}
+.cover .badge{background:var(--teal);color:#fff;font-size:12px;font-weight:700;
+  letter-spacing:2px;padding:6px 20px;border-radius:30px;margin-bottom:28px;text-transform:uppercase;}
+.cover h1{font-family:'Merriweather',serif;font-size:48px;font-weight:900;line-height:1.15;margin-bottom:18px;}
+.cover h1 span{color:var(--gold);}
+.cover .sub{font-size:19px;opacity:.85;max-width:650px;margin:0 auto 36px;}
+.cover .modules{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:40px;}
+.cover .modules span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  border-radius:8px;padding:7px 16px;font-size:13px;}
+.cover .prereq{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  border-radius:12px;padding:18px 28px;max-width:520px;margin-bottom:28px;font-size:14px;}
+.cover .prereq strong{color:var(--gold);}
+.cover .price-tag{background:var(--teal);color:#fff;padding:12px 40px;
+  border-radius:40px;font-size:20px;font-weight:700;}
+
+/* ── TOC ── */
+.toc-page{padding:60px 80px;page-break-after:always;background:#fff;}
+.toc-page h2{font-family:'Merriweather',serif;font-size:32px;color:var(--purple);
+  border-bottom:3px solid var(--teal);padding-bottom:12px;margin-bottom:36px;}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.toc-module{padding:14px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:14px;}
+.toc-num{background:var(--purple);color:#fff;width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.toc-info strong{font-size:14px;color:var(--purple);}
+.toc-info span{font-size:12px;color:var(--muted);display:block;}
+.prereq-badge{display:inline-block;background:#fef3cd;border:1px solid #f0c040;
+  color:#7a5a00;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:600;margin-top:3px;}
+
+/* ── LAYOUT ── */
+.module{padding:60px 80px;page-break-before:always;background:#fff;}
+.module:nth-child(even){background:var(--bg);}
+.module-header{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
+.module-badge{background:var(--purple);color:#fff;padding:6px 16px;border-radius:6px;
+  font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.module h2{font-family:'Merriweather',serif;font-size:28px;color:var(--purple);}
+.prereq-box{background:#fef9e7;border:1.5px solid #f0c040;border-radius:8px;
+  padding:12px 18px;margin-bottom:24px;font-size:13px;}
+.prereq-box strong{color:#7a5a00;}
+.module-intro{background:var(--teal-light);border-left:4px solid var(--teal);
+  padding:16px 20px;border-radius:0 8px 8px 0;margin-bottom:36px;font-size:14.5px;color:var(--muted);}
+
+/* ── CONCEPT ── */
+.concept{margin-bottom:52px;}
+.concept h3{font-size:20px;font-weight:700;color:var(--purple);margin-bottom:8px;
+  display:flex;align-items:center;gap:10px;}
+.concept h3::before{content:'';display:inline-block;width:4px;height:22px;
+  background:var(--teal);border-radius:3px;}
+.concept p{color:var(--muted);margin-bottom:14px;font-size:14.5px;}
+
+/* ── VIDEO LINK ── */
+.video-link{display:inline-flex;align-items:center;gap:8px;background:var(--teal-light);
+  border:1.5px solid var(--teal);color:var(--purple);text-decoration:none;
+  padding:7px 16px;border-radius:8px;font-size:13px;font-weight:600;margin-bottom:6px;margin-right:8px;transition:all .2s;}
+.video-link:hover{background:var(--teal);color:#fff;}
+.video-link svg{width:16px;height:16px;fill:currentColor;}
+
+/* ── FORMULA BOX ── */
+.formula-box{background:linear-gradient(135deg,#ede8f8,#ddd8f0);
+  border:2px solid var(--purple);border-radius:12px;padding:20px 24px;margin:18px 0;
+  position:relative;}
+.formula-box .label{position:absolute;top:-12px;left:16px;background:var(--purple);
+  color:#fff;padding:2px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;}
+.formula-box .formula-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:8px;}
+.formula-item{background:#fff;border-radius:8px;padding:10px 14px;
+  border-left:3px solid var(--teal);}
+.formula-item .fname{font-size:11px;color:var(--muted);font-weight:600;margin-bottom:4px;}
+.formula-item .fval{font-size:14px;}
+
+/* ── PROBLEMS ── */
+.problems{margin-top:24px;}
+.problem{background:#fff;border:1px solid var(--border);border-radius:12px;
+  margin-bottom:18px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.problem-header{background:var(--purple);color:#fff;padding:10px 18px;
+  display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;}
+.p-num{background:var(--teal);color:#fff;width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;}
+.problem-body{padding:18px 20px;}
+.problem-q{font-weight:600;color:var(--text);margin-bottom:14px;font-size:14.5px;}
+.solution{background:var(--green-light);border:1px solid #b2d8c4;border-radius:8px;padding:14px 18px;}
+.solution .sol-label{color:var(--green);font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:8px;}
+.sol-step{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;font-size:14px;}
+.sol-step .step-n{background:var(--green);color:#fff;min-width:22px;height:22px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-top:2px;}
+.answer{background:var(--purple);color:var(--gold);padding:8px 16px;border-radius:6px;
+  display:inline-block;font-size:14px;font-weight:700;margin-top:8px;}
+
+/* ── MODULE SUMMARY ── */
+.mod-summary{background:linear-gradient(135deg,var(--purple),#1a0a40);color:#fff;
+  border-radius:14px;padding:28px;margin-top:40px;}
+.mod-summary h4{font-family:'Merriweather',serif;font-size:18px;color:var(--gold);margin-bottom:18px;}
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+.sum-item{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  border-radius:8px;padding:12px 16px;}
+.sum-item .sname{font-size:11px;color:var(--gold);font-weight:700;margin-bottom:6px;}
+.sum-item .sval{font-size:13px;}
+
+/* ── MASTER FORMULA SHEET ── */
+.master-sheet{padding:60px 80px;page-break-before:always;}
+.master-sheet h2{font-family:'Merriweather',serif;font-size:28px;color:var(--purple);
+  border-bottom:3px solid var(--teal);padding-bottom:12px;margin-bottom:36px;}
+.mfs-section{margin-bottom:36px;}
+.mfs-section h3{font-size:15px;font-weight:700;color:var(--purple);background:var(--teal-light);
+  padding:8px 16px;border-radius:6px;margin-bottom:14px;}
+.mfs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;}
+.mfs-card{background:#fff;border:1px solid var(--border);border-radius:8px;
+  padding:12px 16px;border-left:3px solid var(--teal);}
+.mfs-card .mfc-name{font-size:11px;color:var(--muted);font-weight:600;margin-bottom:5px;}
+
+@media print{
+  body{background:#fff;}
+  .module{background:#fff!important;}
+  @page{margin:15mm 20mm;size:A4;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════ COVER ═══ -->
+<div class="cover">
+  <div class="badge">Complete Study Guide · Vol. 2</div>
+  <h1>Intermediate<br/><span>College Mathematics</span></h1>
+  <p class="sub">Functions · Trigonometry · Calculus · Differential Equations · Linear Algebra · Statistics · 90+ Solved Problems</p>
+  <div class="prereq">
+    <strong>Prerequisites for this guide:</strong><br/>
+    Comfortable with algebra (linear equations, quadratics, exponents). Familiarity with school geometry and basic fractions. If not, start with Vol. 1: Mathematics Fundamentals.
+  </div>
+  <div class="modules">
+    <span>Functions &amp; Pre-Calc</span><span>Trigonometry</span><span>Limits</span>
+    <span>Differentiation</span><span>Applications of Derivatives</span><span>Integration</span>
+    <span>Advanced Integration</span><span>Differential Equations</span>
+    <span>College Statistics</span><span>Linear Algebra</span>
+  </div>
+  <div class="price-tag">Video Links Included · Learn by Doing</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ TOC ════ -->
+<div class="toc-page">
+  <h2>Table of Contents</h2>
+  <div class="toc-grid">
+    <div class="toc-module"><div class="toc-num">1</div><div class="toc-info"><strong>Functions &amp; Pre-Calculus</strong><span>Domain/Range, Composition, Inverse, Logarithms</span><span class="prereq-badge">Prereq: Algebra</span></div></div>
+    <div class="toc-module"><div class="toc-num">2</div><div class="toc-info"><strong>Trigonometry</strong><span>Unit Circle, Identities, Equations, Applications</span><span class="prereq-badge">Prereq: Basic Trig (SOHCAHTOA)</span></div></div>
+    <div class="toc-module"><div class="toc-num">3</div><div class="toc-info"><strong>Limits &amp; Continuity</strong><span>Limit Laws, One-Sided, L'Hôpital's Rule</span><span class="prereq-badge">Prereq: Module 1</span></div></div>
+    <div class="toc-module"><div class="toc-num">4</div><div class="toc-info"><strong>Differentiation</strong><span>Rules, Chain Rule, Implicit, Higher-Order</span><span class="prereq-badge">Prereq: Module 3</span></div></div>
+    <div class="toc-module"><div class="toc-num">5</div><div class="toc-info"><strong>Applications of Derivatives</strong><span>Optimization, Related Rates, MVT, Curve Sketching</span><span class="prereq-badge">Prereq: Module 4</span></div></div>
+    <div class="toc-module"><div class="toc-num">6</div><div class="toc-info"><strong>Integration</strong><span>Antiderivatives, FTC, u-Substitution</span><span class="prereq-badge">Prereq: Module 4</span></div></div>
+    <div class="toc-module"><div class="toc-num">7</div><div class="toc-info"><strong>Advanced Integration</strong><span>By Parts, Partial Fractions, Trig Substitution</span><span class="prereq-badge">Prereq: Module 6</span></div></div>
+    <div class="toc-module"><div class="toc-num">8</div><div class="toc-info"><strong>Differential Equations</strong><span>Separable, Linear 1st Order, Applications</span><span class="prereq-badge">Prereq: Modules 4 &amp; 6</span></div></div>
+    <div class="toc-module"><div class="toc-num">9</div><div class="toc-info"><strong>College Statistics</strong><span>Distributions, Hypothesis Testing, Confidence Intervals</span><span class="prereq-badge">Prereq: Basic Probability</span></div></div>
+    <div class="toc-module"><div class="toc-num">10</div><div class="toc-info"><strong>Linear Algebra</strong><span>Matrices, Determinants, Eigenvalues, Systems</span><span class="prereq-badge">Prereq: Systems of Equations</span></div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ MODULE 1 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 1</div><h2>Functions &amp; Pre-Calculus</h2></div>
+  <div class="prereq-box"><strong>Prerequisites:</strong> Algebra basics (linear equations, quadratics). Know what a variable is and how to solve for x.</div>
+  <div class="module-intro">Functions are the language of calculus. Before differentiating or integrating anything, you must be able to evaluate, compose, and invert functions, and understand exponential and logarithmic relationships.</div>
+
+  <div class="concept">
+    <h3>Domain, Range &amp; Function Notation</h3>
+    <a class="video-link" href="https://www.video-tutor.net/function-review.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Review of Functions</a>
+    <div class="formula-box">
+      <span class="label">FUNCTION ESSENTIALS</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Function Notation</div><div class="fval">\(f(x)\) reads "f of x"; output for input x</div></div>
+        <div class="formula-item"><div class="fname">Domain</div><div class="fval">All valid inputs (avoid ÷0 and √(negative))</div></div>
+        <div class="formula-item"><div class="fname">Range</div><div class="fval">All possible outputs</div></div>
+        <div class="formula-item"><div class="fname">Composition</div><div class="fval">\((f\circ g)(x)=f(g(x))\)</div></div>
+        <div class="formula-item"><div class="fname">Inverse</div><div class="fval">Swap x↔y, solve for y: \(f^{-1}(x)\)</div></div>
+        <div class="formula-item"><div class="fname">Verification</div><div class="fval">\(f(f^{-1}(x))=x\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Domain, composition and inverse</div>
+        <div class="problem-body">
+          <div class="problem-q">Given \(f(x)=\sqrt{x-1}\) and \(g(x)=x^2+3\), find: (a) Domain of \(f\), (b) \((f\circ g)(x)\), (c) \(f^{-1}(x)\).</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">a</div><div>Need \(x-1\geq0\Rightarrow x\geq1\). Domain: \([1,\infty)\)</div></div>
+            <div class="sol-step"><div class="step-n">b</div><div>\(f(g(x))=f(x^2+3)=\sqrt{(x^2+3)-1}=\sqrt{x^2+2}\). Domain: all real x (x²+2≥2&gt;0 always)</div></div>
+            <div class="sol-step"><div class="step-n">c</div><div>Set \(y=\sqrt{x-1}\). Square: \(y^2=x-1\Rightarrow x=y^2+1\). Swap: \(f^{-1}(x)=x^2+1\), domain \(x\geq0\)</div></div>
+            <div class="answer">Domain: [1,∞); (f∘g)(x)=√(x²+2); f⁻¹(x)=x²+1</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Logarithm laws</div>
+        <div class="problem-body">
+          <div class="problem-q">Solve: \(\log_3(2x+1) = 3\) and simplify \(\ln(e^4) - \ln(e)\).</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Convert log form: \(3^3=2x+1\Rightarrow 27=2x+1\Rightarrow x=13\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(\ln(e^4)-\ln(e)=4\ln e - \ln e = 4-1=3\)</div></div>
+            <div class="answer">x = 13; \(\ln(e^4)-\ln(e)=3\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 1 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">Composition</div><div class="sval">\((f\circ g)(x)=f(g(x))\)</div></div>
+      <div class="sum-item"><div class="sname">Log ↔ Exp</div><div class="sval">\(\log_b a=c \Leftrightarrow b^c=a\)</div></div>
+      <div class="sum-item"><div class="sname">Log Product</div><div class="sval">\(\log(ab)=\log a+\log b\)</div></div>
+      <div class="sum-item"><div class="sname">Log Quotient</div><div class="sval">\(\log(a/b)=\log a-\log b\)</div></div>
+      <div class="sum-item"><div class="sname">Log Power</div><div class="sval">\(\log(a^n)=n\log a\)</div></div>
+      <div class="sum-item"><div class="sname">Change of Base</div><div class="sval">\(\log_b a=\frac{\ln a}{\ln b}\)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ MODULE 2 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 2</div><h2>Trigonometry (College Level)</h2></div>
+  <div class="prereq-box"><strong>Prerequisites:</strong> Basic SOHCAHTOA from school geometry, right triangle trigonometry, understanding of angles in degrees.</div>
+  <div class="module-intro">College trigonometry extends beyond right triangles. You'll master the unit circle (all quadrants), trig identities, inverse trig functions, and solving equations — all essential for calculus.</div>
+
+  <div class="concept">
+    <h3>Unit Circle &amp; Special Angles</h3>
+    <a class="video-link" href="https://www.video-tutor.net/basic-trigonometry.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Basic Trigonometry</a>
+    <a class="video-link" href="https://www.video-tutor.net/evaluating-trig-expressions.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Evaluating Trig Expressions</a>
+    <div class="formula-box">
+      <span class="label">CORE TRIG FORMULAS</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Pythagorean Identity</div><div class="fval">\(\sin^2\theta+\cos^2\theta=1\)</div></div>
+        <div class="formula-item"><div class="fname">Derived Identity 1</div><div class="fval">\(1+\tan^2\theta=\sec^2\theta\)</div></div>
+        <div class="formula-item"><div class="fname">Derived Identity 2</div><div class="fval">\(1+\cot^2\theta=\csc^2\theta\)</div></div>
+        <div class="formula-item"><div class="fname">Double Angle: sin</div><div class="fval">\(\sin 2\theta=2\sin\theta\cos\theta\)</div></div>
+        <div class="formula-item"><div class="fname">Double Angle: cos</div><div class="fval">\(\cos 2\theta=\cos^2\theta-\sin^2\theta\)</div></div>
+        <div class="formula-item"><div class="fname">Sum Formula: sin</div><div class="fval">\(\sin(A\pm B)=\sin A\cos B\pm\cos A\sin B\)</div></div>
+        <div class="formula-item"><div class="fname">Sum Formula: cos</div><div class="fval">\(\cos(A\pm B)=\cos A\cos B\mp\sin A\sin B\)</div></div>
+        <div class="formula-item"><div class="fname">Special: sin 30°</div><div class="fval">\(\frac{1}{2}\), cos 30°=\(\frac{\sqrt{3}}{2}\), tan 30°=\(\frac{1}{\sqrt{3}}\)</div></div>
+        <div class="formula-item"><div class="fname">Special: sin 45°</div><div class="fval">\(\frac{\sqrt{2}}{2}\), cos 45°=\(\frac{\sqrt{2}}{2}\), tan 45°=1</div></div>
+        <div class="formula-item"><div class="fname">Special: sin 60°</div><div class="fval">\(\frac{\sqrt{3}}{2}\), cos 60°=\(\frac{1}{2}\), tan 60°=\(\sqrt{3}\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Evaluating without a calculator</div>
+        <div class="problem-body">
+          <div class="problem-q">Evaluate exactly: (a) \(\sin 150°\) (b) \(\cos 225°\) (c) \(\tan 300°\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION (Reference angle method)</div>
+            <div class="sol-step"><div class="step-n">a</div><div>150° = 180°−30° → Q2 (sin+). Reference angle 30°. \(\sin 150°=\sin 30°=\dfrac{1}{2}\)</div></div>
+            <div class="sol-step"><div class="step-n">b</div><div>225° = 180°+45° → Q3 (cos−). Reference angle 45°. \(\cos 225°=-\cos 45°=-\dfrac{\sqrt{2}}{2}\)</div></div>
+            <div class="sol-step"><div class="step-n">c</div><div>300° = 360°−60° → Q4 (tan−). Reference angle 60°. \(\tan 300°=-\tan 60°=-\sqrt{3}\)</div></div>
+            <div class="answer">sin150°=1/2, cos225°=−√2/2, tan300°=−√3</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Proving a trig identity</div>
+        <div class="problem-body">
+          <div class="problem-q">Prove: \(\dfrac{\sin\theta}{1-\cos\theta} = \dfrac{1+\cos\theta}{\sin\theta}\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Cross-multiply (to verify): LHS × sin θ = sin²θ; RHS × (1−cosθ) = (1+cosθ)(1−cosθ) = 1−cos²θ = sin²θ ✓</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Formal proof from LHS: Multiply by \(\frac{1+\cos\theta}{1+\cos\theta}\): \(\dfrac{\sin\theta(1+\cos\theta)}{1-\cos^2\theta}=\dfrac{\sin\theta(1+\cos\theta)}{\sin^2\theta}=\dfrac{1+\cos\theta}{\sin\theta}\) = RHS ✓</div></div>
+            <div class="answer">Identity proved</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <h3>Solving Trig Equations</h3>
+    <a class="video-link" href="https://www.video-tutor.net/trigonometric-identities.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Trigonometric Identities</a>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>General solution</div>
+        <div class="problem-body">
+          <div class="problem-q">Solve \(2\sin^2 x - \sin x - 1 = 0\) for \(0 \leq x < 2\pi\).</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Let \(u=\sin x\): \(2u^2-u-1=0 \Rightarrow (2u+1)(u-1)=0\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(u=-\frac{1}{2}\) or \(u=1\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>\(\sin x=1\Rightarrow x=\dfrac{\pi}{2}\)</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>\(\sin x=-\dfrac{1}{2}\Rightarrow x=\dfrac{7\pi}{6},\;\dfrac{11\pi}{6}\) (Q3 and Q4)</div></div>
+            <div class="answer">x = π/2, 7π/6, 11π/6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 2 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">Pythagorean</div><div class="sval">\(\sin^2\theta+\cos^2\theta=1\)</div></div>
+      <div class="sum-item"><div class="sname">Double Angle sin</div><div class="sval">\(\sin 2\theta=2\sin\theta\cos\theta\)</div></div>
+      <div class="sum-item"><div class="sname">Double Angle cos</div><div class="sval">\(\cos 2\theta=\cos^2\theta-\sin^2\theta\)</div></div>
+      <div class="sum-item"><div class="sname">Sum/Diff sin</div><div class="sval">\(\sin(A\pm B)=\sin A\cos B\pm\cos A\sin B\)</div></div>
+      <div class="sum-item"><div class="sname">Sum/Diff cos</div><div class="sval">\(\cos(A\pm B)=\cos A\cos B\mp\sin A\sin B\)</div></div>
+      <div class="sum-item"><div class="sname">ASTC Rule</div><div class="sval">Q1:All+, Q2:Sin+, Q3:Tan+, Q4:Cos+</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ MODULE 3 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 3</div><h2>Limits &amp; Continuity</h2></div>
+  <div class="prereq-box"><strong>Prerequisites:</strong> Functions and function notation (Module 1). Understanding of what "approaches" means intuitively.</div>
+  <div class="module-intro">Limits are the rigorous foundation of calculus. The derivative and the integral are both defined using limits. Understanding limits prevents common errors in calculus courses.</div>
+
+  <div class="concept">
+    <h3>Evaluating Limits</h3>
+    <a class="video-link" href="https://www.video-tutor.net/limits.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Limits – Video-Tutor.net</a>
+    <div class="formula-box">
+      <span class="label">LIMIT LAWS & TECHNIQUES</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Direct Substitution</div><div class="fval">If \(f(c)\) is defined, \(\lim_{x\to c}f(x)=f(c)\)</div></div>
+        <div class="formula-item"><div class="fname">Factor &amp; Cancel</div><div class="fval">For \(\frac{0}{0}\): factor numerator/denominator, cancel common factor</div></div>
+        <div class="formula-item"><div class="fname">L'Hôpital's Rule</div><div class="fval">If \(\frac{0}{0}\) or \(\frac{\infty}{\infty}\): \(\lim\frac{f}{g}=\lim\frac{f'}{g'}\)</div></div>
+        <div class="formula-item"><div class="fname">Squeeze Theorem</div><div class="fval">If \(g(x)\leq f(x)\leq h(x)\) and \(\lim g=\lim h=L\), then \(\lim f=L\)</div></div>
+        <div class="formula-item"><div class="fname">Important Limit 1</div><div class="fval">\(\lim_{x\to0}\dfrac{\sin x}{x}=1\)</div></div>
+        <div class="formula-item"><div class="fname">Important Limit 2</div><div class="fval">\(\lim_{x\to0}\dfrac{1-\cos x}{x}=0\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Factor and cancel (0/0 form)</div>
+        <div class="problem-body">
+          <div class="problem-q">Evaluate: \(\displaystyle\lim_{x\to3}\frac{x^2-9}{x-3}\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Direct sub: \(\frac{9-9}{3-3}=\frac{0}{0}\) → Indeterminate. Factor numerator.</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(\dfrac{(x+3)(x-3)}{x-3}=x+3\) (for \(x\neq3\))</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>\(\lim_{x\to3}(x+3)=6\)</div></div>
+            <div class="answer">Answer: 6</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>L'Hôpital's Rule</div>
+        <div class="problem-body">
+          <div class="problem-q">Evaluate: \(\displaystyle\lim_{x\to0}\frac{e^x - 1 - x}{x^2}\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Direct sub gives \(\frac{0}{0}\). Apply L'Hôpital: \(\lim_{x\to0}\frac{e^x-1}{2x}\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Still \(\frac{0}{0}\). Apply again: \(\lim_{x\to0}\frac{e^x}{2}=\frac{e^0}{2}=\frac{1}{2}\)</div></div>
+            <div class="answer">Answer: 1/2</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">3</div>Continuity check</div>
+        <div class="problem-body">
+          <div class="problem-q">Is \(f(x)=\begin{cases}x^2-1 & x<2\\3 & x=2\\2x-1 & x>2\end{cases}\) continuous at \(x=2\)?</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION (3 conditions for continuity)</div>
+            <div class="sol-step"><div class="step-n">1</div><div>\(f(2)=3\) ✓ (defined)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Left limit: \(\lim_{x\to2^-}(x^2-1)=3\). Right limit: \(\lim_{x\to2^+}(2x-1)=3\). So \(\lim_{x\to2}f(x)=3\) ✓</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>\(\lim_{x\to2}f(x)=3=f(2)\) ✓ All conditions met.</div></div>
+            <div class="answer">f is continuous at x = 2</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 3 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">L'Hôpital's Rule</div><div class="sval">\(\lim\frac{f}{g}\overset{0/0}{=}\lim\frac{f'}{g'}\)</div></div>
+      <div class="sum-item"><div class="sname">sin limit</div><div class="sval">\(\lim_{x\to0}\frac{\sin x}{x}=1\)</div></div>
+      <div class="sum-item"><div class="sname">Continuity</div><div class="sval">Defined + Limit exists + Equal</div></div>
+      <div class="sum-item"><div class="sname">Sandwich Theorem</div><div class="sval">g≤f≤h and lim g=lim h=L ⟹ lim f=L</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ MODULE 4 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 4</div><h2>Differentiation</h2></div>
+  <div class="prereq-box"><strong>Prerequisites:</strong> Limits (Module 3), function notation (Module 1), trig identities (Module 2).</div>
+  <div class="module-intro">The derivative measures instantaneous rate of change. It is the most-used operation in applied mathematics, physics, and engineering. You must master all differentiation rules.</div>
+
+  <div class="concept">
+    <h3>Differentiation Rules</h3>
+    <a class="video-link" href="https://www.video-tutor.net/derivatives.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Derivatives – Video-Tutor.net</a>
+    <div class="formula-box">
+      <span class="label">DIFFERENTIATION RULES</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Definition</div><div class="fval">\(f'(x)=\lim_{h\to0}\dfrac{f(x+h)-f(x)}{h}\)</div></div>
+        <div class="formula-item"><div class="fname">Power Rule</div><div class="fval">\(\frac{d}{dx}x^n=nx^{n-1}\)</div></div>
+        <div class="formula-item"><div class="fname">Constant</div><div class="fval">\(\frac{d}{dx}c=0\)</div></div>
+        <div class="formula-item"><div class="fname">Product Rule</div><div class="fval">\((uv)'=u'v+uv'\)</div></div>
+        <div class="formula-item"><div class="fname">Quotient Rule</div><div class="fval">\(\left(\dfrac{u}{v}\right)'=\dfrac{u'v-uv'}{v^2}\)</div></div>
+        <div class="formula-item"><div class="fname">Chain Rule</div><div class="fval">\(\frac{d}{dx}f(g(x))=f'(g(x))\cdot g'(x)\)</div></div>
+        <div class="formula-item"><div class="fname">d/dx sin x</div><div class="fval">\(\cos x\)</div></div>
+        <div class="formula-item"><div class="fname">d/dx cos x</div><div class="fval">\(-\sin x\)</div></div>
+        <div class="formula-item"><div class="fname">d/dx tan x</div><div class="fval">\(\sec^2 x\)</div></div>
+        <div class="formula-item"><div class="fname">d/dx eˣ</div><div class="fval">\(e^x\)</div></div>
+        <div class="formula-item"><div class="fname">d/dx ln x</div><div class="fval">\(\dfrac{1}{x}\)</div></div>
+        <div class="formula-item"><div class="fname">d/dx aˣ</div><div class="fval">\(a^x \ln a\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Product rule + chain rule</div>
+        <div class="problem-body">
+          <div class="problem-q">Differentiate: \(y = x^3 \cdot e^{2x}\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Product rule: \(u=x^3,\;u'=3x^2;\quad v=e^{2x},\;v'=2e^{2x}\) (chain rule)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(y'=u'v+uv'=3x^2 e^{2x}+x^3\cdot2e^{2x}=e^{2x}(3x^2+2x^3)\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Factor: \(y'=x^2 e^{2x}(3+2x)\)</div></div>
+            <div class="answer">y' = x²e²ˣ(3 + 2x)</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Quotient rule</div>
+        <div class="problem-body">
+          <div class="problem-q">Find \(\dfrac{d}{dx}\left[\dfrac{\sin x}{x^2+1}\right]\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>\(u=\sin x,\;u'=\cos x;\quad v=x^2+1,\;v'=2x\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(\dfrac{d}{dx}=\dfrac{\cos x(x^2+1)-\sin x\cdot 2x}{(x^2+1)^2}=\dfrac{(x^2+1)\cos x-2x\sin x}{(x^2+1)^2}\)</div></div>
+            <div class="answer">\(\dfrac{(x^2+1)\cos x - 2x\sin x}{(x^2+1)^2}\)</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">3</div>Implicit differentiation</div>
+        <div class="problem-body">
+          <div class="problem-q">Given \(x^2+y^2=25\), find \(\dfrac{dy}{dx}\) at the point (3, 4).</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Differentiate both sides w.r.t. x: \(2x+2y\dfrac{dy}{dx}=0\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(\dfrac{dy}{dx}=-\dfrac{x}{y}\). At (3,4): \(\dfrac{dy}{dx}=-\dfrac{3}{4}\)</div></div>
+            <div class="answer">dy/dx = −3/4</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 4 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">Power Rule</div><div class="sval">\(\frac{d}{dx}x^n=nx^{n-1}\)</div></div>
+      <div class="sum-item"><div class="sname">Product Rule</div><div class="sval">\((uv)'=u'v+uv'\)</div></div>
+      <div class="sum-item"><div class="sname">Quotient Rule</div><div class="sval">\((u/v)'=(u'v-uv')/v^2\)</div></div>
+      <div class="sum-item"><div class="sname">Chain Rule</div><div class="sval">\(\frac{d}{dx}f(g)=f'(g)\cdot g'\)</div></div>
+      <div class="sum-item"><div class="sname">d/dx eˣ</div><div class="sval">\(e^x\)</div></div>
+      <div class="sum-item"><div class="sname">d/dx ln x</div><div class="sval">\(1/x\)</div></div>
+      <div class="sum-item"><div class="sname">d/dx sin</div><div class="sval">\(\cos x\)</div></div>
+      <div class="sum-item"><div class="sname">d/dx cos</div><div class="sval">\(-\sin x\)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ MODULE 5 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 5</div><h2>Applications of Derivatives</h2></div>
+  <div class="prereq-box"><strong>Prerequisites:</strong> Differentiation (Module 4). Ability to find and classify critical points.</div>
+  <div class="module-intro">Derivatives tell us where functions increase, decrease, and turn around. This is the heart of optimization — finding maximum profit, minimum cost, fastest speed — used in every engineering and business application.</div>
+
+  <div class="concept">
+    <h3>Optimization &amp; Critical Points</h3>
+    <a class="video-link" href="https://www.video-tutor.net/derivative-applications.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Applications of Derivatives</a>
+    <div class="formula-box">
+      <span class="label">KEY TESTS</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Critical Points</div><div class="fval">Set \(f'(x)=0\) or \(f'(x)\) undefined</div></div>
+        <div class="formula-item"><div class="fname">1st Derivative Test</div><div class="fval">+→− at CP: local max; −→+ at CP: local min</div></div>
+        <div class="formula-item"><div class="fname">2nd Derivative Test</div><div class="fval">\(f''(c)<0\): local max; \(f''(c)>0\): local min</div></div>
+        <div class="formula-item"><div class="fname">Concave Up</div><div class="fval">\(f''(x)>0\)</div></div>
+        <div class="formula-item"><div class="fname">Concave Down</div><div class="fval">\(f''(x)<0\)</div></div>
+        <div class="formula-item"><div class="fname">Inflection Point</div><div class="fval">\(f''(x)=0\) and concavity changes</div></div>
+        <div class="formula-item"><div class="fname">Mean Value Theorem</div><div class="fval">\(f'(c)=\dfrac{f(b)-f(a)}{b-a}\) for some \(c\in(a,b)\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Find maxima and minima</div>
+        <div class="problem-body">
+          <div class="problem-q">Find all local extrema of \(f(x)=x^3-6x^2+9x+2\) and classify them.</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>\(f'(x)=3x^2-12x+9=3(x^2-4x+3)=3(x-1)(x-3)\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Critical points: \(x=1\) and \(x=3\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>\(f''(x)=6x-12\). At \(x=1\): \(f''(1)=-6<0\) → Local Maximum. At \(x=3\): \(f''(3)=6>0\) → Local Minimum.</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>\(f(1)=1-6+9+2=6\). \(f(3)=27-54+27+2=2\)</div></div>
+            <div class="answer">Local Max at (1, 6); Local Min at (3, 2)</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Real-world optimization</div>
+        <div class="problem-body">
+          <div class="problem-q">A farmer has 200 m of fencing to enclose a rectangular field. One side borders a river (no fence needed there). Find the dimensions that maximize the area.</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Let width = \(x\), length = \(y\). Constraint: \(2x+y=200\Rightarrow y=200-2x\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Area: \(A=xy=x(200-2x)=200x-2x^2\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>\(A'=200-4x=0\Rightarrow x=50\). \(A''=-4<0\) → Maximum.</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>\(y=200-100=100\). Area = \(50\times100=5000\) m²</div></div>
+            <div class="answer">Width = 50 m, Length = 100 m, Max Area = 5000 m²</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 5 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">Critical Points</div><div class="sval">\(f'(x)=0\) or undefined</div></div>
+      <div class="sum-item"><div class="sname">Local Max (2nd test)</div><div class="sval">\(f''(c)<0\)</div></div>
+      <div class="sum-item"><div class="sname">Local Min (2nd test)</div><div class="sval">\(f''(c)>0\)</div></div>
+      <div class="sum-item"><div class="sname">MVT</div><div class="sval">\(f'(c)=\frac{f(b)-f(a)}{b-a}\)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ MODULE 6 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 6</div><h2>Integration (Fundamentals)</h2></div>
+  <div class="prereq-box"><strong>Prerequisites:</strong> Differentiation (Module 4). Antiderivatives are the reverse of derivatives.</div>
+  <div class="module-intro">Integration computes area under curves, total accumulated change, and is the inverse of differentiation. The Fundamental Theorem of Calculus (FTC) connects these two operations beautifully.</div>
+
+  <div class="concept">
+    <h3>Antiderivatives &amp; Definite Integrals</h3>
+    <a class="video-link" href="https://www.video-tutor.net/integration.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Integration – Video-Tutor.net</a>
+    <div class="formula-box">
+      <span class="label">INTEGRATION RULES</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Power Rule</div><div class="fval">\(\int x^n\,dx=\dfrac{x^{n+1}}{n+1}+C\quad(n\neq-1)\)</div></div>
+        <div class="formula-item"><div class="fname">∫ 1/x dx</div><div class="fval">\(\ln|x|+C\)</div></div>
+        <div class="formula-item"><div class="fname">∫ eˣ dx</div><div class="fval">\(e^x+C\)</div></div>
+        <div class="formula-item"><div class="fname">∫ sin x dx</div><div class="fval">\(-\cos x+C\)</div></div>
+        <div class="formula-item"><div class="fname">∫ cos x dx</div><div class="fval">\(\sin x+C\)</div></div>
+        <div class="formula-item"><div class="fname">∫ sec²x dx</div><div class="fval">\(\tan x+C\)</div></div>
+        <div class="formula-item"><div class="fname">FTC Part 1</div><div class="fval">\(\frac{d}{dx}\int_a^x f(t)\,dt=f(x)\)</div></div>
+        <div class="formula-item"><div class="fname">FTC Part 2</div><div class="fval">\(\int_a^b f(x)\,dx=F(b)-F(a)\)</div></div>
+        <div class="formula-item"><div class="fname">u-Substitution</div><div class="fval">Let \(u=g(x)\), then \(\int f(g(x))g'(x)\,dx=\int f(u)\,du\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Indefinite integral with u-substitution</div>
+        <div class="problem-body">
+          <div class="problem-q">Evaluate: \(\displaystyle\int 2x\cos(x^2)\,dx\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Let \(u=x^2\Rightarrow du=2x\,dx\). Substitute.</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(\int\cos(u)\,du=\sin(u)+C=\sin(x^2)+C\)</div></div>
+            <div class="answer">\(\sin(x^2) + C\)</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Definite integral (FTC)</div>
+        <div class="problem-body">
+          <div class="problem-q">Evaluate: \(\displaystyle\int_1^4 \left(3x^2 - \frac{2}{x}\right)dx\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Antiderivative: \(F(x)=x^3-2\ln|x|\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(F(4)-F(1)=(64-2\ln4)-(1-0)=63-2\ln4\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>\(\approx63-2(1.386)\approx63-2.773\approx60.23\)</div></div>
+            <div class="answer">\(63 - 2\ln 4 \approx 60.23\)</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">3</div>Area between curves</div>
+        <div class="problem-body">
+          <div class="problem-q">Find the area between \(y=x^2\) and \(y=x+2\).</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Intersections: \(x^2=x+2\Rightarrow x^2-x-2=0\Rightarrow(x-2)(x+1)=0\). So \(x=-1\) and \(x=2\).</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Upper − Lower: \(\int_{-1}^{2}[(x+2)-x^2]\,dx\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>\(=\left[\frac{x^2}{2}+2x-\frac{x^3}{3}\right]_{-1}^{2}=\left(2+4-\frac{8}{3}\right)-\left(\frac{1}{2}-2+\frac{1}{3}\right)=\frac{10}{3}-\left(-\frac{7}{6}\right)=\frac{9}{2}\)</div></div>
+            <div class="answer">Area = 9/2 square units</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 6 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">Power Rule ∫</div><div class="sval">\(\int x^n dx=\frac{x^{n+1}}{n+1}+C\)</div></div>
+      <div class="sum-item"><div class="sname">∫ eˣ</div><div class="sval">\(e^x+C\)</div></div>
+      <div class="sum-item"><div class="sname">∫ sin x</div><div class="sval">\(-\cos x+C\)</div></div>
+      <div class="sum-item"><div class="sname">∫ cos x</div><div class="sval">\(\sin x+C\)</div></div>
+      <div class="sum-item"><div class="sname">FTC</div><div class="sval">\(\int_a^b f\,dx=F(b)-F(a)\)</div></div>
+      <div class="sum-item"><div class="sname">u-sub</div><div class="sval">Let \(u=g(x)\), replace \(g'(x)dx=du\)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ MODULE 7 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 7</div><h2>Advanced Integration Techniques</h2></div>
+  <div class="prereq-box"><strong>Prerequisites:</strong> Basic integration (Module 6), trig identities (Module 2), partial fractions require factoring skills.</div>
+  <div class="module-intro">When u-substitution isn't enough, these three powerful techniques handle integrals of products, rational functions, and expressions with square roots of quadratics.</div>
+
+  <div class="concept">
+    <h3>Integration by Parts</h3>
+    <a class="video-link" href="https://www.video-tutor.net/integration-techniques.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Integration Techniques</a>
+    <div class="formula-box">
+      <span class="label">INTEGRATION BY PARTS</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Formula</div><div class="fval">\(\int u\,dv = uv - \int v\,du\)</div></div>
+        <div class="formula-item"><div class="fname">LIATE Rule (choose u)</div><div class="fval">Logarithmic → Inverse trig → Algebraic → Trig → Exponential</div></div>
+        <div class="formula-item"><div class="fname">Partial Fractions</div><div class="fval">Decompose \(\frac{P(x)}{Q(x)}\) into simpler fractions; integrate each</div></div>
+        <div class="formula-item"><div class="fname">Trig Sub: √(a²−x²)</div><div class="fval">Let \(x=a\sin\theta\)</div></div>
+        <div class="formula-item"><div class="fname">Trig Sub: √(a²+x²)</div><div class="fval">Let \(x=a\tan\theta\)</div></div>
+        <div class="formula-item"><div class="fname">Trig Sub: √(x²−a²)</div><div class="fval">Let \(x=a\sec\theta\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Integration by parts</div>
+        <div class="problem-body">
+          <div class="problem-q">Evaluate: \(\displaystyle\int x\cdot e^x\,dx\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>LIATE: Algebraic before Exponential. Let \(u=x\Rightarrow du=dx\); \(dv=e^x dx\Rightarrow v=e^x\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(\int xe^x dx=xe^x-\int e^x dx=xe^x-e^x+C=e^x(x-1)+C\)</div></div>
+            <div class="answer">\(e^x(x-1)+C\)</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Partial fraction decomposition</div>
+        <div class="problem-body">
+          <div class="problem-q">Evaluate: \(\displaystyle\int\frac{3x+5}{(x+1)(x+2)}\,dx\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Decompose: \(\dfrac{3x+5}{(x+1)(x+2)}=\dfrac{A}{x+1}+\dfrac{B}{x+2}\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(3x+5=A(x+2)+B(x+1)\). At \(x=-1\): \(2=A(1)\Rightarrow A=2\). At \(x=-2\): \(-1=B(-1)\Rightarrow B=1\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>\(\int\left[\dfrac{2}{x+1}+\dfrac{1}{x+2}\right]dx=2\ln|x+1|+\ln|x+2|+C\)</div></div>
+            <div class="answer">\(2\ln|x+1|+\ln|x+2|+C\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 7 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">By Parts</div><div class="sval">\(\int u\,dv=uv-\int v\,du\)</div></div>
+      <div class="sum-item"><div class="sname">LIATE</div><div class="sval">Log→InvTrig→Alg→Trig→Exp</div></div>
+      <div class="sum-item"><div class="sname">Trig Sub √(a²−x²)</div><div class="sval">\(x=a\sin\theta\)</div></div>
+      <div class="sum-item"><div class="sname">Trig Sub √(a²+x²)</div><div class="sval">\(x=a\tan\theta\)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ MODULE 8 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 8</div><h2>Differential Equations</h2></div>
+  <div class="prereq-box"><strong>Prerequisites:</strong> Differentiation (Module 4) and integration (Module 6). Understanding of exponential and logarithmic functions.</div>
+  <div class="module-intro">A differential equation relates a function to its derivatives. They model population growth, cooling, electrical circuits, and mechanical vibrations. These appear in every engineering discipline.</div>
+
+  <div class="concept">
+    <h3>Separable &amp; Linear First-Order ODEs</h3>
+    <a class="video-link" href="https://www.video-tutor.net/differential-equations.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Differential Equations</a>
+    <div class="formula-box">
+      <span class="label">ODE METHODS</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Separable ODE</div><div class="fval">\(\frac{dy}{dx}=f(x)g(y)\Rightarrow\int\frac{dy}{g(y)}=\int f(x)\,dx\)</div></div>
+        <div class="formula-item"><div class="fname">Linear 1st Order</div><div class="fval">\(\frac{dy}{dx}+P(x)y=Q(x)\)</div></div>
+        <div class="formula-item"><div class="fname">Integrating Factor</div><div class="fval">\(\mu(x)=e^{\int P(x)dx}\)</div></div>
+        <div class="formula-item"><div class="fname">Solution</div><div class="fval">\(y=\dfrac{1}{\mu}\int\mu\cdot Q\,dx\)</div></div>
+        <div class="formula-item"><div class="fname">Exponential Model</div><div class="fval">\(\frac{dy}{dt}=ky\Rightarrow y=Ce^{kt}\)</div></div>
+        <div class="formula-item"><div class="fname">Newton's Cooling</div><div class="fval">\(\frac{dT}{dt}=k(T-T_{\text{env}})\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Separable ODE</div>
+        <div class="problem-body">
+          <div class="problem-q">Solve: \(\dfrac{dy}{dx}=\dfrac{x}{y}\), given \(y(0)=3\).</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Separate: \(y\,dy=x\,dx\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Integrate both sides: \(\dfrac{y^2}{2}=\dfrac{x^2}{2}+C\) → \(y^2=x^2+K\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Apply IC \(y(0)=3\): \(9=0+K\Rightarrow K=9\)</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>\(y^2=x^2+9\Rightarrow y=\sqrt{x^2+9}\) (positive since y(0)=3&gt;0)</div></div>
+            <div class="answer">\(y=\sqrt{x^2+9}\)</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Exponential growth / decay</div>
+        <div class="problem-body">
+          <div class="problem-q">A bacteria culture starts with 500 cells and doubles every 3 hours. How many cells after 9 hours?</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Model: \(N=N_0\cdot2^{t/3}\). Initial \(N_0=500\).</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>At \(t=9\): \(N=500\cdot2^{9/3}=500\cdot2^3=500\times8=4000\)</div></div>
+            <div class="answer">4,000 cells after 9 hours</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">3</div>Linear first-order ODE</div>
+        <div class="problem-body">
+          <div class="problem-q">Solve: \(\dfrac{dy}{dx}+\dfrac{2}{x}y=x^2\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Integrating factor: \(\mu=e^{\int\frac{2}{x}dx}=e^{2\ln x}=x^2\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>Multiply: \(\frac{d}{dx}(x^2 y)=x^2\cdot x^2=x^4\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Integrate: \(x^2 y=\dfrac{x^5}{5}+C\Rightarrow y=\dfrac{x^3}{5}+\dfrac{C}{x^2}\)</div></div>
+            <div class="answer">\(y=\dfrac{x^3}{5}+\dfrac{C}{x^2}\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 8 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">Separable</div><div class="sval">\(\int\frac{dy}{g(y)}=\int f(x)dx\)</div></div>
+      <div class="sum-item"><div class="sname">Integrating Factor</div><div class="sval">\(\mu=e^{\int P\,dx}\)</div></div>
+      <div class="sum-item"><div class="sname">Linear ODE Solution</div><div class="sval">\(y=\frac{1}{\mu}\int\mu Q\,dx\)</div></div>
+      <div class="sum-item"><div class="sname">Exponential Growth</div><div class="sval">\(y=Ce^{kt}\)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ MODULE 9 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 9</div><h2>College Statistics</h2></div>
+  <div class="prereq-box"><strong>Prerequisites:</strong> Basic mean/median/mode from school statistics. Understanding of probability fundamentals.</div>
+  <div class="module-intro">College statistics extends into probability distributions, hypothesis testing, and confidence intervals — the statistical tools used in data science, research papers, and quality control.</div>
+
+  <div class="concept">
+    <h3>Probability Distributions</h3>
+    <a class="video-link" href="https://www.video-tutor.net/discrete-probability-distributions.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Discrete Probability Distributions</a>
+    <a class="video-link" href="https://www.video-tutor.net/normal-probability-distributions.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Normal Distributions</a>
+    <div class="formula-box">
+      <span class="label">DISTRIBUTIONS</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Binomial P(X=k)</div><div class="fval">\(\binom{n}{k}p^k(1-p)^{n-k}\)</div></div>
+        <div class="formula-item"><div class="fname">Binomial Mean</div><div class="fval">\(\mu=np\)</div></div>
+        <div class="formula-item"><div class="fname">Binomial Variance</div><div class="fval">\(\sigma^2=np(1-p)\)</div></div>
+        <div class="formula-item"><div class="fname">Poisson P(X=k)</div><div class="fval">\(\dfrac{e^{-\lambda}\lambda^k}{k!}\)</div></div>
+        <div class="formula-item"><div class="fname">Z-Score</div><div class="fval">\(Z=\dfrac{X-\mu}{\sigma}\)</div></div>
+        <div class="formula-item"><div class="fname">Standard Error</div><div class="fval">\(SE=\dfrac{\sigma}{\sqrt{n}}\)</div></div>
+        <div class="formula-item"><div class="fname">95% Conf. Interval</div><div class="fval">\(\bar{x}\pm1.96\cdot\dfrac{\sigma}{\sqrt{n}}\)</div></div>
+        <div class="formula-item"><div class="fname">t-interval</div><div class="fval">\(\bar{x}\pm t^*\cdot\dfrac{s}{\sqrt{n}}\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Binomial distribution</div>
+        <div class="problem-body">
+          <div class="problem-q">A fair coin is tossed 10 times. Find: (a) P(exactly 6 heads), (b) Mean and standard deviation.</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">a</div><div>\(n=10,\;p=0.5,\;k=6\). \(P(X=6)=\binom{10}{6}(0.5)^6(0.5)^4=210\times(0.5)^{10}=\dfrac{210}{1024}\approx0.205\)</div></div>
+            <div class="sol-step"><div class="step-n">b</div><div>Mean: \(\mu=10\times0.5=5\). SD: \(\sigma=\sqrt{10\times0.5\times0.5}=\sqrt{2.5}\approx1.58\)</div></div>
+            <div class="answer">P(X=6)≈0.205; Mean=5; SD≈1.58</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Z-score and hypothesis testing</div>
+        <div class="problem-body">
+          <div class="problem-q">A factory claims its light bulbs last 1000 hours (σ=50). A sample of 25 bulbs gives \(\bar{x}=980\) hrs. Test at α=0.05 whether the true mean is less than 1000.</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>H₀: μ=1000; H₁: μ&lt;1000 (left-tailed)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(Z=\dfrac{980-1000}{50/\sqrt{25}}=\dfrac{-20}{10}=-2.0\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Critical value at α=0.05 (left tail): \(Z_{crit}=-1.645\)</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>Since \(-2.0<-1.645\), we REJECT H₀. Sufficient evidence that mean&lt;1000.</div></div>
+            <div class="answer">Reject H₀ — evidence that mean lifetime &lt; 1000 hrs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <h3>Confidence Intervals</h3>
+    <a class="video-link" href="https://www.video-tutor.net/confidence-intervals.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch: Confidence Intervals</a>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>95% Confidence interval</div>
+        <div class="problem-body">
+          <div class="problem-q">A sample of 36 students has mean exam score \(\bar{x}=72\) with σ=12. Construct a 95% CI for the true mean.</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>SE = \(\frac{12}{\sqrt{36}}=\frac{12}{6}=2\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>95% CI: \(72\pm1.96\times2=72\pm3.92\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Interval: \((68.08,\;75.92)\)</div></div>
+            <div class="answer">95% CI: (68.08, 75.92)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 9 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">Binomial P(X=k)</div><div class="sval">\(\binom{n}{k}p^k(1-p)^{n-k}\)</div></div>
+      <div class="sum-item"><div class="sname">Binomial Mean/Var</div><div class="sval">\(\mu=np,\;\sigma^2=np(1-p)\)</div></div>
+      <div class="sum-item"><div class="sname">Z-Score</div><div class="sval">\(Z=(X-\mu)/\sigma\)</div></div>
+      <div class="sum-item"><div class="sname">Standard Error</div><div class="sval">\(SE=\sigma/\sqrt{n}\)</div></div>
+      <div class="sum-item"><div class="sname">95% CI</div><div class="sval">\(\bar{x}\pm1.96\cdot\sigma/\sqrt{n}\)</div></div>
+      <div class="sum-item"><div class="sname">Poisson</div><div class="sval">\(P(X=k)=e^{-\lambda}\lambda^k/k!\)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ MODULE 10 ════ -->
+<div class="module">
+  <div class="module-header"><div class="module-badge">Module 10</div><h2>Linear Algebra</h2></div>
+  <div class="prereq-box"><strong>Prerequisites:</strong> Systems of equations (school algebra). Basic arithmetic with fractions and negative numbers.</div>
+  <div class="module-intro">Linear algebra is the mathematics of vectors and matrices. It powers AI/ML (neural networks), computer graphics, engineering simulations, cryptography, and data compression.</div>
+
+  <div class="concept">
+    <h3>Matrices &amp; Determinants</h3>
+    <div class="formula-box">
+      <span class="label">MATRIX OPERATIONS</span>
+      <div class="formula-grid">
+        <div class="formula-item"><div class="fname">Matrix Multiply</div><div class="fval">\((AB)_{ij}=\sum_k A_{ik}B_{kj}\)</div></div>
+        <div class="formula-item"><div class="fname">2×2 Determinant</div><div class="fval">\(\det\begin{pmatrix}a&b\\c&d\end{pmatrix}=ad-bc\)</div></div>
+        <div class="formula-item"><div class="fname">3×3 Determinant</div><div class="fval">Cofactor expansion along any row/column</div></div>
+        <div class="formula-item"><div class="fname">2×2 Inverse</div><div class="fval">\(A^{-1}=\dfrac{1}{\det A}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}\)</div></div>
+        <div class="formula-item"><div class="fname">Cramer's Rule</div><div class="fval">\(x_i=\dfrac{\det(A_i)}{\det(A)}\)</div></div>
+        <div class="formula-item"><div class="fname">Eigenvalue</div><div class="fval">\(\det(A-\lambda I)=0\)</div></div>
+        <div class="formula-item"><div class="fname">Eigenvector</div><div class="fval">\((A-\lambda I)\mathbf{v}=\mathbf{0}\)</div></div>
+      </div>
+    </div>
+    <div class="problems">
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">1</div>Matrix multiplication &amp; determinant</div>
+        <div class="problem-body">
+          <div class="problem-q">Given \(A=\begin{pmatrix}2&3\\1&4\end{pmatrix}\) and \(B=\begin{pmatrix}1&-1\\2&0\end{pmatrix}\), find \(AB\) and \(\det(A)\).</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>\(AB=\begin{pmatrix}2(1)+3(2)&2(-1)+3(0)\\1(1)+4(2)&1(-1)+4(0)\end{pmatrix}=\begin{pmatrix}8&-2\\9&-1\end{pmatrix}\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(\det(A)=2\times4-3\times1=8-3=5\)</div></div>
+            <div class="answer">\(AB=\begin{pmatrix}8&-2\\9&-1\end{pmatrix}\), det(A)=5</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">2</div>Eigenvalues and eigenvectors</div>
+        <div class="problem-body">
+          <div class="problem-q">Find the eigenvalues of \(A=\begin{pmatrix}4&1\\2&3\end{pmatrix}\) and the eigenvector for each.</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Characteristic equation: \(\det(A-\lambda I)=0\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>\(\det\begin{pmatrix}4-\lambda&1\\2&3-\lambda\end{pmatrix}=(4-\lambda)(3-\lambda)-2=\lambda^2-7\lambda+10=(\lambda-5)(\lambda-2)=0\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>Eigenvalues: \(\lambda_1=5,\;\lambda_2=2\)</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>For \(\lambda_1=5\): \((A-5I)\mathbf{v}=0\Rightarrow\begin{pmatrix}-1&1\\2&-2\end{pmatrix}\mathbf{v}=0\Rightarrow v_1=v_2\). Eigenvector: \(\begin{pmatrix}1\\1\end{pmatrix}\)</div></div>
+            <div class="sol-step"><div class="step-n">5</div><div>For \(\lambda_2=2\): \((A-2I)\mathbf{v}=0\Rightarrow\begin{pmatrix}2&1\\2&1\end{pmatrix}\mathbf{v}=0\Rightarrow 2v_1+v_2=0\). Eigenvector: \(\begin{pmatrix}1\\-2\end{pmatrix}\)</div></div>
+            <div class="answer">λ₁=5 with eigenvector [1,1]ᵀ; λ₂=2 with eigenvector [1,−2]ᵀ</div>
+          </div>
+        </div>
+      </div>
+      <div class="problem">
+        <div class="problem-header"><div class="p-num">3</div>Gaussian elimination</div>
+        <div class="problem-body">
+          <div class="problem-q">Solve the system using Gaussian elimination: \(x+y+z=6,\; 2x-y+z=3,\; x+2y-z=2\)</div>
+          <div class="solution">
+            <div class="sol-label">STEP-BY-STEP SOLUTION</div>
+            <div class="sol-step"><div class="step-n">1</div><div>Augmented matrix: \(\begin{pmatrix}1&1&1&|&6\\2&-1&1&|&3\\1&2&-1&|&2\end{pmatrix}\)</div></div>
+            <div class="sol-step"><div class="step-n">2</div><div>R2←R2−2R1; R3←R3−R1: \(\begin{pmatrix}1&1&1&|&6\\0&-3&-1&|&-9\\0&1&-2&|&-4\end{pmatrix}\)</div></div>
+            <div class="sol-step"><div class="step-n">3</div><div>R3←R3+R2/3: \(\begin{pmatrix}1&1&1&|&6\\0&-3&-1&|&-9\\0&0&-7/3&|&-7\end{pmatrix}\)</div></div>
+            <div class="sol-step"><div class="step-n">4</div><div>Back-substitute: \(z=3,\; -3y-3=-9\Rightarrow y=2,\; x+2+3=6\Rightarrow x=1\)</div></div>
+            <div class="answer">x = 1, y = 2, z = 3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mod-summary">
+    <h4>Module 10 — Formula Summary</h4>
+    <div class="summary-grid">
+      <div class="sum-item"><div class="sname">2×2 Det</div><div class="sval">\(ad-bc\)</div></div>
+      <div class="sum-item"><div class="sname">2×2 Inverse</div><div class="sval">\(\frac{1}{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}\)</div></div>
+      <div class="sum-item"><div class="sname">Eigenvalue Eq</div><div class="sval">\(\det(A-\lambda I)=0\)</div></div>
+      <div class="sum-item"><div class="sname">Eigenvector</div><div class="sval">\((A-\lambda I)\mathbf{v}=\mathbf{0}\)</div></div>
+      <div class="sum-item"><div class="sname">Cramer's Rule</div><div class="sval">\(x_i=\det(A_i)/\det(A)\)</div></div>
+      <div class="sum-item"><div class="sname">Rank</div><div class="sval">Number of non-zero rows in row-echelon form</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ MASTER FORMULA SHEET ════ -->
+<div class="master-sheet">
+  <h2>Master Formula Sheet — College Mathematics</h2>
+
+  <div class="mfs-section">
+    <h3>Functions &amp; Pre-Calculus</h3>
+    <div class="mfs-grid">
+      <div class="mfs-card"><div class="mfc-name">Composition</div>\((f\circ g)(x)=f(g(x))\)</div>
+      <div class="mfs-card"><div class="mfc-name">log⟺exp</div>\(\log_b a=c\Leftrightarrow b^c=a\)</div>
+      <div class="mfs-card"><div class="mfc-name">Log Product</div>\(\log(ab)=\log a+\log b\)</div>
+      <div class="mfs-card"><div class="mfc-name">Change of Base</div>\(\log_b a=\frac{\ln a}{\ln b}\)</div>
+    </div>
+  </div>
+
+  <div class="mfs-section">
+    <h3>Trigonometry</h3>
+    <div class="mfs-grid">
+      <div class="mfs-card"><div class="mfc-name">Pythagorean</div>\(\sin^2\theta+\cos^2\theta=1\)</div>
+      <div class="mfs-card"><div class="mfc-name">1+tan²</div>\(1+\tan^2\theta=\sec^2\theta\)</div>
+      <div class="mfs-card"><div class="mfc-name">Double sin</div>\(\sin 2\theta=2\sin\theta\cos\theta\)</div>
+      <div class="mfs-card"><div class="mfc-name">Double cos</div>\(\cos 2\theta=\cos^2\theta-\sin^2\theta\)</div>
+      <div class="mfs-card"><div class="mfc-name">Sum sin</div>\(\sin(A+B)=\sin A\cos B+\cos A\sin B\)</div>
+      <div class="mfs-card"><div class="mfc-name">Sum cos</div>\(\cos(A+B)=\cos A\cos B-\sin A\sin B\)</div>
+    </div>
+  </div>
+
+  <div class="mfs-section">
+    <h3>Limits</h3>
+    <div class="mfs-grid">
+      <div class="mfs-card"><div class="mfc-name">L'Hôpital</div>\(\lim(f/g)\overset{0/0}{=}\lim(f'/g')\)</div>
+      <div class="mfs-card"><div class="mfc-name">sin x / x</div>\(\lim_{x\to0}\frac{\sin x}{x}=1\)</div>
+      <div class="mfs-card"><div class="mfc-name">Continuity</div>f(c) defined, limit exists, equal</div>
+    </div>
+  </div>
+
+  <div class="mfs-section">
+    <h3>Differentiation</h3>
+    <div class="mfs-grid">
+      <div class="mfs-card"><div class="mfc-name">Power</div>\(\frac{d}{dx}x^n=nx^{n-1}\)</div>
+      <div class="mfs-card"><div class="mfc-name">Product</div>\((uv)'=u'v+uv'\)</div>
+      <div class="mfs-card"><div class="mfc-name">Quotient</div>\((u/v)'=(u'v-uv')/v^2\)</div>
+      <div class="mfs-card"><div class="mfc-name">Chain</div>\(\frac{d}{dx}f(g)=f'(g)\cdot g'\)</div>
+      <div class="mfs-card"><div class="mfc-name">d/dx eˣ</div>\(e^x\)</div>
+      <div class="mfs-card"><div class="mfc-name">d/dx ln x</div>\(1/x\)</div>
+      <div class="mfs-card"><div class="mfc-name">d/dx sin</div>\(\cos x\)</div>
+      <div class="mfs-card"><div class="mfc-name">d/dx cos</div>\(-\sin x\)</div>
+    </div>
+  </div>
+
+  <div class="mfs-section">
+    <h3>Integration</h3>
+    <div class="mfs-grid">
+      <div class="mfs-card"><div class="mfc-name">Power</div>\(\int x^n dx=\frac{x^{n+1}}{n+1}+C\)</div>
+      <div class="mfs-card"><div class="mfc-name">FTC</div>\(\int_a^b f=F(b)-F(a)\)</div>
+      <div class="mfs-card"><div class="mfc-name">By Parts</div>\(\int u\,dv=uv-\int v\,du\)</div>
+      <div class="mfs-card"><div class="mfc-name">∫ sin x</div>\(-\cos x+C\)</div>
+      <div class="mfs-card"><div class="mfc-name">∫ cos x</div>\(\sin x+C\)</div>
+      <div class="mfs-card"><div class="mfc-name">∫ eˣ</div>\(e^x+C\)</div>
+      <div class="mfs-card"><div class="mfc-name">∫ 1/x</div>\(\ln|x|+C\)</div>
+    </div>
+  </div>
+
+  <div class="mfs-section">
+    <h3>Differential Equations &amp; Statistics</h3>
+    <div class="mfs-grid">
+      <div class="mfs-card"><div class="mfc-name">Exp Growth</div>\(y=Ce^{kt}\)</div>
+      <div class="mfs-card"><div class="mfc-name">Integrating Factor</div>\(\mu=e^{\int P\,dx}\)</div>
+      <div class="mfs-card"><div class="mfc-name">Z-Score</div>\(Z=(X-\mu)/\sigma\)</div>
+      <div class="mfs-card"><div class="mfc-name">95% CI</div>\(\bar{x}\pm1.96\cdot\sigma/\sqrt{n}\)</div>
+      <div class="mfs-card"><div class="mfc-name">Binomial Mean</div>\(\mu=np\)</div>
+      <div class="mfs-card"><div class="mfc-name">Eigenvalue Eq</div>\(\det(A-\lambda I)=0\)</div>
+      <div class="mfs-card"><div class="mfc-name">2×2 Inverse</div>\(\frac{1}{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}\)</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:60px;padding:30px;background:linear-gradient(135deg,var(--purple),#0e3030);color:#fff;border-radius:16px;">
+    <div style="font-family:'Merriweather',serif;font-size:22px;color:var(--gold);margin-bottom:8px;">Watch. Practice. Master.</div>
+    <div style="font-size:14px;opacity:.85;">All topics have free video lessons at <strong>video-tutor.net</strong></div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px;">
+      <a href="https://www.video-tutor.net/calculus.html" target="_blank" style="background:var(--teal);color:#fff;padding:8px 20px;border-radius:20px;text-decoration:none;font-size:13px;font-weight:600;">Calculus Videos</a>
+      <a href="https://www.video-tutor.net/statistic.html" target="_blank" style="background:var(--teal);color:#fff;padding:8px 20px;border-radius:20px;text-decoration:none;font-size:13px;font-weight:600;">Statistics Videos</a>
+      <a href="https://www.video-tutor.net/trig.html" target="_blank" style="background:var(--teal);color:#fff;padding:8px 20px;border-radius:20px;text-decoration:none;font-size:13px;font-weight:600;">Trig Videos</a>
+      <a href="https://www.video-tutor.net/formula-sheets.html" target="_blank" style="background:var(--teal);color:#fff;padding:8px 20px;border-radius:20px;text-decoration:none;font-size:13px;font-weight:600;">Free Formula Sheets</a>
+    </div>
+    <div style="margin-top:18px;font-size:12px;opacity:.6;">For foundational topics, see Vol. 1: Mathematics Fundamentals</div>
+  </div>
+</div>
+
+</body>
+</html>

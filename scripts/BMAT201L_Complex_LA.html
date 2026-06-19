@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>BMAT201L – Complex Variables and Linear Algebra | VIT Chennai</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet"/>
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},
+chtml:{scale:0.88,matchFontHeight:false},options:{skipHtmlTags:['script','noscript','style','textarea']}};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+:root{--dk:#3b0764;--ac:#7c3aed;--al:#f5f3ff;--gl:#dcfce7;--green:#14532d;--muted:#4b5563;--border:#e2e8f0;--bg:#f8fafc;}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:#1e293b;font-size:15px;line-height:1.75;}
+a{color:inherit;}
+.cover{background:linear-gradient(135deg,#3b0764 0%,#4c1d95 55%,#2e1065 100%);color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 40px;page-break-after:always;}
+.chip{background:#7c3aed;color:#fff;font-size:11px;font-weight:800;letter-spacing:2px;padding:5px 18px;border-radius:30px;margin-bottom:20px;text-transform:uppercase;display:inline-block;}
+.cover h1{font-family:'Merriweather',serif;font-size:42px;font-weight:900;line-height:1.2;margin-bottom:12px;}
+.cover h1 span{color:#c4b5fd;}
+.cover .sub-code{font-size:15px;opacity:.75;margin-bottom:28px;}
+.mod-pills{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:36px;max-width:760px;}
+.mod-pills span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:6px 14px;font-size:12.5px;}
+.toc{padding:56px 72px;page-break-after:always;background:#fff;}
+.toc h2{font-family:'Merriweather',serif;font-size:26px;color:var(--dk);border-bottom:3px solid var(--ac);padding-bottom:10px;margin-bottom:28px;}
+.toc-item{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.toc-num{background:var(--dk);color:#fff;min-width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.toc-info strong{font-size:14px;color:var(--dk);display:block;}
+.toc-info span{font-size:12px;color:var(--muted);}
+.mod{padding:52px 72px;page-break-before:always;background:#fff;}
+.mod:nth-child(even){background:var(--bg);}
+.mod-hdr{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.mod-badge{background:var(--dk);color:#fff;padding:4px 13px;border-radius:5px;font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.mod h2{font-family:'Merriweather',serif;font-size:24px;color:var(--dk);}
+.mod-intro{background:#f5f3ff;border-left:4px solid var(--dk);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0 32px;font-size:13.5px;color:var(--muted);}
+.sub{margin-bottom:44px;}
+.sub h3{font-size:17px;font-weight:700;color:var(--dk);margin-bottom:9px;padding-left:11px;border-left:4px solid var(--ac);}
+.sub>p{color:var(--muted);font-size:13.5px;margin-bottom:10px;}
+.thm{background:linear-gradient(135deg,#ede9fe,#ddd6fe);border:2px solid var(--ac);border-radius:10px;padding:15px 18px;margin:12px 0;position:relative;}
+.thm-title{position:absolute;top:-10px;left:13px;background:var(--ac);color:#fff;padding:2px 11px;border-radius:20px;font-size:10.5px;font-weight:800;letter-spacing:.8px;}
+.fbox{background:linear-gradient(135deg,#ede9fe,#c4b5fd);border:2px solid var(--dk);border-radius:10px;padding:16px 18px;margin:12px 0;position:relative;overflow-x:auto;}
+.flabel{position:absolute;top:-10px;left:13px;background:var(--dk);color:#fff;padding:2px 11px;border-radius:20px;font-size:10.5px;font-weight:800;letter-spacing:.8px;}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;align-items:start;}
+.fgrid.two{grid-template-columns:repeat(2,1fr);}
+.fcell{background:#fff;border-radius:7px;padding:10px 13px;border-left:3px solid var(--ac);overflow:hidden;word-break:break-word;}
+.fcell .fn{font-size:9.5px;color:var(--muted);font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px;}
+.fcell .fv{font-size:13.5px;}
+.prob{background:#fff;border:1px solid var(--border);border-radius:11px;margin-bottom:14px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.05);}
+.prob-hdr{background:var(--dk);color:#fff;padding:8px 15px;display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;}
+.pn{background:#c4b5fd;color:var(--dk);min-width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:800;flex-shrink:0;}
+.prob-body{padding:14px 16px;}
+.pq{font-weight:600;font-size:13.5px;margin-bottom:11px;}
+.sol{background:var(--gl);border:1px solid #bbf7d0;border-radius:7px;padding:12px 15px;}
+.sl{color:var(--green);font-size:9.5px;font-weight:800;letter-spacing:1px;margin-bottom:7px;}
+.step{display:flex;gap:8px;margin-bottom:6px;align-items:flex-start;font-size:13px;}
+.sn{background:var(--green);color:#fff;min-width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.ans{background:var(--dk);color:#c4b5fd;padding:6px 13px;border-radius:5px;display:inline-block;font-size:13px;font-weight:700;margin-top:7px;}
+.msum{background:linear-gradient(135deg,var(--dk),#4c1d95);color:#fff;border-radius:11px;padding:22px;margin-top:36px;}
+.msum h4{font-family:'Merriweather',serif;font-size:15px;color:#c4b5fd;margin-bottom:14px;}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
+.scell{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:7px;padding:10px 13px;}
+.sn2{font-size:9.5px;color:#c4b5fd;font-weight:700;margin-bottom:4px;}
+.sv{font-size:12.5px;}
+.ms{padding:52px 72px;page-break-before:always;}
+.ms h2{font-family:'Merriweather',serif;font-size:24px;color:var(--dk);border-bottom:3px solid var(--ac);padding-bottom:9px;margin-bottom:28px;}
+.ms-sec{margin-bottom:26px;}
+.ms-sec h3{font-size:13px;font-weight:700;color:var(--dk);background:var(--al);padding:6px 13px;border-radius:5px;margin-bottom:10px;}
+.ms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.ms-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:10px 13px;border-left:3px solid var(--dk);overflow:hidden;word-break:break-word;}
+.mc{font-size:9.5px;color:var(--muted);font-weight:700;margin-bottom:3px;text-transform:uppercase;}
+@media print{.mod,.toc,.ms{background:#fff!important;}.mod,.toc,.ms,.cover{box-shadow:none;}@page{margin:10mm 14mm;size:A4 landscape;}}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="chip">VIT Chennai · BMAT201L</div>
+  <h1>Complex Variables<br/><span>&amp; Linear Algebra</span></h1>
+  <div class="sub-code">Complete Study Guide · 7 Modules · Formula Sheets · Solved Problems</div>
+  <div class="mod-pills">
+    <span>Module 1: Analytic Functions</span><span>Module 2: Complex Integration</span>
+    <span>Module 3: Residues &amp; Applications</span><span>Module 4: Conformal Mapping</span>
+    <span>Module 5: Vector Spaces &amp; Linear Transforms</span><span>Module 6: Eigenvalues &amp; Cayley-Hamilton</span>
+    <span>Module 7: Quadratic Forms &amp; Matrix Decomp.</span>
+  </div>
+</div>
+
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <div class="toc-item"><div class="toc-num">1</div><div class="toc-info"><strong>Analytic Functions of Complex Variables</strong><span>Cauchy-Riemann equations · Harmonic functions · Milne-Thomson method</span></div></div>
+  <div class="toc-item"><div class="toc-num">2</div><div class="toc-info"><strong>Complex Integration — Cauchy's Theory</strong><span>Cauchy's theorem · CIF · nth order CIF · Taylor &amp; Laurent series · Singularities</span></div></div>
+  <div class="toc-item"><div class="toc-num">3</div><div class="toc-info"><strong>Residues &amp; Applications to Real Integrals</strong><span>Residue theorem · Poles · Contour integration · Real definite integrals</span></div></div>
+  <div class="toc-item"><div class="toc-num">4</div><div class="toc-info"><strong>Conformal Mapping</strong><span>Bilinear transformation · Fixed points · Cross-ratio · Standard mappings</span></div></div>
+  <div class="toc-item"><div class="toc-num">5</div><div class="toc-info"><strong>Vector Spaces &amp; Linear Transformations</strong><span>Subspaces · Basis · Dimension · Rank-nullity · Linear maps · Kernel &amp; image</span></div></div>
+  <div class="toc-item"><div class="toc-num">6</div><div class="toc-info"><strong>Inner Products, Eigenvalues &amp; Cayley-Hamilton</strong><span>Gram-Schmidt · Eigenvalues/vectors · Diagonalisation · Cayley-Hamilton theorem</span></div></div>
+  <div class="toc-item"><div class="toc-num">7</div><div class="toc-info"><strong>Quadratic Forms &amp; Matrix Decompositions</strong><span>Quadratic forms · Positive definiteness · LU decomposition · Orthogonal diagonalisation</span></div></div>
+</div>
+
+<!-- ═══ MODULE 1 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 1</div><h2>Analytic Functions of Complex Variables</h2></div>
+  <div class="mod-intro">A function f(z) = u + iv is analytic if it satisfies the Cauchy-Riemann equations — a pair of coupled PDEs ensuring complex differentiability. Analytic functions model potential flow, electrostatics, and are the foundation of conformal mapping.</div>
+
+  <div class="sub">
+    <h3>1.1 Cauchy-Riemann Equations</h3>
+    <div class="fbox"><span class="flabel">CAUCHY-RIEMANN (CR) EQUATIONS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">CR in Cartesian</div><div class="fv">\(\dfrac{\partial u}{\partial x}=\dfrac{\partial v}{\partial y},\quad\dfrac{\partial u}{\partial y}=-\dfrac{\partial v}{\partial x}\)</div></div>
+      <div class="fcell"><div class="fn">CR in Polar (z=re^{iθ})</div><div class="fv">\(u_r=\dfrac{1}{r}v_\theta,\quad\dfrac{1}{r}u_\theta=-v_r\)</div></div>
+      <div class="fcell"><div class="fn">Derivative</div><div class="fv">\(f'(z)=u_x+iv_x=v_y-iu_y\)</div></div>
+      <div class="fcell"><div class="fn">Harmonic function</div><div class="fv">\(\nabla^2u=u_{xx}+u_{yy}=0\)</div></div>
+      <div class="fcell"><div class="fn">Harmonic conjugate</div><div class="fv">Given u, find v using CR so that f=u+iv is analytic</div></div>
+      <div class="fcell"><div class="fn">Entire function</div><div class="fv">Analytic everywhere (e.g., eᶻ, sin z, polynomials)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Verify analyticity — eᶻ</div>
+    <div class="prob-body"><div class="pq">Show \(f(z)=e^z\) is entire and find \(f'(z)\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(e^z=e^x(\cos y+i\sin y)\Rightarrow u=e^x\cos y,\;v=e^x\sin y\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(u_x=e^x\cos y=v_y\) ✓ and \(u_y=-e^x\sin y=-v_x\) ✓ CR satisfied everywhere</div></div>
+    <div class="step"><div class="sn">3</div><div>\(f'(z)=u_x+iv_x=e^x\cos y+ie^x\sin y=e^z\)</div></div>
+    <div class="ans">f(z) = eᶻ is entire; f′(z) = eᶻ</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>Find harmonic conjugate</div>
+    <div class="prob-body"><div class="pq">Given \(u=x^3-3xy^2\), find harmonic conjugate v and f(z).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Check: \(u_{xx}=6x,\;u_{yy}=-6x\Rightarrow\nabla^2u=0\) ✓</div></div>
+    <div class="step"><div class="sn">2</div><div>By CR: \(v_y=u_x=3x^2-3y^2\Rightarrow v=3x^2y-y^3+g(x)\)</div></div>
+    <div class="step"><div class="sn">3</div><div>\(v_x=6xy+g'(x)=-u_y=6xy\Rightarrow g'(x)=0\Rightarrow g=c\)</div></div>
+    <div class="step"><div class="sn">4</div><div>\(f(z)=(x^3-3xy^2)+i(3x^2y-y^3)=z^3+ic\)</div></div>
+    <div class="ans">v = 3x²y − y³ + c;  f(z) = z³</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>1.2 Milne-Thomson Method</h3>
+    <div class="thm"><span class="thm-title">MILNE-THOMSON METHOD</span>
+    <p style="margin-top:8px">To construct f(z) from u(x,y) without finding v explicitly:
+    \[f(z)=\int\left[u_x(z,0)-iu_y(z,0)\right]dz+C\]
+    (Replace x→z, y→0 in the partial derivatives.)</p></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Milne-Thomson method</div>
+    <div class="prob-body"><div class="pq">Find f(z) if \(u=e^x(x\cos y-y\sin y)\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(u_x=e^x[(x+1)\cos y-y\sin y]\). At y=0: \(u_x(z,0)=e^z(z+1)\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(u_y=e^x(-x\sin y-\sin y-y\cos y)\). At y=0: \(u_y(z,0)=0\)</div></div>
+    <div class="step"><div class="sn">3</div><div>\(f(z)=\int e^z(z+1)dz=\int ze^z dz+\int e^z dz=e^z(z-1)+e^z+C=ze^z+C\)</div></div>
+    <div class="ans">f(z) = zeᶻ + C</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 1 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">CR Cartesian</div><div class="sv">\(u_x=v_y,\;u_y=-v_x\)</div></div>
+    <div class="scell"><div class="sn2">f′(z)</div><div class="sv">\(u_x+iv_x\)</div></div>
+    <div class="scell"><div class="sn2">Harmonic</div><div class="sv">\(u_{xx}+u_{yy}=0\)</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 2 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 2</div><h2>Complex Integration — Cauchy's Theory</h2></div>
+  <div class="mod-intro">Cauchy's integral theorem and formula are among the most powerful results in mathematics — they evaluate complex integrals purely from function values at isolated points. Taylor and Laurent series classify function behaviour near singularities.</div>
+
+  <div class="sub">
+    <h3>2.1 Cauchy's Theorem &amp; Integral Formula</h3>
+    <div class="thm"><span class="thm-title">CAUCHY'S INTEGRAL THEOREM</span>
+    <p style="margin-top:8px">If f(z) is analytic on and inside a simple closed contour C: \(\oint_C f(z)\,dz=0\)</p></div>
+    <div class="thm"><span class="thm-title">CAUCHY'S INTEGRAL FORMULA</span>
+    <p style="margin-top:8px">If f(z) analytic inside C and a inside C:
+    \[f(a)=\frac{1}{2\pi i}\oint_C\frac{f(z)}{z-a}\,dz\qquad f^{(n)}(a)=\frac{n!}{2\pi i}\oint_C\frac{f(z)}{(z-a)^{n+1}}\,dz\]</p></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Apply CIF</div>
+    <div class="prob-body"><div class="pq">Evaluate \(\displaystyle\oint_{|z|=3}\dfrac{e^z}{z-2}\,dz\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>f(z)=eᶻ analytic everywhere; a=2 inside |z|=3 ✓</div></div>
+    <div class="step"><div class="sn">2</div><div>By CIF: \(=2\pi i\cdot f(2)=2\pi ie^2\)</div></div>
+    <div class="ans">2πie²</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>Higher-order CIF</div>
+    <div class="prob-body"><div class="pq">Find \(\displaystyle\oint_{|z|=2}\dfrac{\cos\pi z}{(z-1)^3}\,dz\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>f(z)=cos πz, a=1 (inside |z|=2), n=2. Need f″(1).</div></div>
+    <div class="step"><div class="sn">2</div><div>\(f'(z)=-\pi\sin\pi z,\;f''(z)=-\pi^2\cos\pi z\). \(f''(1)=-\pi^2\cos\pi=-\pi^2(-1)=\pi^2\)</div></div>
+    <div class="step"><div class="sn">3</div><div>\(\oint=\frac{2\pi i}{2!}f''(1)=\pi i\cdot\pi^2=\pi^3i\)</div></div>
+    <div class="ans">π³i</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>2.2 Taylor &amp; Laurent Series</h3>
+    <div class="fbox"><span class="flabel">SERIES &amp; SINGULARITY TYPES</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Taylor (analytic region)</div><div class="fv">\(f(z)=\sum_{n=0}^\infty a_n(z-z_0)^n\)</div></div>
+      <div class="fcell"><div class="fn">Laurent (annular region)</div><div class="fv">\(f(z)=\sum_{n=0}^\infty a_n(z-z_0)^n+\sum_{n=1}^\infty\frac{b_n}{(z-z_0)^n}\)</div></div>
+      <div class="fcell"><div class="fn">Removable singularity</div><div class="fv">All bₙ=0; limit exists and is finite</div></div>
+      <div class="fcell"><div class="fn">Pole of order m</div><div class="fv">bₘ≠0, bₙ=0 for n>m; finite principal part</div></div>
+      <div class="fcell"><div class="fn">Essential singularity</div><div class="fv">Infinitely many bₙ≠0</div></div>
+      <div class="fcell"><div class="fn">Simple pole (m=1)</div><div class="fv">Only b₁≠0</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Laurent expansion</div>
+    <div class="prob-body"><div class="pq">Expand \(f(z)=\dfrac{1}{z(z-1)}\) for \(0<|z|<1\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Partial fractions: \(\frac{-1}{z}+\frac{1}{z-1}\)</div></div>
+    <div class="step"><div class="sn">2</div><div>For |z|<1: \(\frac{1}{z-1}=\frac{-1}{1-z}=-\sum_{n=0}^\infty z^n\)</div></div>
+    <div class="step"><div class="sn">3</div><div>\(f(z)=\frac{-1}{z}-\sum_{n=0}^\infty z^n=\frac{-1}{z}-1-z-z^2-\cdots\)</div></div>
+    <div class="ans">f(z) = −1/z − 1 − z − z² − ···  (simple pole at z=0)</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 2 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Cauchy's Theorem</div><div class="sv">\(\oint_C f\,dz=0\) (analytic)</div></div>
+    <div class="scell"><div class="sn2">CIF</div><div class="sv">\(f(a)=\frac{1}{2\pi i}\oint\frac{f(z)}{z-a}dz\)</div></div>
+    <div class="scell"><div class="sn2">nth order CIF</div><div class="sv">\(\frac{n!}{2\pi i}\oint\frac{f(z)}{(z-a)^{n+1}}dz\)</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 3 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 3</div><h2>Residues &amp; Applications to Real Integrals</h2></div>
+  <div class="mod-intro">The Residue Theorem converts complex contour integrals into a simple sum of residues at poles. This powerful technique solves otherwise impossible real definite integrals, evaluating integrals of rational, trigonometric, and improper functions.</div>
+
+  <div class="sub">
+    <h3>3.1 Residue Theorem</h3>
+    <div class="fbox"><span class="flabel">RESIDUE FORMULAS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Residue Theorem</div><div class="fv">\(\oint_C f(z)\,dz=2\pi i\displaystyle\sum_k\text{Res}(f,z_k)\)</div></div>
+      <div class="fcell"><div class="fn">Residue at simple pole z=a</div><div class="fv">\(\text{Res}(f,a)=\lim_{z\to a}(z-a)f(z)\)</div></div>
+      <div class="fcell"><div class="fn">Residue at pole order m</div><div class="fv">\(\text{Res}(f,a)=\dfrac{1}{(m-1)!}\lim_{z\to a}\dfrac{d^{m-1}}{dz^{m-1}}[(z-a)^mf(z)]\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Evaluate by residue theorem</div>
+    <div class="prob-body"><div class="pq">Evaluate \(\displaystyle\oint_{|z|=3}\dfrac{z^2}{(z+1)^2(z-2)}\,dz\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Poles: z=−1 (order 2, inside) and z=2 (simple, inside)</div></div>
+    <div class="step"><div class="sn">2</div><div>Res at z=2: \(\lim_{z\to2}(z-2)\cdot\frac{z^2}{(z+1)^2(z-2)}=\frac{4}{9}\)</div></div>
+    <div class="step"><div class="sn">3</div><div>Res at z=−1 (order 2): \(\frac{d}{dz}\left[\frac{z^2}{z-2}\right]_{z=-1}=\frac{z^2-4z}{(z-2)^2}\Big|_{z=-1}=\frac{1+4}{9}=\frac{5}{9}\)</div></div>
+    <div class="step"><div class="sn">4</div><div>Total: \(2\pi i\left(\frac{4}{9}+\frac{5}{9}\right)=2\pi i\)</div></div>
+    <div class="ans">2πi</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>Real integral by contour integration</div>
+    <div class="prob-body"><div class="pq">Evaluate \(\displaystyle\int_0^{2\pi}\dfrac{d\theta}{5-3\cos\theta}\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Let z=e^{iθ}, dθ=dz/(iz), cosθ=(z+z⁻¹)/2</div></div>
+    <div class="step"><div class="sn">2</div><div>Integral becomes \(\oint_{|z|=1}\frac{2\,dz}{i(3z^2-10z+3)}=\oint\frac{2\,dz}{3i(z-3)(z-1/3)}\)</div></div>
+    <div class="step"><div class="sn">3</div><div>Only z=1/3 inside |z|=1. Res at 1/3: \(\frac{2}{3i(1/3-3)}=\frac{2}{3i(-8/3)}=\frac{1}{4i}\)</div></div>
+    <div class="step"><div class="sn">4</div><div>\(I=2\pi i\cdot\frac{1}{4i}=\frac{\pi}{2}\)</div></div>
+    <div class="ans">π/2</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 3 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Residue Theorem</div><div class="sv">\(2\pi i\sum\text{Res}(f,z_k)\)</div></div>
+    <div class="scell"><div class="sn2">Simple pole Res</div><div class="sv">\(\lim_{z\to a}(z-a)f(z)\)</div></div>
+    <div class="scell"><div class="sn2">Trig. integrals</div><div class="sv">z=e^{iθ}, dθ=dz/(iz)</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 4 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 4</div><h2>Conformal Mapping</h2></div>
+  <div class="mod-intro">Conformal mappings preserve angles locally and transform complex domains into simpler shapes where boundary value problems become tractable. The bilinear (Möbius) transformation is the most important class, mapping circles and lines to circles and lines.</div>
+
+  <div class="sub">
+    <h3>4.1 Bilinear (Möbius) Transformation</h3>
+    <div class="fbox"><span class="flabel">BILINEAR TRANSFORMATION</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">General form</div><div class="fv">\(w=\dfrac{az+b}{cz+d},\quad ad-bc\neq0\)</div></div>
+      <div class="fcell"><div class="fn">Fixed points</div><div class="fv">Solve \(cz^2+(d-a)z-b=0\)</div></div>
+      <div class="fcell"><div class="fn">Cross-ratio (invariant)</div><div class="fv">\(\dfrac{(w-w_1)(w_2-w_3)}{(w-w_3)(w_2-w_1)}=\dfrac{(z-z_1)(z_2-z_3)}{(z-z_3)(z_2-z_1)}\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Find bilinear transformation from 3 points</div>
+    <div class="prob-body"><div class="pq">Find bilinear map sending \(z_1=1,z_2=i,z_3=-1\) to \(w_1=0,w_2=1,w_3=\infty\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Since w₃=∞, the map is \(w=\frac{z-z_1}{z-z_3}\cdot\frac{z_2-z_3}{z_2-z_1}\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(w=\frac{z-1}{z+1}\cdot\frac{i+1}{i-1}\). Now \(\frac{i+1}{i-1}=\frac{(i+1)(-i-1)}{2}=-i\)</div></div>
+    <div class="step"><div class="sn">3</div><div>\(w=\frac{-i(z-1)}{z+1}\)</div></div>
+    <div class="ans">w = −i(z−1)/(z+1)</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>Fixed points</div>
+    <div class="prob-body"><div class="pq">Find fixed points of \(w=\dfrac{6z-9}{z}\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Set w=z: \(z^2=6z-9\Rightarrow(z-3)^2=0\Rightarrow z=3\) (repeated — parabolic type)</div></div>
+    <div class="ans">Fixed point z = 3 (repeated)</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>4.2 Standard Conformal Mappings</h3>
+    <div class="fbox"><span class="flabel">STANDARD MAPPINGS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">w = z² (squaring)</div><div class="fv">Upper half z-plane → full w-plane; doubles angles at origin</div></div>
+      <div class="fcell"><div class="fn">w = eᶻ</div><div class="fv">Strip 0&lt;y&lt;π → upper half w-plane</div></div>
+      <div class="fcell"><div class="fn">w = z + 1/z (Joukowski)</div><div class="fv">Circles → airfoil profiles; aerodynamics applications</div></div>
+    </div></div>
+  </div>
+
+  <div class="msum"><h4>Module 4 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Bilinear</div><div class="sv">\(w=(az+b)/(cz+d)\)</div></div>
+    <div class="scell"><div class="sn2">Fixed points</div><div class="sv">\(cz^2+(d-a)z-b=0\)</div></div>
+    <div class="scell"><div class="sn2">Cross-ratio</div><div class="sv">Invariant under bilinear maps</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 5 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 5</div><h2>Vector Spaces &amp; Linear Transformations</h2></div>
+  <div class="mod-intro">Vector spaces provide the abstract framework for linear algebra. Matrices, polynomials, and functions are all vector spaces. Linear transformations preserve the space's structure, with rank and nullity measuring their fundamental properties.</div>
+
+  <div class="sub">
+    <h3>5.1 Vector Spaces, Subspaces &amp; Basis</h3>
+    <div class="fbox"><span class="flabel">KEY DEFINITIONS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Subspace test (3 conditions)</div><div class="fv">Non-empty; closed under addition; closed under scalar multiplication</div></div>
+      <div class="fcell"><div class="fn">Linear independence</div><div class="fv">\(c_1v_1+\cdots+c_nv_n=0\Rightarrow\) all cᵢ=0</div></div>
+      <div class="fcell"><div class="fn">Basis</div><div class="fv">Linearly independent + spans V</div></div>
+      <div class="fcell"><div class="fn">Dimension</div><div class="fv">Number of vectors in any basis of V</div></div>
+      <div class="fcell"><div class="fn">Rank-Nullity Theorem</div><div class="fv">\(\text{rank}(T)+\text{nullity}(T)=\dim(\text{domain})\)</div></div>
+      <div class="fcell"><div class="fn">Basis test via det</div><div class="fv">det≠0 ↔ linearly independent (square matrix)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Check if set forms a basis</div>
+    <div class="prob-body"><div class="pq">Is \(\{(1,0,1),(0,1,0),(1,1,0)\}\) a basis for ℝ³?</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(\det\begin{pmatrix}1&0&1\\0&1&0\\1&1&0\end{pmatrix}=1(0-0)-0+1(0-1)=-1\neq0\)</div></div>
+    <div class="step"><div class="sn">2</div><div>det ≠ 0 → linearly independent + n=3 vectors for ℝ³ → it is a basis ✓</div></div>
+    <div class="ans">Yes, forms a basis for ℝ³</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>Find rank and nullity</div>
+    <div class="prob-body"><div class="pq">Find rank and nullity of \(A=\begin{pmatrix}1&2&-1&3\\2&4&1&5\\1&2&2&4\end{pmatrix}\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>R2←R2−2R1; R3←R3−R1: \(\begin{pmatrix}1&2&-1&3\\0&0&3&-1\\0&0&3&1\end{pmatrix}\)</div></div>
+    <div class="step"><div class="sn">2</div><div>R3←R3−R2: \(\begin{pmatrix}1&2&-1&3\\0&0&3&-1\\0&0&0&2\end{pmatrix}\). Three pivots → Rank = 3</div></div>
+    <div class="step"><div class="sn">3</div><div>Nullity = 4 − 3 = 1 (by Rank-Nullity Theorem)</div></div>
+    <div class="ans">Rank = 3, Nullity = 1</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>5.2 Linear Transformations</h3>
+    <div class="fbox"><span class="flabel">LINEAR TRANSFORMATIONS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Definition</div><div class="fv">T(u+v)=T(u)+T(v) and T(cu)=cT(u)</div></div>
+      <div class="fcell"><div class="fn">Kernel (null space)</div><div class="fv">\(\ker(T)=\{v:T(v)=\mathbf{0}\}\)</div></div>
+      <div class="fcell"><div class="fn">Image (range)</div><div class="fv">\(\text{Im}(T)=\{T(v):v\in V\}\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Matrix of linear transformation</div>
+    <div class="prob-body"><div class="pq">T(x,y)=(x+2y, 3x−y). Find matrix [T] and check invertibility.</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>T(e₁)=T(1,0)=(1,3); T(e₂)=T(0,1)=(2,−1). Matrix: \([T]=\begin{pmatrix}1&2\\3&-1\end{pmatrix}\)</div></div>
+    <div class="step"><div class="sn">2</div><div>det=−1−6=−7≠0 → invertible ✓</div></div>
+    <div class="ans">Matrix [[1,2],[3,−1]]; invertible (det=−7)</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 5 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Rank-Nullity</div><div class="sv">rank + nullity = dim(domain)</div></div>
+    <div class="scell"><div class="sn2">Basis test</div><div class="sv">LI + spans V</div></div>
+    <div class="scell"><div class="sn2">Kernel</div><div class="sv">\(\{v:T(v)=0\}\)</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 6 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 6</div><h2>Inner Products, Eigenvalues &amp; Cayley-Hamilton</h2></div>
+  <div class="mod-intro">Inner product spaces generalise geometry to abstract spaces, enabling orthogonality and projection. Eigenvalues reveal the most fundamental behaviour of transformations; Cayley-Hamilton is a powerful algebraic identity with many computational applications.</div>
+
+  <div class="sub">
+    <h3>6.1 Gram-Schmidt Orthogonalisation</h3>
+    <div class="fbox"><span class="flabel">GRAM-SCHMIDT PROCESS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Projection</div><div class="fv">\(\text{proj}_u v=\dfrac{\langle v,u\rangle}{\|u\|^2}u\)</div></div>
+      <div class="fcell"><div class="fn">Step 1</div><div class="fv">\(e_1=v_1\)</div></div>
+      <div class="fcell"><div class="fn">Step k</div><div class="fv">\(e_k=v_k-\displaystyle\sum_{j=1}^{k-1}\frac{\langle v_k,e_j\rangle}{\|e_j\|^2}e_j\)</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Gram-Schmidt</div>
+    <div class="prob-body"><div class="pq">Apply Gram-Schmidt to \(v_1=(1,1,0),\;v_2=(1,0,1)\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>\(e_1=(1,1,0)\); \(\|e_1\|^2=2\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(\langle v_2,e_1\rangle=1+0+0=1\). \(e_2=v_2-\frac{1}{2}e_1=(1,0,1)-(1/2,1/2,0)=(1/2,-1/2,1)\)</div></div>
+    <div class="step"><div class="sn">3</div><div>Check orthogonality: \(\langle e_1,e_2\rangle=1/2-1/2+0=0\) ✓</div></div>
+    <div class="ans">e₁=(1,1,0); e₂=(1/2,−1/2,1) (orthogonal pair)</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>6.2 Eigenvalues &amp; Cayley-Hamilton Theorem</h3>
+    <div class="fbox"><span class="flabel">EIGENVALUE THEORY</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Characteristic equation</div><div class="fv">\(\det(A-\lambda I)=0\)</div></div>
+      <div class="fcell"><div class="fn">Eigenvector</div><div class="fv">Solve \((A-\lambda I)\mathbf{v}=\mathbf{0}\) for each λ</div></div>
+      <div class="fcell"><div class="fn">tr(A) = Σλ</div><div class="fv">Sum of eigenvalues = trace</div></div>
+      <div class="fcell"><div class="fn">det(A) = Πλ</div><div class="fv">Product of eigenvalues = determinant</div></div>
+      <div class="fcell"><div class="fn">Diagonalisation</div><div class="fv">\(A=PDP^{-1}\) where P = eigenvectors, D = diag(λ)</div></div>
+      <div class="fcell"><div class="fn">Cayley-Hamilton</div><div class="fv">Every matrix satisfies its characteristic equation: φ(A)=O</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Eigenvalues and eigenvectors</div>
+    <div class="prob-body"><div class="pq">Find eigenvalues and eigenvectors of \(A=\begin{pmatrix}3&1\\1&3\end{pmatrix}\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Char. eq.: \(\det\begin{pmatrix}3-\lambda&1\\1&3-\lambda\end{pmatrix}=(3-\lambda)^2-1=0\Rightarrow\lambda^2-6\lambda+8=0\Rightarrow(\lambda-2)(\lambda-4)=0\)</div></div>
+    <div class="step"><div class="sn">2</div><div>λ₁=2: \((A-2I)v=0\Rightarrow\begin{pmatrix}1&1\\1&1\end{pmatrix}v=0\Rightarrow v_1=(1,-1)^T\)</div></div>
+    <div class="step"><div class="sn">3</div><div>λ₂=4: \((A-4I)v=0\Rightarrow\begin{pmatrix}-1&1\\1&-1\end{pmatrix}v=0\Rightarrow v_2=(1,1)^T\)</div></div>
+    <div class="ans">λ=2: v=(1,−1); λ=4: v=(1,1)</div></div></div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">2</div>Cayley-Hamilton — find A⁻¹</div>
+    <div class="prob-body"><div class="pq">Verify Cayley-Hamilton for \(A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\) and find A⁻¹.</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Char. eq.: λ²−5λ−2=0. By C-H: \(A^2-5A-2I=O\)</div></div>
+    <div class="step"><div class="sn">2</div><div>\(A^2=\begin{pmatrix}7&10\\15&22\end{pmatrix}\). Check: \(\begin{pmatrix}7&10\\15&22\end{pmatrix}-\begin{pmatrix}5&10\\15&20\end{pmatrix}-\begin{pmatrix}2&0\\0&2\end{pmatrix}=\begin{pmatrix}0&0\\0&0\end{pmatrix}\) ✓</div></div>
+    <div class="step"><div class="sn">3</div><div>From C-H × A⁻¹: \(A-5I-2A^{-1}=0\Rightarrow A^{-1}=\frac{A-5I}{2}=\frac{1}{2}\begin{pmatrix}-4&2\\3&-1\end{pmatrix}\)</div></div>
+    <div class="ans">A⁻¹ = (1/2)[[−4,2],[3,−1]]</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 6 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">Char. Equation</div><div class="sv">\(\det(A-\lambda I)=0\)</div></div>
+    <div class="scell"><div class="sn2">Cayley-Hamilton</div><div class="sv">\(\phi(A)=O\)</div></div>
+    <div class="scell"><div class="sn2">Diagonalisation</div><div class="sv">\(A=PDP^{-1}\)</div></div>
+  </div></div>
+</div>
+
+<!-- ═══ MODULE 7 ═══ -->
+<div class="mod">
+  <div class="mod-hdr"><div class="mod-badge">Module 7</div><h2>Quadratic Forms &amp; Matrix Decompositions</h2></div>
+  <div class="mod-intro">Quadratic forms classify conic sections and surfaces. Positive definiteness determines stability of equilibria. LU decomposition solves linear systems efficiently. Orthogonal diagonalisation (spectral theorem) is the foundation of principal component analysis (PCA).</div>
+
+  <div class="sub">
+    <h3>7.1 Quadratic Forms &amp; Positive Definiteness</h3>
+    <div class="fbox"><span class="flabel">QUADRATIC FORMS</span>
+    <div class="fgrid">
+      <div class="fcell"><div class="fn">Quadratic form Q</div><div class="fv">\(Q(\mathbf{x})=\mathbf{x}^TA\mathbf{x}\) where A is symmetric</div></div>
+      <div class="fcell"><div class="fn">Positive definite (PD)</div><div class="fv">All eigenvalues >0; or all leading principal minors >0</div></div>
+      <div class="fcell"><div class="fn">Positive semi-definite</div><div class="fv">All eigenvalues ≥0</div></div>
+      <div class="fcell"><div class="fn">Negative definite</div><div class="fv">All eigenvalues <0</div></div>
+      <div class="fcell"><div class="fn">Indefinite</div><div class="fv">Mixed signs of eigenvalues</div></div>
+      <div class="fcell"><div class="fn">Sylvester's criterion (PD)</div><div class="fv">All leading principal minors Δ₁, Δ₂, … >0</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Classify a quadratic form</div>
+    <div class="prob-body"><div class="pq">Determine if \(Q=2x^2+4xy+3y^2\) is positive definite.</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>Matrix: \(A=\begin{pmatrix}2&2\\2&3\end{pmatrix}\) (off-diagonal = coefficient/2)</div></div>
+    <div class="step"><div class="sn">2</div><div>Leading minor Δ₁=2>0. Δ₂=det(A)=6−4=2>0.</div></div>
+    <div class="step"><div class="sn">3</div><div>Both minors positive → Q is <strong>positive definite</strong></div></div>
+    <div class="ans">Q is positive definite (Sylvester's criterion satisfied)</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>7.2 LU Decomposition</h3>
+    <div class="fbox"><span class="flabel">LU DECOMPOSITION</span>
+    <div class="fgrid two">
+      <div class="fcell"><div class="fn">Goal</div><div class="fv">Factor A = LU where L = lower triangular (1s on diagonal), U = upper triangular. Then solve Ly=b (forward sub) and Ux=y (back sub)</div></div>
+      <div class="fcell"><div class="fn">Efficiency</div><div class="fv">Once A=LU is computed, multiple RHS vectors b can be solved with just O(n²) operations vs O(n³) for Gaussian elimination each time</div></div>
+    </div></div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>LU Decomposition</div>
+    <div class="prob-body"><div class="pq">Find LU decomposition of \(A=\begin{pmatrix}2&4&-2\\1&3&1\\-1&2&6\end{pmatrix}\).</div>
+    <div class="sol"><div class="sl">STEP-BY-STEP SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>R2←R2−(1/2)R1; R3←R3+(1/2)R1. Multipliers: \(\ell_{21}=1/2,\;\ell_{31}=-1/2\)</div></div>
+    <div class="step"><div class="sn">2</div><div>After step 1: \(\begin{pmatrix}2&4&-2\\0&1&2\\0&4&5\end{pmatrix}\)</div></div>
+    <div class="step"><div class="sn">3</div><div>R3←R3−4R2. Multiplier \(\ell_{32}=4\). U=\(\begin{pmatrix}2&4&-2\\0&1&2\\0&0&-3\end{pmatrix}\)</div></div>
+    <div class="step"><div class="sn">4</div><div>\(L=\begin{pmatrix}1&0&0\\1/2&1&0\\-1/2&4&1\end{pmatrix}\)</div></div>
+    <div class="ans">L = [[1,0,0],[1/2,1,0],[−1/2,4,1]];  U = [[2,4,−2],[0,1,2],[0,0,−3]]</div></div></div></div>
+  </div>
+
+  <div class="sub">
+    <h3>7.3 Spectral Theorem &amp; Orthogonal Diagonalisation</h3>
+    <div class="thm"><span class="thm-title">SPECTRAL THEOREM (SYMMETRIC MATRICES)</span>
+    <p style="margin-top:8px">Every real symmetric matrix A has:</p>
+    <ul style="margin-top:6px;padding-left:18px;font-size:13.5px;">
+      <li>All real eigenvalues</li>
+      <li>Eigenvectors from different eigenvalues are orthogonal</li>
+      <li>A = QDQᵀ where Q is orthogonal (Qᵀ = Q⁻¹) and D = diagonal eigenvalue matrix</li>
+    </ul>
+    </div>
+    <div class="prob"><div class="prob-hdr"><div class="pn">1</div>Orthogonal diagonalisation</div>
+    <div class="prob-body"><div class="pq">Orthogonally diagonalise \(A=\begin{pmatrix}3&1\\1&3\end{pmatrix}\).</div>
+    <div class="sol"><div class="sl">SOLUTION</div>
+    <div class="step"><div class="sn">1</div><div>From Module 6: λ₁=2 with v₁=(1,−1)ᵀ; λ₂=4 with v₂=(1,1)ᵀ. Orthogonal ✓ (symmetric A)</div></div>
+    <div class="step"><div class="sn">2</div><div>Normalise: \(\hat{v}_1=\frac{1}{\sqrt{2}}(1,-1)^T\), \(\hat{v}_2=\frac{1}{\sqrt{2}}(1,1)^T\)</div></div>
+    <div class="step"><div class="sn">3</div><div>\(Q=\frac{1}{\sqrt{2}}\begin{pmatrix}1&1\\-1&1\end{pmatrix}\), \(D=\begin{pmatrix}2&0\\0&4\end{pmatrix}\). Then A=QDQᵀ</div></div>
+    <div class="ans">A = QDQᵀ with Q orthogonal, D = diag(2, 4)</div></div></div></div>
+  </div>
+
+  <div class="msum"><h4>Module 7 — Key Formulas</h4>
+  <div class="sgrid">
+    <div class="scell"><div class="sn2">PD test (Sylvester)</div><div class="sv">All leading principal minors >0</div></div>
+    <div class="scell"><div class="sn2">LU: A=LU</div><div class="sv">L lower triangular, U upper triangular</div></div>
+    <div class="scell"><div class="sn2">Spectral theorem</div><div class="sv">Symmetric A: A=QDQᵀ</div></div>
+  </div></div>
+</div>
+
+<!-- MASTER FORMULA SHEET -->
+<div class="ms">
+  <h2>BMAT201L — Master Formula Sheet</h2>
+  <div class="ms-sec"><h3>Modules 1–3: Complex Variables</h3>
+  <div class="ms-grid">
+    <div class="ms-card"><div class="mc">CR Equations</div>\(u_x=v_y,\;u_y=-v_x\)</div>
+    <div class="ms-card"><div class="mc">f′(z)</div>\(u_x+iv_x\)</div>
+    <div class="ms-card"><div class="mc">Cauchy's Theorem</div>\(\oint_C f\,dz=0\) (analytic)</div>
+    <div class="ms-card"><div class="mc">CIF</div>\(f(a)=\frac{1}{2\pi i}\oint\frac{f(z)}{z-a}dz\)</div>
+    <div class="ms-card"><div class="mc">Residue (simple pole)</div>\(\lim_{z\to a}(z-a)f(z)\)</div>
+    <div class="ms-card"><div class="mc">Residue Theorem</div>\(\oint=2\pi i\sum\text{Res}\)</div>
+  </div></div>
+  <div class="ms-sec"><h3>Modules 4–5: Mapping &amp; Vector Spaces</h3>
+  <div class="ms-grid">
+    <div class="ms-card"><div class="mc">Bilinear</div>\(w=(az+b)/(cz+d)\)</div>
+    <div class="ms-card"><div class="mc">Cross-ratio</div>Invariant under bilinear maps</div>
+    <div class="ms-card"><div class="mc">Rank-Nullity</div>rank + nullity = dim(domain)</div>
+    <div class="ms-card"><div class="mc">Subspace test</div>Non-empty; closed under + and ×</div>
+    <div class="ms-card"><div class="mc">Kernel</div>\(\{v:T(v)=0\}\)</div>
+    <div class="ms-card"><div class="mc">Basis test</div>LI + spans V</div>
+  </div></div>
+  <div class="ms-sec"><h3>Modules 6–7: Eigenvalues &amp; Forms</h3>
+  <div class="ms-grid">
+    <div class="ms-card"><div class="mc">Char. equation</div>\(\det(A-\lambda I)=0\)</div>
+    <div class="ms-card"><div class="mc">Cayley-Hamilton</div>\(\phi(A)=O\)</div>
+    <div class="ms-card"><div class="mc">Diagonalisation</div>\(A=PDP^{-1}\)</div>
+    <div class="ms-card"><div class="mc">PD (Sylvester)</div>All leading minors >0</div>
+    <div class="ms-card"><div class="mc">Spectral theorem</div>Symmetric: A=QDQᵀ</div>
+    <div class="ms-card"><div class="mc">Gram-Schmidt</div>\(e_k=v_k-\sum\text{proj}_{e_j}v_k\)</div>
+  </div></div>
+  <div style="text-align:center;margin-top:44px;padding:24px;background:linear-gradient(135deg,var(--dk),#4c1d95);color:#fff;border-radius:12px;">
+    <div style="font-family:'Merriweather',serif;font-size:18px;color:#c4b5fd;margin-bottom:6px;">BMAT201L — Complete</div>
+    <div style="font-size:12.5px;opacity:.8;">Complex Variables &amp; Linear Algebra · VIT Chennai</div>
+  </div>
+</div>
+</body></html>
