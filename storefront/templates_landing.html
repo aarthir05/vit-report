@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-gumroad-field="name">Aesthetic Slide Templates — 6 Cute PowerPoint Themes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#fdf2f8', 100:'#fce7f3', 200:'#fbcfe8', 300:'#f9a8d4', 400:'#f472b6', 500:'#ec4899', 600:'#db2777', 700:'#be185d', 800:'#9d174d', 900:'#831843' },
+            accent: { 300:'#d8b4fe', 400:'#c084fc', 500:'#a855f7', 600:'#9333ea' }
+          }
+        }
+      }
+    };
+    (function() {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+  <style>
+    @keyframes fadeUp  { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes float   { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+    @keyframes shimmer { 0% { background-position:-200% center; } 100% { background-position:200% center; } }
+    @keyframes spin-slow { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+
+    .fade-up   { animation: fadeUp 0.6s ease both; }
+    .delay-1   { animation-delay:.1s; } .delay-2 { animation-delay:.2s; }
+    .delay-3   { animation-delay:.3s; } .delay-4 { animation-delay:.4s; }
+    .delay-5   { animation-delay:.5s; } .delay-6 { animation-delay:.6s; }
+    .float     { animation: float 3.5s ease-in-out infinite; }
+    .spin-slow { animation: spin-slow 20s linear infinite; }
+
+    .shimmer-text {
+      background: linear-gradient(90deg, #f472b6, #c084fc, #f472b6);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 3s linear infinite;
+    }
+
+    /* card hover lift */
+    .card-lift { transition: transform .2s ease, box-shadow .2s ease; }
+    .card-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,.15); }
+
+    /* template preview cards */
+    .tpl-card { border-radius: 14px; overflow: hidden; transition: transform .2s ease, box-shadow .2s ease; }
+    .tpl-card:hover { transform: translateY(-8px) rotate(-1deg); box-shadow: 0 24px 48px rgba(0,0,0,.2); }
+  </style>
+</head>
+
+<body class="bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-100 font-sans transition-colors duration-300">
+
+  <!-- ── Nav ─────────────────────────────────────────────────────────── -->
+  <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur border-b border-gray-100 dark:border-gray-800">
+    <nav class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+      <span class="font-bold text-brand-600 dark:text-brand-400 tracking-tight text-lg">✦ slide.aesthetic</span>
+      <div class="flex items-center gap-5 text-sm font-medium">
+        <a href="#themes"   class="hover:text-brand-500 transition-colors hidden sm:block">Themes</a>
+        <a href="#features" class="hover:text-brand-500 transition-colors hidden sm:block">Features</a>
+        <a href="#preview"  class="hover:text-brand-500 transition-colors hidden sm:block">Preview</a>
+        <a href="#faq"      class="hover:text-brand-500 transition-colors hidden sm:block">FAQ</a>
+        <button id="themeToggle" class="w-8 h-8 rounded-full flex items-center justify-center bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle theme">
+          <span id="themeIcon">🌙</span>
+        </button>
+        <a href="#buy" class="bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold px-4 py-1.5 rounded-full transition-colors">Get it →</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+  <section class="relative overflow-hidden pt-20 pb-28 px-6 text-center bg-gradient-to-b from-pink-50 via-purple-50 to-white dark:from-gray-900 dark:via-gray-900 dark:to-gray-950">
+    <!-- decorative blobs -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-pink-200 dark:bg-pink-900/30 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-200 dark:bg-purple-900/30 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
+
+    <div class="relative max-w-3xl mx-auto">
+      <div class="fade-up inline-flex items-center gap-2 bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300 text-xs font-semibold px-4 py-1.5 rounded-full mb-5 tracking-wide uppercase">
+        ✦ 6 Themes · 10 Slides Each · Ready to Edit
+      </div>
+      <h1 class="fade-up delay-1 text-5xl sm:text-6xl font-extrabold leading-tight tracking-tight mb-4">
+        Aesthetic Slide<br><span class="shimmer-text">Templates</span>
+      </h1>
+      <p class="fade-up delay-2 text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto mb-8">
+        Six hand-crafted PowerPoint themes — from soft pastels to dark ethereal. Present beautifully, effortlessly.
+      </p>
+      <div class="fade-up delay-3 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="#buy" class="w-full sm:w-auto bg-brand-500 hover:bg-brand-600 text-white font-bold px-8 py-3.5 rounded-2xl text-base transition-all hover:scale-105 shadow-lg shadow-brand-200 dark:shadow-brand-900/50" data-gumroad-action="buy">
+          Get All 6 Templates →
+        </a>
+        <a href="#preview" class="w-full sm:w-auto border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 font-semibold px-7 py-3.5 rounded-2xl text-base hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+          See Preview ↓
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 6 Theme Cards ─────────────────────────────────────────────────── -->
+  <section id="themes" class="py-20 px-6 bg-white dark:bg-gray-950">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-extrabold text-center mb-3">Six Distinct Aesthetics</h2>
+      <p class="text-center text-gray-400 dark:text-gray-500 mb-12">Every template ships with 10 slides — Title, Agenda, Intro, Divider, Cards, Takeaways, Quote, Stats, Two-Col, Thank You.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+
+        <!-- soft bloom -->
+        <div class="tpl-card bg-[#fff9f0] border border-pink-100">
+          <div class="h-36 flex items-center justify-center" style="background:linear-gradient(135deg,#ffd6e0,#e8d5f0,#d0f0e8);">
+            <span class="text-4xl">🌸</span>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-bold text-gray-800 text-lg">soft_bloom</span>
+              <span class="text-xs bg-pink-100 text-pink-600 px-2 py-0.5 rounded-full font-medium">Pastel Study</span>
+            </div>
+            <p class="text-sm text-gray-500">Soft pinks, lavender, and mint with circle decorations and a Georgia serif. Made for warm, cosy presentations.</p>
+          </div>
+        </div>
+
+        <!-- raw linen -->
+        <div class="tpl-card bg-[#faf7f0] border border-amber-100">
+          <div class="h-36 flex items-center justify-center" style="background:linear-gradient(135deg,#f5f0e4,#dce6c8,#e8c8a8);">
+            <span class="text-4xl">📄</span>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-bold text-gray-800 text-lg">raw_linen</span>
+              <span class="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-medium">Notion Minimal</span>
+            </div>
+            <p class="text-sm text-gray-500">Cream, olive and terracotta with a dot-grid background. Clean, editorial, distraction-free.</p>
+          </div>
+        </div>
+
+        <!-- dark ether -->
+        <div class="tpl-card bg-[#06091c] border border-indigo-900">
+          <div class="h-36 flex items-center justify-center" style="background:linear-gradient(135deg,#0a0f2d,#1a2560,#0a0f2d);">
+            <span class="text-4xl">🌙</span>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-bold text-gray-100 text-lg">dark_ether</span>
+              <span class="text-xs bg-indigo-900 text-indigo-300 px-2 py-0.5 rounded-full font-medium">Night Sky</span>
+            </div>
+            <p class="text-sm text-gray-400">Deep navy, gold accents, star fields and cloud shapes. Mysterious and editorial.</p>
+          </div>
+        </div>
+
+        <!-- wild sage -->
+        <div class="tpl-card bg-[#f5ebe0] border border-stone-200">
+          <div class="h-36 flex items-center justify-center" style="background:linear-gradient(135deg,#e8d5b0,#c3d9b0,#e8c080);">
+            <span class="text-4xl">🌿</span>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-bold text-gray-800 text-lg">wild_sage</span>
+              <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Cottagecore Boho</span>
+            </div>
+            <p class="text-sm text-gray-500">Warm beige, sage green, and terracotta with leaf clusters and concentric arc borders. Earthy and organic.</p>
+          </div>
+        </div>
+
+        <!-- neon static -->
+        <div class="tpl-card bg-[#0c051c] border border-purple-900">
+          <div class="h-36 flex items-center justify-center" style="background:linear-gradient(135deg,#1a003a,#3c0080,#001a3a);">
+            <span class="text-4xl">⚡</span>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-bold text-gray-100 text-lg">neon_static</span>
+              <span class="text-xs bg-purple-900 text-pink-300 px-2 py-0.5 rounded-full font-medium">Y2K Retro</span>
+            </div>
+            <p class="text-sm text-gray-400">Hot pink, cyan and purple on a dark background. Chunky Arial Black headings, retro-futuristic energy.</p>
+          </div>
+        </div>
+
+        <!-- sugar bear -->
+        <div class="tpl-card bg-[#fff5f8] border border-pink-100">
+          <div class="h-36 flex items-center justify-center" style="background:linear-gradient(135deg,#ffd6e8,#fff0a0,#ffb0c8);">
+            <span class="text-4xl">🐻</span>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-bold text-gray-800 text-lg">sugar_bear</span>
+              <span class="text-xs bg-pink-100 text-pink-600 px-2 py-0.5 rounded-full font-medium">Sanrio Bear</span>
+            </div>
+            <p class="text-sm text-gray-500">Cream, soft pink and yellow with polka dots, bear ear decorations, and hearts. Irresistibly cute.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── What You Get ──────────────────────────────────────────────────── -->
+  <section id="features" class="py-20 px-6 bg-gradient-to-b from-pink-50 to-white dark:from-gray-900 dark:to-gray-950">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-extrabold text-center mb-12">What's Inside</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card-lift bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+          <div class="text-3xl mb-3">🎨</div>
+          <h3 class="font-bold text-lg mb-1">6 Unique Themes</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Pastel, Minimal, Night Sky, Cottagecore, Y2K, and Sanrio — a theme for every mood.</p>
+        </div>
+        <div class="card-lift bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+          <div class="text-3xl mb-3">📐</div>
+          <h3 class="font-bold text-lg mb-1">10 Slides Each</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Title · Agenda · Intro · Section Divider · Content Cards · Key Takeaways · Pull Quote · Stats · Two-Column · Thank You.</p>
+        </div>
+        <div class="card-lift bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+          <div class="text-3xl mb-3">✏️</div>
+          <h3 class="font-bold text-lg mb-1">Fully Editable</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Standard .pptx format. Open in PowerPoint or Google Slides — replace placeholder text and go.</p>
+        </div>
+        <div class="card-lift bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+          <div class="text-3xl mb-3">🖋️</div>
+          <h3 class="font-bold text-lg mb-1">Curated Fonts</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Georgia serif for headings, clean sans-serif for body. System fonts only — no installs needed.</p>
+        </div>
+        <div class="card-lift bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+          <div class="text-3xl mb-3">📏</div>
+          <h3 class="font-bold text-lg mb-1">16:9 Widescreen</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Built at 13.33 × 7.5 inches — perfect for screen presentations and video exports.</p>
+        </div>
+        <div class="card-lift bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+          <div class="text-3xl mb-3">⚡</div>
+          <h3 class="font-bold text-lg mb-1">Instant Download</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">All 6 files delivered immediately after purchase. No waiting, no subscriptions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Slide Preview ─────────────────────────────────────────────────── -->
+  <section id="preview" class="py-20 px-6 bg-white dark:bg-gray-950">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-extrabold text-center mb-3">Slide by Slide</h2>
+      <p class="text-center text-gray-400 dark:text-gray-500 mb-12">Every theme ships with these 10 ready-to-use slide layouts.</p>
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+        {["Title","Agenda","Intro","Divider","Cards","Takeaways","Quote","Stats","Two-Col","Thank You"].map((s,i)=>`
+        <div class="rounded-xl bg-gradient-to-br from-pink-100 to-purple-100 dark:from-gray-800 dark:to-gray-700 p-4 text-center">
+          <div class="text-2xl font-bold text-brand-400 mb-1">${String(i+1).padStart(2,'0')}</div>
+          <div class="text-xs font-semibold text-gray-600 dark:text-gray-300">${s}</div>
+        </div>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Comparison ───────────────────────────────────────────────────── -->
+  <section class="py-20 px-6 bg-gradient-to-b from-white to-pink-50 dark:from-gray-950 dark:to-gray-900">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-extrabold text-center mb-10">Why Not Free Templates?</h2>
+      <div class="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50 dark:bg-gray-800 text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+            <tr>
+              <th class="px-5 py-3 text-left">Feature</th>
+              <th class="px-5 py-3 text-center text-brand-500">This Pack</th>
+              <th class="px-5 py-3 text-center">Random Free</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 dark:divide-gray-800 bg-white dark:bg-gray-900">
+            <tr><td class="px-5 py-3 font-medium">Unique aesthetic themes</td><td class="text-center text-green-500 font-bold">✓ 6</td><td class="text-center text-gray-400">1–2</td></tr>
+            <tr><td class="px-5 py-3 font-medium">Complete 10-slide sets</td><td class="text-center text-green-500 font-bold">✓</td><td class="text-center text-gray-400">Partial</td></tr>
+            <tr><td class="px-5 py-3 font-medium">No watermarks or branding</td><td class="text-center text-green-500 font-bold">✓</td><td class="text-center text-red-400">✗ Often</td></tr>
+            <tr><td class="px-5 py-3 font-medium">Consistent design system</td><td class="text-center text-green-500 font-bold">✓</td><td class="text-center text-red-400">✗</td></tr>
+            <tr><td class="px-5 py-3 font-medium">Cute / artsy aesthetics</td><td class="text-center text-green-500 font-bold">✓</td><td class="text-center text-gray-400">Rare</td></tr>
+            <tr><td class="px-5 py-3 font-medium">System fonts (no installs)</td><td class="text-center text-green-500 font-bold">✓</td><td class="text-center text-gray-400">Varies</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Buy ──────────────────────────────────────────────────────────── -->
+  <section id="buy" class="py-24 px-6 bg-gradient-to-b from-pink-50 to-purple-50 dark:from-gray-900 dark:to-gray-900 text-center">
+    <div class="max-w-xl mx-auto">
+      <div class="text-5xl mb-4 float">✦</div>
+      <h2 class="text-4xl font-extrabold mb-3">Get All 6 Templates</h2>
+      <p class="text-gray-500 dark:text-gray-400 mb-2">Six themes · 60 total slides · Instant .pptx download</p>
+      <p class="text-4xl font-extrabold text-brand-500 mb-8" data-gumroad-field="price">$7</p>
+      <a href="#" class="inline-block w-full sm:w-auto bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-lg px-12 py-4 rounded-2xl transition-all hover:scale-105 shadow-xl shadow-brand-200 dark:shadow-brand-900/50 mb-4" data-gumroad-action="buy">
+        Download Now →
+      </a>
+      <p class="text-xs text-gray-400 dark:text-gray-500">Instant delivery via Gumroad · .pptx files · No subscription</p>
+    </div>
+  </section>
+
+  <!-- ── FAQ ──────────────────────────────────────────────────────────── -->
+  <section id="faq" class="py-20 px-6 bg-white dark:bg-gray-950">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-3xl font-extrabold text-center mb-10">FAQ</h2>
+      <div class="space-y-3" id="faqList">
+        <details class="rounded-xl border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-5 cursor-pointer group">
+          <summary class="font-semibold flex justify-between items-center select-none">
+            What format are the files?
+            <span class="group-open:rotate-180 transition-transform text-brand-400">▾</span>
+          </summary>
+          <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">Standard .pptx files compatible with Microsoft PowerPoint (Windows & Mac) and Google Slides. No plugins needed.</p>
+        </details>
+        <details class="rounded-xl border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-5 cursor-pointer group">
+          <summary class="font-semibold flex justify-between items-center select-none">
+            Can I use these for commercial work?
+            <span class="group-open:rotate-180 transition-transform text-brand-400">▾</span>
+          </summary>
+          <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">Yes! You can use them for client presentations, school, work, YouTube thumbnails, and personal projects. No attribution required.</p>
+        </details>
+        <details class="rounded-xl border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-5 cursor-pointer group">
+          <summary class="font-semibold flex justify-between items-center select-none">
+            Do I need special fonts installed?
+            <span class="group-open:rotate-180 transition-transform text-brand-400">▾</span>
+          </summary>
+          <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">No. All templates use system fonts (Georgia, Calibri, Arial) that come pre-installed on Windows and Mac.</p>
+        </details>
+        <details class="rounded-xl border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-5 cursor-pointer group">
+          <summary class="font-semibold flex justify-between items-center select-none">
+            How many slides per template?
+            <span class="group-open:rotate-180 transition-transform text-brand-400">▾</span>
+          </summary>
+          <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">Each template has 10 slides: Title, Agenda, Introduction, Section Divider, Content Cards, Key Takeaways, Pull Quote, Stats, Two-Column layout, and Thank You.</p>
+        </details>
+        <details class="rounded-xl border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-5 cursor-pointer group">
+          <summary class="font-semibold flex justify-between items-center select-none">
+            Will it work on Google Slides?
+            <span class="group-open:rotate-180 transition-transform text-brand-400">▾</span>
+          </summary>
+          <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">Yes. Import the .pptx into Google Slides — shapes and colours import cleanly. Minor font substitutions may occur but won't affect the look significantly.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────────────────────── -->
+  <footer class="py-10 px-6 bg-gray-50 dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 text-center text-sm text-gray-400 dark:text-gray-500">
+    <p class="mb-1">✦ slide.aesthetic — Cute PowerPoint Templates</p>
+    <p>Made with love · <a href="https://gumroad.com" class="underline hover:text-brand-400">Sold on Gumroad</a></p>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const btn  = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+    function applyTheme(dark) {
+      document.documentElement.classList.toggle('dark', dark);
+      icon.textContent = dark ? '☀️' : '🌙';
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    }
+    applyTheme(document.documentElement.classList.contains('dark'));
+    btn.addEventListener('click', () => applyTheme(!document.documentElement.classList.contains('dark')));
+
+    // Render slide preview grid (bypasses template literal in static HTML)
+    const slides = ["Title","Agenda","Intro","Divider","Cards","Takeaways","Quote","Stats","Two-Col","Thank You"];
+    const grid = document.querySelector('#preview .grid');
+    if (grid) {
+      grid.innerHTML = slides.map((s,i) => `
+        <div class="rounded-xl bg-gradient-to-br from-pink-100 to-purple-100 dark:from-gray-800 dark:to-gray-700 p-4 text-center">
+          <div class="text-2xl font-bold text-brand-400 mb-1">${String(i+1).padStart(2,'0')}</div>
+          <div class="text-xs font-semibold text-gray-600 dark:text-gray-300">${s}</div>
+        </div>`).join('');
+    }
+  </script>
+</body>
+</html>
