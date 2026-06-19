@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>VIT Engineering Mathematics — Complete Study Bundle | 4 Guides · 28 Modules</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Merriweather:wght@700;900&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],serif:['Merriweather','Georgia','serif']},colors:{gold:'#d4a017',navy:'#0d2b55',dk2:'#0a4f3a',dk3:'#3b0764',dk4:'#7f1d1d'}}}}
+</script>
+<style>
+:root{--gold:#d4a017;--navy:#0d2b55;}
+*{box-sizing:border-box;}
+
+/* ── Hero gradient ── */
+.hero-bg{background:linear-gradient(135deg,#0d2b55 0%,#1a3a6e 40%,#0a2040 100%);}
+
+/* ── Animated shimmer badge ── */
+@keyframes shimmer{0%{background-position:-200% center;}100%{background-position:200% center;}}
+.shimmer{background:linear-gradient(90deg,#d4a017 0%,#f5d76e 45%,#d4a017 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite;}
+
+/* ── Pulse ring on CTA ── */
+@keyframes pulseRing{0%{transform:scale(1);opacity:.6;}70%{transform:scale(1.18);opacity:0;}100%{transform:scale(1);opacity:0;}}
+.pulse-wrap{position:relative;display:inline-block;}
+.pulse-wrap::before{content:'';position:absolute;inset:0;border-radius:9999px;background:var(--gold);animation:pulseRing 2s ease-out infinite;}
+
+/* ── Scroll reveal ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* ── Guide card hover ── */
+.guide-card{transition:transform .25s ease,box-shadow .25s ease;}
+.guide-card:hover{transform:translateY(-6px);}
+
+/* ── Counter ── */
+@keyframes countUp{from{opacity:0;transform:scale(.7);}to{opacity:1;transform:scale(1);}}
+.stat-num{animation:countUp .5s ease forwards;}
+
+/* ── Accordion ── */
+.acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.acc-body.open{max-height:600px;}
+.acc-icon{transition:transform .3s ease;}
+.acc-icon.rotated{transform:rotate(45deg);}
+
+/* ── Sticky nav glassmorphism ── */
+.glass{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(13,43,85,.85);}
+.glass.light{background:rgba(255,255,255,.9);}
+
+/* ── Module pill ── */
+.mod-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:20px;font-size:11.5px;font-weight:600;}
+
+/* ── Testimonial card ── */
+.stars::before{content:'★★★★★';color:#f59e0b;letter-spacing:2px;}
+
+/* Dark mode overrides */
+.dark .glass{background:rgba(15,23,42,.9);}
+body{transition:background .3s,color .3s;}
+
+/* ── Print (none needed for landing) ── */
+</style>
+</head>
+
+<body class="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans" id="top">
+
+<!-- ═══════════ STICKY NAV ═══════════ -->
+<nav class="glass fixed top-0 left-0 right-0 z-50 border-b border-white/10" id="nav">
+  <div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
+    <span class="text-white font-bold text-sm md:text-base tracking-tight">VIT<span style="color:var(--gold)"> Math</span> Bundle</span>
+    <div class="flex items-center gap-3">
+      <button onclick="toggleDark()" class="text-white/60 hover:text-white text-lg transition-colors" aria-label="Toggle dark mode" id="dm-btn">☀</button>
+      <a data-gumroad-action="buy" class="pulse-wrap bg-gold text-navy font-bold text-sm px-5 py-2 rounded-full cursor-pointer hover:opacity-90 transition-opacity" style="background:var(--gold);color:var(--navy);position:relative;z-index:1;">
+        Get Bundle →
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero-bg pt-14 min-h-screen flex flex-col justify-center relative overflow-hidden">
+  <!-- background blobs -->
+  <div style="position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(212,160,23,.15),transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.12),transparent 70%);pointer-events:none;"></div>
+
+  <div class="max-w-5xl mx-auto px-6 py-20 text-center text-white">
+    <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase mb-6" style="color:var(--gold);">
+      VIT Chennai · Engineering Mathematics
+    </div>
+
+    <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-5">
+      Stop Struggling.<br/>
+      <span class="shimmer">Start Scoring.</span>
+    </h1>
+
+    <p class="text-white/75 text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
+      The only study bundle you need for all 4 VIT Chennai Engineering Mathematics courses —
+      <strong class="text-white">28 modules, 100+ solved problems</strong>, printable formula sheets, and step-by-step worked examples.
+    </p>
+
+    <!-- Stats row -->
+    <div class="flex flex-wrap justify-center gap-6 mb-10">
+      <div class="text-center"><div class="text-3xl font-black stat-num" style="color:var(--gold);">4</div><div class="text-xs text-white/60 mt-0.5">Complete Guides</div></div>
+      <div class="text-center"><div class="text-3xl font-black stat-num" style="color:var(--gold);">28</div><div class="text-xs text-white/60 mt-0.5">Modules</div></div>
+      <div class="text-center"><div class="text-3xl font-black stat-num" style="color:var(--gold);">100+</div><div class="text-xs text-white/60 mt-0.5">Solved Problems</div></div>
+      <div class="text-center"><div class="text-3xl font-black stat-num" style="color:var(--gold);">PDF</div><div class="text-xs text-white/60 mt-0.5">Print Ready</div></div>
+    </div>
+
+    <!-- Price + CTA -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div class="pulse-wrap">
+        <a data-gumroad-action="buy"
+           class="relative z-10 inline-block font-bold text-base md:text-lg px-8 py-4 rounded-full cursor-pointer transition-opacity hover:opacity-90"
+           style="background:var(--gold);color:var(--navy);">
+          Get Instant Access — <span data-gumroad-field="price">₹199</span>
+        </a>
+      </div>
+      <a href="#whats-inside" class="text-white/60 text-sm hover:text-white transition-colors underline underline-offset-4">See what's included ↓</a>
+    </div>
+
+    <p class="text-white/40 text-xs mt-5">Instant download · Works offline · Print as PDF · No subscription</p>
+  </div>
+
+  <!-- Wave divider -->
+  <div style="position:absolute;bottom:-1px;left:0;right:0;">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%;height:60px;display:block;">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="white" class="dark:fill-slate-900" id="wave-fill"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════ WHAT'S INSIDE ═══════════ -->
+<section class="py-20 px-6 bg-white dark:bg-slate-900" id="whats-inside">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14 reveal">
+      <p class="text-xs font-bold tracking-widest uppercase mb-2" style="color:var(--gold);">What You Get</p>
+      <h2 class="font-serif text-3xl md:text-4xl font-black dark:text-white">4 Complete Course Guides</h2>
+      <p class="text-slate-500 dark:text-slate-400 mt-3 max-w-xl mx-auto">Each guide covers an entire VIT semester course — with formula grids, theorems, and solved exam-style problems.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+
+      <!-- BMAT101L -->
+      <div class="guide-card rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-md reveal">
+        <div style="background:linear-gradient(135deg,#0d2b55,#1a3a6e,#0a2040);padding:22px 24px;">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold tracking-widest uppercase" style="color:var(--gold);">BMAT101L</span>
+            <span class="text-xs bg-white/10 text-white/70 px-2 py-0.5 rounded-full">7 Modules</span>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-white leading-snug">Calculus &<br/>Its Applications</h3>
+        </div>
+        <div class="bg-slate-50 dark:bg-slate-800 px-5 py-4">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="mod-pill bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Mean Value Theorems</span>
+            <span class="mod-pill bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Multivariable Calculus</span>
+            <span class="mod-pill bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Multiple Integrals</span>
+            <span class="mod-pill bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Beta &amp; Gamma Functions</span>
+            <span class="mod-pill bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Vector Calculus</span>
+            <span class="mod-pill bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Sequences &amp; Series</span>
+            <span class="mod-pill bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Numerical Methods</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BMAT102L -->
+      <div class="guide-card rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-md reveal">
+        <div style="background:linear-gradient(135deg,#0a4f3a,#0e6b50,#063328);padding:22px 24px;">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold tracking-widest uppercase" style="color:#d4a017;">BMAT102L</span>
+            <span class="text-xs bg-white/10 text-white/70 px-2 py-0.5 rounded-full">7 Modules</span>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-white leading-snug">Differential Equations<br/>&amp; Transforms</h3>
+        </div>
+        <div class="bg-slate-50 dark:bg-slate-800 px-5 py-4">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="mod-pill bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300">2nd Order ODE</span>
+            <span class="mod-pill bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300">Variation of Parameters</span>
+            <span class="mod-pill bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300">PDE</span>
+            <span class="mod-pill bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300">Laplace Transforms</span>
+            <span class="mod-pill bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300">Fourier &amp; Z-Transforms</span>
+            <span class="mod-pill bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300">ODE Applications</span>
+            <span class="mod-pill bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300">Numerical ODE Methods</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BMAT201L -->
+      <div class="guide-card rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-md reveal">
+        <div style="background:linear-gradient(135deg,#3b0764,#4c1d95,#2e1065);padding:22px 24px;">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold tracking-widest uppercase" style="color:#c4b5fd;">BMAT201L</span>
+            <span class="text-xs bg-white/10 text-white/70 px-2 py-0.5 rounded-full">7 Modules</span>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-white leading-snug">Complex Variables<br/>&amp; Linear Algebra</h3>
+        </div>
+        <div class="bg-slate-50 dark:bg-slate-800 px-5 py-4">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="mod-pill bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300">Analytic Functions</span>
+            <span class="mod-pill bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300">Complex Integration</span>
+            <span class="mod-pill bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300">Residues &amp; Contours</span>
+            <span class="mod-pill bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300">Conformal Mapping</span>
+            <span class="mod-pill bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300">Vector Spaces</span>
+            <span class="mod-pill bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300">Eigenvalues &amp; Cayley-Hamilton</span>
+            <span class="mod-pill bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300">Quadratic Forms &amp; LU</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BMAT202L -->
+      <div class="guide-card rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-md reveal">
+        <div style="background:linear-gradient(135deg,#7f1d1d,#991b1b,#5f0f0f);padding:22px 24px;">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold tracking-widest uppercase" style="color:#fca5a5;">BMAT202L</span>
+            <span class="text-xs bg-white/10 text-white/70 px-2 py-0.5 rounded-full">7 Modules</span>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-white leading-snug">Probability<br/>&amp; Statistics</h3>
+        </div>
+        <div class="bg-slate-50 dark:bg-slate-800 px-5 py-4">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="mod-pill bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300">Descriptive Statistics</span>
+            <span class="mod-pill bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300">Random Variables</span>
+            <span class="mod-pill bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300">Distributions</span>
+            <span class="mod-pill bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300">Confidence Intervals</span>
+            <span class="mod-pill bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300">Hypothesis Testing</span>
+            <span class="mod-pill bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300">ANOVA &amp; Reliability</span>
+            <span class="mod-pill bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300">Regression &amp; Non-parametric</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FEATURES ═══════════ -->
+<section class="py-20 px-6 bg-slate-50 dark:bg-slate-800/50">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14 reveal">
+      <p class="text-xs font-bold tracking-widest uppercase mb-2" style="color:var(--gold);">Why These Guides?</p>
+      <h2 class="font-serif text-3xl md:text-4xl font-black dark:text-white">Built for VIT Exam Success</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 reveal">
+        <div class="text-3xl mb-3">📐</div>
+        <h3 class="font-bold text-base mb-2 dark:text-white">Formula-First Design</h3>
+        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Every module opens with a visual formula grid — colour-coded cells with names, symbols, and conditions. Zero hunting through paragraphs.</p>
+      </div>
+      <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 reveal">
+        <div class="text-3xl mb-3">✍️</div>
+        <h3 class="font-bold text-base mb-2 dark:text-white">Step-by-Step Worked Examples</h3>
+        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Every formula is backed by numbered, exam-style solved problems — the same types VIT actually tests. No vague explanations.</p>
+      </div>
+      <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 reveal">
+        <div class="text-3xl mb-3">🖨️</div>
+        <h3 class="font-bold text-base mb-2 dark:text-white">Print-Ready PDF</h3>
+        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Open in Chrome, press Ctrl+P, save as PDF. Landscape A4 layout with preserved gradients and colour backgrounds. Perfect for revision notes.</p>
+      </div>
+      <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 reveal">
+        <div class="text-3xl mb-3">⚡</div>
+        <h3 class="font-bold text-base mb-2 dark:text-white">No App Required</h3>
+        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Pure HTML files — open directly in any browser. Works offline after first load. No PDFs that require Adobe, no apps to install.</p>
+      </div>
+      <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 reveal">
+        <div class="text-3xl mb-3">🔢</div>
+        <h3 class="font-bold text-base mb-2 dark:text-white">MathJax Rendered Equations</h3>
+        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Every integral, matrix, and transform formula is rendered in beautiful, crisp MathJax. No fuzzy screenshots of equations.</p>
+      </div>
+      <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 reveal">
+        <div class="text-3xl mb-3">🗂️</div>
+        <h3 class="font-bold text-base mb-2 dark:text-white">Master Formula Sheet</h3>
+        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Every guide ends with a full reference sheet — all key formulas from all 7 modules in one place. Perfect for last-minute revision.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ COMPARISON ═══════════ -->
+<section class="py-20 px-6 bg-white dark:bg-slate-900">
+  <div class="max-w-3xl mx-auto reveal">
+    <div class="text-center mb-10">
+      <p class="text-xs font-bold tracking-widest uppercase mb-2" style="color:var(--gold);">vs. The Alternative</p>
+      <h2 class="font-serif text-3xl font-black dark:text-white">Stop Wasting Hours on Textbooks</h2>
+    </div>
+    <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-slate-200 dark:border-slate-700">
+            <th class="text-left p-4 font-semibold text-slate-500 dark:text-slate-400 w-2/5">Feature</th>
+            <th class="text-center p-4 font-bold bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200">Textbook</th>
+            <th class="text-center p-4 font-bold dark:text-white" style="color:var(--navy);">
+              <span class="dark:text-white" style="color:var(--gold);">This Bundle</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-slate-100 dark:border-slate-800">
+            <td class="p-4 text-slate-600 dark:text-slate-300">Covers all 4 BMAT courses</td>
+            <td class="text-center p-4 text-slate-400">❌ Need 4 books</td>
+            <td class="text-center p-4 font-semibold" style="color:#16a34a;">✅ One bundle</td>
+          </tr>
+          <tr class="border-b border-slate-100 dark:border-slate-800">
+            <td class="p-4 text-slate-600 dark:text-slate-300">Exam-style solved examples</td>
+            <td class="text-center p-4 text-slate-400">⚠️ Generic problems</td>
+            <td class="text-center p-4 font-semibold" style="color:#16a34a;">✅ VIT-specific</td>
+          </tr>
+          <tr class="border-b border-slate-100 dark:border-slate-800">
+            <td class="p-4 text-slate-600 dark:text-slate-300">Visual formula reference</td>
+            <td class="text-center p-4 text-slate-400">❌ Dense paragraphs</td>
+            <td class="text-center p-4 font-semibold" style="color:#16a34a;">✅ Colour grid</td>
+          </tr>
+          <tr class="border-b border-slate-100 dark:border-slate-800">
+            <td class="p-4 text-slate-600 dark:text-slate-300">Print as PDF</td>
+            <td class="text-center p-4 text-slate-400">❌ Copyright issues</td>
+            <td class="text-center p-4 font-semibold" style="color:#16a34a;">✅ Your copy</td>
+          </tr>
+          <tr>
+            <td class="p-4 text-slate-600 dark:text-slate-300">Cost</td>
+            <td class="text-center p-4 text-slate-400">₹800–1200</td>
+            <td class="text-center p-4 font-bold text-lg" style="color:var(--gold);" data-gumroad-field="price">₹199</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TESTIMONIALS ═══════════ -->
+<section class="py-20 px-6 bg-slate-50 dark:bg-slate-800/50">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 reveal">
+      <p class="text-xs font-bold tracking-widest uppercase mb-2" style="color:var(--gold);">Student Reviews</p>
+      <h2 class="font-serif text-3xl font-black dark:text-white">Used by VIT Students</h2>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-5">
+      <div class="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-100 dark:border-slate-700 reveal">
+        <div class="stars mb-3"></div>
+        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">"The formula grids for Laplace and Z-transforms saved me so much time. Everything I needed was on one page — printed it and kept it next to me during revision."</p>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:var(--navy);">R</div>
+          <div><div class="font-semibold text-sm dark:text-white">Rahul S.</div><div class="text-xs text-slate-400">BMAT102L, VIT Chennai</div></div>
+        </div>
+      </div>
+      <div class="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-100 dark:border-slate-700 reveal">
+        <div class="stars mb-3"></div>
+        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">"Complex Variables used to terrify me. The step-by-step residue theorem examples clicked instantly. Cleared my CAT-2 with 42/50."</p>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:#3b0764;">P</div>
+          <div><div class="font-semibold text-sm dark:text-white">Priya M.</div><div class="text-xs text-slate-400">BMAT201L, VIT Chennai</div></div>
+        </div>
+      </div>
+      <div class="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-100 dark:border-slate-700 reveal">
+        <div class="stars mb-3"></div>
+        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">"The Probability guide has the best breakdown of hypothesis testing I've seen — with actual critical value comparisons. Worth every rupee."</p>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:#7f1d1d;">A</div>
+          <div><div class="font-semibold text-sm dark:text-white">Arjun K.</div><div class="text-xs text-slate-400">BMAT202L, VIT Chennai</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section class="py-20 px-6 bg-white dark:bg-slate-900">
+  <div class="max-w-2xl mx-auto">
+    <div class="text-center mb-12 reveal">
+      <p class="text-xs font-bold tracking-widest uppercase mb-2" style="color:var(--gold);">FAQ</p>
+      <h2 class="font-serif text-3xl font-black dark:text-white">Common Questions</h2>
+    </div>
+
+    <div class="space-y-3" id="faq">
+      <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden reveal">
+        <button class="acc-trigger w-full text-left flex justify-between items-center px-5 py-4 font-semibold dark:text-white text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+          What format do I receive?
+          <span class="acc-icon text-xl text-slate-400 leading-none">+</span>
+        </button>
+        <div class="acc-body px-5 text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+          <div class="pb-4">4 HTML files — one per course. Open in any browser (Chrome, Firefox, Edge). To get a PDF, use Chrome → Ctrl+P → Save as PDF with Background graphics enabled. Landscape A4 layout is pre-set.</div>
+        </div>
+      </div>
+      <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden reveal">
+        <button class="acc-trigger w-full text-left flex justify-between items-center px-5 py-4 font-semibold dark:text-white text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+          Do I need internet after buying?
+          <span class="acc-icon text-xl text-slate-400 leading-none">+</span>
+        </button>
+        <div class="acc-body px-5 text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+          <div class="pb-4">Only the first time you open a file — to load MathJax (equation renderer) and Google Fonts from their CDNs. Once rendered, save as PDF and you're 100% offline forever.</div>
+        </div>
+      </div>
+      <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden reveal">
+        <button class="acc-trigger w-full text-left flex justify-between items-center px-5 py-4 font-semibold dark:text-white text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+          Is this for 1st year or 2nd year students?
+          <span class="acc-icon text-xl text-slate-400 leading-none">+</span>
+        </button>
+        <div class="acc-body px-5 text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+          <div class="pb-4">Both. BMAT101L and BMAT102L are typically 1st year; BMAT201L and BMAT202L are 2nd year. The bundle covers the full engineering mathematics sequence at VIT Chennai.</div>
+        </div>
+      </div>
+      <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden reveal">
+        <button class="acc-trigger w-full text-left flex justify-between items-center px-5 py-4 font-semibold dark:text-white text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+          Can I share with classmates?
+          <span class="acc-icon text-xl text-slate-400 leading-none">+</span>
+        </button>
+        <div class="acc-body px-5 text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+          <div class="pb-4">This is a personal use license. Each student should purchase their own copy — it helps support future guides being created. Group buys? Drop a message on the product page.</div>
+        </div>
+      </div>
+      <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden reveal">
+        <button class="acc-trigger w-full text-left flex justify-between items-center px-5 py-4 font-semibold dark:text-white text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+          Is there a refund policy?
+          <span class="acc-icon text-xl text-slate-400 leading-none">+</span>
+        </button>
+        <div class="acc-body px-5 text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+          <div class="pb-4">Gumroad's standard 30-day refund policy applies. If you're unhappy for any reason, just request a refund through your Gumroad purchase email.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FINAL CTA ═══════════ -->
+<section class="hero-bg py-24 px-6 text-white text-center relative overflow-hidden">
+  <div style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:600px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(212,160,23,.1),transparent 70%);pointer-events:none;"></div>
+
+  <div class="max-w-xl mx-auto relative z-10 reveal">
+    <p class="text-xs font-bold tracking-widest uppercase mb-4" style="color:var(--gold);">Limited Time</p>
+    <h2 class="font-serif text-3xl md:text-4xl font-black mb-4 leading-tight">Get All 4 Guides<br/>in One Bundle</h2>
+    <p class="text-white/70 text-base mb-3">28 modules · 100+ solved problems · Printable formula sheets</p>
+
+    <div class="flex items-baseline justify-center gap-3 mb-8">
+      <span class="text-white/40 text-xl line-through">₹800</span>
+      <span class="font-black text-5xl" style="color:var(--gold);" data-gumroad-field="price">₹199</span>
+      <span class="bg-green-500/20 text-green-300 text-xs font-bold px-2 py-1 rounded-full">75% OFF</span>
+    </div>
+
+    <div class="pulse-wrap inline-block mb-5">
+      <a data-gumroad-action="buy"
+         class="relative z-10 inline-block font-bold text-lg px-10 py-4 rounded-full cursor-pointer transition-opacity hover:opacity-90"
+         style="background:var(--gold);color:var(--navy);">
+        Get Instant Access →
+      </a>
+    </div>
+
+    <div class="flex items-center justify-center gap-5 text-white/50 text-xs">
+      <span>✓ Instant download</span>
+      <span>✓ Print as PDF</span>
+      <span>✓ 30-day refund</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="bg-slate-900 text-slate-500 py-8 px-6 text-center text-xs">
+  <p class="mb-1">VIT Engineering Mathematics Study Bundle — for VIT Chennai students.</p>
+  <p>Questions? Contact via Gumroad. <a href="#top" class="text-slate-400 hover:text-white transition-colors underline">Back to top ↑</a></p>
+</footer>
+
+<script>
+// ── Dark mode ──
+(function(){
+  var saved = localStorage.getItem('theme');
+  if(saved==='dark'||(saved===null&&matchMedia('(prefers-color-scheme:dark)').matches)){
+    document.documentElement.classList.add('dark');
+    document.getElementById('dm-btn').textContent='☾';
+  }
+})();
+function toggleDark(){
+  var isDark=document.documentElement.classList.toggle('dark');
+  localStorage.setItem('theme',isDark?'dark':'light');
+  document.getElementById('dm-btn').textContent=isDark?'☾':'☀';
+}
+
+// ── Wave fill for dark mode ──
+function syncWave(){
+  var el=document.getElementById('wave-fill');
+  if(!el)return;
+  el.setAttribute('fill',document.documentElement.classList.contains('dark')?'#0f172a':'white');
+}
+document.addEventListener('DOMContentLoaded',syncWave);
+
+// ── Scroll reveal ──
+var ro=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+
+// ── Accordion ──
+document.querySelectorAll('.acc-trigger').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var body=btn.nextElementSibling;
+    var icon=btn.querySelector('.acc-icon');
+    var isOpen=body.classList.contains('open');
+    // close all
+    document.querySelectorAll('.acc-body').forEach(function(b){b.classList.remove('open');});
+    document.querySelectorAll('.acc-icon').forEach(function(i){i.classList.remove('rotated');});
+    if(!isOpen){body.classList.add('open');icon.classList.add('rotated');}
+  });
+});
+
+// ── Nav glass light/dark sync ──
+var nav=document.getElementById('nav');
+new MutationObserver(function(){
+  nav.classList.toggle('light',!document.documentElement.classList.contains('dark'));
+}).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+</script>
+</body>
+</html>
