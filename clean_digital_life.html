@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Clean Your Digital Life</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --muted: #4a4a6a;
+    --light: #f8f8fc;
+    --accent: #4f46e5;
+    --accent2: #0ea5e9;
+    --green: #059669;
+    --red: #dc2626;
+    --yellow: #d97706;
+    --border: #e2e2f0;
+    --page-w: 794px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    color: var(--ink);
+    background: #d0d0d8;
+    line-height: 1.7;
+  }
+
+  /* ── PAGE SHELL ── */
+  .page {
+    width: var(--page-w);
+    min-height: 1123px;
+    background: #fff;
+    margin: 24px auto;
+    padding: 72px 80px;
+    position: relative;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.15);
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: linear-gradient(145deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px;
+    min-height: 1123px;
+  }
+  .cover-badge {
+    background: rgba(79,70,229,0.5);
+    border: 1px solid rgba(99,102,241,0.6);
+    color: #a5b4fc;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 36px;
+    display: inline-block;
+  }
+  .cover h1 {
+    font-size: 44pt;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: #fff;
+  }
+  .cover h1 span { color: #818cf8; }
+  .cover-sub {
+    font-size: 14pt;
+    color: #c7d2fe;
+    max-width: 480px;
+    line-height: 1.6;
+    margin-bottom: 56px;
+  }
+  .cover-divider { width: 60px; height: 4px; background: #6366f1; border-radius: 2px; margin-bottom: 48px; }
+  .cover-author { color: #818cf8; font-size: 10pt; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  .cover-price-tag {
+    position: absolute;
+    bottom: 80px;
+    right: 80px;
+    background: #6366f1;
+    color: #fff;
+    font-weight: 800;
+    font-size: 13pt;
+    padding: 10px 22px;
+    border-radius: 30px;
+  }
+  .cover-shield {
+    position: absolute;
+    top: 80px;
+    right: 80px;
+    opacity: 0.12;
+    font-size: 160pt;
+    line-height: 1;
+  }
+
+  /* ── TOC ── */
+  .toc-title {
+    font-size: 22pt;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 36px;
+    padding-bottom: 16px;
+    border-bottom: 3px solid var(--accent);
+  }
+  .toc-item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--border);
+  }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num { color: var(--accent); font-weight: 700; font-size: 9pt; width: 28px; flex-shrink: 0; }
+  .toc-name { flex: 1; font-weight: 600; font-size: 11pt; color: var(--ink); }
+  .toc-sub { font-size: 9pt; color: var(--muted); font-weight: 400; display: block; margin-top: 2px; }
+  .toc-pg { font-size: 10pt; color: var(--muted); font-weight: 500; flex-shrink: 0; margin-left: 12px; }
+
+  /* ── CHAPTER HEADER ── */
+  .chapter-header {
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--border);
+  }
+  .chapter-num {
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .chapter-title {
+    font-size: 26pt;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .chapter-intro {
+    font-size: 12pt;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 560px;
+    font-style: italic;
+  }
+
+  /* ── BODY ELEMENTS ── */
+  h3 {
+    font-size: 14pt;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 28px 0 10px;
+  }
+  h4 {
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 20px 0 8px;
+  }
+  p { margin-bottom: 14px; color: var(--ink); line-height: 1.75; }
+  strong { font-weight: 700; }
+  em { font-style: italic; }
+
+  /* ── CALLOUT BOXES ── */
+  .box {
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 22px 0;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .box-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .box-content { flex: 1; }
+  .box-title { font-weight: 700; font-size: 10pt; margin-bottom: 4px; }
+  .box p { margin-bottom: 0; font-size: 10pt; line-height: 1.65; }
+
+  .box-tip    { background: #eff6ff; border-left: 4px solid #3b82f6; }
+  .box-tip .box-title { color: #1d4ed8; }
+  .box-warn   { background: #fffbeb; border-left: 4px solid #f59e0b; }
+  .box-warn .box-title { color: #b45309; }
+  .box-danger { background: #fef2f2; border-left: 4px solid #ef4444; }
+  .box-danger .box-title { color: #b91c1c; }
+  .box-fact   { background: #f0fdf4; border-left: 4px solid #22c55e; }
+  .box-fact .box-title { color: #15803d; }
+  .box-tool   { background: #faf5ff; border-left: 4px solid #8b5cf6; }
+  .box-tool .box-title { color: #6d28d9; }
+
+  /* ── CHECKLIST ── */
+  .checklist {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 24px 0;
+    page-break-inside: avoid;
+  }
+  .checklist-title {
+    font-size: 11pt;
+    font-weight: 800;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .checklist ul { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 10.5pt;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-box {
+    width: 17px; height: 17px;
+    border: 2px solid #6366f1;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    background: #fff;
+  }
+
+  /* ── STAT BOXES ── */
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .stat-box {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-num { font-size: 26pt; font-weight: 900; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+  .stat-label { font-size: 9pt; color: var(--muted); font-weight: 500; line-height: 1.4; }
+
+  /* ── STEP BLOCKS ── */
+  .steps { margin: 20px 0; }
+  .step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 30px; height: 30px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 11pt;
+    flex-shrink: 0;
+  }
+  .step-body { flex: 1; padding-top: 3px; }
+  .step-body strong { display: block; font-size: 11pt; margin-bottom: 3px; }
+  .step-body p { margin-bottom: 0; font-size: 10pt; color: var(--muted); }
+
+  /* ── TABLE ── */
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 10pt; }
+  th { background: var(--accent); color: #fff; padding: 10px 14px; text-align: left; font-weight: 700; }
+  td { padding: 9px 14px; border-bottom: 1px solid var(--border); }
+  tr:nth-child(even) td { background: var(--light); }
+
+  /* ── RED FLAGS LIST ── */
+  .redflag { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; }
+  .redflag-icon { color: var(--red); font-size: 14pt; flex-shrink: 0; margin-top: 1px; }
+  .redflag p { margin-bottom: 0; font-size: 10.5pt; }
+
+  /* ── WEEK PLAN ── */
+  .week { margin-bottom: 24px; page-break-inside: avoid; }
+  .week-header {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 800;
+    font-size: 11pt;
+    padding: 10px 18px;
+    border-radius: 8px 8px 0 0;
+  }
+  .week-body {
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 16px 18px;
+  }
+  .week-task { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; }
+  .week-task:last-child { margin-bottom: 0; }
+
+  /* ── MASTER CHECKLIST ── */
+  .master-section { margin-bottom: 24px; }
+  .master-section-title {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    color: #fff;
+    font-weight: 800;
+    font-size: 10pt;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+  }
+  .master-item {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 6px 0; border-bottom: 1px solid var(--border);
+    font-size: 10pt;
+  }
+  .master-item:last-child { border-bottom: none; }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    position: absolute;
+    bottom: 36px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8pt;
+    color: #b0b0c8;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      page-break-after: always;
+      padding: 60px 72px;
+    }
+    .cover { page-break-after: always; }
+    @page { margin: 0; size: A4; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ COVER ══════════════ -->
+<div class="page cover">
+  <div class="cover-shield">🛡</div>
+  <div class="cover-badge">Digital Security Guide</div>
+  <h1>Clean Your<br/><span>Digital Life</span></h1>
+  <div class="cover-divider"></div>
+  <p class="cover-sub">A practical, jargon-free guide for everyday people who want to protect their privacy, stop hackers, and take back control of their online presence — in 30 days.</p>
+  <p class="cover-author">Written by a Cybersecurity Professional</p>
+  <div class="cover-price-tag">Complete Guide · 8 Chapters</div>
+</div>
+
+<!-- ══════════════ DISCLAIMER ══════════════ -->
+<div class="page" style="display:flex;flex-direction:column;justify-content:center;">
+  <h3 style="font-size:18pt;margin-bottom:20px;">Before You Begin</h3>
+  <p>This guide is written for regular people — not IT professionals. Every step uses plain language. You do not need to be technical to follow this guide.</p>
+  <p>The goal is simple: by the time you finish, your accounts will be harder to hack, your personal data will be harder to find, and you will know exactly what to do if something goes wrong.</p>
+  <div class="box box-tip">
+    <div class="box-icon">💡</div>
+    <div class="box-content">
+      <div class="box-title">How to use this guide</div>
+      <p>Read it once end-to-end first, then go back and use the checklists at the end of each chapter to take action. Set aside 30 minutes a day for one week — that is all it takes to transform your digital security.</p>
+    </div>
+  </div>
+  <div class="box box-warn">
+    <div class="box-icon">⚠️</div>
+    <div class="box-content">
+      <div class="box-title">Important</div>
+      <p>Some steps will ask you to change passwords or enable security settings. Do these on your personal device, not on a work computer or public WiFi. Take your time — there is no rush.</p>
+    </div>
+  </div>
+  <p style="margin-top:32px;color:var(--muted);font-size:9.5pt;">© 2024 · All rights reserved. This guide is for personal use only and may not be redistributed or resold. Screenshots and tool names are property of their respective owners.</p>
+</div>
+
+<!-- ══════════════ TABLE OF CONTENTS ══════════════ -->
+<div class="page">
+  <div class="toc-title">Table of Contents</div>
+
+  <div class="toc-item">
+    <div class="toc-num">01</div>
+    <div class="toc-name">Why Your Digital Life Needs Cleaning
+      <span class="toc-sub">The real risks — told simply, without fear-mongering</span>
+    </div>
+    <div class="toc-pg">Pg 4</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">02</div>
+    <div class="toc-name">Fix Your Passwords — All of Them
+      <span class="toc-sub">What a strong password looks like and how to never forget one again</span>
+    </div>
+    <div class="toc-pg">Pg 5</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">03</div>
+    <div class="toc-name">Two-Factor Authentication (2FA)
+      <span class="toc-sub">The single most effective thing you can do to stop hackers</span>
+    </div>
+    <div class="toc-pg">Pg 7</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">04</div>
+    <div class="toc-name">Hunt Down and Delete Old Accounts
+      <span class="toc-sub">Dead accounts are open doors — find them and close them</span>
+    </div>
+    <div class="toc-pg">Pg 9</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">05</div>
+    <div class="toc-name">Lock Down Your Email
+      <span class="toc-sub">Your email is the master key to your entire digital life</span>
+    </div>
+    <div class="toc-pg">Pg 11</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">06</div>
+    <div class="toc-name">Social Media Privacy Settings
+      <span class="toc-sub">What you share publicly, who can see it, and how to control it</span>
+    </div>
+    <div class="toc-pg">Pg 13</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">07</div>
+    <div class="toc-name">Spot Phishing Before It Catches You
+      <span class="toc-sub">How scammers trick smart people — and how to never fall for it</span>
+    </div>
+    <div class="toc-pg">Pg 15</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">08</div>
+    <div class="toc-name">Clean Your Devices
+      <span class="toc-sub">App permissions, public WiFi, updates, and your phone's blind spots</span>
+    </div>
+    <div class="toc-pg">Pg 17</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">09</div>
+    <div class="toc-name">Your 30-Day Digital Clean-Up Plan
+      <span class="toc-sub">Week-by-week action plan with everything in one place</span>
+    </div>
+    <div class="toc-pg">Pg 19</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">10</div>
+    <div class="toc-name">Master Checklist
+      <span class="toc-sub">Print this page and tick every item off as you complete it</span>
+    </div>
+    <div class="toc-pg">Pg 21</div>
+  </div>
+</div>
+
+<!-- ══════════════ CHAPTER 1 ══════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 01</div>
+    <div class="chapter-title">Why Your Digital Life<br/>Needs Cleaning</div>
+    <div class="chapter-intro">You lock your front door every night. But most people leave their entire digital life wide open — and they don't even know it.</div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-box">
+      <div class="stat-num">10B+</div>
+      <div class="stat-label">Passwords leaked in data breaches in 2024 alone</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">83%</div>
+      <div class="stat-label">Of people reuse the same password on multiple sites</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">$1,200</div>
+      <div class="stat-label">Average financial loss per identity theft victim</div>
+    </div>
+  </div>
+
+  <h3>What Actually Happens When You Get Hacked</h3>
+  <p>Most people imagine hackers as movie villains typing fast in dark rooms. In reality, most hacks are boring and automated. A criminal buys a list of leaked email-and-password combinations for a few dollars, runs a bot that tries them on Gmail, banking apps, and shopping sites, and within minutes finds accounts that work.</p>
+  <p>If you use the same password everywhere, one leaked breach from a website you signed up on in 2015 can hand over access to your email, your bank, your Amazon account — everything.</p>
+
+  <h3>The Three Things That Put You at Risk</h3>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body"><strong>Weak or reused passwords</strong><p>One breach = everything exposed. This is by far the most common way people get hacked.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body"><strong>No second layer of verification</strong><p>Without 2FA, anyone who knows your password can log in — from anywhere in the world.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body"><strong>Oversharing and old accounts</strong><p>Old accounts with outdated information get breached and forgotten. Public social media posts reveal more than you think.</p></div>
+    </div>
+  </div>
+
+  <div class="box box-fact">
+    <div class="box-icon">✅</div>
+    <div class="box-content">
+      <div class="box-title">The good news</div>
+      <p>You do not need to be technical to fix all of this. The steps in this guide require nothing more than a smartphone and about 30 minutes of focused time. Small changes make a massive difference.</p>
+    </div>
+  </div>
+  <div class="page-footer"><span>Clean Your Digital Life</span><span>Chapter 01</span></div>
+</div>
+
+<!-- ══════════════ CHAPTER 2 ══════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 02</div>
+    <div class="chapter-title">Fix Your Passwords —<br/>All of Them</div>
+    <div class="chapter-intro">A password like "Ravi@1990" feels personal and secure. To a hacking tool, it takes under 3 minutes to crack.</div>
+  </div>
+
+  <h3>What Makes a Password Weak?</h3>
+  <p>Most people choose passwords based on things they won't forget — birthdays, names, favourite things. This is exactly what attackers count on. Hacking tools are trained on millions of common patterns and can try billions of combinations per second.</p>
+
+  <table>
+    <tr><th>Password</th><th>How Long to Crack</th><th>Why</th></tr>
+    <tr><td>password123</td><td>Instant</td><td>In every attacker's list</td></tr>
+    <tr><td>Ravi@1990</td><td>Under 3 minutes</td><td>Name + year = common pattern</td></tr>
+    <tr><td>MyDog$Fluffy2</td><td>Under 2 hours</td><td>Dictionary words with substitutions</td></tr>
+    <tr><td>T!g3r-Blue-Rain-42</td><td>Millions of years</td><td>Random words + symbols + numbers</td></tr>
+    <tr><td>k#9mXq!2nBvLp@7</td><td>Billions of years</td><td>Truly random, long</td></tr>
+  </table>
+
+  <h3>The Two Rules for Good Passwords</h3>
+  <p><strong>Rule 1: Long beats complex.</strong> A 16-character password made of random words ("Tiger-Cloud-Pencil-Rain") is stronger than a short password full of symbols ("P@ss!1").</p>
+  <p><strong>Rule 2: Every account must have a unique password.</strong> If one site leaks your password, attackers should not be able to use it anywhere else.</p>
+
+  <div class="box box-danger">
+    <div class="box-icon">🚨</div>
+    <div class="box-content">
+      <div class="box-title">If you use the same password on more than one account</div>
+      <p>Go to <strong>haveibeenpwned.com</strong> right now, enter your email address, and see if you have already been in a known breach. It is free and safe to use. If you have — change those passwords today.</p>
+    </div>
+  </div>
+
+  <h3>You Don't Need to Remember Them: Use a Password Manager</h3>
+  <p>A password manager is an app that stores all your passwords securely. You only need to remember one master password — the app remembers everything else. It also generates strong random passwords for you.</p>
+
+  <div class="box box-tool">
+    <div class="box-icon">🔧</div>
+    <div class="box-content">
+      <div class="box-title">Recommended Free Password Managers</div>
+      <p><strong>Bitwarden</strong> — Free, open source, works on all devices. Best overall choice.<br/>
+      <strong>Google Password Manager</strong> — Built into Chrome and Android, easy for beginners.<br/>
+      <strong>iCloud Keychain</strong> — Built into Apple devices, no setup needed for iPhone/Mac users.</p>
+    </div>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">✔ Chapter 2 Action Checklist</div>
+    <ul>
+      <li><div class="check-box"></div>Check haveibeenpwned.com for your email address</li>
+      <li><div class="check-box"></div>Install a password manager (Bitwarden recommended)</li>
+      <li><div class="check-box"></div>Change passwords for email, banking, and social media first</li>
+      <li><div class="check-box"></div>Generate a new unique password for every account going forward</li>
+      <li><div class="check-box"></div>Never reuse a password — let the manager generate and store them</li>
+    </ul>
+  </div>
+  <div class="page-footer"><span>Clean Your Digital Life</span><span>Chapter 02</span></div>
+</div>
+
+<!-- ══════════════ CHAPTER 3 ══════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 03</div>
+    <div class="chapter-title">Two-Factor Authentication</div>
+    <div class="chapter-intro">Even if someone steals your password, 2FA stops them cold. It is the single most effective security upgrade you can make today.</div>
+  </div>
+
+  <h3>What is 2FA?</h3>
+  <p>Two-factor authentication (2FA) means that logging in requires two things: something you know (your password) and something you have (your phone). Even if an attacker has your password, they cannot log in without also having access to your phone.</p>
+  <p>Think of it like a door with two locks. One key is stolen — but the second lock still keeps the door closed.</p>
+
+  <h3>Types of 2FA (Best to Worst)</h3>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body"><strong>Authenticator App — Best</strong><p>Apps like Google Authenticator or Authy generate a 6-digit code that changes every 30 seconds. Cannot be intercepted by SMS attacks.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body"><strong>SMS / Text Message — Good</strong><p>A code is sent to your phone by text. Better than nothing, but can be intercepted via SIM-swap attacks.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body"><strong>Email Code — Acceptable</strong><p>A code is sent to your email. Only as safe as your email account — always secure your email first.</p></div>
+    </div>
+  </div>
+
+  <div class="box box-tip">
+    <div class="box-icon">💡</div>
+    <div class="box-content">
+      <div class="box-title">Where to enable 2FA first</div>
+      <p>Prioritise these accounts in this order: <strong>Email (Gmail/Outlook)</strong> → <strong>Banking apps</strong> → <strong>WhatsApp</strong> → <strong>Instagram/Facebook</strong> → <strong>LinkedIn</strong> → everything else.</p>
+    </div>
+  </div>
+
+  <h3>How to Enable 2FA on Gmail (Step by Step)</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Open Gmail on your phone</strong><p>Tap your profile picture → "Manage your Google Account"</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Go to Security</strong><p>Tap the "Security" tab at the top of the screen</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Tap "2-Step Verification"</strong><p>It will show as Off. Tap it, then tap "Get started"</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Choose your method</strong><p>Select "Authenticator app" for best security, or "Text message" as a starting point</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Save your backup codes</strong><p>Google will give you 10 backup codes. Screenshot them and save in a secure place. These let you in if you lose your phone.</p></div></div>
+  </div>
+
+  <div class="box box-warn">
+    <div class="box-icon">⚠️</div>
+    <div class="box-content">
+      <div class="box-title">Enable 2FA on WhatsApp too</div>
+      <p>WhatsApp accounts are frequently hijacked. Go to <strong>Settings → Account → Two-step verification → Enable</strong>. Set a 6-digit PIN you will remember. This stops someone from stealing your WhatsApp number.</p>
+    </div>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">✔ Chapter 3 Action Checklist</div>
+    <ul>
+      <li><div class="check-box"></div>Install Google Authenticator or Authy app</li>
+      <li><div class="check-box"></div>Enable 2FA on your primary email account</li>
+      <li><div class="check-box"></div>Enable 2FA on your banking apps</li>
+      <li><div class="check-box"></div>Enable two-step verification on WhatsApp</li>
+      <li><div class="check-box"></div>Enable 2FA on Instagram and Facebook</li>
+      <li><div class="check-box"></div>Save backup codes somewhere safe (not in email)</li>
+    </ul>
+  </div>
+  <div class="page-footer"><span>Clean Your Digital Life</span><span>Chapter 03</span></div>
+</div>
+
+<!-- ══════════════ CHAPTER 4 ══════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 04</div>
+    <div class="chapter-title">Hunt Down and Delete<br/>Old Accounts</div>
+    <div class="chapter-intro">That forum you joined in 2011, the food delivery app you used once, the photo-sharing site that shut down — they all still have your data.</div>
+  </div>
+
+  <h3>Why Old Accounts are Dangerous</h3>
+  <p>Every website you have ever signed up on stores your email address, password (or a hashed version), and often your name, phone number, and location. When that site gets breached — and small sites get breached all the time — that data ends up in criminal databases.</p>
+  <p>You probably have 50–150 accounts you have never thought about. Many still have your old passwords. Some have your credit card details. Most are security risks you are carrying around without knowing it.</p>
+
+  <div class="box box-fact">
+    <div class="box-icon">🔍</div>
+    <div class="box-content">
+      <div class="box-title">The Email Search Trick</div>
+      <p>Open your email inbox and search for <strong>"welcome"</strong>, <strong>"verify your email"</strong>, <strong>"confirm your account"</strong>, and <strong>"thank you for signing up"</strong>. Every result is a site you signed up on. Go through them and delete any account you no longer need.</p>
+    </div>
+  </div>
+
+  <h3>How to Delete Accounts Quickly</h3>
+  <p>Many websites hide their account deletion option or make it deliberately confusing. Use <strong>justdeleteme.com</strong> — it is a free directory that links directly to the account deletion page for hundreds of popular websites. It also rates how difficult each site makes deletion (Easy, Medium, Hard, Impossible).</p>
+
+  <h3>What to Do With Accounts You Keep</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Update the password</strong><p>Use your password manager to generate a new, unique password for every account you decide to keep.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Remove saved payment methods</strong><p>Delete stored credit/debit card details from any shopping site you rarely use.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Check connected apps</strong><p>Many accounts let you log in via Google or Facebook. Review and remove any app connections you no longer use. (Google: myaccount.google.com → Security → Third-party apps)</p></div></div>
+  </div>
+
+  <div class="box box-warn">
+    <div class="box-icon">⚠️</div>
+    <div class="box-content">
+      <div class="box-title">"Login with Google/Facebook" risks</div>
+      <p>When you log into a third-party site using Google or Facebook, that site can sometimes see your basic profile data. Review your connected apps regularly and remove any you no longer recognise or use.</p>
+    </div>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">✔ Chapter 4 Action Checklist</div>
+    <ul>
+      <li><div class="check-box"></div>Search your inbox for "welcome", "verify", "thank you for registering"</li>
+      <li><div class="check-box"></div>List all accounts you no longer use</li>
+      <li><div class="check-box"></div>Delete them using justdeleteme.com</li>
+      <li><div class="check-box"></div>Remove saved cards from shopping sites you rarely use</li>
+      <li><div class="check-box"></div>Review third-party apps connected to Google and Facebook</li>
+      <li><div class="check-box"></div>Revoke access for any unrecognised connected apps</li>
+    </ul>
+  </div>
+  <div class="page-footer"><span>Clean Your Digital Life</span><span>Chapter 04</span></div>
+</div>
+
+<!-- ══════════════ CHAPTER 5 ══════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 05</div>
+    <div class="chapter-title">Lock Down Your Email</div>
+    <div class="chapter-intro">Whoever controls your email controls your entire digital life. Every "Forgot password?" link goes to your inbox. Secure this first.</div>
+  </div>
+
+  <h3>Why Email is the Master Key</h3>
+  <p>Think about what happens when you forget a password for any website. You click "Forgot password?" and a reset link goes to your email. This means: if someone gets into your email, they can reset the password for every account you own — banking, social media, shopping, everything — within minutes.</p>
+
+  <div class="box box-danger">
+    <div class="box-icon">🚨</div>
+    <div class="box-content">
+      <div class="box-title">Check for secret forwarding rules right now</div>
+      <p>Attackers who gain temporary access to your email often set up a forwarding rule so all your emails secretly go to them — even after you change your password. In Gmail: Settings (gear icon) → See all settings → Forwarding and POP/IMAP. If you see any forwarding address you did not set up, delete it immediately.</p>
+    </div>
+  </div>
+
+  <h3>Gmail Security Audit — Step by Step</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Review recent activity</strong><p>In Gmail, scroll to the bottom right corner. Click "Details" next to "Last account activity." Look for any sign-ins from unfamiliar countries or devices.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Check your recovery options</strong><p>Go to myaccount.google.com → Security → Recovery phone and email. Make sure these are correct and belong to you.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Review devices</strong><p>Under Security → Your devices. Remove any device you do not recognise or no longer own.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Enable 2FA</strong><p>If you have not done this from Chapter 3, do it now. Your email must have 2FA enabled above everything else.</p></div></div>
+  </div>
+
+  <h3>Your Recovery Email and Phone</h3>
+  <p>Make sure your recovery email and recovery phone number are correct and up to date. If you ever lose access to your account, these are the only ways to get back in. A recovery email pointing to an old address you no longer have access to means permanent lockout.</p>
+
+  <div class="box box-tip">
+    <div class="box-icon">💡</div>
+    <div class="box-content">
+      <div class="box-title">One more email habit to adopt</div>
+      <p>Be suspicious of any email asking you to click a link to "verify your account", "update your payment details", or "avoid suspension." Legitimate companies do not ask for passwords or card numbers via email. Go directly to the site by typing the URL — never through a link in an email.</p>
+    </div>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">✔ Chapter 5 Action Checklist</div>
+    <ul>
+      <li><div class="check-box"></div>Check Gmail for secret forwarding rules (Settings → Forwarding)</li>
+      <li><div class="check-box"></div>Review recent login activity for unfamiliar locations</li>
+      <li><div class="check-box"></div>Verify your recovery phone number and email are current</li>
+      <li><div class="check-box"></div>Remove old/unrecognised devices from your Google account</li>
+      <li><div class="check-box"></div>Confirm 2FA is enabled on your email</li>
+      <li><div class="check-box"></div>Never click password reset links sent in unsolicited emails</li>
+    </ul>
+  </div>
+  <div class="page-footer"><span>Clean Your Digital Life</span><span>Chapter 05</span></div>
+</div>
+
+<!-- ══════════════ CHAPTER 6 ══════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 06</div>
+    <div class="chapter-title">Social Media<br/>Privacy Settings</div>
+    <div class="chapter-intro">Most people think privacy settings are about hiding things. They're really about controlling who can find you, track you, and use your information against you.</div>
+  </div>
+
+  <h3>What Strangers Can Learn From Your Profile</h3>
+  <p>A public social media profile can reveal your full name, employer, city, birthday, family members, daily routine, home neighbourhood, and vacation schedule — all without you realising. This is enough information for identity theft, targeted phishing, and physical threats.</p>
+
+  <h3>Instagram Privacy Checklist</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Set your account to Private</strong><p>Settings → Privacy → Account Privacy → toggle on "Private Account"</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Turn off activity status</strong><p>Settings → Privacy → Activity Status → off. Stops people seeing when you were last online.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Remove your phone number from your profile</strong><p>Settings → Account → Personal information. Your phone number does not need to be visible.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Review connected apps</strong><p>Settings → Security → Apps and websites. Remove any app you do not recognise.</p></div></div>
+  </div>
+
+  <h3>Facebook Settings to Change Immediately</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Who can see your posts?</strong><p>Settings → Privacy → Your Activity → Who can see your future posts → change to "Friends" only</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Who can find you by phone/email?</strong><p>Settings → Privacy → How People Find and Contact You → change both to "Friends" or "Only me"</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Turn off facial recognition</strong><p>Settings → Face Recognition → Do you want Facebook to be able to recognise you? → Select "No"</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Review Off-Facebook Activity</strong><p>Settings → Your Facebook Information → Off-Facebook Activity → Clear History. This shows what companies Facebook tracks you on outside Facebook.</p></div></div>
+  </div>
+
+  <h3>What Not to Post — The 5 Oversharing Traps</h3>
+  <div class="redflag"><div class="redflag-icon">✖</div><p><strong>Vacation photos in real time</strong> — Announcing you are away tells people your house is empty. Post after you return.</p></div>
+  <div class="redflag"><div class="redflag-icon">✖</div><p><strong>Your full birthday publicly</strong> — Birthdate is used in security questions and identity verification. Keep it off your profile.</p></div>
+  <div class="redflag"><div class="redflag-icon">✖</div><p><strong>Photos of your boarding pass or ID</strong> — Even blurred photos can be enhanced. Your booking reference alone can expose personal data.</p></div>
+  <div class="redflag"><div class="redflag-icon">✖</div><p><strong>Location check-ins at your home</strong> — Tagging yourself at home repeatedly creates a clear pattern of your address.</p></div>
+  <div class="redflag"><div class="redflag-icon">✖</div><p><strong>Complaints about your workplace security online</strong> — Attackers look for employees who mention internal systems, software, or access issues.</p></div>
+
+  <div class="checklist">
+    <div class="checklist-title">✔ Chapter 6 Action Checklist</div>
+    <ul>
+      <li><div class="check-box"></div>Set Instagram to private</li>
+      <li><div class="check-box"></div>Remove phone number from Instagram and Facebook profile</li>
+      <li><div class="check-box"></div>Set Facebook future posts to "Friends" only</li>
+      <li><div class="check-box"></div>Change "who can find you" to Friends or Only me</li>
+      <li><div class="check-box"></div>Clear Off-Facebook Activity history</li>
+      <li><div class="check-box"></div>Remove unrecognised connected apps from both platforms</li>
+    </ul>
+  </div>
+  <div class="page-footer"><span>Clean Your Digital Life</span><span>Chapter 06</span></div>
+</div>
+
+<!-- ══════════════ CHAPTER 7 ══════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 07</div>
+    <div class="chapter-title">Spot Phishing Before<br/>It Catches You</div>
+    <div class="chapter-intro">Phishing is the #1 way people get hacked worldwide. It does not require technical skill — it just requires a convincing message and a moment of distraction.</div>
+  </div>
+
+  <h3>What is Phishing?</h3>
+  <p>Phishing is when someone tricks you into clicking a fake link or giving away your credentials by pretending to be a trusted organisation — your bank, your company's IT team, Amazon, IRCTC, or even a friend. The message looks real. The website looks real. But you are handing your details straight to an attacker.</p>
+
+  <h3>The 7 Red Flags of a Phishing Message</h3>
+  <div class="redflag"><div class="redflag-icon">🚩</div><p><strong>Urgency and pressure</strong> — "Your account will be suspended in 24 hours." Real companies do not panic you into clicking.</p></div>
+  <div class="redflag"><div class="redflag-icon">🚩</div><p><strong>Generic greetings</strong> — "Dear Customer" instead of your name. If the company knows you, they use your name.</p></div>
+  <div class="redflag"><div class="redflag-icon">🚩</div><p><strong>Slightly wrong sender address</strong> — support@arnazon.com vs amazon.com. Look carefully at the domain.</p></div>
+  <div class="redflag"><div class="redflag-icon">🚩</div><p><strong>Suspicious links</strong> — Hover over (don't click) any link. The real URL shown at the bottom of your screen should match the company's real domain.</p></div>
+  <div class="redflag"><div class="redflag-icon">🚩</div><p><strong>Unexpected attachments</strong> — An invoice, PDF, or Word doc you were not expecting. Opening it can install malware silently.</p></div>
+  <div class="redflag"><div class="redflag-icon">🚩</div><p><strong>Requests for personal information</strong> — Your bank will never ask for your PIN or password in an email. No legitimate company ever will.</p></div>
+  <div class="redflag"><div class="redflag-icon">🚩</div><p><strong>Too-good-to-be-true offers</strong> — "You have won an iPhone! Claim now." These always lead to credential-harvesting pages.</p></div>
+
+  <h3>SMS Phishing (Smishing) and Voice Phishing (Vishing)</h3>
+  <p><strong>Smishing</strong> — Fraudulent text messages. Common examples in India: fake TRAI notices saying your SIM will be suspended, fake KYC update links from "your bank", fake courier delivery messages.</p>
+  <p><strong>Vishing</strong> — Fake phone calls. Callers pretend to be from your bank's fraud department, the income tax department, or telecom companies. They create fear ("your account is being used for illegal activity") then ask you to share OTPs or install apps.</p>
+
+  <div class="box box-danger">
+    <div class="box-icon">🚨</div>
+    <div class="box-content">
+      <div class="box-title">The Golden Rule — no exceptions</div>
+      <p>Never share an OTP with anyone over the phone. No bank, no government agency, no telecom company will ever ask for your OTP. If they do, hang up immediately. A real fraud alert from your bank does not require you to share anything — they already have the information.</p>
+    </div>
+  </div>
+
+  <h3>The 5-Second Rule Before Clicking</h3>
+  <p>Before clicking any link in an email or SMS, pause for 5 seconds and ask: <em>"Did I expect this message? Does the sender address look exactly right? Is this creating unusual urgency?"</em> If anything feels off, go to the website directly by typing the URL — never through the link.</p>
+
+  <div class="checklist">
+    <div class="checklist-title">✔ Chapter 7 Action Checklist</div>
+    <ul>
+      <li><div class="check-box"></div>Memorise the 7 red flags of a phishing message</li>
+      <li><div class="check-box"></div>Never click links in unexpected "urgent" emails — go to the site directly</li>
+      <li><div class="check-box"></div>Never share an OTP over the phone with anyone</li>
+      <li><div class="check-box"></div>If you receive a suspicious call from "your bank", hang up and call the number on the back of your card</li>
+      <li><div class="check-box"></div>Enable spam filters in Gmail (Settings → Filters)</li>
+    </ul>
+  </div>
+  <div class="page-footer"><span>Clean Your Digital Life</span><span>Chapter 07</span></div>
+</div>
+
+<!-- ══════════════ CHAPTER 8 ══════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 08</div>
+    <div class="chapter-title">Clean Your Devices</div>
+    <div class="chapter-intro">Your phone knows more about you than any other device you own. Most people have never checked what apps are quietly running in the background.</div>
+  </div>
+
+  <h3>Review App Permissions — Android</h3>
+  <p>Go to <strong>Settings → Apps → See all apps</strong>. Tap any app, then tap Permissions. Ask yourself: does this app actually need this? A flashlight app does not need access to your contacts. A calculator does not need your location.</p>
+
+  <table>
+    <tr><th>Permission</th><th>Who should have it</th><th>Red flag if given to</th></tr>
+    <tr><td>Location (always on)</td><td>Maps, Ride apps</td><td>Flashlights, games, keyboards</td></tr>
+    <tr><td>Contacts</td><td>Phone, messaging apps</td><td>Photo editors, utilities</td></tr>
+    <tr><td>Microphone</td><td>Voice/call apps, Siri/Google</td><td>Shopping apps, games</td></tr>
+    <tr><td>Camera</td><td>Camera app, video calling</td><td>Calendar apps, file managers</td></tr>
+    <tr><td>SMS / Read texts</td><td>Your default SMS app only</td><td>Any third-party app</td></tr>
+  </table>
+
+  <h3>Review App Permissions — iPhone</h3>
+  <p>Go to <strong>Settings → Privacy & Security</strong>. Each category (Location, Microphone, Camera, etc.) shows you exactly which apps have requested that permission. Revoke any that seem excessive.</p>
+
+  <h3>Keep Everything Updated</h3>
+  <p>Software updates are not just about new features — 80% of updates include security patches that fix known vulnerabilities. Running outdated software is like knowing your lock is broken and not fixing it.</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Update your phone's operating system</strong><p>Settings → Software Update (both Android and iPhone). Enable auto-updates.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Update all your apps</strong><p>Open the Play Store or App Store → tap your profile → Updates. Update everything.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Update your browsers</strong><p>Chrome, Firefox, and Safari update automatically, but check manually if you have not restarted them in a while.</p></div></div>
+  </div>
+
+  <h3>Public WiFi — What You Need to Know</h3>
+  <p>Public WiFi at cafes, airports, and hotels is convenient but risky. Attackers can set up fake WiFi hotspots with names like "CafeWifi_Free" that look legitimate. Once connected, they can intercept unencrypted traffic.</p>
+
+  <div class="box box-tip">
+    <div class="box-icon">💡</div>
+    <div class="box-content">
+      <div class="box-title">Safe public WiFi habits</div>
+      <p>Use your mobile data for banking and sensitive tasks. If you must use public WiFi, use a VPN — try <strong>ProtonVPN</strong> (free plan available). Avoid logging into banking or financial apps over public networks. Always verify the exact WiFi network name with staff before connecting.</p>
+    </div>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">✔ Chapter 8 Action Checklist</div>
+    <ul>
+      <li><div class="check-box"></div>Review and revoke excessive app permissions on your phone</li>
+      <li><div class="check-box"></div>Update your phone's operating system</li>
+      <li><div class="check-box"></div>Update all apps to their latest versions</li>
+      <li><div class="check-box"></div>Enable automatic updates for OS and apps</li>
+      <li><div class="check-box"></div>Delete apps you no longer use</li>
+      <li><div class="check-box"></div>Never do banking on public WiFi without a VPN</li>
+      <li><div class="check-box"></div>Set a strong PIN/password on your phone lock screen</li>
+    </ul>
+  </div>
+  <div class="page-footer"><span>Clean Your Digital Life</span><span>Chapter 08</span></div>
+</div>
+
+<!-- ══════════════ CHAPTER 9 — 30-DAY PLAN ══════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 09</div>
+    <div class="chapter-title">Your 30-Day Digital<br/>Clean-Up Plan</div>
+    <div class="chapter-intro">Everything in this guide, broken into four focused weeks. Spend 20–30 minutes a day and you'll be done in a month.</div>
+  </div>
+
+  <div class="week">
+    <div class="week-header">Week 1 — Passwords and 2FA</div>
+    <div class="week-body">
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 1:</strong> Check haveibeenpwned.com for all your email addresses</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 2:</strong> Install Bitwarden and set a strong master password</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 3:</strong> Change email and banking passwords to strong unique ones</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 4:</strong> Install Google Authenticator. Enable 2FA on email and banking</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 5:</strong> Enable WhatsApp two-step verification</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 6–7:</strong> Update passwords for social media and top 10 most-used accounts</div></div>
+    </div>
+  </div>
+
+  <div class="week">
+    <div class="week-header">Week 2 — Email and Old Accounts</div>
+    <div class="week-body">
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 8:</strong> Check Gmail for secret forwarding rules. Review recent sign-in activity</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 9:</strong> Verify recovery phone and email are correct. Remove old devices</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 10–11:</strong> Search inbox for old signups. Make a list of accounts to delete</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 12–13:</strong> Delete unused accounts using justdeleteme.com</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 14:</strong> Remove saved payment methods from rarely-used shopping sites</div></div>
+    </div>
+  </div>
+
+  <div class="week">
+    <div class="week-header">Week 3 — Social Media Lockdown</div>
+    <div class="week-body">
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 15:</strong> Set Instagram to private. Remove phone number from profile</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 16:</strong> Change Facebook post visibility. Restrict "who can find you" settings</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 17:</strong> Clear Off-Facebook Activity. Remove unrecognised connected apps</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 18:</strong> Review LinkedIn privacy settings — limit profile visibility to connections</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 19–21:</strong> Enable 2FA on all remaining social accounts</div></div>
+    </div>
+  </div>
+
+  <div class="week">
+    <div class="week-header">Week 4 — Devices and Maintenance</div>
+    <div class="week-body">
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 22–23:</strong> Review app permissions on your phone. Revoke excessive access</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 24:</strong> Update your phone OS and all apps. Enable auto-update</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 25:</strong> Delete apps you have not used in 3+ months</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 26:</strong> Set up ProtonVPN for public WiFi use</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 27–28:</strong> Complete the Master Checklist (next page) and tick off everything done</div></div>
+      <div class="week-task"><div class="check-box"></div><div><strong>Day 29–30:</strong> Share this guide with one person who needs it. Then set a 6-month reminder to repeat key steps</div></div>
+    </div>
+  </div>
+
+  <div class="box box-fact">
+    <div class="box-icon">🏆</div>
+    <div class="box-content">
+      <div class="box-title">After 30 days, you will have:</div>
+      <p>Unique strong passwords on every account · 2FA on all critical accounts · Old accounts deleted · Email secured · Social media locked down · Devices cleaned and updated · The knowledge to spot phishing instantly</p>
+    </div>
+  </div>
+  <div class="page-footer"><span>Clean Your Digital Life</span><span>Chapter 09</span></div>
+</div>
+
+<!-- ══════════════ MASTER CHECKLIST ══════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 10</div>
+    <div class="chapter-title">Master Checklist</div>
+    <div class="chapter-intro">Print this page and keep it somewhere visible. Tick every item when done. This is your complete digital security baseline.</div>
+  </div>
+
+  <div class="master-section">
+    <div class="master-section-title">Passwords</div>
+    <div class="master-item"><div class="check-box"></div><span>Checked haveibeenpwned.com for all my email addresses</span></div>
+    <div class="master-item"><div class="check-box"></div><span>Installed a password manager (Bitwarden / Google / iCloud)</span></div>
+    <div class="master-item"><div class="check-box"></div><span>Every account has a unique, strong password</span></div>
+    <div class="master-item"><div class="check-box"></div><span>No passwords are reused across any two accounts</span></div>
+  </div>
+
+  <div class="master-section">
+    <div class="master-section-title">Two-Factor Authentication (2FA)</div>
+    <div class="master-item"><div class="check-box"></div><span>2FA enabled on primary email (Gmail / Outlook)</span></div>
+    <div class="master-item"><div class="check-box"></div><span>2FA enabled on banking apps</span></div>
+    <div class="master-item"><div class="check-box"></div><span>WhatsApp two-step verification enabled</span></div>
+    <div class="master-item"><div class="check-box"></div><span>2FA enabled on Instagram, Facebook, LinkedIn</span></div>
+    <div class="master-item"><div class="check-box"></div><span>Backup codes saved somewhere safe (not in email)</span></div>
+  </div>
+
+  <div class="master-section">
+    <div class="master-section-title">Email Security</div>
+    <div class="master-item"><div class="check-box"></div><span>No unexpected forwarding rules in Gmail</span></div>
+    <div class="master-item"><div class="check-box"></div><span>Recent activity reviewed — no unfamiliar sign-ins</span></div>
+    <div class="master-item"><div class="check-box"></div><span>Recovery phone and email are correct and current</span></div>
+    <div class="master-item"><div class="check-box"></div><span>Old/unrecognised devices removed from account</span></div>
+  </div>
+
+  <div class="master-section">
+    <div class="master-section-title">Old Accounts</div>
+    <div class="master-item"><div class="check-box"></div><span>Searched inbox for old signups</span></div>
+    <div class="master-item"><div class="check-box"></div><span>Deleted all unused accounts via justdeleteme.com</span></div>
+    <div class="master-item"><div class="check-box"></div><span>Saved payment methods removed from rarely-used sites</span></div>
+    <div class="master-item"><div class="check-box"></div><span>Connected/third-party apps reviewed and cleaned up</span></div>
+  </div>
+
+  <div class="master-section">
+    <div class="master-section-title">Social Media</div>
+    <div class="master-item"><div class="check-box"></div><span>Instagram set to private</span></div>
+    <div class="master-item"><div class="check-box"></div><span>Phone number removed from social media profiles</span></div>
+    <div class="master-item"><div class="check-box"></div><span>Facebook posts set to Friends only</span></div>
+    <div class="master-item"><div class="check-box"></div><span>"Who can find you" restricted on Facebook</span></div>
+  </div>
+
+  <div class="master-section">
+    <div class="master-section-title">Devices</div>
+    <div class="master-item"><div class="check-box"></div><span>Excessive app permissions revoked</span></div>
+    <div class="master-item"><div class="check-box"></div><span>Phone OS and all apps fully updated</span></div>
+    <div class="master-item"><div class="check-box"></div><span>Auto-updates enabled for OS and apps</span></div>
+    <div class="master-item"><div class="check-box"></div><span>Strong PIN/password set on phone lock screen</span></div>
+    <div class="master-item"><div class="check-box"></div><span>VPN installed for public WiFi use</span></div>
+  </div>
+
+  <div class="box box-fact" style="margin-top:16px;">
+    <div class="box-icon">🔒</div>
+    <div class="box-content">
+      <div class="box-title">Repeat this audit every 6 months</div>
+      <p>Set a calendar reminder for 6 months from today. Re-run the checklist. Update passwords for any account that had a known breach. Check for new connected apps. This is maintenance, not a one-time fix.</p>
+    </div>
+  </div>
+  <div class="page-footer"><span>Clean Your Digital Life · Master Checklist</span><span>gumroad.com/aarthir05</span></div>
+</div>
+
+</body>
+</html>
