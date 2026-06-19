@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>VIT Chennai Engineering Mathematics — Complete Study Guide</title>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --ink:#1a1a2e; --muted:#4a4a6a; --light:#f7f7fc; --border:#e2e2f0;
+    --calc:#0284c7; --ode:#059669; --cvla:#7c3aed; --prob:#ea580c;
+    --formula-bg:#fff8e1; --formula-border:#f59e0b;
+    --solved-bg:#f0fdf4; --solved-border:#22c55e;
+    --note-bg:#eff6ff; --note-border:#3b82f6;
+    --warn-bg:#fef2f2; --warn-border:#ef4444;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;font-size:10.5pt;color:var(--ink);background:#c0c0d0;line-height:1.7;}
+  .page{width:794px;min-height:1123px;background:#fff;margin:20px auto;padding:60px 72px;position:relative;box-shadow:0 4px 24px rgba(0,0,0,0.13);}
+
+  /* COVER */
+  .cover{min-height:1123px;background:linear-gradient(145deg,#0f0c29,#302b63,#24243e);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:80px;}
+  .cover-badge{background:rgba(124,58,237,0.4);border:1px solid rgba(139,92,246,0.5);color:#c4b5fd;font-size:8.5pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:20px;display:inline-block;margin-bottom:32px;}
+  .cover h1{font-size:36pt;font-weight:900;line-height:1.1;margin-bottom:20px;color:#fff;}
+  .cover h1 span{color:#a78bfa;}
+  .cover-sub{font-size:12pt;color:#c4b5fd;line-height:1.65;max-width:460px;margin-bottom:40px;}
+  .cover-courses{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:48px;max-width:500px;}
+  .cover-course{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:12px 16px;}
+  .cover-course-code{font-size:8.5pt;font-weight:700;letter-spacing:.08em;margin-bottom:3px;}
+  .cover-course-name{font-size:10pt;color:#e2e8f0;font-weight:600;}
+  .cover-author{color:#818cf8;font-size:9pt;font-weight:600;letter-spacing:.06em;text-transform:uppercase;}
+
+  /* CHAPTER HEADER */
+  .ch-header{padding:20px 24px;border-radius:12px;margin-bottom:28px;color:#fff;}
+  .ch-calc{background:linear-gradient(90deg,#0284c7,#0ea5e9);}
+  .ch-ode{background:linear-gradient(90deg,#059669,#10b981);}
+  .ch-cvla{background:linear-gradient(90deg,#7c3aed,#8b5cf6);}
+  .ch-prob{background:linear-gradient(90deg,#ea580c,#f97316);}
+  .ch-code{font-size:8.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:4px;}
+  .ch-title{font-size:20pt;font-weight:900;line-height:1.15;margin-bottom:4px;}
+  .ch-modules{font-size:9pt;opacity:.85;}
+
+  /* SECTION */
+  .sec-title{font-size:14pt;font-weight:800;margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--border);}
+  .sec-title.calc{border-color:var(--calc);color:var(--calc);}
+  .sec-title.ode{border-color:var(--ode);color:var(--ode);}
+  .sec-title.cvla{border-color:var(--cvla);color:var(--cvla);}
+  .sec-title.prob{border-color:var(--prob);color:var(--prob);}
+  .subsec{font-size:11pt;font-weight:700;margin:18px 0 8px;color:var(--ink);}
+  p{margin-bottom:12px;line-height:1.75;}
+
+  /* FORMULA BOX */
+  .formula{background:var(--formula-bg);border:2px solid var(--formula-border);border-radius:10px;padding:16px 20px;margin:16px 0;page-break-inside:avoid;}
+  .formula-title{font-size:8.5pt;font-weight:800;color:#b45309;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+  .formula-body{font-size:11pt;text-align:center;padding:6px 0;}
+  .formula-list{list-style:none;padding:0;}
+  .formula-list li{padding:4px 0;border-bottom:1px solid rgba(245,158,11,.2);font-size:10pt;}
+  .formula-list li:last-child{border-bottom:none;}
+
+  /* SOLVED EXAMPLE */
+  .solved{background:var(--solved-bg);border:1.5px solid var(--solved-border);border-radius:10px;padding:16px 20px;margin:16px 0;page-break-inside:avoid;}
+  .solved-title{font-size:8.5pt;font-weight:800;color:#15803d;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+  .solved-q{font-weight:600;font-size:10.5pt;margin-bottom:10px;color:var(--ink);}
+  .solved-step{display:flex;gap:10px;margin-bottom:8px;font-size:10pt;}
+  .solved-step-num{background:#22c55e;color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:8.5pt;flex-shrink:0;margin-top:1px;}
+  .solved-ans{background:#dcfce7;border-radius:6px;padding:8px 12px;font-weight:700;font-size:10.5pt;margin-top:8px;color:#15803d;}
+
+  /* NOTE / TIP */
+  .note{background:var(--note-bg);border-left:4px solid var(--note-border);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0;font-size:10pt;}
+  .note strong{color:#1d4ed8;display:block;margin-bottom:3px;}
+  .warn{background:var(--warn-bg);border-left:4px solid var(--warn-border);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0;font-size:10pt;}
+  .warn strong{color:#b91c1c;display:block;margin-bottom:3px;}
+
+  /* TABLE */
+  table{width:100%;border-collapse:collapse;font-size:9.5pt;margin:14px 0;}
+  th{background:var(--ink);color:#fff;padding:9px 12px;text-align:left;font-weight:700;}
+  td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+  tr:nth-child(even) td{background:var(--light);}
+  .th-calc th{background:var(--calc);}
+  .th-ode th{background:var(--ode);}
+  .th-cvla th{background:var(--cvla);}
+  .th-prob th{background:var(--prob);}
+
+  /* QUICK REF */
+  .qref{background:var(--light);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:16px 0;page-break-inside:avoid;}
+  .qref-title{font-weight:800;font-size:10pt;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+  .qref ul{list-style:none;padding:0;}
+  .qref li{padding:4px 0;border-bottom:1px solid var(--border);font-size:9.5pt;}
+  .qref li:last-child{border-bottom:none;}
+
+  /* CHECKLIST */
+  .checklist{background:var(--light);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .checklist-title{font-weight:800;font-size:10pt;margin-bottom:12px;}
+  .cl-item{display:flex;gap:8px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border);font-size:9.5pt;}
+  .cl-item:last-child{border-bottom:none;}
+  .cl-box{width:15px;height:15px;border:2px solid #6366f1;border-radius:3px;flex-shrink:0;margin-top:2px;}
+
+  /* FOOTER */
+  .page-footer{position:absolute;bottom:28px;left:72px;right:72px;display:flex;justify-content:space-between;font-size:8pt;color:#b0b0c8;border-top:1px solid var(--border);padding-top:8px;}
+
+  /* MathJax overrides */
+  mjx-container{display:inline !important;}
+
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;padding:52px 64px;}
+    @page{margin:0;size:A4;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<div class="page cover">
+  <div class="cover-badge">VIT Chennai · Official Syllabus Aligned</div>
+  <h1>Engineering<br/><span>Mathematics</span><br/>Complete Study Guide</h1>
+  <p class="cover-sub">Concept explanations, highlighted formulas, and solved examples for all core math courses. Built for VIT Chennai students — module by module, exactly as taught.</p>
+  <div class="cover-courses">
+    <div class="cover-course"><div class="cover-course-code" style="color:#7dd3fc">BMAT101L</div><div class="cover-course-name">Calculus</div></div>
+    <div class="cover-course"><div class="cover-course-code" style="color:#6ee7b7">BMAT102L</div><div class="cover-course-name">Diff. Equations &amp; Transforms</div></div>
+    <div class="cover-course"><div class="cover-course-code" style="color:#c4b5fd">BMAT201L</div><div class="cover-course-name">Complex Variables &amp; Linear Algebra</div></div>
+    <div class="cover-course"><div class="cover-course-code" style="color:#fdba74">BMAT202L</div><div class="cover-course-name">Probability &amp; Statistics</div></div>
+  </div>
+  <p class="cover-author">VIT Engineering Mathematics Series</p>
+</div>
+
+<!-- ════════════════════════════════════════
+     BMAT101L — CALCULUS
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="ch-header ch-calc">
+    <div class="ch-code">BMAT101L · 3 Credits</div>
+    <div class="ch-title">Calculus</div>
+    <div class="ch-modules">Single Variable · Multivariable · Multiple Integrals · Special Functions · Vector Calculus</div>
+  </div>
+
+  <div class="sec-title calc">Module 1: Single Variable Calculus</div>
+
+  <div class="subsec">Rolle's Theorem and Mean Value Theorem</div>
+  <div class="formula">
+    <div class="formula-title">Key Theorems</div>
+    <ul class="formula-list">
+      <li><strong>Rolle's Theorem:</strong> If \(f\) is continuous on \([a,b]\), differentiable on \((a,b)\), and \(f(a)=f(b)\), then \(\exists\, c \in (a,b)\) such that \(f'(c)=0\)</li>
+      <li><strong>Mean Value Theorem (Lagrange):</strong> \(\displaystyle f'(c) = \frac{f(b)-f(a)}{b-a}\) for some \(c \in (a,b)\)</li>
+    </ul>
+  </div>
+
+  <div class="subsec">Maxima and Minima (Single Variable)</div>
+  <div class="formula">
+    <div class="formula-title">First and Second Derivative Tests</div>
+    <ul class="formula-list">
+      <li><strong>Critical point:</strong> \(f'(x)=0\) or \(f'(x)\) undefined</li>
+      <li><strong>Second derivative test:</strong> If \(f'(c)=0\) and \(f''(c)&gt;0\) → local minimum; \(f''(c)&lt;0\) → local maximum</li>
+      <li><strong>Concave up:</strong> \(f''(x)&gt;0\); <strong>Concave down:</strong> \(f''(x)&lt;0\)</li>
+      <li><strong>Inflection point:</strong> where \(f''(x)=0\) and concavity changes</li>
+    </ul>
+  </div>
+
+  <div class="solved">
+    <div class="solved-title">✏ Solved Example — Maxima/Minima</div>
+    <div class="solved-q">Find the maxima and minima of \(f(x) = x^3 - 3x^2 - 9x + 5\)</div>
+    <div class="solved-step"><div class="solved-step-num">1</div><div>Find critical points: \(f'(x) = 3x^2 - 6x - 9 = 3(x^2-2x-3) = 3(x-3)(x+1) = 0\), so \(x = 3, -1\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">2</div><div>\(f''(x) = 6x - 6\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">3</div><div>At \(x=-1\): \(f''(-1) = -12 &lt; 0\) → <strong>local maximum</strong>. \(f(-1) = -1-3+9+5 = 10\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">4</div><div>At \(x=3\): \(f''(3) = 12 &gt; 0\) → <strong>local minimum</strong>. \(f(3) = 27-27-27+5 = -22\)</div></div>
+    <div class="solved-ans">Local max = 10 at x = −1; Local min = −22 at x = 3</div>
+  </div>
+
+  <div class="subsec">Integration — Area and Volumes</div>
+  <div class="formula">
+    <div class="formula-title">Key Formulas</div>
+    <ul class="formula-list">
+      <li><strong>Area between curves:</strong> \(\displaystyle A = \int_a^b [f(x)-g(x)]\,dx\) where \(f(x) \geq g(x)\)</li>
+      <li><strong>Volume (disc method):</strong> \(\displaystyle V = \pi\int_a^b [f(x)]^2\,dx\)</li>
+      <li><strong>Volume (shell method):</strong> \(\displaystyle V = 2\pi\int_a^b x\,f(x)\,dx\)</li>
+    </ul>
+  </div>
+  <div class="page-footer"><span>VIT Engineering Mathematics — Complete Guide</span><span>BMAT101L Calculus · Module 1</span></div>
+</div>
+
+<div class="page">
+  <div class="sec-title calc">Module 2–3: Multivariable Calculus</div>
+
+  <div class="subsec">Partial Derivatives and Total Differential</div>
+  <div class="formula">
+    <div class="formula-title">Key Definitions</div>
+    <ul class="formula-list">
+      <li><strong>Partial derivative \(\partial f/\partial x\):</strong> Differentiate w.r.t. \(x\), treating \(y\) as constant</li>
+      <li><strong>Total differential:</strong> \(df = \dfrac{\partial f}{\partial x}dx + \dfrac{\partial f}{\partial y}dy\)</li>
+      <li><strong>Jacobian:</strong> \(\displaystyle J\!\left(\frac{u,v}{x,y}\right) = \begin{vmatrix} \partial u/\partial x &amp; \partial u/\partial y \\ \partial v/\partial x &amp; \partial v/\partial y \end{vmatrix}\)</li>
+      <li><strong>Chain rule:</strong> \(\displaystyle \frac{du}{dt} = \frac{\partial u}{\partial x}\frac{dx}{dt}+\frac{\partial u}{\partial y}\frac{dy}{dt}\)</li>
+    </ul>
+  </div>
+
+  <div class="subsec">Taylor's Series for Two Variables</div>
+  <div class="formula">
+    <div class="formula-title">Formula</div>
+    <div class="formula-body">\[\displaystyle f(a+h,b+k) = f(a,b) + \left(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\right)f + \frac{1}{2!}\left(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\right)^2 f + \cdots\]</div>
+  </div>
+
+  <div class="subsec">Maxima and Minima of f(x,y)</div>
+  <div class="formula">
+    <div class="formula-title">Conditions (Second Order Test)</div>
+    <ul class="formula-list">
+      <li>Find critical point: \(f_x = 0\) and \(f_y = 0\)</li>
+      <li>Compute discriminant: \(D = f_{xx}f_{yy} - (f_{xy})^2\)</li>
+      <li>If \(D &gt; 0\) and \(f_{xx} &gt; 0\) → <strong>minimum</strong></li>
+      <li>If \(D &gt; 0\) and \(f_{xx} &lt; 0\) → <strong>maximum</strong></li>
+      <li>If \(D &lt; 0\) → <strong>saddle point</strong></li>
+      <li>If \(D = 0\) → <strong>test fails</strong></li>
+    </ul>
+  </div>
+
+  <div class="subsec">Lagrange's Multiplier Method</div>
+  <p>To find extremum of \(f(x,y,z)\) subject to constraint \(g(x,y,z)=0\):</p>
+  <div class="formula">
+    <div class="formula-title">Method</div>
+    <ul class="formula-list">
+      <li>Form: \(\nabla f = \lambda\,\nabla g\), i.e. \(f_x = \lambda g_x\), \(f_y = \lambda g_y\), \(f_z = \lambda g_z\)</li>
+      <li>Solve these equations simultaneously with \(g=0\) to find the constrained extremum</li>
+    </ul>
+  </div>
+
+  <div class="solved">
+    <div class="solved-title">✏ Solved Example — Lagrange Multipliers</div>
+    <div class="solved-q">Find the maximum and minimum of \(f=x^2+y^2\) subject to \(x+y=1\)</div>
+    <div class="solved-step"><div class="solved-step-num">1</div><div>Set up: \(\nabla f = \lambda\nabla g\) → \(2x = \lambda,\; 2y = \lambda\) → \(x = y\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">2</div><div>Substitute into constraint: \(x+x=1\) → \(x=y=\frac{1}{2}\)</div></div>
+    <div class="solved-ans">Minimum value = \(\frac{1}{4}+\frac{1}{4} = \frac{1}{2}\) at \((1/2, 1/2)\)</div>
+  </div>
+
+  <div class="sec-title calc" style="margin-top:28px;">Module 4: Multiple Integrals</div>
+  <div class="formula">
+    <div class="formula-title">Key Formulas</div>
+    <ul class="formula-list">
+      <li><strong>Double integral (Cartesian):</strong> \(\displaystyle \iint_R f(x,y)\,dA = \int_a^b\int_{g_1(x)}^{g_2(x)} f(x,y)\,dy\,dx\)</li>
+      <li><strong>Change to polar:</strong> \(x=r\cos\theta,\; y=r\sin\theta,\; dA = r\,dr\,d\theta\)</li>
+      <li><strong>Change of order:</strong> Sketch the region, re-identify the limits</li>
+      <li><strong>Triple integral:</strong> \(\displaystyle \iiint_V f(x,y,z)\,dV\)</li>
+      <li><strong>Cylindrical coords:</strong> \(x=r\cos\theta,\; y=r\sin\theta,\; z=z,\; dV=r\,dr\,d\theta\,dz\)</li>
+      <li><strong>Spherical coords:</strong> \(x=\rho\sin\phi\cos\theta,\; y=\rho\sin\phi\sin\theta,\; z=\rho\cos\phi,\; dV=\rho^2\sin\phi\,d\rho\,d\phi\,d\theta\)</li>
+    </ul>
+  </div>
+
+  <div class="sec-title calc">Module 5: Special Functions</div>
+  <div class="formula">
+    <div class="formula-title">Beta and Gamma Functions</div>
+    <ul class="formula-list">
+      <li>\(\Gamma(n) = \displaystyle\int_0^\infty e^{-t}t^{n-1}\,dt\), \(\quad \Gamma(n+1) = n\,\Gamma(n)\), \(\quad \Gamma(1/2) = \sqrt{\pi}\)</li>
+      <li>\(B(m,n) = \displaystyle\int_0^1 x^{m-1}(1-x)^{n-1}\,dx = \frac{\Gamma(m)\Gamma(n)}{\Gamma(m+n)}\)</li>
+      <li><strong>Useful reduction:</strong> \(\displaystyle\int_0^{\pi/2}\sin^m\theta\cos^n\theta\,d\theta = \frac{\Gamma\!\left(\frac{m+1}{2}\right)\Gamma\!\left(\frac{n+1}{2}\right)}{2\,\Gamma\!\left(\frac{m+n+2}{2}\right)}\)</li>
+      <li><strong>Error function:</strong> \(\displaystyle\text{erf}(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}\,dt\), \(\quad \text{erfc}(x) = 1-\text{erf}(x)\)</li>
+    </ul>
+  </div>
+  <div class="page-footer"><span>VIT Engineering Mathematics — Complete Guide</span><span>BMAT101L · Modules 2–5</span></div>
+</div>
+
+<div class="page">
+  <div class="sec-title calc">Modules 6–7: Vector Calculus</div>
+
+  <div class="subsec">Vector Differentiation</div>
+  <div class="formula">
+    <div class="formula-title">Gradient, Divergence, Curl</div>
+    <ul class="formula-list">
+      <li><strong>Gradient:</strong> \(\nabla f = \dfrac{\partial f}{\partial x}\hat{i}+\dfrac{\partial f}{\partial y}\hat{j}+\dfrac{\partial f}{\partial z}\hat{k}\) &nbsp;→ points in direction of maximum increase</li>
+      <li><strong>Directional derivative:</strong> \(D_{\hat{u}}f = \nabla f \cdot \hat{u}\)</li>
+      <li><strong>Divergence:</strong> \(\nabla\cdot\mathbf{F} = \dfrac{\partial F_1}{\partial x}+\dfrac{\partial F_2}{\partial y}+\dfrac{\partial F_3}{\partial z}\)</li>
+      <li><strong>Curl:</strong> \(\nabla\times\mathbf{F} = \begin{vmatrix}\hat{i}&\hat{j}&\hat{k}\\ \partial_x&\partial_y&\partial_z\\ F_1&F_2&F_3\end{vmatrix}\)</li>
+      <li><strong>Irrotational:</strong> \(\nabla\times\mathbf{F}=\mathbf{0}\) &nbsp;&nbsp;<strong>Solenoidal:</strong> \(\nabla\cdot\mathbf{F}=0\)</li>
+    </ul>
+  </div>
+
+  <div class="subsec">Vector Integration Theorems</div>
+  <div class="formula">
+    <div class="formula-title">The Three Major Theorems</div>
+    <ul class="formula-list">
+      <li><strong>Green's Theorem (2D):</strong> \(\displaystyle\oint_C (P\,dx+Q\,dy) = \iint_R\!\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dA\)</li>
+      <li><strong>Stokes' Theorem:</strong> \(\displaystyle\oint_C \mathbf{F}\cdot d\mathbf{r} = \iint_S (\nabla\times\mathbf{F})\cdot d\mathbf{S}\)</li>
+      <li><strong>Gauss Divergence Theorem:</strong> \(\displaystyle\oiint_S \mathbf{F}\cdot d\mathbf{S} = \iiint_V \nabla\cdot\mathbf{F}\,dV\)</li>
+    </ul>
+  </div>
+
+  <div class="note"><strong>Exam tip — Green's Theorem</strong>Often used to evaluate line integrals by converting to double integrals (or vice versa). Always check if the curve is closed and oriented counter-clockwise.</div>
+
+  <div class="solved">
+    <div class="solved-title">✏ Solved Example — Gauss Divergence Theorem</div>
+    <div class="solved-q">Evaluate \(\displaystyle\oiint_S \mathbf{F}\cdot\hat{n}\,dS\) where \(\mathbf{F}=x^2\hat{i}+y^2\hat{j}+z^2\hat{k}\) over the unit cube</div>
+    <div class="solved-step"><div class="solved-step-num">1</div><div>Find divergence: \(\nabla\cdot\mathbf{F} = 2x+2y+2z\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">2</div><div>Apply Gauss: \(\displaystyle\iiint_V(2x+2y+2z)\,dV = \int_0^1\!\int_0^1\!\int_0^1(2x+2y+2z)\,dx\,dy\,dz\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">3</div><div>By symmetry each integral gives the same value: \(= 3\times\int_0^1\!\int_0^1\!\int_0^1 2x\,dx\,dy\,dz = 3\times 1 = 3\)</div></div>
+    <div class="solved-ans">Answer = 3</div>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">BMAT101L — Topics to Master for FAT</div>
+    <div class="cl-item"><div class="cl-box"></div><span>Rolle's theorem, MVT — conditions and applications</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Maxima/minima of single and two-variable functions</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Lagrange multiplier problems</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Change of order and change of variables in double integrals</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Beta-Gamma function evaluations</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Gradient, divergence, curl — irrotational and solenoidal check</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Green's, Stokes', Gauss theorems — know when to apply each</span></div>
+  </div>
+  <div class="page-footer"><span>VIT Engineering Mathematics — Complete Guide</span><span>BMAT101L · Modules 6–7</span></div>
+</div>
+
+<!-- ════════════════════════════════════════
+     BMAT102L — DIFFERENTIAL EQUATIONS & TRANSFORMS
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="ch-header ch-ode">
+    <div class="ch-code">BMAT102L · 4 Credits</div>
+    <div class="ch-title">Differential Equations and Transforms</div>
+    <div class="ch-modules">ODE · PDE · Laplace · Fourier Series · Fourier Transform · Z-Transform</div>
+  </div>
+
+  <div class="sec-title ode">Module 1: Ordinary Differential Equations</div>
+
+  <div class="subsec">2nd Order ODE with Constant Coefficients</div>
+  <div class="formula">
+    <div class="formula-title">General Solution: ay'' + by' + cy = f(x)</div>
+    <ul class="formula-list">
+      <li>Solve auxiliary equation \(am^2+bm+c=0\) for roots \(m_1, m_2\)</li>
+      <li>If \(m_1 \neq m_2\) (real): \(y_c = C_1e^{m_1x}+C_2e^{m_2x}\)</li>
+      <li>If \(m_1 = m_2 = m\) (repeated): \(y_c = (C_1+C_2x)e^{mx}\)</li>
+      <li>If \(m = \alpha \pm i\beta\) (complex): \(y_c = e^{\alpha x}(C_1\cos\beta x + C_2\sin\beta x)\)</li>
+    </ul>
+  </div>
+
+  <div class="formula">
+    <div class="formula-title">Particular Integral — Method of Undetermined Coefficients</div>
+    <table class="th-ode" style="margin:8px 0;">
+      <tr><th>f(x)</th><th>Trial Particular Integral</th></tr>
+      <tr><td>\(e^{ax}\)</td><td>\(Ae^{ax}\) (if \(a\) is not a root)</td></tr>
+      <tr><td>\(\sin ax\) or \(\cos ax\)</td><td>\(A\sin ax + B\cos ax\)</td></tr>
+      <tr><td>\(x^n\)</td><td>\(A_nx^n + A_{n-1}x^{n-1}+\cdots+A_0\)</td></tr>
+      <tr><td>\(e^{ax}\sin bx\)</td><td>\(e^{ax}(A\sin bx+B\cos bx)\)</td></tr>
+    </table>
+  </div>
+
+  <div class="formula">
+    <div class="formula-title">Variation of Parameters Formula</div>
+    <div class="formula-body">\[y_p = y_1\int\frac{-y_2\,f(x)}{W}\,dx + y_2\int\frac{y_1\,f(x)}{W}\,dx\]</div>
+    <div style="font-size:9.5pt;margin-top:6px;text-align:center;">where \(W = y_1y_2'-y_2y_1'\) is the Wronskian</div>
+  </div>
+
+  <div class="solved">
+    <div class="solved-title">✏ Solved — 2nd Order ODE</div>
+    <div class="solved-q">Solve \(y'' - 3y' + 2y = e^{3x}\)</div>
+    <div class="solved-step"><div class="solved-step-num">1</div><div>AE: \(m^2-3m+2=0\) → \((m-1)(m-2)=0\) → \(m=1,2\). So \(y_c=C_1e^x+C_2e^{2x}\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">2</div><div>PI: Try \(y_p=Ae^{3x}\). Then \(9Ae^{3x}-9Ae^{3x}+2Ae^{3x}=e^{3x}\) → \(2A=1\) → \(A=\frac{1}{2}\)</div></div>
+    <div class="solved-ans">\(y = C_1e^x + C_2e^{2x} + \frac{1}{2}e^{3x}\)</div>
+  </div>
+
+  <div class="sec-title ode">Module 2: Partial Differential Equations</div>
+  <div class="formula">
+    <div class="formula-title">Formation and Standard Types</div>
+    <ul class="formula-list">
+      <li><strong>Lagrange's PDE:</strong> \(Pp + Qq = R\) where \(p=\partial z/\partial x\), \(q=\partial z/\partial y\). Solve using auxiliary equations \(\frac{dx}{P}=\frac{dy}{Q}=\frac{dz}{R}\)</li>
+      <li><strong>Type 1:</strong> \(f(p,q)=0\) — assume \(z=ax+by+c\) where \(f(a,b)=0\)</li>
+      <li><strong>Type 2:</strong> \(f(z,p,q)=0\) — assume \(z=f(x+ay)\)</li>
+      <li><strong>Separation of variables:</strong> Assume \(u(x,t)=X(x)\cdot T(t)\), separate, solve two ODEs</li>
+    </ul>
+  </div>
+  <div class="page-footer"><span>VIT Engineering Mathematics — Complete Guide</span><span>BMAT102L · ODE and PDE</span></div>
+</div>
+
+<div class="page">
+  <div class="sec-title ode">Module 3–4: Laplace Transform</div>
+
+  <div class="formula">
+    <div class="formula-title">Definition and Properties</div>
+    <ul class="formula-list">
+      <li><strong>Definition:</strong> \(\mathcal{L}\{f(t)\} = F(s) = \displaystyle\int_0^\infty e^{-st}f(t)\,dt\)</li>
+      <li><strong>Linearity:</strong> \(\mathcal{L}\{af+bg\} = aF(s)+bG(s)\)</li>
+      <li><strong>First shift:</strong> \(\mathcal{L}\{e^{at}f(t)\} = F(s-a)\)</li>
+      <li><strong>Differentiation:</strong> \(\mathcal{L}\{f'(t)\} = sF(s)-f(0)\); \(\mathcal{L}\{f''(t)\} = s^2F(s)-sf(0)-f'(0)\)</li>
+      <li><strong>Integration:</strong> \(\mathcal{L}\left\{\int_0^t f(\tau)\,d\tau\right\} = \dfrac{F(s)}{s}\)</li>
+      <li><strong>Convolution:</strong> \(\mathcal{L}\{f*g\} = F(s)\cdot G(s)\)</li>
+    </ul>
+  </div>
+
+  <div class="formula">
+    <div class="formula-title">Standard Laplace Transform Table</div>
+    <table class="th-ode" style="font-size:9.5pt;">
+      <tr><th>\(f(t)\)</th><th>\(\mathcal{L}\{f(t)\} = F(s)\)</th></tr>
+      <tr><td>\(1\)</td><td>\(1/s\)</td></tr>
+      <tr><td>\(t^n\)</td><td>\(n!/s^{n+1}\)</td></tr>
+      <tr><td>\(e^{at}\)</td><td>\(1/(s-a)\)</td></tr>
+      <tr><td>\(\sin at\)</td><td>\(a/(s^2+a^2)\)</td></tr>
+      <tr><td>\(\cos at\)</td><td>\(s/(s^2+a^2)\)</td></tr>
+      <tr><td>\(\sinh at\)</td><td>\(a/(s^2-a^2)\)</td></tr>
+      <tr><td>\(\cosh at\)</td><td>\(s/(s^2-a^2)\)</td></tr>
+      <tr><td>\(t\sin at\)</td><td>\(2as/(s^2+a^2)^2\)</td></tr>
+      <tr><td>\(u(t-a)\)</td><td>\(e^{-as}/s\) (Heaviside)</td></tr>
+      <tr><td>\(\delta(t-a)\)</td><td>\(e^{-as}\) (Dirac delta)</td></tr>
+    </table>
+  </div>
+
+  <div class="solved">
+    <div class="solved-title">✏ Solved — Solve ODE using Laplace</div>
+    <div class="solved-q">Solve \(y'' + 4y = \sin 2t\), given \(y(0)=0, y'(0)=0\)</div>
+    <div class="solved-step"><div class="solved-step-num">1</div><div>Take Laplace: \([s^2Y(s)-0-0]+4Y(s) = \dfrac{2}{s^2+4}\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">2</div><div>\(Y(s)(s^2+4) = \dfrac{2}{s^2+4}\) → \(Y(s) = \dfrac{2}{(s^2+4)^2}\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">3</div><div>Inverse Laplace: \(\mathcal{L}^{-1}\!\left\{\dfrac{2}{(s^2+4)^2}\right\} = \dfrac{1}{4}(\sin 2t - 2t\cos 2t)\)</div></div>
+    <div class="solved-ans">\(y = \dfrac{1}{4}(\sin 2t - 2t\cos 2t)\)</div>
+  </div>
+
+  <div class="sec-title ode">Module 5: Fourier Series</div>
+  <div class="formula">
+    <div class="formula-title">Euler's Formulae — Full Range \((-l, l)\)</div>
+    <div class="formula-body">\[f(x) = \frac{a_0}{2} + \sum_{n=1}^\infty\left(a_n\cos\frac{n\pi x}{l}+b_n\sin\frac{n\pi x}{l}\right)\]</div>
+    <ul class="formula-list" style="margin-top:10px;">
+      <li>\(\displaystyle a_0 = \frac{1}{l}\int_{-l}^l f(x)\,dx\)</li>
+      <li>\(\displaystyle a_n = \frac{1}{l}\int_{-l}^l f(x)\cos\frac{n\pi x}{l}\,dx\)</li>
+      <li>\(\displaystyle b_n = \frac{1}{l}\int_{-l}^l f(x)\sin\frac{n\pi x}{l}\,dx\)</li>
+    </ul>
+  </div>
+  <div class="formula">
+    <div class="formula-title">Half-Range Series and Parseval's Identity</div>
+    <ul class="formula-list">
+      <li><strong>Half-range cosine:</strong> \(a_n = \dfrac{2}{l}\displaystyle\int_0^l f(x)\cos\dfrac{n\pi x}{l}\,dx\), \(b_n=0\)</li>
+      <li><strong>Half-range sine:</strong> \(b_n = \dfrac{2}{l}\displaystyle\int_0^l f(x)\sin\dfrac{n\pi x}{l}\,dx\), \(a_0=a_n=0\)</li>
+      <li><strong>Parseval's Identity:</strong> \(\dfrac{1}{l}\displaystyle\int_{-l}^l [f(x)]^2\,dx = \dfrac{a_0^2}{2}+\sum_{n=1}^\infty(a_n^2+b_n^2)\)</li>
+    </ul>
+  </div>
+  <div class="page-footer"><span>VIT Engineering Mathematics — Complete Guide</span><span>BMAT102L · Laplace and Fourier Series</span></div>
+</div>
+
+<div class="page">
+  <div class="sec-title ode">Module 6: Fourier Transform</div>
+  <div class="formula">
+    <div class="formula-title">Definitions</div>
+    <ul class="formula-list">
+      <li><strong>Complex Fourier transform:</strong> \(\hat{f}(\omega) = \displaystyle\int_{-\infty}^\infty f(x)e^{-i\omega x}\,dx\)</li>
+      <li><strong>Inverse:</strong> \(f(x) = \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^\infty \hat{f}(\omega)e^{i\omega x}\,d\omega\)</li>
+      <li><strong>Fourier sine transform:</strong> \(F_s(\omega) = \displaystyle\int_0^\infty f(x)\sin\omega x\,dx\)</li>
+      <li><strong>Fourier cosine transform:</strong> \(F_c(\omega) = \displaystyle\int_0^\infty f(x)\cos\omega x\,dx\)</li>
+      <li><strong>Parseval's:</strong> \(\displaystyle\int_{-\infty}^\infty |f(x)|^2\,dx = \frac{1}{2\pi}\int_{-\infty}^\infty|\hat{f}(\omega)|^2\,d\omega\)</li>
+    </ul>
+  </div>
+
+  <div class="sec-title ode">Module 7: Z-Transform</div>
+  <div class="formula">
+    <div class="formula-title">Definition and Standard Pairs</div>
+    <ul class="formula-list">
+      <li><strong>Definition:</strong> \(Z\{x(n)\} = X(z) = \displaystyle\sum_{n=0}^\infty x(n)z^{-n}\)</li>
+      <li>\(Z\{1\} = \dfrac{z}{z-1}\)</li>
+      <li>\(Z\{n\} = \dfrac{z}{(z-1)^2}\)</li>
+      <li>\(Z\{a^n\} = \dfrac{z}{z-a}\)</li>
+      <li>\(Z\{\cos n\theta\} = \dfrac{z(z-\cos\theta)}{z^2-2z\cos\theta+1}\)</li>
+      <li>\(Z\{\sin n\theta\} = \dfrac{z\sin\theta}{z^2-2z\cos\theta+1}\)</li>
+    </ul>
+  </div>
+  <div class="formula">
+    <div class="formula-title">Properties and Inverse Z-Transform</div>
+    <ul class="formula-list">
+      <li><strong>Linearity:</strong> \(Z\{ax(n)+by(n)\} = aX(z)+bY(z)\)</li>
+      <li><strong>Time shift:</strong> \(Z\{x(n-k)\} = z^{-k}X(z)\)</li>
+      <li><strong>Convolution:</strong> \(Z\{x*y\} = X(z)\cdot Y(z)\)</li>
+      <li><strong>Inverse (partial fractions):</strong> Expand \(X(z)/z\) in partial fractions, then multiply by \(z\) and use table</li>
+    </ul>
+  </div>
+
+  <div class="solved">
+    <div class="solved-title">✏ Solved — Z-Transform of difference equation</div>
+    <div class="solved-q">Solve \(y(n+2)-5y(n+1)+6y(n)=0\), \(y(0)=0\), \(y(1)=1\)</div>
+    <div class="solved-step"><div class="solved-step-num">1</div><div>Take Z-transform: \((z^2-5z+6)Y(z) = z^2y(0)+z[y(1)-5y(0)] = z\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">2</div><div>\(Y(z) = \dfrac{z}{(z-2)(z-3)}\) → partial fractions: \(\dfrac{-z}{z-2}+\dfrac{z}{z-3}\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">3</div><div>Inverse Z: \(Z^{-1}\!\left\{\dfrac{z}{z-a}\right\} = a^n\)</div></div>
+    <div class="solved-ans">\(y(n) = 3^n - 2^n\)</div>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">BMAT102L — Key Topics for Exam</div>
+    <div class="cl-item"><div class="cl-box"></div><span>ODE: AE roots, CF+PI, variation of parameters</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>PDE: Formation, Lagrange's method, separation of variables</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Laplace table, inverse via partial fractions, convolution</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Solving ODE/PDE with Laplace (Heaviside, impulse)</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Fourier series: full range, half range, Parseval's</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Z-transform: table, properties, inverse, difference equations</span></div>
+  </div>
+  <div class="page-footer"><span>VIT Engineering Mathematics — Complete Guide</span><span>BMAT102L · Fourier and Z-Transform</span></div>
+</div>
+
+<!-- ════════════════════════════════════════
+     BMAT201L — COMPLEX VARIABLES & LINEAR ALGEBRA
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="ch-header ch-cvla">
+    <div class="ch-code">BMAT201L · 4 Credits</div>
+    <div class="ch-title">Complex Variables and Linear Algebra</div>
+    <div class="ch-modules">Analytic Functions · Conformal Mapping · Complex Integration · Vector Spaces · Linear Algebra</div>
+  </div>
+
+  <div class="sec-title cvla">Module 1: Analytic Functions</div>
+
+  <div class="formula">
+    <div class="formula-title">Cauchy-Riemann Equations</div>
+    <ul class="formula-list">
+      <li>\(f(z) = u(x,y)+iv(x,y)\) is analytic if and only if:</li>
+      <li>\(\dfrac{\partial u}{\partial x} = \dfrac{\partial v}{\partial y}\) and \(\dfrac{\partial u}{\partial y} = -\dfrac{\partial v}{\partial x}\)</li>
+      <li>Additionally, \(u\) and \(v\) must have continuous first-order partial derivatives</li>
+      <li><strong>If analytic:</strong> \(f'(z) = \dfrac{\partial u}{\partial x}+i\dfrac{\partial v}{\partial x} = \dfrac{\partial u}{\partial x}-i\dfrac{\partial u}{\partial y}\)</li>
+    </ul>
+  </div>
+
+  <div class="formula">
+    <div class="formula-title">Harmonic Functions and Conjugate</div>
+    <ul class="formula-list">
+      <li>\(u\) is harmonic if \(\nabla^2 u = u_{xx}+u_{yy} = 0\)</li>
+      <li>If \(u\) is harmonic, find \(v\) (harmonic conjugate) using Milne-Thomson method</li>
+      <li><strong>Milne-Thomson:</strong> \(f'(z) = \phi_1(z,0) - i\phi_2(z,0)\) where \(\phi_1 = u_x, \phi_2 = u_y\)</li>
+    </ul>
+  </div>
+
+  <div class="solved">
+    <div class="solved-title">✏ Solved — C-R Equations check</div>
+    <div class="solved-q">Is \(f(z)=z^2\) analytic? Find \(u,v\).</div>
+    <div class="solved-step"><div class="solved-step-num">1</div><div>\(f(z)=(x+iy)^2 = x^2-y^2 + 2ixy\), so \(u=x^2-y^2\), \(v=2xy\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">2</div><div>\(u_x=2x=v_y=2x\) ✓ and \(u_y=-2y = -v_x=-2y\) ✓</div></div>
+    <div class="solved-ans">C-R equations satisfied everywhere → \(f(z)=z^2\) is analytic everywhere (entire)</div>
+  </div>
+
+  <div class="sec-title cvla">Module 2: Conformal Mapping</div>
+  <div class="formula">
+    <div class="formula-title">Elementary Transformations</div>
+    <ul class="formula-list">
+      <li><strong>Translation:</strong> \(w = z + c\) — shifts the plane</li>
+      <li><strong>Rotation/Magnification:</strong> \(w = az\) — rotates by \(\arg(a)\) and scales by \(|a|\)</li>
+      <li><strong>Inversion:</strong> \(w = 1/z\) — maps circles to circles/lines</li>
+      <li><strong>Square map:</strong> \(w = z^2\) — doubles angles at origin</li>
+      <li><strong>Exponential:</strong> \(w = e^z\) — maps horizontal strips to sectors</li>
+    </ul>
+  </div>
+  <div class="formula">
+    <div class="formula-title">Bilinear (Möbius) Transformation</div>
+    <div class="formula-body">\[w = \frac{az+b}{cz+d}, \quad ad-bc \neq 0\]</div>
+    <ul class="formula-list" style="margin-top:8px;">
+      <li>Maps circles and lines to circles and lines</li>
+      <li><strong>Cross-ratio preserved:</strong> \((w_1,w_2,w_3,w_4) = (z_1,z_2,z_3,z_4)\)</li>
+      <li>Find transformation by mapping 3 points: use \(\dfrac{(w-w_1)(w_2-w_3)}{(w-w_3)(w_2-w_1)} = \dfrac{(z-z_1)(z_2-z_3)}{(z-z_3)(z_2-z_1)}\)</li>
+    </ul>
+  </div>
+  <div class="page-footer"><span>VIT Engineering Mathematics — Complete Guide</span><span>BMAT201L · Analytic Functions and Conformal Mapping</span></div>
+</div>
+
+<div class="page">
+  <div class="sec-title cvla">Module 3: Complex Integration</div>
+  <div class="formula">
+    <div class="formula-title">Taylor and Laurent Series</div>
+    <ul class="formula-list">
+      <li><strong>Taylor series</strong> (analytic at \(a\)): \(f(z) = \displaystyle\sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}(z-a)^n\)</li>
+      <li><strong>Laurent series:</strong> \(f(z) = \displaystyle\sum_{n=0}^\infty a_n(z-a)^n + \sum_{n=1}^\infty \frac{b_n}{(z-a)^n}\)</li>
+      <li><strong>Residue</strong> = coefficient \(b_1\) of \((z-a)^{-1}\) in Laurent series</li>
+    </ul>
+  </div>
+  <div class="formula">
+    <div class="formula-title">Singularities and Residues</div>
+    <ul class="formula-list">
+      <li><strong>Removable singularity:</strong> Laurent series has no negative powers</li>
+      <li><strong>Pole of order \(m\):</strong> Laurent series has terms up to \((z-a)^{-m}\)</li>
+      <li><strong>Essential singularity:</strong> Infinitely many negative power terms</li>
+      <li><strong>Residue at simple pole:</strong> \(\text{Res}(f,a) = \displaystyle\lim_{z\to a}(z-a)f(z)\)</li>
+      <li><strong>Residue at pole of order \(m\):</strong> \(\displaystyle\frac{1}{(m-1)!}\lim_{z\to a}\frac{d^{m-1}}{dz^{m-1}}[(z-a)^m f(z)]\)</li>
+    </ul>
+  </div>
+  <div class="formula">
+    <div class="formula-title">Cauchy's Theorems</div>
+    <ul class="formula-list">
+      <li><strong>Cauchy-Goursat:</strong> \(\displaystyle\oint_C f(z)\,dz = 0\) if \(f\) is analytic inside and on \(C\)</li>
+      <li><strong>Cauchy's Integral Formula:</strong> \(\displaystyle f^{(n)}(a) = \frac{n!}{2\pi i}\oint_C \frac{f(z)}{(z-a)^{n+1}}\,dz\)</li>
+      <li><strong>Residue Theorem:</strong> \(\displaystyle\oint_C f(z)\,dz = 2\pi i\sum_k \text{Res}(f,a_k)\)</li>
+    </ul>
+  </div>
+
+  <div class="solved">
+    <div class="solved-title">✏ Solved — Residue Theorem</div>
+    <div class="solved-q">Evaluate \(\displaystyle\oint_{|z|=2}\frac{e^z}{z(z-1)}\,dz\)</div>
+    <div class="solved-step"><div class="solved-step-num">1</div><div>Poles inside \(|z|=2\): \(z=0\) and \(z=1\) (both simple poles)</div></div>
+    <div class="solved-step"><div class="solved-step-num">2</div><div>\(\text{Res}(f,0) = \displaystyle\lim_{z\to 0}z\cdot\frac{e^z}{z(z-1)} = \frac{e^0}{0-1} = -1\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">3</div><div>\(\text{Res}(f,1) = \displaystyle\lim_{z\to 1}(z-1)\cdot\frac{e^z}{z(z-1)} = \frac{e^1}{1} = e\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">4</div><div>Result: \(2\pi i(-1+e) = 2\pi i(e-1)\)</div></div>
+    <div class="solved-ans">\(\displaystyle\oint = 2\pi i(e-1)\)</div>
+  </div>
+
+  <div class="sec-title cvla">Modules 4–5: Vector Spaces and Linear Transformations</div>
+  <div class="formula">
+    <div class="formula-title">Vector Space Definitions</div>
+    <ul class="formula-list">
+      <li><strong>Subspace test:</strong> Closed under addition and scalar multiplication; contains zero vector</li>
+      <li><strong>Linear independence:</strong> \(c_1v_1+c_2v_2+\cdots=0\) implies all \(c_i=0\)</li>
+      <li><strong>Basis:</strong> Linearly independent spanning set</li>
+      <li><strong>Dimension:</strong> Number of vectors in any basis</li>
+      <li><strong>Rank-Nullity Theorem:</strong> \(\text{rank}(A)+\text{nullity}(A) = n\) (number of columns)</li>
+    </ul>
+  </div>
+  <div class="formula">
+    <div class="formula-title">Linear Transformations</div>
+    <ul class="formula-list">
+      <li>\(T: V\to W\) is linear if \(T(u+v)=T(u)+T(v)\) and \(T(cu)=cT(u)\)</li>
+      <li><strong>Kernel:</strong> \(\ker(T) = \{v : T(v)=0\}\)</li>
+      <li><strong>Image:</strong> \(\text{Im}(T) = \{T(v) : v\in V\}\)</li>
+      <li><strong>Rank:</strong> \(\dim(\text{Im}(T))\); <strong>Nullity:</strong> \(\dim(\ker T)\)</li>
+    </ul>
+  </div>
+  <div class="page-footer"><span>VIT Engineering Mathematics — Complete Guide</span><span>BMAT201L · Complex Integration and Vector Spaces</span></div>
+</div>
+
+<div class="page">
+  <div class="sec-title cvla">Module 6: Inner Product Spaces</div>
+  <div class="formula">
+    <div class="formula-title">Gram-Schmidt Orthogonalization</div>
+    <ul class="formula-list">
+      <li>Given basis \(\{v_1,v_2,\ldots,v_n\}\), construct orthonormal basis \(\{e_1,e_2,\ldots,e_n\}\):</li>
+      <li>\(u_1 = v_1\); \(\quad e_1 = u_1/\|u_1\|\)</li>
+      <li>\(u_2 = v_2 - \dfrac{\langle v_2,u_1\rangle}{\langle u_1,u_1\rangle}u_1\); \(\quad e_2 = u_2/\|u_2\|\)</li>
+      <li>\(u_k = v_k - \displaystyle\sum_{j=1}^{k-1}\frac{\langle v_k,u_j\rangle}{\langle u_j,u_j\rangle}u_j\)</li>
+    </ul>
+  </div>
+
+  <div class="sec-title cvla">Module 7: Eigenvalues and Cayley-Hamilton</div>
+  <div class="formula">
+    <div class="formula-title">Eigenvalues and Eigenvectors</div>
+    <ul class="formula-list">
+      <li><strong>Characteristic equation:</strong> \(\det(A-\lambda I) = 0\)</li>
+      <li><strong>Eigenvector:</strong> \((A-\lambda_i I)\mathbf{x} = \mathbf{0}\)</li>
+      <li><strong>Properties:</strong> \(\text{tr}(A)=\sum\lambda_i\); \(\det(A)=\prod\lambda_i\)</li>
+      <li><strong>Cayley-Hamilton:</strong> Every matrix satisfies its own characteristic equation. To find \(A^{-1}\) or powers of \(A\), use \(p(\lambda)=0 \Rightarrow p(A)=0\)</li>
+    </ul>
+  </div>
+
+  <div class="solved">
+    <div class="solved-title">✏ Solved — Eigenvalues and Cayley-Hamilton</div>
+    <div class="solved-q">For \(A=\begin{pmatrix}2&1\\1&2\end{pmatrix}\), find eigenvalues, eigenvectors, and verify Cayley-Hamilton.</div>
+    <div class="solved-step"><div class="solved-step-num">1</div><div>Char eqn: \(\det(A-\lambda I)=(2-\lambda)^2-1=\lambda^2-4\lambda+3=(\lambda-1)(\lambda-3)=0\) → \(\lambda=1,3\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">2</div><div>For \(\lambda=1\): \((A-I)\mathbf{x}=0\) → \(\begin{pmatrix}1&1\\1&1\end{pmatrix}\mathbf{x}=0\) → \(\mathbf{x}=\begin{pmatrix}1\\-1\end{pmatrix}\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">3</div><div>For \(\lambda=3\): \(\mathbf{x}=\begin{pmatrix}1\\1\end{pmatrix}\)</div></div>
+    <div class="solved-step"><div class="solved-step-num">4</div><div>Cayley-Hamilton: \(A^2-4A+3I = \begin{pmatrix}5&4\\4&5\end{pmatrix}-\begin{pmatrix}8&4\\4&8\end{pmatrix}+\begin{pmatrix}3&0\\0&3\end{pmatrix}=\begin{pmatrix}0&0\\0&0\end{pmatrix}\) ✓</div></div>
+    <div class="solved-ans">\(\lambda_1=1, \mathbf{x}_1=(1,-1)^T\); \(\lambda_2=3, \mathbf{x}_2=(1,1)^T\)</div>
+  </div>
+
+  <div class="formula">
+    <div class="formula-title">Gaussian Elimination and Gauss-Jordan</div>
+    <ul class="formula-list">
+      <li><strong>Gaussian elimination:</strong> Reduce augmented matrix \([A|b]\) to upper triangular form using row operations, then back-substitute</li>
+      <li><strong>Gauss-Jordan:</strong> Continue until reduced row echelon form (identity matrix on left); solution reads directly</li>
+      <li><strong>Consistency check:</strong> System has solution iff \(\text{rank}(A)=\text{rank}([A|b])\)</li>
+    </ul>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">BMAT201L — Exam Priority Topics</div>
+    <div class="cl-item"><div class="cl-box"></div><span>C-R equations, harmonic conjugate, Milne-Thomson method</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Bilinear transformation using cross-ratio</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Laurent series expansion and classification of singularities</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Residue theorem for contour integrals</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Rank-nullity theorem, basis, dimension</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Eigenvalues/vectors, Cayley-Hamilton theorem (find \(A^{-1}\))</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Gram-Schmidt process</span></div>
+  </div>
+  <div class="page-footer"><span>VIT Engineering Mathematics — Complete Guide</span><span>BMAT201L · Linear Algebra</span></div>
+</div>
+
+<!-- ════════════════════════════════════════
+     BMAT202L — PROBABILITY AND STATISTICS
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="ch-header ch-prob">
+    <div class="ch-code">BMAT202L · 3 Credits</div>
+    <div class="ch-title">Probability and Statistics</div>
+    <div class="ch-modules">Random Variables · Distributions · Hypothesis Testing · ANOVA · Reliability</div>
+  </div>
+
+  <div class="sec-title prob">Module 1: Descriptive Statistics</div>
+  <div class="formula">
+    <div class="formula-title">Measures of Central Tendency and Dispersion</div>
+    <ul class="formula-list">
+      <li><strong>Mean:</strong> \(\bar{x} = \dfrac{1}{n}\displaystyle\sum x_i\); <strong>Median:</strong> middle value; <strong>Mode:</strong> most frequent</li>
+      <li><strong>Variance:</strong> \(\sigma^2 = \dfrac{1}{n}\displaystyle\sum(x_i-\bar{x})^2\)</li>
+      <li><strong>Standard deviation:</strong> \(\sigma = \sqrt{\sigma^2}\)</li>
+      <li><strong>Skewness (Pearson):</strong> \(\gamma_1 = \dfrac{3(\text{Mean}-\text{Median})}{\sigma}\)</li>
+      <li><strong>Kurtosis:</strong> \(\gamma_2 = \mu_4/\sigma^4\); Normal distribution has \(\gamma_2=3\)</li>
+    </ul>
+  </div>
+
+  <div class="sec-title prob">Module 2: Random Variables</div>
+  <div class="formula">
+    <div class="formula-title">Key Formulas</div>
+    <ul class="formula-list">
+      <li><strong>Discrete:</strong> \(\displaystyle E(X)=\sum x\,P(X=x)\), \(\quad \text{Var}(X)=E(X^2)-[E(X)]^2\)</li>
+      <li><strong>Continuous:</strong> \(\displaystyle E(X)=\int_{-\infty}^\infty x\,f(x)\,dx\)</li>
+      <li><strong>Covariance:</strong> \(\text{Cov}(X,Y)=E(XY)-E(X)E(Y)\)</li>
+      <li><strong>MGF:</strong> \(M_X(t)=E(e^{tX})\); \(E(X^n) = M_X^{(n)}(0)\)</li>
+      <li><strong>Joint distribution:</strong> \(f_{XY}(x,y)\); marginal \(f_X(x)=\displaystyle\int f_{XY}(x,y)\,dy\)</li>
+    </ul>
+  </div>
+
+  <div class="sec-title prob">Module 3: Correlation and Regression</div>
+  <div class="formula">
+    <div class="formula-title">Correlation Coefficient and Regression Lines</div>
+    <ul class="formula-list">
+      <li><strong>Pearson's r:</strong> \(\displaystyle r = \frac{\sum(x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum(x_i-\bar{x})^2\sum(y_i-\bar{y})^2}}\); range: \(-1\leq r\leq 1\)</li>
+      <li><strong>Regression of Y on X:</strong> \(y-\bar{y} = b_{yx}(x-\bar{x})\), where \(b_{yx}=r\dfrac{\sigma_y}{\sigma_x}\)</li>
+      <li><strong>Regression of X on Y:</strong> \(x-\bar{x} = b_{xy}(y-\bar{y})\), where \(b_{xy}=r\dfrac{\sigma_x}{\sigma_y}\)</li>
+      <li><strong>Relationship:</strong> \(r^2 = b_{yx}\cdot b_{xy}\)</li>
+      <li><strong>Rank correlation (Spearman):</strong> \(\rho = 1-\dfrac{6\sum d_i^2}{n(n^2-1)}\)</li>
+    </ul>
+  </div>
+  <div class="page-footer"><span>VIT Engineering Mathematics — Complete Guide</span><span>BMAT202L · Statistics and Random Variables</span></div>
+</div>
+
+<div class="page">
+  <div class="sec-title prob">Module 4: Probability Distributions</div>
+  <div class="formula">
+    <div class="formula-title">Standard Discrete Distributions</div>
+    <table class="th-prob">
+      <tr><th>Distribution</th><th>PMF</th><th>Mean</th><th>Variance</th></tr>
+      <tr><td>Binomial \(B(n,p)\)</td><td>\(\binom{n}{x}p^xq^{n-x}\)</td><td>\(np\)</td><td>\(npq\)</td></tr>
+      <tr><td>Poisson \(P(\lambda)\)</td><td>\(e^{-\lambda}\lambda^x/x!\)</td><td>\(\lambda\)</td><td>\(\lambda\)</td></tr>
+    </table>
+  </div>
+  <div class="formula">
+    <div class="formula-title">Standard Continuous Distributions</div>
+    <table class="th-prob">
+      <tr><th>Distribution</th><th>PDF \(f(x)\)</th><th>Mean</th><th>Variance</th></tr>
+      <tr><td>Normal \(N(\mu,\sigma^2)\)</td><td>\(\frac{1}{\sigma\sqrt{2\pi}}e^{-(x-\mu)^2/2\sigma^2}\)</td><td>\(\mu\)</td><td>\(\sigma^2\)</td></tr>
+      <tr><td>Exponential</td><td>\(\lambda e^{-\lambda x},\; x\geq 0\)</td><td>\(1/\lambda\)</td><td>\(1/\lambda^2\)</td></tr>
+      <tr><td>Gamma \(\Gamma(\alpha,\beta)\)</td><td>\(\frac{x^{\alpha-1}e^{-x/\beta}}{\beta^\alpha\Gamma(\alpha)}\)</td><td>\(\alpha\beta\)</td><td>\(\alpha\beta^2\)</td></tr>
+      <tr><td>Weibull</td><td>\(\frac{\beta}{\alpha}\left(\frac{x}{\alpha}\right)^{\beta-1}e^{-(x/\alpha)^\beta}\)</td><td>\(\alpha\Gamma(1+1/\beta)\)</td><td>—</td></tr>
+    </table>
+  </div>
+  <div class="note"><strong>Standard Normal table (Z-scores)</strong>For normal distribution problems, standardise: \(Z = (X-\mu)/\sigma\). Then use Z-table. Common values: \(P(Z\leq 1.645)=0.95\); \(P(Z\leq 1.96)=0.975\); \(P(Z\leq 2.576)=0.995\)</div>
+
+  <div class="sec-title prob">Modules 5–6: Hypothesis Testing</div>
+  <div class="formula">
+    <div class="formula-title">General Procedure</div>
+    <ul class="formula-list">
+      <li><strong>Step 1:</strong> State \(H_0\) (null) and \(H_1\) (alternative)</li>
+      <li><strong>Step 2:</strong> Choose significance level \(\alpha\) (usually 0.05 or 0.01)</li>
+      <li><strong>Step 3:</strong> Calculate test statistic</li>
+      <li><strong>Step 4:</strong> Find critical value from table</li>
+      <li><strong>Step 5:</strong> Decision: reject \(H_0\) if test statistic falls in critical region</li>
+    </ul>
+  </div>
+  <div class="formula">
+    <div class="formula-title">Test Statistics</div>
+    <table class="th-prob">
+      <tr><th>Test</th><th>Statistic</th><th>When to use</th></tr>
+      <tr><td>Z-test (mean)</td><td>\(Z=\dfrac{\bar{x}-\mu}{\sigma/\sqrt{n}}\)</td><td>Large sample \((n\geq30)\), \(\sigma\) known</td></tr>
+      <tr><td>t-test (mean)</td><td>\(t=\dfrac{\bar{x}-\mu}{s/\sqrt{n}}\), df \(=n-1\)</td><td>Small sample, \(\sigma\) unknown</td></tr>
+      <tr><td>F-test (variance)</td><td>\(F=s_1^2/s_2^2\)</td><td>Comparing two variances</td></tr>
+      <tr><td>\(\chi^2\) (goodness of fit)</td><td>\(\chi^2=\sum\dfrac{(O_i-E_i)^2}{E_i}\)</td><td>Categorical data, independence</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-title prob">Module 6: ANOVA and Design of Experiments</div>
+  <div class="formula">
+    <div class="formula-title">One-Way ANOVA</div>
+    <ul class="formula-list">
+      <li>\(\text{SST} = \text{SSB} + \text{SSW}\) (Total = Between groups + Within groups)</li>
+      <li>\(\text{MSB} = \text{SSB}/(k-1)\); \(\text{MSW} = \text{SSW}/(N-k)\)</li>
+      <li><strong>F-statistic:</strong> \(F = \text{MSB}/\text{MSW}\)</li>
+      <li>Reject \(H_0\) (all means equal) if \(F &gt; F_{\alpha,k-1,N-k}\)</li>
+    </ul>
+  </div>
+  <div class="qref">
+    <div class="qref-title">CRD vs RBD vs LSD</div>
+    <ul>
+      <li><strong>CRD (Completely Randomised):</strong> Treatments assigned randomly, one-way ANOVA</li>
+      <li><strong>RBD (Randomised Block):</strong> Controls one extraneous variable (blocks), two-way ANOVA</li>
+      <li><strong>LSD (Latin Square):</strong> Controls two extraneous variables simultaneously, three-way ANOVA</li>
+    </ul>
+  </div>
+
+  <div class="sec-title prob">Module 7: Reliability Engineering</div>
+  <div class="formula">
+    <div class="formula-title">Reliability Functions</div>
+    <ul class="formula-list">
+      <li><strong>Reliability:</strong> \(R(t) = P(T &gt; t) = 1-F(t) = e^{-\lambda t}\) (exponential)</li>
+      <li><strong>Hazard function:</strong> \(h(t) = f(t)/R(t) = \lambda\) (constant for exponential)</li>
+      <li><strong>MTTF:</strong> \(= \displaystyle\int_0^\infty R(t)\,dt = 1/\lambda\)</li>
+      <li><strong>Series system:</strong> \(R_s = R_1\cdot R_2\cdots R_n\)</li>
+      <li><strong>Parallel system:</strong> \(R_s = 1-(1-R_1)(1-R_2)\cdots(1-R_n)\)</li>
+    </ul>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">BMAT202L — Exam Priority Topics</div>
+    <div class="cl-item"><div class="cl-box"></div><span>Binomial and Poisson distribution problems</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Normal distribution — standardisation, Z-table usage</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Correlation coefficient and regression lines</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Z-test, t-test, F-test, chi-square — know which to apply when</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>ANOVA: SST=SSB+SSW, MSB, MSW, F-ratio calculation</span></div>
+    <div class="cl-item"><div class="cl-box"></div><span>Series and parallel reliability, MTTF</span></div>
+  </div>
+  <div class="page-footer"><span>VIT Engineering Mathematics — Complete Guide</span><span>BMAT202L · Probability and Statistics</span></div>
+</div>
+
+<!-- MASTER FORMULA REFERENCE -->
+<div class="page">
+  <div style="font-size:22pt;font-weight:900;margin-bottom:6px;color:var(--ink);">Master Formula Quick Reference</div>
+  <div style="color:var(--muted);font-size:10pt;margin-bottom:24px;">One-page revision sheet — all four courses</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <div style="background:var(--calc);color:#fff;font-weight:800;font-size:9.5pt;padding:7px 12px;border-radius:6px;margin-bottom:10px;">BMAT101L — Calculus</div>
+      <ul style="list-style:none;padding:0;font-size:9pt;">
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">\(\nabla f = \partial_x\hat{i}+\partial_y\hat{j}+\partial_z\hat{k}\)</li>
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">\(D = f_{xx}f_{yy}-(f_{xy})^2\) for saddle/max/min</li>
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">\(B(m,n)=\Gamma(m)\Gamma(n)/\Gamma(m+n)\)</li>
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">\(\oint_C \mathbf{F}\cdot d\mathbf{r} = \iint_S(\nabla\times\mathbf{F})\cdot d\mathbf{S}\) (Stokes)</li>
+        <li style="padding:3px 0;">\(\oiint \mathbf{F}\cdot d\mathbf{S} = \iiint\nabla\cdot\mathbf{F}\,dV\) (Gauss)</li>
+      </ul>
+    </div>
+    <div>
+      <div style="background:var(--ode);color:#fff;font-weight:800;font-size:9.5pt;padding:7px 12px;border-radius:6px;margin-bottom:10px;">BMAT102L — DE &amp; Transforms</div>
+      <ul style="list-style:none;padding:0;font-size:9pt;">
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">\(\mathcal{L}\{e^{at}f(t)\}=F(s-a)\) (1st shift)</li>
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">\(\mathcal{L}\{f''\}=s^2F-sf(0)-f'(0)\)</li>
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">Fourier: \(a_n=\frac{1}{l}\int_{-l}^l f\cos\frac{n\pi x}{l}dx\)</li>
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">\(Z\{a^n\}=z/(z-a)\)</li>
+        <li style="padding:3px 0;">\(Z\{n\}=z/(z-1)^2\)</li>
+      </ul>
+    </div>
+    <div>
+      <div style="background:var(--cvla);color:#fff;font-weight:800;font-size:9.5pt;padding:7px 12px;border-radius:6px;margin-bottom:10px;">BMAT201L — Complex Variables &amp; LA</div>
+      <ul style="list-style:none;padding:0;font-size:9pt;">
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">C-R: \(u_x=v_y\), \(u_y=-v_x\)</li>
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">Residue theorem: \(\oint=2\pi i\sum\text{Res}\)</li>
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">Bilinear: \(w=(az+b)/(cz+d)\)</li>
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">Rank-Nullity: rank + nullity = \(n\)</li>
+        <li style="padding:3px 0;">\(\det(A)=\prod\lambda_i\), \(\text{tr}(A)=\sum\lambda_i\)</li>
+      </ul>
+    </div>
+    <div>
+      <div style="background:var(--prob);color:#fff;font-weight:800;font-size:9.5pt;padding:7px 12px;border-radius:6px;margin-bottom:10px;">BMAT202L — Probability &amp; Statistics</div>
+      <ul style="list-style:none;padding:0;font-size:9pt;">
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">Binomial: \(E=np\), \(\text{Var}=npq\)</li>
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">Poisson: \(P(X=x)=e^{-\lambda}\lambda^x/x!\)</li>
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">\(r=\text{Cov}(X,Y)/(\sigma_X\sigma_Y)\)</li>
+        <li style="padding:3px 0;border-bottom:1px solid var(--border);">\(F=\text{MSB}/\text{MSW}\) (ANOVA)</li>
+        <li style="padding:3px 0;">Series: \(R_s=\prod R_i\); Parallel: \(R_s=1-\prod(1-R_i)\)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;background:linear-gradient(135deg,#1e1b4b,#312e81,#4338ca);color:#fff;border-radius:14px;padding:28px 32px;text-align:center;">
+    <div style="font-size:16pt;font-weight:900;margin-bottom:10px;">Good luck in your exams.</div>
+    <div style="color:#c4b5fd;font-size:10.5pt;line-height:1.8;">Understand the concept. Practice the formula. Attempt the example.<br/>That's the only revision strategy that works.</div>
+  </div>
+  <div class="page-footer"><span>VIT Engineering Mathematics — Complete Guide</span><span>Master Quick Reference</span></div>
+</div>
+
+</body>
+</html>

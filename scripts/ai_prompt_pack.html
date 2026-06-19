@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>100 AI Prompts for Office Workers</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink:#1a1a2e; --muted:#5a5a7a; --light:#f7f7fc; --border:#e2e2f0;
+    --ai:#6366f1; --ai2:#818cf8; --green:#059669; --orange:#ea580c;
+    --blue:#0284c7; --pink:#db2777; --teal:#0d9488; --yellow:#d97706;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;font-size:10.5pt;color:var(--ink);background:#c8c8d8;line-height:1.65;}
+  .page{width:794px;min-height:1123px;background:#fff;margin:20px auto;padding:64px 72px;position:relative;box-shadow:0 4px 32px rgba(0,0,0,0.15);}
+
+  /* COVER */
+  .cover{background:linear-gradient(135deg,#1e1b4b 0%,#312e81 40%,#4338ca 80%,#6366f1 100%);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:80px;min-height:1123px;}
+  .badge{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#c7d2fe;font-size:8.5pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:20px;display:inline-block;margin-bottom:32px;}
+  .cover h1{font-size:42pt;font-weight:900;line-height:1.1;margin-bottom:20px;}
+  .cover h1 span{color:#a5b4fc;}
+  .cover-sub{font-size:13pt;color:#c7d2fe;line-height:1.65;max-width:460px;margin-bottom:48px;}
+  .cover-divider{width:56px;height:4px;background:#818cf8;border-radius:2px;margin-bottom:40px;}
+  .cover-meta{display:flex;gap:32px;margin-bottom:48px;}
+  .cover-stat{text-align:center;}
+  .cover-stat-num{font-size:28pt;font-weight:900;color:#a5b4fc;line-height:1;}
+  .cover-stat-label{font-size:9pt;color:#c7d2fe;margin-top:4px;}
+  .cover-author{color:#818cf8;font-size:9.5pt;font-weight:600;letter-spacing:.06em;text-transform:uppercase;}
+  .robot{position:absolute;right:72px;top:80px;font-size:200pt;opacity:.06;line-height:1;}
+
+  /* SECTION DIVIDER */
+  .section-divider{background:linear-gradient(90deg,var(--ai),var(--ai2));color:#fff;font-size:13pt;font-weight:800;padding:14px 24px;border-radius:10px;margin:32px 0 20px;display:flex;align-items:center;gap:10px;}
+
+  /* PROMPT CARD */
+  .prompt-grid{display:grid;gap:12px;}
+  .prompt-card{border:1px solid var(--border);border-radius:10px;padding:16px 18px;background:var(--light);page-break-inside:avoid;}
+  .prompt-card:hover{}
+  .prompt-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;}
+  .prompt-num{width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:9pt;color:#fff;flex-shrink:0;}
+  .prompt-title{font-weight:700;font-size:10.5pt;color:var(--ink);line-height:1.3;}
+  .prompt-use{font-size:9pt;color:var(--muted);margin-bottom:10px;font-style:italic;}
+  .prompt-text{background:#fff;border:1.5px solid var(--ai);border-radius:8px;padding:12px 14px;font-size:9.5pt;color:#1e1b4b;line-height:1.7;position:relative;}
+  .prompt-text::before{content:'→';position:absolute;left:14px;top:12px;color:var(--ai);font-weight:700;font-size:10pt;}
+  .prompt-text-inner{padding-left:20px;}
+  .copy-tip{font-size:8pt;color:var(--muted);margin-top:6px;text-align:right;}
+
+  /* CATEGORY COLORS */
+  .c-email .prompt-num{background:#0284c7;}
+  .c-email .prompt-text{border-color:#0284c7;}
+  .c-email .prompt-text::before{color:#0284c7;}
+  .c-summ .prompt-num{background:#059669;}
+  .c-summ .prompt-text{border-color:#059669;}
+  .c-summ .prompt-text::before{color:#059669;}
+  .c-report .prompt-num{background:#7c3aed;}
+  .c-report .prompt-text{border-color:#7c3aed;}
+  .c-report .prompt-text::before{color:#7c3aed;}
+  .c-meet .prompt-num{background:#ea580c;}
+  .c-meet .prompt-text{border-color:#ea580c;}
+  .c-meet .prompt-text::before{color:#ea580c;}
+  .c-explain .prompt-num{background:#db2777;}
+  .c-explain .prompt-text{border-color:#db2777;}
+  .c-explain .prompt-text::before{color:#db2777;}
+  .c-data .prompt-num{background:#0d9488;}
+  .c-data .prompt-text{border-color:#0d9488;}
+  .c-data .prompt-text::before{color:#0d9488;}
+  .c-ppt .prompt-num{background:#d97706;}
+  .c-ppt .prompt-text{border-color:#d97706;}
+  .c-ppt .prompt-text::before{color:#d97706;}
+  .c-hr .prompt-num{background:#dc2626;}
+  .c-hr .prompt-text{border-color:#dc2626;}
+  .c-hr .prompt-text::before{color:#dc2626;}
+  .c-think .prompt-num{background:#475569;}
+  .c-think .prompt-text{border-color:#475569;}
+  .c-think .prompt-text::before{color:#475569;}
+
+  /* HOW TO USE */
+  .how-box{background:linear-gradient(135deg,#eff6ff,#f5f3ff);border:1px solid #c7d2fe;border-radius:14px;padding:28px 32px;margin:28px 0;}
+  .how-title{font-size:14pt;font-weight:800;color:var(--ai);margin-bottom:20px;}
+  .how-step{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px;}
+  .how-step:last-child{margin-bottom:0;}
+  .how-num{width:28px;height:28px;background:var(--ai);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:10pt;flex-shrink:0;}
+  .how-body strong{display:block;font-size:10.5pt;margin-bottom:3px;}
+  .how-body p{font-size:9.5pt;color:var(--muted);margin:0;}
+
+  /* TIP BOXES */
+  .tip{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0;font-size:9.5pt;}
+  .tip strong{color:#15803d;display:block;margin-bottom:3px;}
+
+  /* VARIABLES TABLE */
+  table{width:100%;border-collapse:collapse;font-size:9.5pt;margin:16px 0;}
+  th{background:var(--ai);color:#fff;padding:9px 12px;text-align:left;font-weight:700;}
+  td{padding:8px 12px;border-bottom:1px solid var(--border);}
+  tr:nth-child(even) td{background:var(--light);}
+
+  /* FOOTER */
+  .page-footer{position:absolute;bottom:32px;left:72px;right:72px;display:flex;justify-content:space-between;font-size:8pt;color:#b0b0c8;border-top:1px solid var(--border);padding-top:10px;}
+
+  /* CAT HEADER */
+  .cat-header{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+  .cat-icon{font-size:18pt;}
+  .cat-desc{font-size:9.5pt;color:var(--muted);margin-bottom:16px;font-style:italic;}
+
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;padding:56px 64px;}
+    @page{margin:0;size:A4;}
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="page cover">
+  <div class="robot">🤖</div>
+  <div class="badge">ChatGPT · Copilot · Gemini</div>
+  <h1>100 AI Prompts<br/>for <span>Office Workers</span></h1>
+  <div class="cover-divider"></div>
+  <p class="cover-sub">Copy. Paste. Done. Ready-to-use prompts for emails, reports, meetings, summaries, and more — organised by task so you find what you need instantly.</p>
+  <div class="cover-meta">
+    <div class="cover-stat"><div class="cover-stat-num">100</div><div class="cover-stat-label">Prompts</div></div>
+    <div class="cover-stat"><div class="cover-stat-num">9</div><div class="cover-stat-label">Categories</div></div>
+    <div class="cover-stat"><div class="cover-stat-num">0</div><div class="cover-stat-label">Tech Skills Needed</div></div>
+  </div>
+  <p class="cover-author">The AI Office Toolkit</p>
+</div>
+
+<!-- HOW TO USE -->
+<div class="page">
+  <div style="font-size:22pt;font-weight:900;margin-bottom:8px;">How to Use This Guide</div>
+  <div style="color:var(--muted);font-size:11pt;margin-bottom:28px;">You don't need to be a prompt engineer. Just copy, fill in the [brackets], and paste into any AI tool.</div>
+
+  <div class="how-box">
+    <div class="how-title">3 Steps to Get Great Results</div>
+    <div class="how-step"><div class="how-num">1</div><div class="how-body"><strong>Copy the prompt</strong><p>Find the prompt for your task. Copy the entire text in the blue/coloured box.</p></div></div>
+    <div class="how-step"><div class="how-num">2</div><div class="how-body"><strong>Fill in the [brackets]</strong><p>Replace anything in [square brackets] with your specific details — name, topic, context, tone, etc.</p></div></div>
+    <div class="how-step"><div class="how-num">3</div><div class="how-body"><strong>Paste and send</strong><p>Paste into ChatGPT, Microsoft Copilot, Google Gemini, or any AI tool and hit enter. Refine if needed.</p></div></div>
+  </div>
+
+  <div class="tip"><strong>Pro tip: Add context for better results</strong>At the start of any prompt, you can add: "I work at a [company type] as a [your role]. Keep the tone [formal/casual/professional]." This makes every prompt more accurate.</div>
+
+  <table>
+    <tr><th>Variable</th><th>What to replace it with</th><th>Example</th></tr>
+    <tr><td>[topic]</td><td>The subject you're working on</td><td>quarterly sales review, IT security policy</td></tr>
+    <tr><td>[recipient]</td><td>Who receives your message</td><td>my manager, the client, HR department</td></tr>
+    <tr><td>[tone]</td><td>How formal you want it</td><td>formal, friendly, professional, direct</td></tr>
+    <tr><td>[length]</td><td>How long the output should be</td><td>3 sentences, 1 page, 5 bullet points</td></tr>
+    <tr><td>[context]</td><td>Background information relevant to the task</td><td>paste in the document, email chain, notes</td></tr>
+    <tr><td>[number]</td><td>A specific count</td><td>3 options, 10 questions, 5 risks</td></tr>
+  </table>
+
+  <div style="margin-top:28px;padding:20px 24px;background:#faf5ff;border:1px solid #e9d5ff;border-radius:12px;">
+    <div style="font-weight:800;color:#7c3aed;margin-bottom:10px;font-size:11pt;">Works with all major AI tools</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;font-size:9.5pt;">
+      <div style="text-align:center;padding:10px;background:#fff;border-radius:8px;border:1px solid var(--border);"><strong>ChatGPT</strong><br/><span style="color:var(--muted);">chat.openai.com</span></div>
+      <div style="text-align:center;padding:10px;background:#fff;border-radius:8px;border:1px solid var(--border);"><strong>Microsoft Copilot</strong><br/><span style="color:var(--muted);">copilot.microsoft.com</span></div>
+      <div style="text-align:center;padding:10px;background:#fff;border-radius:8px;border:1px solid var(--border);"><strong>Google Gemini</strong><br/><span style="color:var(--muted);">gemini.google.com</span></div>
+    </div>
+  </div>
+  <div class="page-footer"><span>100 AI Prompts for Office Workers</span><span>How to Use</span></div>
+</div>
+
+<!-- CATEGORY 1: EMAIL -->
+<div class="page">
+  <div class="section-divider">📧 Category 1: Writing Professional Emails</div>
+  <div class="cat-desc">Stop staring at a blank email. These prompts get you a polished draft in seconds — just fill in the details.</div>
+
+  <div class="prompt-grid">
+    <div class="prompt-card c-email">
+      <div class="prompt-header"><div class="prompt-num">01</div><div class="prompt-title">Follow-up after no reply</div></div>
+      <div class="prompt-use">Use when: A client, colleague, or vendor hasn't responded in 3–7 days</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write a polite follow-up email to [recipient] regarding [topic]. I sent an email on [date] and haven't received a response. Keep it brief, friendly, and non-pushy. End with a clear next step.</div></div>
+    </div>
+
+    <div class="prompt-card c-email">
+      <div class="prompt-header"><div class="prompt-num">02</div><div class="prompt-title">Declining a request professionally</div></div>
+      <div class="prompt-use">Use when: You need to say no without damaging the relationship</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write a professional email declining [request/invitation] from [recipient]. Reason for declining: [reason]. Keep it respectful, offer an alternative if possible, and maintain the relationship.</div></div>
+    </div>
+
+    <div class="prompt-card c-email">
+      <div class="prompt-header"><div class="prompt-num">03</div><div class="prompt-title">Requesting an extension or deadline change</div></div>
+      <div class="prompt-use">Use when: You need more time on a deliverable</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write an email to [recipient/manager] requesting an extension for [task/project]. Original deadline: [date]. Proposed new deadline: [date]. Reason: [brief reason]. Keep it accountable — don't make excuses, just be clear and solution-focused.</div></div>
+    </div>
+
+    <div class="prompt-card c-email">
+      <div class="prompt-header"><div class="prompt-num">04</div><div class="prompt-title">Escalation email</div></div>
+      <div class="prompt-use">Use when: An issue isn't being resolved and needs senior attention</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write a professional escalation email to [senior person/manager] about [issue]. Background: [brief context]. Steps already taken: [what you tried]. I need [specific resolution]. Keep the tone factual, not emotional.</div></div>
+    </div>
+
+    <div class="prompt-card c-email">
+      <div class="prompt-header"><div class="prompt-num">05</div><div class="prompt-title">Apologising for a mistake</div></div>
+      <div class="prompt-use">Use when: You need to own an error professionally</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write a professional apology email to [recipient] for [mistake/delay/oversight]. Acknowledge the error clearly, briefly explain what happened, state what you're doing to fix it, and reassure them it won't recur. Tone: sincere, not defensive.</div></div>
+    </div>
+
+    <div class="prompt-card c-email">
+      <div class="prompt-header"><div class="prompt-num">06</div><div class="prompt-title">Cold introduction email</div></div>
+      <div class="prompt-use">Use when: Reaching out to someone you've never spoken to</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write a concise cold introduction email to [recipient] at [company]. My name is [name] and I work as [role] at [company]. Purpose: [what I want — collaboration, advice, a meeting]. Keep it under 5 sentences. Be specific about why I'm contacting them.</div></div>
+    </div>
+
+    <div class="prompt-card c-email">
+      <div class="prompt-header"><div class="prompt-num">07</div><div class="prompt-title">Thanking someone after help</div></div>
+      <div class="prompt-use">Use when: Someone went out of their way for you</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write a warm but professional thank-you email to [name] for [specific help they gave]. Mention how it helped me: [specific outcome]. Keep it genuine and not over-the-top. 3–4 sentences max.</div></div>
+    </div>
+
+    <div class="prompt-card c-email">
+      <div class="prompt-header"><div class="prompt-num">08</div><div class="prompt-title">Summarising a long email thread</div></div>
+      <div class="prompt-use">Use when: An email chain has gotten confusing and needs a recap</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Summarise this email thread and write a clean summary email I can send to all parties. Extract: the key decisions made, open action items, who is responsible for each, and next steps. Here is the thread: [paste thread]</div></div>
+    </div>
+
+    <div class="prompt-card c-email">
+      <div class="prompt-header"><div class="prompt-num">09</div><div class="prompt-title">Rewriting an email to sound more professional</div></div>
+      <div class="prompt-use">Use when: Your draft sounds too casual or unclear</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Rewrite this email to sound more professional and clear. Improve grammar, tone, and structure. Keep the core message the same. Here is my draft: [paste draft]</div></div>
+    </div>
+
+    <div class="prompt-card c-email">
+      <div class="prompt-header"><div class="prompt-num">10</div><div class="prompt-title">Announcing a change to a team</div></div>
+      <div class="prompt-use">Use when: Communicating a policy, process, or personnel change</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write an internal announcement email for the team about [change/update]. What's changing: [describe]. When it takes effect: [date]. Why it's happening: [reason]. Any action required from the team: [actions]. Tone: clear, positive, reassuring.</div></div>
+    </div>
+  </div>
+  <div class="page-footer"><span>100 AI Prompts for Office Workers</span><span>Category 1: Emails (1–10)</span></div>
+</div>
+
+<!-- CATEGORY 2: SUMMARISATION -->
+<div class="page">
+  <div class="section-divider">📄 Category 2: Summarising Documents and Content</div>
+  <div class="cat-desc">Turn long documents, reports, and articles into clear, usable summaries in seconds.</div>
+
+  <div class="prompt-grid">
+    <div class="prompt-card c-summ">
+      <div class="prompt-header"><div class="prompt-num">11</div><div class="prompt-title">Summarise a long document</div></div>
+      <div class="prompt-use">Use when: You have a long report, policy, or article to digest quickly</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Summarise this document in [5 bullet points / 2 paragraphs / 1 page]. Focus on: the main purpose, key findings or decisions, and any action items. Audience: [who will read this]. Here is the document: [paste content]</div></div>
+    </div>
+
+    <div class="prompt-card c-summ">
+      <div class="prompt-header"><div class="prompt-num">12</div><div class="prompt-title">Executive summary</div></div>
+      <div class="prompt-use">Use when: Creating a one-page summary for senior leadership</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write an executive summary of the following document for senior leadership. Include: situation overview, key findings, recommendations, and next steps. Max 250 words. Here is the content: [paste content]</div></div>
+    </div>
+
+    <div class="prompt-card c-summ">
+      <div class="prompt-header"><div class="prompt-num">13</div><div class="prompt-title">Extract key action items</div></div>
+      <div class="prompt-use">Use when: Reading meeting notes, emails, or reports for to-dos</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Read the following content and extract only the action items. For each one, list: what needs to be done, who is responsible (if mentioned), and the deadline (if mentioned). Format as a table. Here is the content: [paste]</div></div>
+    </div>
+
+    <div class="prompt-card c-summ">
+      <div class="prompt-header"><div class="prompt-num">14</div><div class="prompt-title">Compare two documents</div></div>
+      <div class="prompt-use">Use when: You need to find differences between two versions or proposals</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Compare these two documents and identify the key differences. Focus on: changes in scope, tone, numbers, and recommendations. Present the comparison as a table with Document A vs Document B. Document A: [paste]. Document B: [paste]</div></div>
+    </div>
+
+    <div class="prompt-card c-summ">
+      <div class="prompt-header"><div class="prompt-num">15</div><div class="prompt-title">Summarise for a non-technical audience</div></div>
+      <div class="prompt-use">Use when: You need to explain technical content to leadership or clients</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Summarise this technical document for a non-technical business audience. Avoid jargon. Use plain language. Explain what it means in practice and why it matters. Max [length]. Here is the document: [paste]</div></div>
+    </div>
+
+    <div class="prompt-card c-summ">
+      <div class="prompt-header"><div class="prompt-num">16</div><div class="prompt-title">Create a TL;DR</div></div>
+      <div class="prompt-use">Use when: You want a 2–3 sentence bottom-line summary</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write a TL;DR (too long; didn't read) summary of this content in exactly 2–3 sentences. Capture the single most important point someone needs to know. Here is the content: [paste]</div></div>
+    </div>
+
+    <div class="prompt-card c-summ">
+      <div class="prompt-header"><div class="prompt-num">17</div><div class="prompt-title">Extract risks and concerns</div></div>
+      <div class="prompt-use">Use when: Reviewing a proposal, contract, or report for potential problems</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Read the following document and list all risks, concerns, or potential problems mentioned or implied. Rate each as High / Medium / Low risk. Suggest a mitigation for each. Here is the document: [paste]</div></div>
+    </div>
+
+    <div class="prompt-card c-summ">
+      <div class="prompt-header"><div class="prompt-num">18</div><div class="prompt-title">Summarise a meeting recording transcript</div></div>
+      <div class="prompt-use">Use when: You have a raw Teams/Zoom transcript</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Here is a meeting transcript. Summarise it with: 1) A 3-sentence overview of what was discussed 2) Key decisions made 3) Action items with owner names 4) Any unresolved questions. Here is the transcript: [paste]</div></div>
+    </div>
+
+    <div class="prompt-card c-summ">
+      <div class="prompt-header"><div class="prompt-num">19</div><div class="prompt-title">Bullet-point a dense paragraph</div></div>
+      <div class="prompt-use">Use when: You need to make dense content readable</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Convert this dense paragraph into clear, scannable bullet points. Each bullet should be one idea. Use plain language. Here is the paragraph: [paste]</div></div>
+    </div>
+
+    <div class="prompt-card c-summ">
+      <div class="prompt-header"><div class="prompt-num">20</div><div class="prompt-title">Identify the main argument</div></div>
+      <div class="prompt-use">Use when: Reading a long proposal or research paper</div>
+      <div class="prompt-text"><div class="prompt-text-inner">Read this document and identify: 1) The central argument or recommendation 2) The top 3 pieces of evidence supporting it 3) Any counterarguments mentioned 4) The conclusion. Here is the document: [paste]</div></div>
+    </div>
+  </div>
+  <div class="page-footer"><span>100 AI Prompts for Office Workers</span><span>Category 2: Summarising (11–20)</span></div>
+</div>
+
+<!-- CATEGORY 3: REPORTS -->
+<div class="page">
+  <div class="section-divider">📊 Category 3: Writing Reports and Documents</div>
+  <div class="cat-desc">Build structured, professional reports faster — from status updates to full project reports.</div>
+  <div class="prompt-grid">
+    <div class="prompt-card c-report">
+      <div class="prompt-header"><div class="prompt-num">21</div><div class="prompt-title">Weekly status report</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write a professional weekly status report for [project/role]. This week I completed: [list]. In progress: [list]. Blockers: [list or "none"]. Next week's priorities: [list]. Audience: [manager/team]. Keep it concise and structured.</div></div>
+    </div>
+    <div class="prompt-card c-report">
+      <div class="prompt-header"><div class="prompt-num">22</div><div class="prompt-title">Project proposal</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write a professional project proposal for [project name]. Include: problem statement, proposed solution, scope, timeline, resources needed, expected benefits, and risks. Audience: [stakeholders]. Format as a formal document.</div></div>
+    </div>
+    <div class="prompt-card c-report">
+      <div class="prompt-header"><div class="prompt-num">23</div><div class="prompt-title">Post-mortem / lessons learned report</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write a post-mortem report for [project/incident]. Include: what went well, what went wrong, root causes, impact, and recommendations to prevent recurrence. Context: [paste notes]. Tone: factual, blame-free, improvement-focused.</div></div>
+    </div>
+    <div class="prompt-card c-report">
+      <div class="prompt-header"><div class="prompt-num">24</div><div class="prompt-title">Business case for a new tool or investment</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write a business case to justify purchasing [tool/service/resource]. Include: current problem, proposed solution, cost estimate, expected ROI or benefits, risks of not acting, and a recommendation. Audience: finance/senior leadership.</div></div>
+    </div>
+    <div class="prompt-card c-report">
+      <div class="prompt-header"><div class="prompt-num">25</div><div class="prompt-title">Incident report</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write a professional incident report for [incident type] that occurred on [date]. Include: timeline of events, immediate impact, response actions taken, root cause, and corrective actions. Keep it factual and chronological.</div></div>
+    </div>
+    <div class="prompt-card c-report">
+      <div class="prompt-header"><div class="prompt-num">26</div><div class="prompt-title">Competitive analysis</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Help me write a competitive analysis comparing [our product/service] against [competitor 1] and [competitor 2]. Compare on: pricing, features, strengths, weaknesses, and target audience. Present as a table followed by a paragraph summary.</div></div>
+    </div>
+    <div class="prompt-card c-report">
+      <div class="prompt-header"><div class="prompt-num">27</div><div class="prompt-title">Convert bullet notes into a formal report section</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Convert these rough bullet point notes into a polished, professional report section. Add transitions, fix grammar, and make it formal. Section heading: [heading]. My notes: [paste notes]</div></div>
+    </div>
+    <div class="prompt-card c-report">
+      <div class="prompt-header"><div class="prompt-num">28</div><div class="prompt-title">SWOT analysis</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Create a detailed SWOT analysis for [company/project/team/strategy]. For each of the four areas — Strengths, Weaknesses, Opportunities, Threats — provide 4–5 specific, realistic points based on this context: [paste context or describe situation]</div></div>
+    </div>
+    <div class="prompt-card c-report">
+      <div class="prompt-header"><div class="prompt-num">29</div><div class="prompt-title">Monthly management report intro</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write a professional introduction paragraph for a monthly management report for [month]. Key highlights this month: [list 3–4 points]. Overall performance: [positive/mixed/challenging]. Tone: confident, factual, forward-looking.</div></div>
+    </div>
+    <div class="prompt-card c-report">
+      <div class="prompt-header"><div class="prompt-num">30</div><div class="prompt-title">Policy document draft</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Draft a professional policy document for [policy topic] for [company/department]. Include: purpose, scope, policy statement, responsibilities, procedures, and compliance requirements. Tone: formal and unambiguous.</div></div>
+    </div>
+  </div>
+  <div class="page-footer"><span>100 AI Prompts for Office Workers</span><span>Category 3: Reports (21–30)</span></div>
+</div>
+
+<!-- CATEGORY 4 & 5 -->
+<div class="page">
+  <div class="section-divider">📅 Category 4: Meeting Preparation and Follow-up</div>
+  <div class="cat-desc">Be the most prepared person in every meeting — without spending hours getting ready.</div>
+  <div class="prompt-grid">
+    <div class="prompt-card c-meet">
+      <div class="prompt-header"><div class="prompt-num">31</div><div class="prompt-title">Create a meeting agenda</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Create a structured meeting agenda for a [duration] meeting about [topic]. Attendees: [roles]. Goal of the meeting: [goal]. Include: welcome/intro, agenda items with time slots, discussion points for each, and a closing/next steps section.</div></div>
+    </div>
+    <div class="prompt-card c-meet">
+      <div class="prompt-header"><div class="prompt-num">32</div><div class="prompt-title">Generate questions to ask in a meeting</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">I have a [type of meeting] about [topic] with [who]. Generate [10] smart, relevant questions I should ask. Context about the meeting: [paste any relevant background]. Include both clarifying questions and strategic ones.</div></div>
+    </div>
+    <div class="prompt-card c-meet">
+      <div class="prompt-header"><div class="prompt-num">33</div><div class="prompt-title">Write meeting minutes</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Convert these meeting notes into formal meeting minutes. Include: meeting date, attendees, agenda items discussed, key decisions, action items with owners and deadlines, and next meeting date. Notes: [paste notes]</div></div>
+    </div>
+    <div class="prompt-card c-meet">
+      <div class="prompt-header"><div class="prompt-num">34</div><div class="prompt-title">Prepare for a difficult conversation</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Help me prepare for a difficult conversation with [role/relationship] about [issue]. Give me: how to open the conversation, key points to cover, how to respond if they get defensive, and how to end constructively. My goal: [what outcome I want].</div></div>
+    </div>
+    <div class="prompt-card c-meet">
+      <div class="prompt-header"><div class="prompt-num">35</div><div class="prompt-title">Post-meeting follow-up email</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write a professional follow-up email after our meeting about [topic] on [date]. Summarise: what was decided, action items with owners, and next steps. Recipients: [names/roles]. Tone: clear and action-oriented.</div></div>
+    </div>
+    <div class="prompt-card c-meet">
+      <div class="prompt-header"><div class="prompt-num">36</div><div class="prompt-title">Talking points for a presentation to leadership</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Give me 5 clear talking points for presenting [topic] to senior leadership. Each talking point should have: a headline sentence, 2 supporting facts or details, and a so-what (why it matters). Background: [paste context]</div></div>
+    </div>
+    <div class="prompt-card c-meet">
+      <div class="prompt-header"><div class="prompt-num">37</div><div class="prompt-title">Brainstorm meeting — generate ideas</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Generate [15] creative but practical ideas for [problem/challenge]. For each idea: state it in one sentence and give a one-line explanation of how it works. Context: [describe the problem]. Don't filter — include bold and conservative ideas both.</div></div>
+    </div>
+    <div class="prompt-card c-meet">
+      <div class="prompt-header"><div class="prompt-num">38</div><div class="prompt-title">One-on-one preparation</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Help me prepare for a one-on-one meeting with my [manager/direct report]. Topics I want to cover: [list]. Help me frame each topic clearly, anticipate their likely response, and suggest what I should ask for or offer in each case.</div></div>
+    </div>
+    <div class="prompt-card c-meet">
+      <div class="prompt-header"><div class="prompt-num">39</div><div class="prompt-title">Summarise a presentation into key messages</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Read this presentation content and extract the 3–5 key messages the audience should remember. For each: state the message in one sentence and explain why it matters. Content: [paste slides text or notes]</div></div>
+    </div>
+    <div class="prompt-card c-meet">
+      <div class="prompt-header"><div class="prompt-num">40</div><div class="prompt-title">Handle objections in a meeting</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">I'm proposing [idea/change/project] in a meeting. Likely objections I'll face: [list 3 objections]. For each objection, give me a confident, data-driven response I can use. Keep responses concise — 2–3 sentences each.</div></div>
+    </div>
+  </div>
+
+  <div class="section-divider" style="margin-top:28px;">🧠 Category 5: Explaining Technical Concepts Simply</div>
+  <div class="cat-desc">Bridge the gap between technical teams and business stakeholders.</div>
+  <div class="prompt-grid">
+    <div class="prompt-card c-explain">
+      <div class="prompt-header"><div class="prompt-num">41</div><div class="prompt-title">Explain like I'm 10</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Explain [technical concept] as if you're explaining it to a 10-year-old. Use an everyday analogy. Avoid all technical jargon. Keep it under 5 sentences.</div></div>
+    </div>
+    <div class="prompt-card c-explain">
+      <div class="prompt-header"><div class="prompt-num">42</div><div class="prompt-title">Explain to a non-technical manager</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Explain [technical concept/system/finding] to a business manager who has no technical background. Focus on: what it is, why it matters to the business, and what action (if any) is needed. No acronyms without explanation.</div></div>
+    </div>
+    <div class="prompt-card c-explain">
+      <div class="prompt-header"><div class="prompt-num">43</div><div class="prompt-title">Create an FAQ for a technical change</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write an FAQ document about [technical change/system update] for non-technical staff. Include [8–10] questions they're likely to ask, with clear plain-language answers. Context: [describe the change]</div></div>
+    </div>
+    <div class="prompt-card c-explain">
+      <div class="prompt-header"><div class="prompt-num">44</div><div class="prompt-title">Translate a technical error into plain language</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Explain what this technical error or message means in plain English. What caused it? What should the user do next? Keep it simple and actionable. Error: [paste error message or technical finding]</div></div>
+    </div>
+    <div class="prompt-card c-explain">
+      <div class="prompt-header"><div class="prompt-num">45</div><div class="prompt-title">Write a glossary of terms</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Create a plain-language glossary for these [number] technical terms used in [project/domain]. Each definition should be 1–2 sentences, jargon-free, with a real-world example where possible. Terms: [list terms]</div></div>
+    </div>
+    <div class="prompt-card c-explain">
+      <div class="prompt-header"><div class="prompt-num">46</div><div class="prompt-title">Explain the "so what" of data</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Here is some data or analysis: [paste data/findings]. Explain what this means in business terms. What is the key insight? What decision or action does this support? Write 3–4 sentences a senior leader would find useful.</div></div>
+    </div>
+    <div class="prompt-card c-explain">
+      <div class="prompt-header"><div class="prompt-num">47</div><div class="prompt-title">Analogy for a complex process</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Create a simple, memorable analogy that explains [complex process or concept] to someone with no background in [field]. The analogy should make the core idea immediately obvious.</div></div>
+    </div>
+    <div class="prompt-card c-explain">
+      <div class="prompt-header"><div class="prompt-num">48</div><div class="prompt-title">Write a one-pager explanation</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write a one-page plain-language explainer about [topic] for [audience]. Include: what it is, why it matters, how it works (in simple terms), and what it means for [audience specifically]. No more than 400 words.</div></div>
+    </div>
+    <div class="prompt-card c-explain">
+      <div class="prompt-header"><div class="prompt-num">49</div><div class="prompt-title">Explain pros and cons simply</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Explain the pros and cons of [technology/approach/decision] for a non-technical decision maker. 4–5 pros and 4–5 cons. Each point: one sentence, no jargon, business-focused impact.</div></div>
+    </div>
+    <div class="prompt-card c-explain">
+      <div class="prompt-header"><div class="prompt-num">50</div><div class="prompt-title">Write a change communication message</div></div>
+      <div class="prompt-text"><div class="prompt-text-inner">Write an all-staff communication about [technical change]. Explain: what is changing, why, when it happens, how it affects them day-to-day, and who to contact with questions. Tone: clear, calm, reassuring. No technical jargon.</div></div>
+    </div>
+  </div>
+  <div class="page-footer"><span>100 AI Prompts for Office Workers</span><span>Categories 4–5 (31–50)</span></div>
+</div>
+
+<!-- CATEGORIES 6-9 -->
+<div class="page">
+  <div class="section-divider">📈 Category 6: Data Analysis and Insights</div>
+  <div class="prompt-grid">
+    <div class="prompt-card c-data"><div class="prompt-header"><div class="prompt-num">51</div><div class="prompt-title">Interpret a dataset</div></div><div class="prompt-text"><div class="prompt-text-inner">Here is a dataset: [paste data or describe it]. Identify the top 3 insights. What trends do you see? What is surprising? What action would you recommend based on this data?</div></div></div>
+    <div class="prompt-card c-data"><div class="prompt-header"><div class="prompt-num">52</div><div class="prompt-title">Write commentary for a chart</div></div><div class="prompt-text"><div class="prompt-text-inner">Write 2–3 sentences of professional commentary for this chart/graph to include in a report. Describe what it shows, highlight the most important point, and state what it means. Chart data: [describe or paste values]</div></div></div>
+    <div class="prompt-card c-data"><div class="prompt-header"><div class="prompt-num">53</div><div class="prompt-title">Identify anomalies</div></div><div class="prompt-text"><div class="prompt-text-inner">Review this data and flag any anomalies, outliers, or unexpected values. For each one: what is unusual, why it might have occurred, and whether it needs investigation. Data: [paste]</div></div></div>
+    <div class="prompt-card c-data"><div class="prompt-header"><div class="prompt-num">54</div><div class="prompt-title">Create a data-driven recommendation</div></div><div class="prompt-text"><div class="prompt-text-inner">Based on this data, write a clear, concise recommendation for [decision]. Structure it as: situation (1 sentence), data insight (2 sentences), recommendation (1 sentence), expected outcome (1 sentence). Data: [paste]</div></div></div>
+    <div class="prompt-card c-data"><div class="prompt-header"><div class="prompt-num">55</div><div class="prompt-title">Suggest Excel formulas for a task</div></div><div class="prompt-text"><div class="prompt-text-inner">I need to do the following in Excel: [describe task]. Suggest the best formula(s) to use, explain what each part does, and give an example of how to write it for my data structure: [describe columns/layout]</div></div></div>
+    <div class="prompt-card c-data"><div class="prompt-header"><div class="prompt-num">56</div><div class="prompt-title">Write a data quality check list</div></div><div class="prompt-text"><div class="prompt-text-inner">Create a data quality checklist for reviewing [type of dataset] before it is used in a report or analysis. Include checks for: completeness, accuracy, consistency, duplicates, and formatting. Make it practical and actionable.</div></div></div>
+    <div class="prompt-card c-data"><div class="prompt-header"><div class="prompt-num">57</div><div class="prompt-title">Dashboard summary paragraph</div></div><div class="prompt-text"><div class="prompt-text-inner">Write a concise management summary paragraph (100 words max) for a dashboard showing: [list your metrics and their values]. Highlight what's on track, what needs attention, and any key trend. Tone: factual and direct.</div></div></div>
+    <div class="prompt-card c-data"><div class="prompt-header"><div class="prompt-num">58</div><div class="prompt-title">Forecast commentary</div></div><div class="prompt-text"><div class="prompt-text-inner">Based on this historical data: [paste], write a short commentary on what the trend suggests for the next [time period]. Include assumptions you're making. Keep it honest — acknowledge uncertainty where it exists.</div></div></div>
+    <div class="prompt-card c-data"><div class="prompt-header"><div class="prompt-num">59</div><div class="prompt-title">Turn a table into a narrative</div></div><div class="prompt-text"><div class="prompt-text-inner">Convert this data table into a narrative paragraph suitable for a management report. Focus on the story the numbers tell — what changed, what's notable, what it means. Table: [paste]</div></div></div>
+    <div class="prompt-card c-data"><div class="prompt-header"><div class="prompt-num">60</div><div class="prompt-title">Root cause analysis</div></div><div class="prompt-text"><div class="prompt-text-inner">Help me perform a root cause analysis for [problem]. Use the 5 Whys method. Start with the problem statement and work backward to the underlying cause. Problem: [describe]. Context: [paste relevant data or background]</div></div></div>
+  </div>
+
+  <div class="section-divider" style="margin-top:24px;">🎯 Category 7: Presentations and Slides</div>
+  <div class="prompt-grid">
+    <div class="prompt-card c-ppt"><div class="prompt-header"><div class="prompt-num">61</div><div class="prompt-title">Create a slide outline</div></div><div class="prompt-text"><div class="prompt-text-inner">Create a [number]-slide presentation outline on [topic] for [audience]. For each slide: slide title, 3 bullet points of content, and the key message the slide should leave the audience with. Goal of presentation: [goal]</div></div></div>
+    <div class="prompt-card c-ppt"><div class="prompt-header"><div class="prompt-num">62</div><div class="prompt-title">Write slide speaker notes</div></div><div class="prompt-text"><div class="prompt-text-inner">Write speaker notes for this slide content. The notes should: expand on each bullet point, include a transition to the next slide, and include a talking point or example not on the slide. Slide content: [paste]</div></div></div>
+    <div class="prompt-card c-ppt"><div class="prompt-header"><div class="prompt-num">63</div><div class="prompt-title">Write an opening hook for a presentation</div></div><div class="prompt-text"><div class="prompt-text-inner">Write a compelling opening for a presentation about [topic]. Include: a surprising statistic or question, why this matters to [audience], and a one-sentence preview of what they'll learn. Duration: 30–60 seconds when spoken.</div></div></div>
+    <div class="prompt-card c-ppt"><div class="prompt-header"><div class="prompt-num">64</div><div class="prompt-title">Closing call-to-action slide</div></div><div class="prompt-text"><div class="prompt-text-inner">Write the content for a closing slide for a presentation on [topic]. Include: a one-line summary of the key message, 3 clear next steps for the audience, and a call to action. Tone: motivating and clear.</div></div></div>
+    <div class="prompt-card c-ppt"><div class="prompt-header"><div class="prompt-num">65</div><div class="prompt-title">Simplify a text-heavy slide</div></div><div class="prompt-text"><div class="prompt-text-inner">This slide has too much text. Rewrite it with: a clear headline (max 8 words), 3–4 concise bullet points (max 10 words each), and one key takeaway sentence at the bottom. Original content: [paste]</div></div></div>
+    <div class="prompt-card c-ppt"><div class="prompt-header"><div class="prompt-num">66</div><div class="prompt-title">Suggest visuals for slides</div></div><div class="prompt-text"><div class="prompt-text-inner">For each of these slide topics, suggest what type of visual would best communicate the content (e.g., bar chart, timeline, process diagram, icons, table). Explain why for each. Slides: [list topics]</div></div></div>
+    <div class="prompt-card c-ppt"><div class="prompt-header"><div class="prompt-num">67</div><div class="prompt-title">Convert a report into slides</div></div><div class="prompt-text"><div class="prompt-text-inner">Convert this report into a [number]-slide deck. Each slide should have: a title, 3 key points, and one clear message. Group related content logically. Focus on what leadership needs to know, not everything. Report: [paste]</div></div></div>
+    <div class="prompt-card c-ppt"><div class="prompt-header"><div class="prompt-num">68</div><div class="prompt-title">Q&A preparation</div></div><div class="prompt-text"><div class="prompt-text-inner">I'm presenting [topic] to [audience]. Generate [10] tough questions they might ask. For each question, give me a confident 2–3 sentence answer. Focus on challenges, risks, costs, and feasibility questions.</div></div></div>
+    <div class="prompt-card c-ppt"><div class="prompt-header"><div class="prompt-num">69</div><div class="prompt-title">Write a story for a slide</div></div><div class="prompt-text"><div class="prompt-text-inner">Write a brief real-world story or scenario (3–4 sentences) that illustrates this concept for a presentation slide: [concept]. The story should be relatable to [audience] and make the abstract idea concrete.</div></div></div>
+    <div class="prompt-card c-ppt"><div class="prompt-header"><div class="prompt-num">70</div><div class="prompt-title">Before/after improvement slide</div></div><div class="prompt-text"><div class="prompt-text-inner">Create content for a "Before vs After" slide showing the improvement from [old situation] to [new situation]. Each side should have 3–4 bullet points. Make the contrast clear and impactful. Context: [describe the change]</div></div></div>
+  </div>
+  <div class="page-footer"><span>100 AI Prompts for Office Workers</span><span>Categories 6–7 (51–70)</span></div>
+</div>
+
+<div class="page">
+  <div class="section-divider">👥 Category 8: HR and People Management</div>
+  <div class="prompt-grid">
+    <div class="prompt-card c-hr"><div class="prompt-header"><div class="prompt-num">71</div><div class="prompt-title">Write a self-appraisal</div></div><div class="prompt-text"><div class="prompt-text-inner">Write a professional self-appraisal for my annual performance review. My role: [role]. Key achievements this year: [list]. Areas I want to grow in: [list]. Tone: confident, specific, and professional. Include measurable outcomes where possible.</div></div></div>
+    <div class="prompt-card c-hr"><div class="prompt-header"><div class="prompt-num">72</div><div class="prompt-title">Give constructive feedback</div></div><div class="prompt-text"><div class="prompt-text-inner">Help me write constructive feedback for [name/role] about [issue or behaviour]. Use the SBI model (Situation, Behaviour, Impact). Be specific, avoid personal criticism, and end with a clear suggestion for improvement.</div></div></div>
+    <div class="prompt-card c-hr"><div class="prompt-header"><div class="prompt-num">73</div><div class="prompt-title">Write a job description</div></div><div class="prompt-text"><div class="prompt-text-inner">Write a job description for a [role title] at a [company type]. Include: role summary, key responsibilities (8–10), required qualifications, preferred skills, and what makes this role interesting. Tone: professional but engaging.</div></div></div>
+    <div class="prompt-card c-hr"><div class="prompt-header"><div class="prompt-num">74</div><div class="prompt-title">Interview questions</div></div><div class="prompt-text"><div class="prompt-text-inner">Generate [15] strong interview questions for hiring a [role]. Include a mix of: behavioural (tell me about a time...), situational (what would you do if...), and skills-based questions. Also suggest what a good answer to each looks like.</div></div></div>
+    <div class="prompt-card c-hr"><div class="prompt-header"><div class="prompt-num">75</div><div class="prompt-title">Write a recognition message</div></div><div class="prompt-text"><div class="prompt-text-inner">Write a genuine recognition message for [name] to share with the team or in a performance review. What they did: [specific achievement]. Why it mattered: [impact]. Tone: warm, specific, and not generic. 3–4 sentences.</div></div></div>
+    <div class="prompt-card c-hr"><div class="prompt-header"><div class="prompt-num">76</div><div class="prompt-title">Development plan for a team member</div></div><div class="prompt-text"><div class="prompt-text-inner">Create a 6-month development plan for [role] who wants to grow in [skill/area]. Include: 3 learning goals, suggested resources or activities for each, how to measure progress, and a monthly check-in structure.</div></div></div>
+    <div class="prompt-card c-hr"><div class="prompt-header"><div class="prompt-num">77</div><div class="prompt-title">Onboarding checklist</div></div><div class="prompt-text"><div class="prompt-text-inner">Create a 30-60-90 day onboarding checklist for a new [role] joining [team/company]. For each phase: list 5–7 specific tasks, meetings, or goals the person should complete. Focus on becoming productive and building relationships.</div></div></div>
+    <div class="prompt-card c-hr"><div class="prompt-header"><div class="prompt-num">78</div><div class="prompt-title">Address a performance concern</div></div><div class="prompt-text"><div class="prompt-text-inner">Help me draft talking points for a performance conversation with [role] about [concern]. The goal is to address the issue clearly without being harsh, understand root causes, agree on improvements, and maintain the working relationship.</div></div></div>
+    <div class="prompt-card c-hr"><div class="prompt-header"><div class="prompt-num">79</div><div class="prompt-title">Resignation response email</div></div><div class="prompt-text"><div class="prompt-text-inner">Write a professional response to [name]'s resignation. Acknowledge the resignation, express genuine appreciation for their contributions, confirm the last working day, and outline the handover process needed. Tone: gracious and professional.</div></div></div>
+    <div class="prompt-card c-hr"><div class="prompt-header"><div class="prompt-num">80</div><div class="prompt-title">Team survey questions</div></div><div class="prompt-text"><div class="prompt-text-inner">Create [10] team survey questions to assess [team morale/engagement/communication/specific topic]. Questions should: be specific, easy to answer, and actionable. Include a mix of rating scale and open-ended questions.</div></div></div>
+  </div>
+
+  <div class="section-divider" style="margin-top:24px;">⚡ Category 9: Problem Solving and Thinking</div>
+  <div class="prompt-grid">
+    <div class="prompt-card c-think"><div class="prompt-header"><div class="prompt-num">81</div><div class="prompt-title">Devil's advocate</div></div><div class="prompt-text"><div class="prompt-text-inner">Play devil's advocate against this plan: [describe plan]. Give me [5] strong arguments against it that a sceptic or critic would raise. Be specific and realistic — not just generic concerns.</div></div></div>
+    <div class="prompt-card c-think"><div class="prompt-header"><div class="prompt-num">82</div><div class="prompt-title">Force-rank options</div></div><div class="prompt-text"><div class="prompt-text-inner">I have these [number] options: [list them]. Help me force-rank them by evaluating each against these criteria: [list 3–4 criteria]. Present as a scoring table and recommend the best option with justification.</div></div></div>
+    <div class="prompt-card c-think"><div class="prompt-header"><div class="prompt-num">83</div><div class="prompt-title">Second-order consequences</div></div><div class="prompt-text"><div class="prompt-text-inner">What are the second and third-order consequences of [decision/action]? Think beyond the immediate obvious effect. What happens next? And after that? Give me a chain of likely consequences, including unintended ones.</div></div></div>
+    <div class="prompt-card c-think"><div class="prompt-header"><div class="prompt-num">84</div><div class="prompt-title">Pre-mortem analysis</div></div><div class="prompt-text"><div class="prompt-text-inner">Imagine it is 12 months from now and [project/plan] has failed completely. What went wrong? List the [5–7] most likely reasons for failure. For each, suggest a preventive action I can take now.</div></div></div>
+    <div class="prompt-card c-think"><div class="prompt-header"><div class="prompt-num">85</div><div class="prompt-title">Reframe a problem</div></div><div class="prompt-text"><div class="prompt-text-inner">I'm stuck on this problem: [describe]. Give me [3] completely different ways to think about or frame this problem. Each reframe should reveal a different set of possible solutions.</div></div></div>
+    <div class="prompt-card c-think"><div class="prompt-header"><div class="prompt-num">86</div><div class="prompt-title">Write a decision memo</div></div><div class="prompt-text"><div class="prompt-text-inner">Write a one-page decision memo for [decision]. Include: background (2 sentences), options considered (3), recommendation and rationale, risks and mitigations, and approval requested. Context: [paste details]</div></div></div>
+    <div class="prompt-card c-think"><div class="prompt-header"><div class="prompt-num">87</div><div class="prompt-title">Stress-test an assumption</div></div><div class="prompt-text"><div class="prompt-text-inner">My plan relies on these key assumptions: [list]. For each assumption: how likely is it to be wrong? What would happen if it were wrong? What can I do to validate it before committing?</div></div></div>
+    <div class="prompt-card c-think"><div class="prompt-header"><div class="prompt-num">88</div><div class="prompt-title">Prioritisation matrix</div></div><div class="prompt-text"><div class="prompt-text-inner">Here is my list of tasks or projects: [list]. Plot them on a 2x2 matrix of Impact vs Effort and categorise each as: Quick Win (high impact, low effort), Major Project (high impact, high effort), Fill-In (low impact, low effort), or Avoid (low impact, high effort).</div></div></div>
+    <div class="prompt-card c-think"><div class="prompt-header"><div class="prompt-num">89</div><div class="prompt-title">Create a communication plan</div></div><div class="prompt-text"><div class="prompt-text-inner">Create a stakeholder communication plan for [project/change]. For each stakeholder group: [list groups], specify: what they need to know, when, how (email/meeting/report), and who is responsible. Format as a table.</div></div></div>
+    <div class="prompt-card c-think"><div class="prompt-header"><div class="prompt-num">90</div><div class="prompt-title">Write a proposal to reject a bad idea</div></div><div class="prompt-text"><div class="prompt-text-inner">Help me write a professional note explaining why [bad idea/proposal] should not be pursued. Structure it as: acknowledging the intent, explaining the concerns (3–4 specific points), and proposing a better alternative. Tone: constructive, not dismissive.</div></div></div>
+  </div>
+  <div class="page-footer"><span>100 AI Prompts for Office Workers</span><span>Categories 8–9 (71–90)</span></div>
+</div>
+
+<!-- BONUS 10 + TIPS PAGE -->
+<div class="page">
+  <div class="section-divider">🌟 Bonus: 10 Power Prompts</div>
+  <div class="cat-desc">These work across any task and will become your most-used prompts.</div>
+  <div class="prompt-grid">
+    <div class="prompt-card c-report"><div class="prompt-header"><div class="prompt-num">91</div><div class="prompt-title">Make this shorter</div></div><div class="prompt-text"><div class="prompt-text-inner">Make this text 50% shorter without losing any important information. Keep the professional tone. Here is the text: [paste]</div></div></div>
+    <div class="prompt-card c-report"><div class="prompt-header"><div class="prompt-num">92</div><div class="prompt-title">Make this more persuasive</div></div><div class="prompt-text"><div class="prompt-text-inner">Rewrite this text to be more persuasive and compelling. Use evidence-based language, address the reader's concerns, and end with a clear call to action. Keep the core message the same. Text: [paste]</div></div></div>
+    <div class="prompt-card c-report"><div class="prompt-header"><div class="prompt-num">93</div><div class="prompt-title">Check this for logical gaps</div></div><div class="prompt-text"><div class="prompt-text-inner">Review this argument or plan for logical gaps, missing evidence, or weak reasoning. What assumptions are being made? What evidence is needed but absent? What would a critic immediately challenge? Text: [paste]</div></div></div>
+    <div class="prompt-card c-report"><div class="prompt-header"><div class="prompt-num">94</div><div class="prompt-title">Give me 3 different versions</div></div><div class="prompt-text"><div class="prompt-text-inner">Write 3 different versions of this: [text/email/message]. Version 1: formal. Version 2: conversational. Version 3: direct and brief. I'll choose the one that fits best. Original: [paste]</div></div></div>
+    <div class="prompt-card c-report"><div class="prompt-header"><div class="prompt-num">95</div><div class="prompt-title">What am I missing?</div></div><div class="prompt-text"><div class="prompt-text-inner">Here is my plan/document/analysis: [paste]. What important things am I missing? What haven't I thought about? What would an expert in this area add? Be specific.</div></div></div>
+    <div class="prompt-card c-report"><div class="prompt-header"><div class="prompt-num">96</div><div class="prompt-title">Improve the structure</div></div><div class="prompt-text"><div class="prompt-text-inner">Rewrite this document with better structure and flow. Use headings, subheadings, and logical paragraph breaks. The content should feel organised and easy to scan. Document: [paste]</div></div></div>
+    <div class="prompt-card c-report"><div class="prompt-header"><div class="prompt-num">97</div><div class="prompt-title">Generate alternatives</div></div><div class="prompt-text"><div class="prompt-text-inner">I currently do [task] in [current way]. Give me [5] alternative approaches I could use instead. For each: how it works, its main advantage, and its main disadvantage.</div></div></div>
+    <div class="prompt-card c-report"><div class="prompt-header"><div class="prompt-num">98</div><div class="prompt-title">Rate and improve my writing</div></div><div class="prompt-text"><div class="prompt-text-inner">Rate this writing on a scale of 1–10 for: clarity, conciseness, professionalism, and persuasiveness. For each score below 8, explain specifically what is weak and how to fix it. My writing: [paste]</div></div></div>
+    <div class="prompt-card c-report"><div class="prompt-header"><div class="prompt-num">99</div><div class="prompt-title">Simulate a conversation</div></div><div class="prompt-text"><div class="prompt-text-inner">Simulate a conversation between me and [person/role] about [topic]. They should ask tough questions and raise real objections. I want to practice my responses. Start the conversation from their opening question.</div></div></div>
+    <div class="prompt-card c-report"><div class="prompt-header"><div class="prompt-num">100</div><div class="prompt-title">The universal improve prompt</div></div><div class="prompt-text"><div class="prompt-text-inner">Review this [email/report/document/message] and improve it. Focus on: clarity, tone, structure, and impact. Show me the improved version and briefly explain the 3 most important changes you made. Original: [paste]</div></div></div>
+  </div>
+
+  <div style="margin-top:28px;background:linear-gradient(135deg,#1e1b4b,#4338ca);color:#fff;border-radius:14px;padding:28px 32px;text-align:center;">
+    <div style="font-size:16pt;font-weight:900;margin-bottom:10px;">You now have 100 prompts.</div>
+    <div style="color:#c7d2fe;font-size:10.5pt;line-height:1.7;">Use them. Customise them. Build your own variations.<br/>The more context you give AI, the better the output.<br/>Every hour you save is yours to use however you want.</div>
+  </div>
+  <div class="page-footer"><span>100 AI Prompts for Office Workers</span><span>Bonus Prompts (91–100)</span></div>
+</div>
+
+</body>
+</html>
